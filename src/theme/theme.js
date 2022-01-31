@@ -33,8 +33,8 @@ export const theme = extendTheme({
     bordered: {
       bg: 'white',
       borderRadius: 12,
-      border: '1px solid rgba(0 0 0 / 10%)',
       transition: 'box-shadow 0.2s ease-in-out',
+      boxShadow: '0 0 0 1px rgba(0 0 0 / 10%)',
 
       _hover: {
         boxShadow: '0px 0px 30px rgba(0 0 0 / 20%)',

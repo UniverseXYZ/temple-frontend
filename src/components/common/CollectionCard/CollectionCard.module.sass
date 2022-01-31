@@ -3,6 +3,8 @@
 .card
   position: relative
   width: 255px
+  min-height: 195px
+  text-align: center
 
 .image
   height: 90px
@@ -21,16 +23,12 @@
   user-select: none
 
   img
-    width: 68px
-    height: 68px
-    border-radius: 50%
     border: 2px solid #fff
 
 .content
   margin-top: 34px
-  text-align: center
   padding: 15px
-  padding-top: 19px
+  padding-top: 20px
 
 .footer
   border-top: 0.5px solid $border-color
@@ -43,6 +41,7 @@
 .author
   font-size: 12px
   font-weight: 600
+  margin-bottom: 15px
 
   span
     color: #ccc
@@ -54,7 +53,14 @@
     &:hover
       text-decoration: none
 
+.text
+  font-size: 12px
+  line-height: 18px
+  color: #666
+  margin-bottom: 15px
+
 .bundle
   position: absolute
   left: 6px
   top: 6px
+  user-select: none

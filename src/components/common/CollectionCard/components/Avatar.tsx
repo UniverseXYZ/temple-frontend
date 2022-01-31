@@ -1,13 +1,14 @@
+import { Box, Image } from '@chakra-ui/react';
 import React from 'react';
 
-import styles from '../CollectionCard.module.sass';
-
-const Avatar: React.FC = () => (
-  <>
-    <div className={styles.avatar}>
-      <img src="/mocks/collection-card-avatar.png" alt="Avatar" />
-    </div>
-  </>
+const Avatar: React.FC = (props) => (
+  <Box {...props}>
+    <Image
+      borderRadius="full"
+      src="/mocks/collection-card-avatar.png"
+      alt="Avatar"
+    />
+  </Box>
 );
 
 export default Avatar;
