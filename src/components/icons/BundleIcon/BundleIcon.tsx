@@ -1,6 +1,6 @@
-import { Icon } from '@chakra-ui/react';
+import { Icon, IconProps } from '@chakra-ui/react';
 
-export const BundleIcon = (props) => (
+export const BundleIcon = (props: IconProps) => (
   <Icon fill="none" viewBox="0 0 20 20" {...props}>
     <path
       d="M10 10C9.54668 10 9.09337 9.91957 8.74 9.7587L3.75923 7.4874C3.53139 7.38375 3 7.08053 3 6.50808C3 5.93563 3.53139 5.63308 3.7599 5.52808L8.78375 3.23726C9.47601 2.92091 10.5206 2.92091 11.2132 3.23726L16.2401 5.52808C16.4686 5.63207 17 5.93529 17 6.50808C17 7.08087 16.4686 7.38308 16.2401 7.48774L11.2593 9.7587C10.9066 9.91957 10.4533 10 10 10Z"

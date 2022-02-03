@@ -1,6 +1,6 @@
-import { Icon } from '@chakra-ui/react';
+import { Icon, IconProps } from '@chakra-ui/react';
 
-export const Ethereum = (props) => (
+export const Ethereum = (props: IconProps) => (
   <Icon fill="none" viewBox="0 0 18 18" {...props}>
     <g>
       <circle cx="9" cy="9.00003" r="9" fill="white" />
