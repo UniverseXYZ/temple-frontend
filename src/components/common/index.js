@@ -1,4 +1,8 @@
-export { default as Layout } from './Layout';
-export { default as Header } from './Header';
-export { default as CollectionCard } from './CollectionCard';
-export { default as BundleTag } from './BundleTag';
+// UI
+export { Layout } from './Layout';
+export { Header } from './Header';
+export { BundleTag } from './BundleTag';
+export { Avatar } from './Avatar';
+
+// Components
+export { CollectionCard } from './CollectionCard';
