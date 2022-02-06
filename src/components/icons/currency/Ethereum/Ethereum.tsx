@@ -1,46 +1,44 @@
-import { Icon } from '@chakra-ui/react';
+import { Box, Icon } from '@chakra-ui/react';
 
-export const Ethereum = (props) => (
-  <Icon fill="none" viewBox="0 0 18 18" {...props}>
-    <g>
-      <circle cx="9" cy="9.00003" r="9" fill="white" />
-      <circle
-        cx="9"
-        cy="9.00003"
-        r="8.75"
-        stroke="black"
-        strokeOpacity="0.1"
-        strokeWidth="0.5"
-      />
-      <path
-        d="M9.00586 11.9947V15.2999L12.9381 9.5372L9.00586 11.9947Z"
-        fill="#2F3030"
-      />
-      <path
-        d="M12.7872 9.25671L9.00586 2.70001V7.46755L12.7872 9.25671Z"
-        fill="#2F3030"
-      />
-      <path
-        d="M9.00586 7.46655V11.5351L12.7564 9.24318L9.00586 7.46655Z"
-        fill="#131313"
-      />
-      <path
-        d="M5.2251 9.25671L9.00582 2.70001V7.46755L5.2251 9.25671Z"
-        fill="#828384"
-      />
-      <path
-        d="M9.00484 7.46655V11.5351L5.24414 9.24318L9.00484 7.46655Z"
-        fill="#343535"
-      />
-      <path
-        d="M8.99443 11.9947V15.2999L5.0625 9.5372L8.99443 11.9947Z"
-        fill="#828384"
-      />
-    </g>
-    <defs>
-      <clipPath id="clip0_497_1915">
-        <rect width="18" height="18" fill="white" />
-      </clipPath>
-    </defs>
-  </Icon>
+export const Ethereum = (props: any) => (
+  <Box boxSize="16px" {...props}>
+    <Icon
+      fill="none"
+      viewBox="0 0 10 16"
+      display="block"
+      boxSize={props.boxSize ?? '16px'}
+    >
+      <g>
+        <path
+          d="M5.00732 11.8027V15.9998L10.0006 8.68205L5.00732 11.8027Z"
+          fill="#2F3030"
+        />
+        <path
+          d="M9.80906 8.32602L5.00732 1.52588e-05V6.05405L9.80906 8.32602Z"
+          fill="#2F3030"
+        />
+        <path
+          d="M5.00732 6.05235V11.2188L9.76993 8.3084L5.00732 6.05235Z"
+          fill="#131313"
+        />
+        <path
+          d="M0.206543 8.32602L5.00749 1.52588e-05V6.05405L0.206543 8.32602Z"
+          fill="#828384"
+        />
+        <path
+          d="M5.00649 6.05235V11.2188L0.230957 8.3084L5.00649 6.05235Z"
+          fill="#343535"
+        />
+        <path
+          d="M4.99297 11.8027V15.9998L0 8.68205L4.99297 11.8027Z"
+          fill="#828384"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_709_7316">
+          <rect width="10" height="16" fill="white" />
+        </clipPath>
+      </defs>
+    </Icon>
+  </Box>
 );
