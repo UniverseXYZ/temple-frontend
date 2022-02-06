@@ -1,4 +1,4 @@
-import { Container, Box, Button } from '@chakra-ui/react';
+import { Container, Box, Button, HStack } from '@chakra-ui/react';
 import {
   TopCollections,
   Statistics,
@@ -9,18 +9,17 @@ import {
 
 const FrontPage = () => (
   <div style={{ height: 10000 }}>
-    <Container maxW="container.xl">
+    <Container maxW="1142px" mb="100px">
       <Box layerStyle="whitebox" p={50} w={256}>
-        <Button>Test</Button>
-        <Button variant="outline">Test</Button>
+        <HStack>
+          <Button>Test</Button>
+          <Button variant="outline">Test</Button>
+        </HStack>
       </Box>
     </Container>
 
-    <TopCollections />
-    <Statistics />
-    <MyWatchlist />
-    <MyCuratedCollections />
     <CommunityCuratedCollections />
+    <MyCuratedCollections />
   </div>
 );
 
