@@ -1,1 +1,1 @@
-export { default } from './BundleTag';
+export { default as BundleTag } from './BundleTag';
