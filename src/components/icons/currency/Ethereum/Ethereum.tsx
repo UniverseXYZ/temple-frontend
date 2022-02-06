@@ -1,6 +1,6 @@
-import { Box, Icon } from '@chakra-ui/react';
+import { Box, BoxProps, Icon } from '@chakra-ui/react';
 
-export const Ethereum = (props: any) => (
+export const Ethereum = (props: BoxProps) => (
   <Box boxSize="16px" {...props}>
     <Icon
       fill="none"
