@@ -1,0 +1,105 @@
+const initialData = {
+  collections: [
+    {
+      id: '1',
+      slug: 'doodlescollection',
+      name: 'Doodles',
+      logo: 'https://lh3.googleusercontent.com/7B0qai02OdHA8P_EOVK672qUliyjQdQDGNrACxs7WnTgZAkJa_wWURnIFKeOh5VTf8cfTqW3wQpozGedaC9mteKphEOtztls02RlWQ=s120',
+      isVerified: true,
+      stats: {
+        totalValue: '118.83',
+        oneDayChange: '44.08',
+        sevenDayChange: '118.83',
+        floorPrice: '16.25',
+        owners: '83K',
+        items: '10K',
+      },
+    },
+    {
+      id: '2',
+      slug: 'cryptopunks',
+      name: 'Crypto Punks',
+      logo: 'https://lh3.googleusercontent.com/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE=s130',
+      isVerified: true,
+      stats: {
+        totalValue: '118.83',
+        oneDayChange: '44.08',
+        sevenDayChange: '118.83',
+        floorPrice: '16.25',
+        owners: '83K',
+        items: '10K',
+      },
+    },
+    {
+      id: '3',
+      slug: 'genesis-creepz',
+      name: 'Creepz Genesis',
+      logo: 'https://lh3.googleusercontent.com/r_FGZQ0mgacLAOzH1MxC9n-yyygNmg37QyjYvM3g4HCl1mOkeGif7_8IW62v_R4Tvx9O9EWdHkNmiQQW30DNxwcvuSbg5EM1FQeSDIo=s130',
+      isVerified: true,
+      stats: {
+        totalValue: '118.83',
+        oneDayChange: '44.08',
+        sevenDayChange: '118.83',
+        floorPrice: '16.25',
+        owners: '83K',
+        items: '10K',
+      },
+    },
+    {
+      id: '4',
+      slug: 'doodlescollection',
+      name: 'Doodles 2',
+      logo: 'https://lh3.googleusercontent.com/7B0qai02OdHA8P_EOVK672qUliyjQdQDGNrACxs7WnTgZAkJa_wWURnIFKeOh5VTf8cfTqW3wQpozGedaC9mteKphEOtztls02RlWQ=s120',
+      isVerified: true,
+      stats: {
+        totalValue: '118.83',
+        oneDayChange: '44.08',
+        sevenDayChange: '118.83',
+        floorPrice: '16.25',
+        owners: '83K',
+        items: '10K',
+      },
+    },
+    {
+      id: '5',
+      slug: 'cryptopunks',
+      name: 'Crypto Punks 2',
+      logo: 'https://lh3.googleusercontent.com/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE=s130',
+      isVerified: true,
+      stats: {
+        totalValue: '118.83',
+        oneDayChange: '44.08',
+        sevenDayChange: '118.83',
+        floorPrice: '16.25',
+        owners: '83K',
+        items: '10K',
+      },
+    },
+    {
+      id: '6',
+      slug: 'genesis-creepz',
+      name: 'Creepz Genesis 2',
+      logo: 'https://lh3.googleusercontent.com/r_FGZQ0mgacLAOzH1MxC9n-yyygNmg37QyjYvM3g4HCl1mOkeGif7_8IW62v_R4Tvx9O9EWdHkNmiQQW30DNxwcvuSbg5EM1FQeSDIo=s130',
+      isVerified: true,
+      stats: {
+        totalValue: '118.83',
+        oneDayChange: '44.08',
+        sevenDayChange: '118.83',
+        floorPrice: '16.25',
+        owners: '83K',
+        items: '10K',
+      },
+    },
+  ],
+  // columns: {
+  //   'column-1': {
+  //     id: 'column-1',
+  //     title: 'To do',
+  //     taskIds: ['task-1', 'task-2', 'task-3', 'task-4'],
+  //   },
+  // },
+  // // Facilitate reordering of the columns
+  // columnOrder: ['column-1'],
+};
+
+export default initialData;
