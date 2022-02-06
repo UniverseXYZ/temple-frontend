@@ -1,19 +1,31 @@
 import React, { FC } from 'react';
-import { LinkBox, LinkOverlay, Box, Image } from '@chakra-ui/react';
 import Link from 'next/link';
+import {
+  LinkBox,
+  LinkOverlay,
+  Box,
+  Image,
+  Flex,
+  Spacer,
+  HStack,
+} from '@chakra-ui/react';
 
-import { BundleTag } from '@/components/common';
-import { Avatar, Footer } from './components';
+import { Avatar, BundleTag } from '@/components/common';
+import { Ethereum } from '@/components/icons';
 import styles from './CollectionCard.module.sass';
 
 interface Props {
   showAuthor?: boolean;
   showText?: boolean;
   showFooter?: boolean;
+  collection: any;
 }
 
 const CollectionCard: FC<Props> = (props) => {
-  const { showAuthor, showFooter, showText } = props;
+  const { showAuthor, showFooter, showText, collection } = props;
+
+  console.log('collection', collection);
+
   return (
     <>
       <LinkBox>
@@ -25,14 +37,21 @@ const CollectionCard: FC<Props> = (props) => {
             />
           </div>
 
-          <Avatar className={styles.avatar} boxSize={68} />
+          <div className={styles.avatar}>
+            <Avatar
+              image={collection.logo}
+              name={collection.name}
+              boxSize="68px"
+              borderColor="white"
+            />
+          </div>
 
           <BundleTag className={styles.bundle}>7</BundleTag>
 
           <div className={styles.content}>
             <Link href="/collections/slug" passHref>
               <LinkOverlay>
-                <Title>Collection Name</Title>
+                <Title>{collection.name}</Title>
               </LinkOverlay>
             </Link>
             {showAuthor && <Author>Pavel</Author>}
@@ -42,7 +61,7 @@ const CollectionCard: FC<Props> = (props) => {
                 urna lorem adipiscing.
               </Text>
             )}
-            {showFooter && <Footer />}
+            {showFooter && <Footer stats={collection.stats} />}
           </div>
         </Box>
       </LinkBox>
@@ -63,6 +82,38 @@ const Author: FC = ({ children }) => (
 
 const Text: FC = ({ children }) => (
   <div className={styles.text}>{children}</div>
+);
+
+const Footer: React.FC = ({ stats }: any) => (
+  <>
+    <div className={styles.footer}>
+      <Flex>
+        <Box textAlign="left">
+          <Box fontSize={12} color="grey" mb={'8px'}>
+            Floor price
+          </Box>
+          <HStack align="center">
+            <Ethereum />
+            <Box fontWeight={600} fontSize={14}>
+              {stats.floorPrice}
+            </Box>
+          </HStack>
+        </Box>
+        <Spacer />
+        <Box>
+          <Box fontSize={12} color="grey" mb={'8px'} textAlign="right">
+            Volume traded
+          </Box>
+          <HStack align="center" justify="end">
+            <Ethereum />
+            <Box fontWeight={600} fontSize={14}>
+              {stats.totalValue}
+            </Box>
+          </HStack>
+        </Box>
+      </Flex>
+    </div>
+  </>
 );
 
 CollectionCard.defaultProps = {
