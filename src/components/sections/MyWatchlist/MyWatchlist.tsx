@@ -1,15 +1,11 @@
 import { Container, Heading } from '@chakra-ui/react';
 
-import { MyList } from '@/components/common/List/List';
-
 const MyWatchlist = () => (
   <>
-    <Container maxW="container.xl">
-      <Heading as="h2" size="lg">
+    <Container maxW="1142px" pt={100} pb={40}>
+      <Heading as="h2" size="lg" pb={40}>
         My Watchlist
       </Heading>
-
-      <MyList />
     </Container>
   </>
 );
