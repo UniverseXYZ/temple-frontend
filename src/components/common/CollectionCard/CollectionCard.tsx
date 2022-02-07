@@ -10,7 +10,7 @@ import {
   HStack,
 } from '@chakra-ui/react';
 
-import { Avatar, BundleTag } from '@/components/common';
+import { Card, Avatar, BundleTag } from '@/components/common';
 import { Ethereum } from '@/components/icons';
 import styles from './CollectionCard.module.sass';
 
@@ -24,20 +24,18 @@ interface Props {
 const CollectionCard: FC<Props> = (props) => {
   const { showAuthor, showFooter, showText, collection } = props;
 
-  console.log('collection', collection);
-
   return (
     <>
       <LinkBox>
-        <Box className={styles.card} layerStyle="bordered">
-          <div className={styles.image}>
+        <Card className={styles.Card} variant="bordered">
+          <div className={styles.Image}>
             <Image
               src="/mocks/collection-card-image.png"
               alt="Collection Background"
             />
           </div>
 
-          <div className={styles.avatar}>
+          <div className={styles.Avatar}>
             <Avatar
               image={collection.logo}
               name={collection.name}
@@ -46,9 +44,9 @@ const CollectionCard: FC<Props> = (props) => {
             />
           </div>
 
-          <BundleTag className={styles.bundle}>7</BundleTag>
+          <BundleTag className={styles.Bundle}>7</BundleTag>
 
-          <div className={styles.content}>
+          <div className={styles.Content}>
             <Link href="/collections/slug" passHref>
               <LinkOverlay>
                 <Title>{collection.name}</Title>
@@ -63,30 +61,30 @@ const CollectionCard: FC<Props> = (props) => {
             )}
             {showFooter && <Footer stats={collection.stats} />}
           </div>
-        </Box>
+        </Card>
       </LinkBox>
     </>
   );
 };
 
 const Title: FC = ({ children }) => (
-  <div className={styles.title}>{children}</div>
+  <div className={styles.Title}>{children}</div>
 );
 
 const Author: FC = ({ children }) => (
-  <div className={styles.author}>
+  <div className={styles.Author}>
     <span>by</span>
     <Link href="#">{children}</Link>
   </div>
 );
 
 const Text: FC = ({ children }) => (
-  <div className={styles.text}>{children}</div>
+  <div className={styles.Text}>{children}</div>
 );
 
 const Footer: React.FC = ({ stats }: any) => (
   <>
-    <div className={styles.footer}>
+    <div className={styles.Footer}>
       <Flex>
         <Box textAlign="left">
           <Box fontSize={12} color="grey" mb={'8px'}>

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Box, HStack, Text } from '@chakra-ui/react';
 
 import { Handle } from './components';
-import { Avatar } from '@/components/common';
+import { Card, Avatar } from '@/components/common';
 import { Ethereum, TrashIcon } from '@/components/icons';
 
 import { CSS } from '@dnd-kit/utilities';
@@ -63,11 +63,6 @@ export const Item = React.memo(
         transform: CSS.Transform.toString(transform),
       };
 
-      // console.log('dragging', dragging);
-      // console.log('sorting', sorting);
-      // console.log('transition', transition);
-      console.log('onRemove', onRemove);
-
       return (
         <div
           className={classNames(
@@ -79,8 +74,8 @@ export const Item = React.memo(
           style={style}
           ref={ref}
         >
-          <Box
-            layerStyle="bordered"
+          <Card
+            variant="bordered"
             className={classNames(styles.Item, handle && styles.WithHandle)}
             //style={style}
             // {...props}
@@ -144,7 +139,7 @@ export const Item = React.memo(
                 </Box>
               ) : null}
             </HStack>
-          </Box>
+          </Card>
         </div>
       );
     }

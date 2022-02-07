@@ -1,7 +1,7 @@
 const hoverGradient =
   'linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(170deg, #bceb00 15%, #00eaea 85%)';
 
-export const solid = {
+export const solid = ({ colorMode }) => ({
   bgGradient: 'linear(170deg, #bceb00 15%, #00eaea 85%)',
   boxShadow: 'xl',
 
@@ -32,4 +32,4 @@ export const solid = {
   '&:focus:not([data-focus-visible-added])': {
     boxShadow: 'lg',
   },
-};
+});

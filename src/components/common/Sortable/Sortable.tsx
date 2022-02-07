@@ -100,15 +100,11 @@ export function Sortable({
       return;
     }
 
-    console.log('onDragStart', active);
-
     setActiveId(active.id);
   };
 
   const onDragEnd = ({ over }: DragEndEvent) => {
     setActiveId(null);
-
-    console.log('onDragEnd', over);
 
     if (over) {
       const overIndex = getIndex(over.id);
@@ -130,8 +126,6 @@ export function Sortable({
       onDragStart={(event) => onDragStart(event)}
       onDragEnd={(event) => onDragEnd(event)}
       onDragCancel={() => setActiveId(null)}
-      onDragMove={(event) => console.log('onDragMove', event)}
-      onDragOver={(event) => console.log('onDragOver', event)}
       measuring={{ droppable: { strategy: MeasuringStrategy.Always } }}
       modifiers={[restrictToVerticalAxis, restrictToParentElement]}
     >
