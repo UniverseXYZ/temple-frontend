@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import React, { useEffect } from 'react';
-import { Box, HStack, Text } from '@chakra-ui/react';
+import { Box, HStack, Text, useColorMode } from '@chakra-ui/react';
 
 import { Handle } from './components';
 import { Card, Avatar } from '@/components/common';
@@ -46,6 +46,8 @@ export const Item = React.memo(
       },
       ref
     ) => {
+      const { colorMode } = useColorMode();
+
       useEffect(() => {
         if (!dragging) {
           return;
@@ -69,7 +71,8 @@ export const Item = React.memo(
             styles.Wrapper,
             sorting && styles.sorting,
             dragging && styles.Dragging,
-            dragOverlay && styles.DragOverlay
+            dragOverlay && styles.DragOverlay,
+            colorMode === 'dark' && styles.Dark
           )}
           style={style}
           ref={ref}

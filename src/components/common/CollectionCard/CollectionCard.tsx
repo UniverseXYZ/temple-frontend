@@ -8,10 +8,13 @@ import {
   Flex,
   Spacer,
   HStack,
+  useColorMode,
 } from '@chakra-ui/react';
 
 import { Card, Avatar, BundleTag } from '@/components/common';
 import { Ethereum } from '@/components/icons';
+
+import cn from 'classnames';
 import styles from './CollectionCard.module.sass';
 
 interface Props {
@@ -24,10 +27,15 @@ interface Props {
 const CollectionCard: FC<Props> = (props) => {
   const { showAuthor, showFooter, showText, collection } = props;
 
+  const { colorMode } = useColorMode();
+
   return (
     <>
       <LinkBox>
-        <Card className={styles.Card} variant="bordered">
+        <Card
+          className={cn(styles.Card, colorMode === 'dark' && styles.Dark)}
+          variant="bordered"
+        >
           <div className={styles.Image}>
             <Image
               src="/mocks/collection-card-image.png"
@@ -40,7 +48,6 @@ const CollectionCard: FC<Props> = (props) => {
               image={collection.logo}
               name={collection.name}
               boxSize="68px"
-              borderColor="white"
             />
           </div>
 

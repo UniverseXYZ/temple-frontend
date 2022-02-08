@@ -70,3 +70,32 @@
     }
   }
 }
+
+.Dark {
+  .Handle {
+    rect {
+      fill: white;
+      fill-opacity: 0.3;
+    }
+
+    &:hover {
+      rect {
+        fill-opacity: 0.7;
+      }
+    }
+  }
+
+  .Remove {
+    path {
+      stroke: #4a4a4a;
+    }
+
+    &:hover {
+      background-color: #3e2b2b;
+
+      path {
+        stroke: #bb3737;
+      }
+    }
+  }
+}

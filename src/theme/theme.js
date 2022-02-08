@@ -17,18 +17,20 @@ export const theme = extendTheme({
   //   xl: '26px',
   // },
   styles: {
-    global: {
+    global: ({ colorMode }) => ({
       // styles for the `body`
       body: {
-        color: '#000',
+        color: colorMode === 'light' ? '#000' : '#fff',
         height: '100%',
-        backgroundImage: 'url("/assets/images/merged-main-bg.jpg")',
-        backgroundPosition: 'fixed',
+        backgroundColor: colorMode === 'light' ? '#fafbfc' : '#131313',
+        backgroundImage:
+          colorMode === 'light'
+            ? 'url("/assets/images/top-main-bg.png")'
+            : 'none',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundAttachment: 'fixed, scroll',
+        backgroundSize: 'contain',
       },
-    },
+    }),
   },
   components: {
     ...components,

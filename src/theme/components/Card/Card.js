@@ -7,7 +7,10 @@ export const Card = {
   variants: {
     whitebox: ({ colorMode }) => ({
       bg: colorMode === 'light' ? 'white' : '#1d1d1d',
-      boxShadow: '0px 10px 35px rgba(136 120 172 / 15%)',
+      boxShadow:
+        colorMode === 'light'
+          ? '0px 10px 35px rgba(136 120 172 / 15%)'
+          : '0 0 0 1px rgba(255 255 255 / 10%)',
       borderRadius: 12,
     }),
     bordered: ({ colorMode }) => ({
@@ -20,7 +23,10 @@ export const Card = {
           : '0 0 0 1px rgba(255 255 255 / 10%)',
 
       _hover: {
-        boxShadow: '0px 0px 30px rgba(0 0 0 / 20%)',
+        boxShadow:
+          colorMode === 'light'
+            ? '0px 0px 30px rgba(0 0 0 / 20%)'
+            : '0 0 0 1px rgba(255 255 255 / 10%)',
       },
     }),
   },

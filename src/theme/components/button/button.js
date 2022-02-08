@@ -7,6 +7,7 @@ export const Button = {
     fontWeight: 500,
     borderRadius: '12px',
     padding: '11px 26px',
+    color: '#000',
   },
   // styles for different sizes ("sm", "md", "lg")
   sizes: {},

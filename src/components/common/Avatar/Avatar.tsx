@@ -3,6 +3,7 @@ import {
   Avatar as ChakraAvatar,
   AvatarBadge,
   AvatarProps,
+  useStyleConfig,
 } from '@chakra-ui/react';
 
 import { Badge } from './components';
@@ -13,7 +14,9 @@ interface Props extends AvatarProps {
 }
 
 const Avatar: FC<Props> = (props) => {
-  const { image, name, ...restProps } = props;
+  const { image, variant, name, ...restProps } = props;
+
+  const styles = useStyleConfig('Avatar', { variant });
 
   return (
     <ChakraAvatar
@@ -22,7 +25,7 @@ const Avatar: FC<Props> = (props) => {
       showBorder
       bg={'none'}
       ignoreFallback={true}
-      borderColor="rgba(0 0 0 / 10%)"
+      sx={styles}
       {...restProps}
     >
       <AvatarBadge border={0} bottom={'4px'} right={'4px'}>

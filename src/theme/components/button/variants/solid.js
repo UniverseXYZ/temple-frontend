@@ -20,8 +20,9 @@ export const solid = ({ colorMode }) => ({
   },
 
   _disabled: {
-    background: '#f2f2f2 !important',
-    color: '#999',
+    background:
+      colorMode === 'light' ? '#f2f2f2 !important' : '#202020 !important',
+    color: colorMode === 'light' ? '#999' : '#4c4c4c',
     opacity: 1,
 
     _hover: {
