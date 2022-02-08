@@ -18,7 +18,7 @@ const routes = [
   },
   {
     name: 'Search',
-    path: '/search',
+    path: '/search.html',
   },
 ];
 

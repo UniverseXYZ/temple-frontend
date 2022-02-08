@@ -50,19 +50,6 @@ export interface Props {
   removable?: boolean;
   style?: React.CSSProperties;
   useDragOverlay?: boolean;
-  getItemStyles?(args: {
-    id: UniqueIdentifier;
-    index: number;
-    isSorting: boolean;
-    isDragOverlay: boolean;
-    overIndex: number;
-    isDragging: boolean;
-  }): React.CSSProperties;
-  wrapperStyle?(args: {
-    index: number;
-    isDragging: boolean;
-    id: string;
-  }): React.CSSProperties;
 }
 
 export function Sortable({
@@ -75,23 +62,23 @@ export function Sortable({
   const [items, setItems] = useState(initialData.collections);
   const [activeId, setActiveId] = useState<string | null>(null);
 
-  // const sensors = useSensors(
-  //   useSensor(MouseSensor, {
-  //     activationConstraint,
-  //   }),
-  //   useSensor(TouchSensor, {
-  //     activationConstraint,
-  //   }),
-  //   useSensor(KeyboardSensor, {
-  //     coordinateGetter,
-  //   })
-  // );
+  const sensors = useSensors(
+    useSensor(MouseSensor, {
+      activationConstraint,
+    }),
+    useSensor(TouchSensor, {
+      activationConstraint,
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter,
+    })
+  );
 
   const getIndex = (id: string) => items.findIndex((item) => item.id === id);
   const activeIndex = activeId ? getIndex(activeId) : -1;
 
   const handleRemove = removable
-    ? (id: string) =>
+    ? (id: string): void =>
         setItems((items) => items.filter((item) => item.id !== id))
     : undefined;
 
@@ -121,7 +108,7 @@ export function Sortable({
 
   return (
     <DndContext
-      //sensors={sensors}
+      sensors={sensors}
       collisionDetection={closestCenter}
       onDragStart={(event) => onDragStart(event)}
       onDragEnd={(event) => onDragEnd(event)}
@@ -131,7 +118,7 @@ export function Sortable({
     >
       <SortableContext items={items} strategy={verticalListSortingStrategy}>
         <div>
-          {items.map((item, index) => (
+          {items.map((item) => (
             <SortableItem
               key={item.id}
               id={item.id}
@@ -157,7 +144,6 @@ export function Sortable({
               item={items[activeIndex]}
               handle={handle}
               onRemove={handleRemove}
-              animateLayoutChanges={animateLayoutChanges}
               className={styles.DragOverlay}
             />
           ) : null}
@@ -170,7 +156,6 @@ export function Sortable({
 interface SortableItemProps {
   animateLayoutChanges?: AnimateLayoutChanges;
   id: string;
-  index: number;
   handle: boolean;
   onRemove?(id: string): void;
   item: any;
@@ -181,7 +166,6 @@ export function SortableItem({
   animateLayoutChanges,
   handle,
   id,
-  index,
   item,
   onRemove,
   useDragOverlay,
@@ -203,7 +187,6 @@ export function SortableItem({
     <Item
       ref={setNodeRef}
       item={item}
-      index={index}
       dragging={isDragging}
       sorting={isSorting}
       handle={handle}

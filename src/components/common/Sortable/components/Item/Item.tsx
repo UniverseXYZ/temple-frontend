@@ -18,20 +18,21 @@ export interface Props {
   dragging?: boolean;
   handle?: boolean;
   height?: number;
-  index?: number;
   fadeIn?: boolean;
-  transform?: Transform | null;
+  transform?: Transform | null | any;
   listeners?: DraggableSyntheticListeners;
   sorting?: boolean;
   style?: React.CSSProperties;
-  transition?: string | null;
+  transition?: string;
   wrapperStyle?: React.CSSProperties;
-  onRemove?(): void;
+  onRemove?(id: string): void;
   item: any;
+  id?: string;
+  className?: string;
 }
 
 export const Item = React.memo(
-  React.forwardRef<HTMLLIElement, Props>(
+  React.forwardRef<HTMLDivElement, Props>(
     (
       {
         listeners,
@@ -137,7 +138,10 @@ export const Item = React.memo(
                 </Box>
               </HStack>
               {onRemove ? (
-                <Box className={styles.Remove} onClick={onRemove}>
+                <Box
+                  className={styles.Remove}
+                  onClick={() => onRemove(item.id)}
+                >
                   <TrashIcon boxSize="20px" />
                 </Box>
               ) : null}

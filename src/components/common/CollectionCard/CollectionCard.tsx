@@ -89,7 +89,7 @@ const Text: FC = ({ children }) => (
   <div className={styles.Text}>{children}</div>
 );
 
-const Footer: React.FC = ({ stats }: any) => (
+const Footer: React.FC<any> = ({ stats }) => (
   <>
     <div className={styles.Footer}>
       <Flex>
