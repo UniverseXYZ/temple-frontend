@@ -17,7 +17,7 @@ export const ThemeSwitcher: FC = () => {
       className={cn(styles.Swither, isDark && styles.Dark)}
       onClick={toggleColorMode}
     >
-      {colorMode === 'light' ? (
+      {colorMode === 'dark' ? (
         <LightThemeIcon
           boxSize="18px"
           className={cn(styles.Icon, styles.IconLight)}
