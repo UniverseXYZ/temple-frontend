@@ -1,22 +1,11 @@
-import React, { ReactNode, FC } from 'react';
-import Head from 'next/head';
+import React, { FC } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import { Header } from '@/components/common';
 
-type Props = {
-  children?: ReactNode;
-};
-
-const Layout: FC<Props> = ({ children }) => (
+export const Layout: FC = () => (
   <>
-    <Head>
-      <title>Test</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
     <Header />
-    <main>{children}</main>
+    <Outlet />
   </>
 );
-
-export default Layout;
