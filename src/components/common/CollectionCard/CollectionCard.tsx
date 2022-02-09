@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import Link from 'next/link';
 import {
+  Link,
   LinkBox,
   LinkOverlay,
   Box,
@@ -54,11 +54,9 @@ const CollectionCard: FC<Props> = (props) => {
           <BundleTag className={styles.Bundle}>7</BundleTag>
 
           <div className={styles.Content}>
-            <Link href="/collections/slug" passHref>
-              <LinkOverlay>
-                <Title>{collection.name}</Title>
-              </LinkOverlay>
-            </Link>
+            <LinkOverlay>
+              <Title>{collection.name}</Title>
+            </LinkOverlay>
             {showAuthor && <Author>Pavel</Author>}
             {showText && (
               <Text>
