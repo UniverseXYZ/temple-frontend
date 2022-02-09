@@ -1,39 +1,30 @@
 import React, { FC } from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
+import { Flex, Spacer, Box, Image, useColorMode } from '@chakra-ui/react';
 
-import { HStack } from '@chakra-ui/react';
+import { ThemeSwitcher } from './components';
 
-const routes = [
-  {
-    name: 'Front Page',
-    path: '/',
-  },
-  {
-    name: 'Watchlist',
-    path: '/watchlist',
-  },
-  {
-    name: 'Collections',
-    path: '/collections',
-  },
-  {
-    name: 'Search',
-    path: '/search.html',
-  },
-];
+import cn from 'classnames';
+import styles from './Header.module.sass';
 
-const Header: FC = () => (
-  <header>
-    <nav>
-      <HStack spacing="15px">
-        {routes.map((route, index) => (
-          <Link key={index} href={route.path}>
-            <a>{route.name}</a>
+const Header: FC = () => {
+  const { colorMode } = useColorMode();
+
+  const isDark = colorMode === 'dark';
+
+  return (
+    <Box className={cn(styles.Header, isDark && styles.Dark)}>
+      <Flex>
+        <Box>
+          <Link to="/">
+            <Image src="/assets/images/logo.svg" alt="Temple" />
           </Link>
-        ))}
-      </HStack>
-    </nav>
-  </header>
-);
+        </Box>
+        <Spacer />
+        <ThemeSwitcher />
+      </Flex>
+    </Box>
+  );
+};
 
 export default Header;

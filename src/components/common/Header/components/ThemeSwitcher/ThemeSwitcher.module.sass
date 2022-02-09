@@ -1,0 +1,42 @@
+// @import 'colors'
+  
+.Swither
+  position: relative
+  border: 1px solid #ebf0f0
+  border-radius: 50%
+  width: 40px
+  height: 40px
+  transition: border-color .2s linear
+
+  &:hover
+    border-color: #e6e6e6
+
+    .IconLight
+      path
+        stroke: black
+
+    .IconDark
+      path
+        stroke: #fff
+
+.Icon
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%) 
+
+
+  path
+    transition: stroke .2s linear
+
+.IconLight
+  path
+    stroke: #c6caca
+
+.IconDark
+  path
+    stroke: #727272
+
+
+.Dark
+  border-color: #2b2b2b

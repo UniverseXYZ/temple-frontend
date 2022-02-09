@@ -1,10 +1,18 @@
 import { Container, Heading, HStack } from '@chakra-ui/react';
 import { CollectionCard } from '@/components/common';
 
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 import initialData from '@/mocks/data';
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 const CommunityCuratedCollections = () => {
-  const collections = initialData.collections.slice(0, 4);
+  const collections = initialData.collections.slice(0, 6);
 
   return (
     <>
@@ -13,11 +21,22 @@ const CommunityCuratedCollections = () => {
           Community curated collections
         </Heading>
 
-        <HStack spacing="30px">
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          spaceBetween={30}
+          slidesPerView={4}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+        >
           {collections.map((item, index) => (
-            <CollectionCard key={index} collection={item} />
+            <SwiperSlide key={index}>
+              <CollectionCard collection={item} />
+            </SwiperSlide>
           ))}
-        </HStack>
+        </Swiper>
       </Container>
     </>
   );
