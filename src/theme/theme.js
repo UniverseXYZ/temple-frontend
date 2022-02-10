@@ -1,5 +1,6 @@
 import { extendTheme } from '@chakra-ui/react';
 import * as components from './components';
+import colors from './colors';
 
 const config = {
   initialColorMode: 'light',
@@ -8,6 +9,7 @@ const config = {
 
 export const theme = extendTheme({
   config,
+  colors,
   fonts: {
     body: 'Space Grotesk, serif',
     heading: 'Sharp Grotesk, serif',
