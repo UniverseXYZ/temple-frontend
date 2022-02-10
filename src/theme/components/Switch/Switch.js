@@ -8,12 +8,12 @@ export const Switch = {
     },
 
     track: {
-      background: mode('black.10', '#434343')(props),
+      background: mode('black.10', 'whiteTransparent.10')(props),
       padding: '3px',
       transition: 'background .2s linear',
 
       _hover: {
-        background: mode('black.20', '#434343')(props),
+        background: mode('black.20', 'whiteTransparent.20')(props),
       },
 
       _checked: {
