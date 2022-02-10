@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Flex, Spacer, Box, Image, useColorMode } from '@chakra-ui/react';
 import {
   Flex,
   Spacer,
@@ -10,7 +9,7 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 
-import { ThemeSwitcher } from './components';
+import { ThemeSwitcher, SettingsModal } from './components';
 
 import cn from 'classnames';
 import styles from './Header.module.sass';
@@ -29,9 +28,9 @@ const Header: FC = () => {
           </Link>
         </Box>
         <Spacer />
-        <ThemeSwitcher />
         <HStack spacing={2}>
           <ThemeSwitcher />
+          <SettingsModal />
         </HStack>
       </Flex>
     </Box>
