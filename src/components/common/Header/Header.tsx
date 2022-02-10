@@ -1,6 +1,14 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Flex, Spacer, Box, Image, useColorMode } from '@chakra-ui/react';
+import {
+  Flex,
+  Spacer,
+  Box,
+  Image,
+  HStack,
+  useColorMode,
+} from '@chakra-ui/react';
 
 import { ThemeSwitcher } from './components';
 
@@ -22,6 +30,9 @@ const Header: FC = () => {
         </Box>
         <Spacer />
         <ThemeSwitcher />
+        <HStack spacing={2}>
+          <ThemeSwitcher />
+        </HStack>
       </Flex>
     </Box>
   );
