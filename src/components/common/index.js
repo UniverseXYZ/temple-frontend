@@ -8,3 +8,4 @@ export { IconButton } from './IconButton';
 
 // Components
 export { CollectionCard } from './CollectionCard';
+export { CollectionList } from './CollectionList';
