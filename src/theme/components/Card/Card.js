@@ -1,32 +1,34 @@
+import { mode } from '@chakra-ui/theme-tools';
+
 export const Card = {
   // style object for base or default style
-  baseStyle: {},
+  baseStyle: (props) => ({
+    bg: mode('white', 'dark.80')(props),
+    borderRadius: 12,
+    transition: 'all 150ms linear',
+  }),
   // styles for different sizes ("sm", "md", "lg")
   sizes: {},
   // styles for different visual variants ("outline", "solid")
   variants: {
-    whitebox: ({ colorMode }) => ({
-      bg: colorMode === 'light' ? 'white' : '#1d1d1d',
-      boxShadow:
-        colorMode === 'light'
-          ? '0px 10px 35px rgba(136 120 172 / 15%)'
-          : '0 0 0 1px rgba(255 255 255 / 10%)',
-      borderRadius: 12,
+    whitebox: (props) => ({
+      boxShadow: mode(
+        '0px 10px 35px rgba(136 120 172 / 15%)',
+        '0 0 0 1px rgba(255 255 255 / 10%)'
+      )(props),
     }),
-    bordered: ({ colorMode }) => ({
-      bg: colorMode === 'light' ? 'white' : '#1d1d1d',
-      borderRadius: 12,
-      transition: 'box-shadow 0.2s ease-in-out',
-      boxShadow:
-        colorMode === 'light'
-          ? '0 0 0 1px rgba(0 0 0 / 10%)'
-          : '0 0 0 1px rgba(255 255 255 / 10%)',
+    bordered: (props) => ({
+      boxShadow: mode(
+        '0 0 0 1px rgba(0 0 0 / 10%)',
+        '0 0 0 1px rgba(255 255 255 / 10%)'
+      )(props),
 
       _hover: {
-        boxShadow:
-          colorMode === 'light'
-            ? '0px 0px 30px rgba(0 0 0 / 20%)'
-            : '0 0 0 1px rgba(255 255 255 / 10%)',
+        bg: mode('white', 'dark.60')(props),
+        boxShadow: mode(
+          '0px 0px 30px rgba(0 0 0 / 20%)',
+          '0 0 0 1px rgba(255 255 255 / 20%)'
+        )(props),
       },
     }),
   },

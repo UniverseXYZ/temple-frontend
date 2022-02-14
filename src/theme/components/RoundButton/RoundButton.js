@@ -8,7 +8,7 @@ export const RoundButton = {
     borderRadius: 'full',
     border: '1px solid',
     borderColor: mode('black.10', 'whiteTransparent.10')(props),
-    boxShadow: '0px 10px 36px rgba(136, 120, 172, 0.14)',
+    boxShadow: mode('0px 10px 36px rgba(136, 120, 172, 0.14)', 'none')(props),
     transition: 'all 150ms linear',
 
     path: {

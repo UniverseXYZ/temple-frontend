@@ -33,7 +33,11 @@ const CollectionCard: FC<Props> = (props) => {
     <>
       <LinkBox>
         <Card
-          className={cn(styles.Card, colorMode === 'dark' && styles.Dark)}
+          className={cn(
+            styles.Card,
+            colorMode === 'dark' && styles.Dark,
+            showAuthor && styles.WithAuthor
+          )}
           variant="bordered"
         >
           <div className={styles.Image}>
@@ -54,7 +58,7 @@ const CollectionCard: FC<Props> = (props) => {
           <BundleTag className={styles.Bundle}>7</BundleTag>
 
           <div className={styles.Content}>
-            <LinkOverlay>
+            <LinkOverlay href="#/collection">
               <Title>{collection.name}</Title>
             </LinkOverlay>
             {showAuthor && <Author>Pavel</Author>}
@@ -72,14 +76,14 @@ const CollectionCard: FC<Props> = (props) => {
   );
 };
 
-const Title: FC = ({ children }) => (
+const Title: FC<any> = ({ children }) => (
   <div className={styles.Title}>{children}</div>
 );
 
 const Author: FC = ({ children }) => (
   <div className={styles.Author}>
     <span>by</span>
-    <Link href="#">{children}</Link>
+    <Link href="#/author">{children}</Link>
   </div>
 );
 
@@ -120,9 +124,9 @@ const Footer: React.FC<any> = ({ stats }) => (
 );
 
 CollectionCard.defaultProps = {
-  showAuthor: true,
+  showAuthor: false,
+  showText: false,
   showFooter: true,
-  showText: true,
 };
 
 export default CollectionCard;

@@ -1,7 +1,10 @@
+import { mode } from '@chakra-ui/theme-tools';
+
 export const Avatar = {
   // style object for base or default style
-  baseStyle: ({ colorMode }) => ({
-    borderColor: colorMode === 'light' ? '#f2f2f2' : '#333',
+  baseStyle: (props) => ({
+    borderColor: mode('black.5', 'black.80')(props),
+    transition: 'border-color 150ms linear',
   }),
   // styles for different sizes ("sm", "md", "lg")
   sizes: {},
