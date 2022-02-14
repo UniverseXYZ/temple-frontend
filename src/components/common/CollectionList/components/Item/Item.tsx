@@ -2,9 +2,8 @@
 import React, { useEffect } from 'react';
 import { Box, HStack, Text, useColorMode } from '@chakra-ui/react';
 
-import { Handle } from './components';
 import { Card, Avatar } from '@/components/common';
-import { Ethereum, TrashIcon } from '@/components/icons';
+import { Handle, Ethereum, TrashIcon } from '@/components/icons';
 
 import { CSS } from '@dnd-kit/utilities';
 import type { DraggableSyntheticListeners } from '@dnd-kit/core';
@@ -92,7 +91,7 @@ export const Item = React.memo(
             >
               {handle && (
                 <Box className={styles.Handle}>
-                  <Handle {...listeners} />
+                  <Handle {...listeners} dragging={dragging} />
                 </Box>
               )}
               <HStack justifyContent="space-between">

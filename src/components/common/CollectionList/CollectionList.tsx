@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
 import {
   closestCenter,
@@ -52,13 +52,13 @@ export interface Props {
   useDragOverlay?: boolean;
 }
 
-export function Sortable({
+export const CollectionList: FC<Props> = ({
   activationConstraint,
   coordinateGetter = sortableKeyboardCoordinates,
   handle = false,
   removable,
   useDragOverlay = false,
-}: Props) {
+}) => {
   const [items, setItems] = useState(initialData.collections);
   const [activeId, setActiveId] = useState<string | null>(null);
 
@@ -151,7 +151,7 @@ export function Sortable({
       ) : null}
     </DndContext>
   );
-}
+};
 
 interface SortableItemProps {
   animateLayoutChanges?: AnimateLayoutChanges;
