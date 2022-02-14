@@ -51,7 +51,13 @@ export const Modal = {
     },
   }),
   // styles for different sizes ("sm", "md", "lg")
-  sizes: {},
+  sizes: {
+    md: {
+      dialog: {
+        maxWidth: '550px',
+      },
+    },
+  },
   // styles for different visual variants ("outline", "solid")
   variants: {},
   // default values for `size` and `variant`
