@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { Container, Heading, Box } from '@chakra-ui/react';
 import { RoundButton } from '@/components/ui';
 import { CollectionCard } from '@/components/common';
@@ -12,8 +12,16 @@ import initialData from '@/mocks/data';
 const CuratedCollections = () => {
   const collections = initialData.collections.slice(0, 6);
 
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const [prevRef, setPrevRef] = useState<HTMLDivElement | null>(null);
+  const [nextRef, setNextRef] = useState<HTMLDivElement | null>(null);
+
+  function getPrevRef(node: HTMLDivElement): void {
+    setPrevRef(node);
+  }
+
+  function getNextRef(node: HTMLDivElement): void {
+    setNextRef(node);
+  }
 
   return (
     <>
@@ -28,8 +36,8 @@ const CuratedCollections = () => {
           <Swiper
             modules={[Navigation]}
             navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
+              prevEl: prevRef,
+              nextEl: nextRef,
             }}
             spaceBetween={30}
             slidesPerView={4}
@@ -49,13 +57,13 @@ const CuratedCollections = () => {
 
           <RoundButton
             className="swiper-button swiper-button-prev"
-            ref={prevRef}
+            ref={getPrevRef}
             icon={<LeftArrow />}
           />
 
           <RoundButton
             className="swiper-button swiper-button-next"
-            ref={nextRef}
+            ref={getNextRef}
             icon={<RightArrow />}
           />
         </Box>

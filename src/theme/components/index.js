@@ -5,3 +5,4 @@ export * from './Avatar/Avatar';
 export * from './Modal/Modal';
 export * from './Switch/Switch';
 export * from './RoundButton/RoundButton';
+export * from './Tooltip/Tooltip';

@@ -10,7 +10,7 @@ export const Switch = {
     track: {
       background: mode('black.10', 'whiteTransparent.10')(props),
       padding: '3px',
-      transition: 'background .2s linear',
+      transition: 'background 150ms linear',
 
       _hover: {
         background: mode('black.20', 'whiteTransparent.20')(props),

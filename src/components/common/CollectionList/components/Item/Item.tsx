@@ -91,7 +91,7 @@ export const Item = React.memo(
             >
               {handle && (
                 <Box className={styles.Handle}>
-                  <Handle {...listeners} dragging={dragging} />
+                  <Handle {...listeners} isDragging={dragging} />
                 </Box>
               )}
               <HStack justifyContent="space-between">

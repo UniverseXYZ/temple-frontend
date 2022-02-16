@@ -5,19 +5,17 @@ import cn from 'classnames';
 import styles from './Handle.module.sass';
 
 export const Handle = (props: any) => {
-  //const { listeners, ...restProps } = props;
+  const { isDragging, ...restProps } = props;
   const { colorMode } = useColorMode();
-
-  console.log('props', props);
 
   return (
     <Box
       className={cn(
         styles.Icon,
         colorMode === 'dark' && styles.Dark,
-        props.dragging && styles.Dragging
+        isDragging && styles.Dragging
       )}
-      {...props}
+      {...restProps}
     >
       <Icon width="4px" height="16px" viewBox="0 0 4 16" fill="none">
         <path

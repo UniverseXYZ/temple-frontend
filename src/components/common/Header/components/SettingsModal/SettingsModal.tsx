@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
   Heading,
   Button,
@@ -9,12 +9,14 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  HStack,
   useColorMode,
   useDisclosure,
 } from '@chakra-ui/react';
 
 import { IconButton } from '@/components/common';
 import { SettingsIcon } from '@/components/icons';
+import { Tooltip } from '@/components/ui';
 
 import {
   SettingsItem,
@@ -22,10 +24,6 @@ import {
 } from './components/SettingsItem/SettingsItem';
 
 import { useSettings } from '@/hooks';
-import { useLocalStorage } from '@rehooks/local-storage';
-
-// import cn from 'classnames';
-// import styles from './SettingsModal.module.sass';
 import { items } from './items';
 
 export const SettingsModal: FC = () => {
@@ -33,13 +31,29 @@ export const SettingsModal: FC = () => {
   const { colorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  //const [items] = useLocalStorage('settings', initialItems);
+  const { sections: defaultSectionsValue, setSections: setSettingSections } =
+    useSettings();
+  const [sections, setSections] = useState(defaultSectionsValue);
+
+  const onSectionVisibleChange = (id: string, visible: boolean): void => {
+    const sectionArray = sections;
+    const index = sectionArray.findIndex((section: any) => section.id === id);
+    sectionArray[index].visible = visible;
+    setSections(sectionArray);
+  };
+
+  const handleSaveChanges = () => {
+    onClose();
+    setSettingSections(sections);
+  };
 
   const isDark = colorMode === 'dark';
 
   return (
     <>
-      <IconButton icon={<SettingsIcon />} onClick={onOpen} />
+      <Tooltip label="Settings" placement="bottom">
+        <IconButton icon={<SettingsIcon />} onClick={onOpen} />
+      </Tooltip>
 
       <Modal
         isOpen={isOpen}
@@ -62,20 +76,21 @@ export const SettingsModal: FC = () => {
               <SettingsItem
                 key={index}
                 id={item.id}
-                visible={item.visible}
                 image={item.image}
                 title={item.title}
                 description={item.description}
-                //onChange={}
+                onChange={onSectionVisibleChange}
               />
             ))}
           </ModalBody>
 
           <ModalFooter>
-            <Button mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="outline">Secondary Action</Button>
+            <HStack spacing={'12px'}>
+              <Button variant="outline" onClick={onClose}>
+                Cancel
+              </Button>
+              <Button onClick={() => handleSaveChanges()}>Save changes</Button>
+            </HStack>
           </ModalFooter>
         </ModalContent>
       </Modal>

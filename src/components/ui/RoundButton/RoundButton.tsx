@@ -3,7 +3,7 @@ import { Box, BoxProps, useStyleConfig } from '@chakra-ui/react';
 
 export interface RoundButtonProps extends BoxProps {
   variant?: string;
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
 }
 
 export const RoundButton = React.forwardRef<HTMLDivElement, RoundButtonProps>(

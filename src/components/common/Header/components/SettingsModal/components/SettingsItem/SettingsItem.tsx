@@ -1,11 +1,10 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Box, Image, Flex, Text, Switch, useColorMode } from '@chakra-ui/react';
 import { Handle } from '@/components/icons';
 import { useSettings } from '@/hooks';
 
 export interface ISettingsItem {
   id: string;
-  visible: boolean;
   image: string;
   title: string;
   description: string;
@@ -13,6 +12,7 @@ export interface ISettingsItem {
 
 interface Props extends ISettingsItem {
   key: number;
+  onChange(id: string, visible: boolean): void;
 }
 
 import cn from 'classnames';
@@ -20,18 +20,16 @@ import styles from './SettingsItem.module.sass';
 
 export const SettingsItem: FC<Props> = (props) => {
   //
-  const { id, visible, image, title, description } = props;
+  const { id, image, title, description, onChange } = props;
 
-  //const [checked, setChecked] = useState(visible);
-
-  const { getSectionVisible, setSectionVisible } = useSettings();
+  const { getSectionVisible } = useSettings();
 
   const { colorMode } = useColorMode();
 
-  const onVisibleChange = (event) => {
+  const onVisibleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const id = event.target.value;
     const visible = event.target.checked;
-    setSectionVisible(id, visible);
+    onChange(id, visible);
   };
 
   return (

@@ -1,14 +1,16 @@
+@import '@/sass/colors'
+
 .Button
   position: relative
-  border: 1px solid #ebf0f0
+  border: 1px solid $black-transparent-10
   border-radius: 10px
   width: 40px
   height: 40px
-  transition: border-color .2s linear
+  transition: border-color 150ms linear
 
   &:hover
-    border-color: #ccc
-    transition: border-color .2s linear
+    border-color: $black-transparent-20
+    transition: border-color 150ms linear
 
   svg
     display: block
@@ -19,14 +21,14 @@
 
     path,
     circle
-      transition: all .2s linear
+      transition: all 150ms linear
 
 .Dark
-  border-color: #2b2b2b
+  border-color: $white-transparent-10
 
   path,
   circle
     stroke: #fff
 
   &:hover
-    border-color: #fff
+    border-color: $white-transparent-20
