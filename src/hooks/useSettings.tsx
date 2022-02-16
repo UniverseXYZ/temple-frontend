@@ -1,27 +1,35 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { SettingsContext } from '@/context';
-import { writeStorage } from '@rehooks/local-storage';
+
+interface ISection {
+  id: number;
+  visible: boolean;
+}
+
+// interface IContext {
+//   sections: ISection[]
+// }
 
 function useSettings() {
-  const settingsContext = useContext(SettingsContext);
+  const settingsContext: any = useContext(SettingsContext);
 
-  const setSectionVisible = (id: string, visible: boolean): void => {
-    const settings = settingsContext;
-    const index = settings.sections.findIndex((section) => section.id === id);
-    settings.sections[index].visible = visible;
-    writeStorage('settings', settings);
+  const [settings, setSettings] = settingsContext;
+
+  const setSections = (sections: ISection[]): void => {
+    const newSettingsArray = settings;
+    newSettingsArray.sections = sections;
+    setSettings(newSettingsArray);
   };
 
   const getSectionVisible = (id: string) => {
-    const settings = settingsContext;
-    const section = settings.sections.find((section) => section.id === id);
+    const section = settings.sections.find((section: any) => section.id === id);
     return section?.visible;
   };
 
   return {
-    settings: settingsContext,
-    sections: settingsContext.sections,
-    setSectionVisible,
+    settings: settings,
+    sections: settings.sections,
+    setSections,
     getSectionVisible,
   };
 }

@@ -7,7 +7,7 @@ import { TopCollections } from '@/components/sections';
 import { UserCollections } from '@/components/sections';
 import { MyWatchlist } from '@/components/sections';
 
-const Components = {
+const Components: any = {
   statistics: Statistics,
   'curated-collections': CuratedCollections,
   'top-collections': TopCollections,
@@ -15,15 +15,14 @@ const Components = {
   'my-watchlist': MyWatchlist,
 };
 
-export default (block) => {
+export default (block: any, index: number) => {
   if (typeof Components[block.id] !== 'undefined') {
-    return React.createElement(Components[block.id], {
-      key: block._uid,
-      block: block,
-    });
+    const Component = Components[block.id];
+    return <Component {...block} key={index} />;
   }
-  return React.createElement(
-    () => <div>The component {block.component} has not been created yet.</div>,
-    { key: block._uid }
-  );
+
+  // return React.createElement(
+  //   () => <div>The component {block.component} has not been created yet.</div>,
+  //   { key: block._uid }
+  // );
 };

@@ -1,18 +1,14 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { Container, Button, HStack } from '@chakra-ui/react';
 
 import { Card } from '@/components/common';
-import { SettingsContext } from '@/context';
-import { useLocalStorage } from '@rehooks/local-storage';
+import { useSettings } from '@/hooks';
 
 import Section from './components/Sections/Sections';
 
 export const Homepage: FC = () => {
-  const settings = useContext(SettingsContext);
-  //console.log(settings);
-
-  //const [settings] = useLocalStorage('settings');
-  //console.log('sections', sections);
+  //
+  const { sections } = useSettings();
 
   return (
     <div style={{ height: 10000 }}>
@@ -33,16 +29,8 @@ export const Homepage: FC = () => {
         </Card>
       </Container>
 
-      {/* <SettingsContext.Consumer>
-        {(value) =>
-          value.sections.map((section) =>
-            section.visible ? Section(section) : null
-          )
-        }
-      </SettingsContext.Consumer> */}
-
-      {settings.sections.map((section) =>
-        section.visible ? Section(section) : null
+      {sections.map((section: any, index: number) =>
+        section.visible ? Section(section, index) : null
       )}
     </div>
   );
