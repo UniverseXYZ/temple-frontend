@@ -1,3 +1,6 @@
+import React from 'react';
+import { useSettings } from '@/hooks';
+
 export const items = [
   {
     id: 'statistics',
@@ -30,3 +33,21 @@ export const items = [
     description: 'Collections I follow',
   },
 ];
+
+export function useItems() {
+  //
+  const { sections } = useSettings();
+
+  const sortedItems = [...items];
+
+  sortedItems.forEach((item) => {
+    // find item with same id in settings sections
+    const finded = sections.find((section) => section.id === item.id);
+    // add order field
+    item.order = finded.order;
+  });
+
+  sortedItems.sort((a, b) => a.order - b.order);
+
+  return [sortedItems];
+}
