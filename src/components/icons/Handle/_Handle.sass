@@ -1,4 +1,4 @@
-.Icon
+.Handle
   cursor: grab
   touch-action: manipulation
   margin-right: 20px
@@ -17,7 +17,7 @@
     fill-opacity: 0.2
     transition: fill-opacity 150ms linear
 
-  &.Dragging 
+  &.Handle--Dragging 
     pointer-events: none
     cursor: grabbing !important
     background: rgba(0 0 0 / 5%)
@@ -25,12 +25,12 @@
     path
       fill-opacity: 0.5
 
-.Dark
+.Handle--Dark
   path
     fill: white
     fill-opacity: 0.2
 
-  &.Dragging
+  &.Handle--Dragging
     background: rgba(255 255 255 / 5%)
 
   &:hover

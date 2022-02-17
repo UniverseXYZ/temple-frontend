@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Icon, useColorMode } from '@chakra-ui/react';
 
 import cn from 'classnames';
-import styles from './Handle.module.sass';
 
 export const Handle = (props: any) => {
   const { isDragging, ...restProps } = props;
@@ -11,9 +10,9 @@ export const Handle = (props: any) => {
   return (
     <Box
       className={cn(
-        styles.Icon,
-        colorMode === 'dark' && styles.Dark,
-        isDragging && styles.Dragging
+        'Handle',
+        colorMode === 'dark' && 'Handle--Dark',
+        isDragging && 'Handle--Dragging'
       )}
       {...restProps}
     >
