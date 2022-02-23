@@ -15,7 +15,6 @@ export interface ISettingsItem {
 }
 
 interface Props {
-  key: number;
   item: ISettingsItem;
   onChange(id: string, visible: boolean): void;
   dragging?: boolean;

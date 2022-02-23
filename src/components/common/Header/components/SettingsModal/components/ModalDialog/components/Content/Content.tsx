@@ -49,8 +49,6 @@ export const Content = (props: any) => {
   const [items, setItems] = useState(sortedItems);
   const [activeId, setActiveId] = useState<string | null>(null);
 
-  console.log(sortedItems);
-
   // const sensors = useSensors(
   //   useSensor(MouseSensor, {
   //     activationConstraint,
