@@ -51,7 +51,10 @@ const colors = {
   orange: '#E4B613',
   yellow: '#FFE500',
 
-  gradientGreen: 'linear-gradient(135deg, #BCEB00 15%, #00EAEA 85%)',
+  gradientGreenFrom: '#bceb00',
+  gradientGreenTo: '#00eaea',
+
+  gradientGreen: 'linear-gradient(135deg, #bceb00 15%, #00eaea 85%)',
   gradientRed: 'linear-gradient(135deg, #FF7439 0%, #FF39BC 100%)',
   gradientBlue: 'linear-gradient(135deg, #914FE6 0%, #316CDF 100%)',
   gradientHolographic:

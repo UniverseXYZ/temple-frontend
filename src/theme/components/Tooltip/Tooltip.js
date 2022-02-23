@@ -3,23 +3,19 @@ import { mode } from '@chakra-ui/theme-tools';
 export const Tooltip = {
   // style object for base or default style
   baseStyle: (props) => ({
-    bg: mode('white', 'dark.60')(props),
-    color: mode('black', 'white')(props),
+    bg: mode('black.80', 'white')(props),
+    color: mode('white', 'black')(props),
     padding: '12px 16px',
     borderRadius: '12px',
-    border: '1px solid',
-    borderColor: mode('#ececec', 'dark.40')(props),
-    boxShadow: '0px 6px 12px rgba(0 0 0 / 5%)',
+    boxShadow: mode('0px 6px 12px rgba(0 0 0 / 5%)', 'none')(props),
     fontWeight: '14px',
+    textAlign: 'center',
 
-    '--popper-arrow-bg': mode('white', 'var(--chakra-colors-dark-60)')(props),
+    '--popper-arrow-bg': mode('var(--chakra-colors-black-80)', 'white')(props),
 
     '.chakra-tooltip__arrow': {
-      borderTop: '1px solid',
-      borderLeft: '1px solid',
-      borderColor: mode('#ececec', 'dark.40')(props),
-      borderTopLeftRadius: '3px',
-      top: '-1px !important',
+      //borderRadius: '3px',
+      //top: '-1px',
     },
   }),
   // styles for different sizes ('sm', 'md', 'lg')

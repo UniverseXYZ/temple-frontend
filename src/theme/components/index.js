@@ -6,3 +6,6 @@ export * from './Modal/Modal';
 export * from './Switch/Switch';
 export * from './RoundButton/RoundButton';
 export * from './Tooltip/Tooltip';
+export * from './Input/Input';
+export * from './FormError/FormError';
+export * from './FormLabel/FormLabel';
