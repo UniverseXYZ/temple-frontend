@@ -9,7 +9,7 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 
-import { ThemeSwitcher, SettingsModal } from './components';
+import { ThemeSwitcher, SettingsModal, WalletsButton } from './components';
 
 import cn from 'classnames';
 import styles from './Header.module.sass';
@@ -28,9 +28,10 @@ const Header: FC = () => {
           </Link>
         </Box>
         <Spacer />
-        <HStack spacing={2}>
+        <HStack spacing="10px">
           <ThemeSwitcher />
           <SettingsModal />
+          <WalletsButton />
         </HStack>
       </Flex>
     </Box>

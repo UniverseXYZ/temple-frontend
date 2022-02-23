@@ -26,4 +26,5 @@ export const settings = {
       order: 5,
     },
   ],
+  wallets: [],
 };
