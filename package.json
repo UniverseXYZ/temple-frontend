@@ -3,9 +3,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build-demo": "next build",
-    "build": "next build && next export && yarn prepare",
-    "prepare": "mv out/_next out/assets && sed -i 's/\\/_next/\\/assets/g' out/**.html",
+    "build": "next build",
+    "ext:build": "next build && next export && yarn ext:prepare",
+    "ext:prepare": "mv out/_next out/assets && sed -i 's/\\/_next/\\/assets/g' out/**.html",
     "start": "next start",
     "lint": "next lint"
   },
