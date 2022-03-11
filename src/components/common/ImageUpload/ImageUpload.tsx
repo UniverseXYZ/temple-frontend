@@ -29,6 +29,7 @@ export const ImageUpload: FC<any> = (props: any) => {
 
   console.log(field);
 
+  // TODO: Refactoring
   useEffect(() => {
     if (field.value.length > 0) {
       setImages([{ data_url: field.value }]);
@@ -142,12 +143,14 @@ export const ImageUpload: FC<any> = (props: any) => {
                       onClick={() => onImageRemove(0)}
                     />
                   </Tooltip>
-                  <div
-                    className={cn(styles.Overlay)}
-                    onClick={() => onImageUpdate(0)}
-                  >
-                    <EditIcon />
-                  </div>
+                  <Tooltip label="Replace image" placement="top">
+                    <Box
+                      className={cn(styles.Overlay)}
+                      onClick={() => onImageUpdate(0)}
+                    >
+                      <EditIcon className={cn(styles.EditIcon)} />
+                    </Box>
+                  </Tooltip>
                 </div>
               )}
             </div>
