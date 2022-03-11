@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Box, Image, useColorMode, useToast } from '@chakra-ui/react';
 import ImageUploading from 'react-images-uploading';
 import { useField } from 'formik';
@@ -26,6 +26,16 @@ export const ImageUpload: FC<any> = (props: any) => {
 
   const [images, setImages] = useState([]);
   const isUploaded = images.length !== 0;
+
+  console.log(field);
+
+  useEffect(() => {
+    if (field.value.length > 0) {
+      setImages([{ data_url: field.value }]);
+    } else {
+      setImages([]);
+    }
+  }, []);
 
   const handleOnChange = (imageList: any) => {
     // data for submit

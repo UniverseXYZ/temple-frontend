@@ -1,18 +1,29 @@
-import React, { FC } from 'react';
-import { Button, useDisclosure } from '@chakra-ui/react';
+import React, { FC, useContext } from 'react';
+import { Button } from '@chakra-ui/react';
+import { useWallets } from '@/hooks';
+
+import { WalletsModalContext } from '../../context/WalletsModalContext';
 
 import { WalletsModal } from '../WalletsModal';
+import { WalletsDropdown } from '../WalletsDropdown';
 
 export const WalletsButton: FC = (props) => {
   //
-  const {} = props;
+  const { onOpen } = useContext(WalletsModalContext);
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  //
+  const { wallets } = useWallets();
+
+  const isEmpty = wallets.length === 0;
+
   return (
     <>
-      <Button onClick={onOpen}>Create portfolio</Button>
-      <WalletsModal isOpen={isOpen} onClose={onClose} />
+      {isEmpty ? (
+        <Button onClick={() => onOpen()}>Create portfolio</Button>
+      ) : (
+        <WalletsDropdown />
+      )}
+
+      <WalletsModal />
     </>
   );
 };

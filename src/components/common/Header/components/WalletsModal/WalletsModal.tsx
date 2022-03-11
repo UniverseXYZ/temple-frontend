@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -9,6 +9,8 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react';
 
+import { WalletsModalContext } from '../../context/WalletsModalContext';
+
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { ethers } from 'ethers';
@@ -18,13 +20,14 @@ import { useWallets } from '@/hooks';
 import { Content, Footer } from './components';
 
 interface Props {
+  modalType: 'create' | 'edit';
   isOpen: boolean;
   onClose(): void;
 }
 
 const validationSchema = yup.object({
-  Name: yup.string().required().max(20),
-  Address: yup
+  name: yup.string().required().max(20),
+  address: yup
     .string()
     .default('')
     .required()
@@ -35,35 +38,56 @@ const validationSchema = yup.object({
     ),
 });
 
-const initialValues = { Name: '', Address: '', Image: '' };
+const initialValues = { name: '', address: '', image: '' };
 
-export const WalletsModal: FC<Props> = (props) => {
+export const WalletsModal: FC<Props> = () => {
   //
-  const { isOpen, onClose } = props;
+  const { wallet, type, visible, onClose } = useContext(WalletsModalContext);
 
-  const { addWallet } = useWallets();
+  const { addWallet, updateWallet } = useWallets();
+
+  const isCreate = type === 'create';
+  const isUpdate = type === 'update';
 
   const onFormSubmit = (values: any, actions: any) => {
     //
+    if (isCreate) {
+      handleAddWallet(values, actions);
+    }
 
-    //TODO: Change yup field name to uppercase
-    addWallet({
-      name: values.Name,
-      address: values.Address,
-      image: values.Image,
-    }).then(
+    if (isUpdate) {
+      handleUpdateWallet(values, actions);
+    }
+  };
+
+  const handleAddWallet = (values, actions) => {
+    addWallet(values).then(
       (result: any) => {
         if (result.data) {
           actions.setSubmitting(false);
           actions.resetForm(initialValues);
           onClose();
         }
-        console.log('result', result);
       },
       (error) => {
         actions.setFieldError(error.field, error.messege);
         actions.setSubmitting(false);
-        console.log('error', error);
+      }
+    );
+  };
+
+  const handleUpdateWallet = (values, actions) => {
+    updateWallet(values).then(
+      (result: any) => {
+        if (result.data) {
+          actions.setSubmitting(false);
+          actions.resetForm(initialValues);
+          onClose();
+        }
+      },
+      (error) => {
+        actions.setFieldError(error.field, error.messege);
+        actions.setSubmitting(false);
       }
     );
   };
@@ -71,13 +95,14 @@ export const WalletsModal: FC<Props> = (props) => {
   //
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={wallet || initialValues}
+      enableReinitialize={true}
       validationSchema={validationSchema}
       onSubmit={onFormSubmit}
     >
       <Form>
         <Modal
-          isOpen={isOpen}
+          isOpen={visible}
           onClose={onClose}
           blockScrollOnMount={false}
           autoFocus={false}
@@ -93,7 +118,7 @@ export const WalletsModal: FC<Props> = (props) => {
               <Content />
             </ModalBody>
             <ModalFooter>
-              <Footer isOpen={isOpen} onClose={onClose} />
+              <Footer isOpen={visible} onClose={onClose} type={type} />
             </ModalFooter>
           </ModalContent>
         </Modal>

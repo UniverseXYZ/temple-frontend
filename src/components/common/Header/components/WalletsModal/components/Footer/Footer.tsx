@@ -8,7 +8,7 @@ import { TrashIcon } from '@/components/icons';
 
 export const Footer: FC<any> = (props: any) => {
   //
-  const { onClose } = props;
+  const { type, onClose } = props;
 
   const { submitForm, resetForm, isSubmitting } = useFormikContext();
 
@@ -19,10 +19,13 @@ export const Footer: FC<any> = (props: any) => {
   const handleClose = () => {
     onClose();
   };
-  //
+
+  const isCreate = type === 'create';
+  const isUpdate = type === 'update';
+
   return (
     <>
-      <IconButton icon={<TrashIcon boxSize="20px" />} />
+      {isUpdate && <IconButton icon={<TrashIcon boxSize="20px" />} />}
 
       <Spacer />
 
@@ -35,7 +38,7 @@ export const Footer: FC<any> = (props: any) => {
           disabled={isSubmitting}
           onClick={() => submitForm()}
         >
-          Add wallet
+          {isCreate ? 'Add wallet' : 'Save changes'}
         </Button>
       </HStack>
     </>

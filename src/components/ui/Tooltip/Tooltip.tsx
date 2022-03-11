@@ -15,7 +15,13 @@ export const Tooltip: FC<Props> = (props) => {
   const styles = useStyleConfig('Tooltip', { variant });
 
   return (
-    <ChakraTooltip sx={styles} hasArrow={hasArrow} gutter={gutter} {...rest}>
+    <ChakraTooltip
+      sx={styles}
+      hasArrow={hasArrow}
+      gutter={gutter}
+      closeOnClick={false}
+      {...rest}
+    >
       {children}
     </ChakraTooltip>
   );

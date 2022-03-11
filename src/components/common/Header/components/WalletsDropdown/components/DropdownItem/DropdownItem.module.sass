@@ -1,0 +1,72 @@
+@import '@/sass/colors'
+
+
+.Item
+  padding: 16px 20px
+  //background-color: #fff
+  border-radius: 6px
+  transition: background-color 150ms linear
+  cursor: pointer
+
+  &:hover
+    background-color: rgba(0 0 0 / 3%)
+
+    .Balance
+      display: none
+
+    .Action
+      display: block
+
+    .Balance.WithoutEdit
+      display: block
+
+.Content
+  margin-left: 10px
+
+.Balance
+  display: block
+  margin-left: auto
+  text-align: right
+  width: 65px
+
+.Name
+  font-weight: 600
+  font-size: 14px
+
+.Address
+  display: inline-block
+  font-size: 12px
+  font-weight: 600
+  color: $black-40
+
+.Balance
+  //
+
+.BalanceAmount
+  font-size: 14px
+  font-weight: 600
+
+.BalanceText
+  font-size: 12px
+  font-weight: 500
+  color: $black-40
+
+.Action
+   display: none
+   margin-left: auto
+
+.ActionIcon
+  cursor: pointer
+  padding: 13px
+  border-radius: 12px
+  transition: all 150ms linear
+
+  path
+    stroke: $black-40
+    transition: all 150ms linear
+
+  &:hover
+    background-color: $black-transparent-5
+
+    path
+      stroke: $black-100

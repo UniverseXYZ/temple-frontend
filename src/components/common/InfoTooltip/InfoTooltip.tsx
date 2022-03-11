@@ -9,7 +9,7 @@ export const InfoTooltip: FC<Props> = (props) => {
   //
   //const { label } = props;
   return (
-    <Tooltip {...props} openDelay={100}>
+    <Tooltip {...props} openDelay={100} placement="top">
       <InfoIcon cursor="pointer" />
     </Tooltip>
   );

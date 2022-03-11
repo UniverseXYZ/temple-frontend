@@ -2,7 +2,7 @@ export const settings = {
   sections: [
     {
       id: 'statistics',
-      visible: false,
+      visible: true,
       order: 1,
     },
     {
@@ -12,19 +12,21 @@ export const settings = {
     },
     {
       id: 'top-collections',
-      visible: false,
+      visible: true,
       order: 3,
     },
     {
       id: 'user-collections',
-      visible: false,
+      visible: true,
       order: 4,
     },
     {
       id: 'my-watchlist',
-      visible: false,
+      visible: true,
       order: 5,
     },
   ],
   wallets: [],
+  selectedWallet: null,
+  //selectedCurrency: ETH,
 };

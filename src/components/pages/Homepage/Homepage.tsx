@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Container, Button, HStack } from '@chakra-ui/react';
 
 import { Card } from '@/components/common';
+import { Select } from '@/components/ui';
 import { useSettings } from '@/hooks';
 
 import Section from './components/Sections/Sections';
@@ -25,6 +26,13 @@ export const Homepage: FC = () => {
             <Button variant="outline" disabled>
               Test
             </Button>
+
+            <Select
+              options={[
+                { label: 'Test', value: 'Test' },
+                { label: 'Test 2', value: 'Test 2' },
+              ]}
+            />
           </HStack>
         </Card>
       </Container>

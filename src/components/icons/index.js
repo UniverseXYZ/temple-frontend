@@ -9,6 +9,7 @@ export { LeftArrow } from './LeftArrow/LeftArrow';
 export { RightArrow } from './RightArrow/RightArrow';
 export { Handle } from './Handle/Handle';
 export { InfoIcon } from './InfoIcon/InfoIcon';
+export { SelectDownArrow } from './SelectDownArrow/SelectDownArrow';
 
 // Currencies
 export { Ethereum } from './currency/Ethereum/Ethereum';

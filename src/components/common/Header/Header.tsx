@@ -14,27 +14,31 @@ import { ThemeSwitcher, SettingsModal, WalletsButton } from './components';
 import cn from 'classnames';
 import styles from './Header.module.sass';
 
+import { WalletsModalProvider } from './context/WalletsModalContext';
+
 const Header: FC = () => {
   const { colorMode } = useColorMode();
 
   const isDark = colorMode === 'dark';
 
   return (
-    <Box className={cn(styles.Header, isDark && styles.Dark)}>
-      <Flex>
-        <Box>
-          <Link to="/">
-            <Image src="/assets/images/logo.svg" alt="Temple" />
-          </Link>
-        </Box>
-        <Spacer />
-        <HStack spacing="10px">
-          <ThemeSwitcher />
-          <SettingsModal />
-          <WalletsButton />
-        </HStack>
-      </Flex>
-    </Box>
+    <WalletsModalProvider>
+      <Box className={cn(styles.Header, isDark && styles.Dark)}>
+        <Flex>
+          <Box>
+            <Link to="/">
+              <Image src="/assets/images/logo.svg" alt="Temple" />
+            </Link>
+          </Box>
+          <Spacer />
+          <HStack spacing="10px">
+            <ThemeSwitcher />
+            <SettingsModal />
+            <WalletsButton />
+          </HStack>
+        </Flex>
+      </Box>
+    </WalletsModalProvider>
   );
 };
 

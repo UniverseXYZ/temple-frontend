@@ -9,10 +9,10 @@ export const Content: FC<any> = (props: any) => {
   return (
     <VStack align="stretch" spacing={'30px'}>
       <HStack spacing={'30px'}>
-        <ImageUpload name="Image" />
+        <ImageUpload name="image" />
 
         <FormItem
-          name="Name"
+          name="name"
           label="Enter the wallet name"
           tooltip="Choosing a name for you wallet will help you to navigate easier while switching between wallets."
           maxLeight={20}
@@ -24,7 +24,7 @@ export const Content: FC<any> = (props: any) => {
 
       <Box>
         <FormItem
-          name="Address"
+          name="address"
           label="Enter the wallet address"
           maxLeight={42}
           required

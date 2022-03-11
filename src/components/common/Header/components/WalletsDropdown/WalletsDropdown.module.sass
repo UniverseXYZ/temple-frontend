@@ -1,0 +1,77 @@
+@import '@/sass/colors'
+@import '@/sass/mixins'
+
+.Wrapper
+  border: 1px solid $black-10
+  border-radius: 12px
+  position: relative
+  height: 40px
+  user-select: none
+  min-width: 200px
+  max-width: 200px
+  transition: all 150ms linear
+
+  &:hover
+    border-color: $black-20
+
+.Arrow
+  position: absolute
+  right: 10px
+  top: 50%
+  transform: translateY(-50%)
+  cursor: pointer
+  pointer-events: none
+
+  svg
+    width: 12px
+    height: 8px
+
+.SelectedItem
+  line-height: 40px
+  cursor: pointer
+  padding: 0 12px
+
+.Dropdown
+  position: absolute
+  right: 0
+  top: 40px
+  width: 340px
+  padding-top: 5px
+  visibility: hidden
+
+
+.DropdownList
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 10px 40px rgba(0, 0, 0, 0.15)
+  border-radius: 10px
+  background: white
+  padding: 8px
+
+.DropdownOverflow
+  max-height: 432px
+  overflow-y: auto
+
+  @include styled-scroll
+
+.isOpen
+  border-color: $black-20
+
+  .Dropdown
+    visibility: visible
+
+  .Arrow
+    transform: translateY(-50%) rotate(180deg)
+
+
+// ------------ DARK ------------ //
+
+.Dark
+  border-color: $white-transparent-10
+
+  &.isOpen
+    border-color: $white-transparent-20
+
+  &:hover
+    border-color: $white-transparent-20
+
+  .DropdownList
+    background: $dark-60
