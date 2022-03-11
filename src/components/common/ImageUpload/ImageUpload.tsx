@@ -1,9 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Box, Image, useColorMode, useToast } from '@chakra-ui/react';
-import ImageUploading, {
-  ImageType,
-  ImageListType,
-} from 'react-images-uploading';
+import ImageUploading, { ImageType } from 'react-images-uploading';
 import { useField } from 'formik';
 
 import { CloseButton } from '@/components/common';
@@ -34,8 +31,6 @@ export const ImageUpload: FC<Props> = (props) => {
   const [images, setImages] = useState<ImageType[]>([]);
   const isUploaded = images.length !== 0;
 
-  console.log(field);
-
   // TODO: Refactoring
   useEffect(() => {
     if (field.value.length > 0) {
@@ -51,6 +46,12 @@ export const ImageUpload: FC<Props> = (props) => {
 
     // TODO: Work only with single image
     if (helpers) {
+      // TODO: Fix for empty value
+      if (imageList.length === 0) {
+        helpers.setValue('');
+        return;
+      }
+
       helpers.setValue(imageList[0]?.data_url);
     }
   };

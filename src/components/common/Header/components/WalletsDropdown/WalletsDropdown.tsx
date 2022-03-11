@@ -34,11 +34,9 @@ export const WalletsDropdown: FC = (props) => {
     setVisible(false);
   });
 
-  // useEffect(() => {
-  //   if (wallets.length === 1) {
-  //     setValue(wallets[0]);
-  //   }
-  // }, []);
+  useEffect(() => {
+    setValue(activeWallet);
+  }, [activeWallet]);
 
   const toggleVisible = () => {
     setVisible((visible) => !visible);

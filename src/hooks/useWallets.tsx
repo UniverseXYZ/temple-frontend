@@ -1,12 +1,11 @@
 import { useContext } from 'react';
 import { SettingsContext } from '@/context';
-import { v4 as uuidv4 } from 'uuid';
 
 interface IWallet {
-  //id: string;
   name: string;
   address: string;
   image: string;
+  isActive: boolean;
 }
 
 function useWallets() {
@@ -28,13 +27,20 @@ function useWallets() {
       }
 
       const newWallet = {
-        id: uuidv4(),
         ...wallet,
+        isActive: true,
       };
 
       const newSettingsArray = settings;
+
+      newSettingsArray.wallets.forEach((wallet: IWallet) => {
+        wallet.isActive = false;
+      });
+
       newSettingsArray.wallets.push(newWallet);
-      newSettingsArray.selectedWallet = newWallet;
+
+      newSettingsArray.activeWallet = newWallet;
+
       setSettings(newSettingsArray);
       //
       resolve({ result: 'success', data: wallet });
@@ -46,10 +52,15 @@ function useWallets() {
   const updateWallet = async (wallet: IWallet) => {
     const promise = new Promise((resolve, reject) => {
       //
-      const [findedWallet, index] = getWallet(wallet.address);
+      const { wallet: findedWallet, index } = getWallet(wallet.address);
 
       const newSettingsArray = settings;
       newSettingsArray.wallets.splice(index, 1, wallet);
+
+      if (findedWallet.isActive) {
+        newSettingsArray.activeWallet = wallet;
+      }
+
       setSettings(newSettingsArray);
 
       resolve({ result: 'success', data: wallet });
@@ -74,28 +85,45 @@ function useWallets() {
       (wallet: IWallet) => wallet.address === address
     );
 
-    return [wallet, index];
+    return { wallet, index };
   };
 
   const validation = (wallet: IWallet) => {
-    const [findedWallet] = getWallet(wallet.address);
+    const { wallet: findedWallet } = getWallet(wallet.address);
+
     if (findedWallet === undefined) {
       return true;
     }
+
     return false;
   };
 
-  const setSelectedWallet = () => {
-    //
+  const setActiveWallet = (wallet: IWallet) => {
+    const wallets = settings.wallets;
+    const { index } = getWallet(wallet.address);
+
+    wallets.forEach((wallet: IWallet) => {
+      wallet.isActive = false;
+    });
+
+    wallets[index].isActive = true;
+
+    const activeWallet = wallets[index];
+
+    setSettings({
+      ...settings,
+      wallets,
+      activeWallet: activeWallet,
+    });
   };
 
   return {
+    activeWallet: settings.activeWallet,
     wallets: settings.wallets,
-    selected: settings.selectedWallet,
     addWallet,
     updateWallet,
     removeWallet,
-    setSelectedWallet,
+    setActiveWallet,
   };
 }
 

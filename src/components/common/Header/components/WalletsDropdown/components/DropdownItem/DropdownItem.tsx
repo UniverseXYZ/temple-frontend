@@ -27,8 +27,6 @@ export const DropdownItem: FC<Props> = (props) => {
   //
   const { wallet, onSelect } = props;
 
-  console.log(wallet);
-
   const { onEdit } = useContext(WalletsModalContext);
   const { hasCopied, onCopy } = useClipboard(wallet.address);
 
