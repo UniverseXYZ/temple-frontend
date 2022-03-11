@@ -22,10 +22,10 @@ export const WalletsDropdown: FC = (props) => {
   //
   //const { } = props;
 
-  const { selected, wallets } = useWallets();
+  const { wallets, activeWallet, setActiveWallet } = useWallets();
   const { onOpen } = useContext(WalletsModalContext);
 
-  const [value, setValue] = useState(selected);
+  const [value, setValue] = useState(activeWallet);
   const [visible, setVisible] = useState(false);
 
   const refSelect = useRef(null);
@@ -50,8 +50,9 @@ export const WalletsDropdown: FC = (props) => {
     setVisible(false);
   };
 
-  const handleSelectWallet = (wallet) => {
+  const handleSelectWallet = (wallet: any) => {
     setValue(wallet);
+    setActiveWallet(wallet);
     setVisible(false);
   };
 
@@ -69,11 +70,7 @@ export const WalletsDropdown: FC = (props) => {
     >
       <Box className={cn(styles.SelectedItem)} onClick={() => toggleVisible()}>
         <HStack>
-          <WalletAvatar
-            size={'28px'}
-            name={selected?.name}
-            image={selected?.image}
-          />
+          <WalletAvatar size={'28px'} name={value?.name} image={value?.image} />
           <Text isTruncated maxWidth={'125px'}>
             {value?.name}
           </Text>

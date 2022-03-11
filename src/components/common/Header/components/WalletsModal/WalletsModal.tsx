@@ -19,12 +19,6 @@ import { useWallets } from '@/hooks';
 
 import { Content, Footer } from './components';
 
-interface Props {
-  modalType: 'create' | 'edit';
-  isOpen: boolean;
-  onClose(): void;
-}
-
 const validationSchema = yup.object({
   name: yup.string().required().max(20),
   address: yup
@@ -40,7 +34,7 @@ const validationSchema = yup.object({
 
 const initialValues = { name: '', address: '', image: '' };
 
-export const WalletsModal: FC<Props> = () => {
+export const WalletsModal: FC = () => {
   //
   const { wallet, type, visible, onClose } = useContext(WalletsModalContext);
 
@@ -60,7 +54,7 @@ export const WalletsModal: FC<Props> = () => {
     }
   };
 
-  const handleAddWallet = (values, actions) => {
+  const handleAddWallet = (values: any, actions: any) => {
     addWallet(values).then(
       (result: any) => {
         if (result.data) {
@@ -76,7 +70,7 @@ export const WalletsModal: FC<Props> = () => {
     );
   };
 
-  const handleUpdateWallet = (values, actions) => {
+  const handleUpdateWallet = (values: any, actions: any) => {
     updateWallet(values).then(
       (result: any) => {
         if (result.data) {

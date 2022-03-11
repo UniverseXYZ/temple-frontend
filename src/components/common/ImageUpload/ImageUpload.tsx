@@ -1,6 +1,9 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Box, Image, useColorMode, useToast } from '@chakra-ui/react';
-import ImageUploading from 'react-images-uploading';
+import ImageUploading, {
+  ImageType,
+  ImageListType,
+} from 'react-images-uploading';
 import { useField } from 'formik';
 
 import { CloseButton } from '@/components/common';
@@ -14,7 +17,11 @@ import { UploadIcon } from './compoentns/UploadIcon';
 import cn from 'classnames';
 import styles from './ImageUpload.module.sass';
 
-export const ImageUpload: FC<any> = (props: any) => {
+interface Props {
+  name: string;
+}
+
+export const ImageUpload: FC<Props> = (props) => {
   //
   const { name } = props;
 
@@ -24,7 +31,7 @@ export const ImageUpload: FC<any> = (props: any) => {
   // TODO: Move logic to FormItem element
   const [field, meta, helpers] = useField({ name: name, type: 'file' });
 
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<ImageType[]>([]);
   const isUploaded = images.length !== 0;
 
   console.log(field);
@@ -38,7 +45,7 @@ export const ImageUpload: FC<any> = (props: any) => {
     }
   }, []);
 
-  const handleOnChange = (imageList: any) => {
+  const handleOnChange = (imageList: ImageType[]) => {
     // data for submit
     setImages(imageList);
 
