@@ -2,7 +2,7 @@ import { mode } from '@chakra-ui/theme-tools';
 
 export const FormError = {
   // style object for base or default style
-  baseStyle: (props) => ({
+  baseStyle: (props: any) => ({
     text: {
       fontSize: '12px',
       lineHeight: '18px',

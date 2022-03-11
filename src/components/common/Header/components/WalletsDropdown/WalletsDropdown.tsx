@@ -22,7 +22,7 @@ export const WalletsDropdown: FC = (props) => {
   //
   //const { } = props;
 
-  const { wallets, activeWallet, setActiveWallet } = useWallets();
+  const { wallets, activeWallet, setActiveWallet } = useWallets() as any;
   const { onOpen } = useContext(WalletsModalContext);
 
   const [value, setValue] = useState(activeWallet);

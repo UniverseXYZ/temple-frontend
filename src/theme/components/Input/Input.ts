@@ -4,7 +4,7 @@ import * as variants from './variants';
 export const Input = {
   parts: ['wrapper', 'field'],
   // style object for base or default style
-  baseStyle: (props) => ({
+  baseStyle: (props: any) => ({
     wrapper: {},
     field: {
       borderRadius: '12px !important',

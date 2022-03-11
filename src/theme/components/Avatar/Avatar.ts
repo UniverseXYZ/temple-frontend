@@ -2,7 +2,7 @@ import { mode } from '@chakra-ui/theme-tools';
 
 export const Avatar = {
   // style object for base or default style
-  baseStyle: (props) => ({
+  baseStyle: (props: any) => ({
     borderColor: mode('black.5', 'black.80')(props),
     transition: 'border-color 150ms linear',
   }),

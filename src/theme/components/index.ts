@@ -1,5 +1,5 @@
-export * from './Button/Button';
-export * from './Heading/Heading';
+export * from './button/button';
+export * from './heading/heading';
 export * from './Card/Card';
 export * from './Avatar/Avatar';
 export * from './Modal/Modal';

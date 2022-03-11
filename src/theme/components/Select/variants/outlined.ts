@@ -1,6 +1,6 @@
 import { mode } from '@chakra-ui/theme-tools';
 
-export const outline = (props) => ({
+export const outline = (props: any) => ({
   wrapper: {
     position: 'relative',
     background: mode('white', 'dark.60')(props),

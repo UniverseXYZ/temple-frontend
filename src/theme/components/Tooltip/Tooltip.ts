@@ -2,7 +2,7 @@ import { mode } from '@chakra-ui/theme-tools';
 
 export const Tooltip = {
   // style object for base or default style
-  baseStyle: (props) => ({
+  baseStyle: (props: any) => ({
     bg: mode('black.80', 'white')(props),
     color: mode('white', 'black')(props),
     padding: '12px 16px',
