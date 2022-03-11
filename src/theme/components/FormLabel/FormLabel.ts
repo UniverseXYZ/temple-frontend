@@ -2,7 +2,7 @@ import { mode } from '@chakra-ui/theme-tools';
 
 export const FormLabel = {
   // style object for base or default style
-  baseStyle: (props) => ({
+  baseStyle: (props: any) => ({
     fontSize: '14px',
     lineHeight: '22px',
     fontWeight: 700,

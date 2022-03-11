@@ -4,7 +4,7 @@ import * as variants from './variants';
 export const Select = {
   parts: ['wrapper', 'select', 'option', 'listbox'],
   // style object for base or default style
-  baseStyle: (props) => ({
+  baseStyle: (props: any) => ({
     wrapper: {},
     listbox: {
       position: 'absolute',

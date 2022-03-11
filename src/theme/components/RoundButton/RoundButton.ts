@@ -2,7 +2,7 @@ import { mode } from '@chakra-ui/theme-tools';
 
 export const RoundButton = {
   // style object for base or default style
-  baseStyle: (props) => ({
+  baseStyle: (props: any) => ({
     display: 'block',
     background: mode('white', 'dark.80')(props),
     borderRadius: 'full',

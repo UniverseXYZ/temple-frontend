@@ -2,7 +2,7 @@ import { mode } from '@chakra-ui/theme-tools';
 
 export const Switch = {
   // style object for base or default style
-  baseStyle: (props) => ({
+  baseStyle: (props: any) => ({
     thumb: {
       boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
     },

@@ -2,7 +2,7 @@ import { mode } from '@chakra-ui/theme-tools';
 
 export const Modal = {
   // style object for base or default style
-  baseStyle: (props) => ({
+  baseStyle: (props: any) => ({
     dialog: {
       background: mode('white', 'dark.60')(props),
     },
