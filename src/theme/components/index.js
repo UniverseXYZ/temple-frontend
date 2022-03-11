@@ -9,3 +9,4 @@ export * from './Tooltip/Tooltip';
 export * from './Input/Input';
 export * from './FormError/FormError';
 export * from './FormLabel/FormLabel';
+export * from './Select/Select';
