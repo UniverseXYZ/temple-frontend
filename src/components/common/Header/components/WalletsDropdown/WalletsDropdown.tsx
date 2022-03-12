@@ -89,9 +89,11 @@ export const WalletsDropdown: FC = (props) => {
             ))}
           </Box>
 
-          <Button mt={5} onClick={() => handleOpenModal()}>
-            Add new wallet
-          </Button>
+          <Box m="20px">
+            <Button w="100%" onClick={() => handleOpenModal()}>
+              Add new wallet
+            </Button>
+          </Box>
         </Box>
       </Box>
 

@@ -18,7 +18,9 @@ export const WalletsButton: FC = (props) => {
   return (
     <>
       {isEmpty ? (
-        <Button onClick={() => onOpen()}>Create portfolio</Button>
+        <Button onClick={() => onOpen()} w="175px">
+          Create portfolio
+        </Button>
       ) : (
         <WalletsDropdown />
       )}

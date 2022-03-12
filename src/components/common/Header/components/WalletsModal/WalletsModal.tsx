@@ -86,6 +86,11 @@ export const WalletsModal: FC = () => {
     );
   };
 
+  const handleDeleteWallet = () => {
+    //
+    console.log('delete');
+  };
+
   //
   return (
     <Formik
@@ -112,7 +117,12 @@ export const WalletsModal: FC = () => {
               <Content />
             </ModalBody>
             <ModalFooter>
-              <Footer isOpen={visible} onClose={onClose} type={type} />
+              <Footer
+                isOpen={visible}
+                onClose={onClose}
+                onDelete={handleDeleteWallet}
+                type={type}
+              />
             </ModalFooter>
           </ModalContent>
         </Modal>

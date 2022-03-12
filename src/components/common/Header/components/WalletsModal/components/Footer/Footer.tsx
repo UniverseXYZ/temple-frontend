@@ -1,14 +1,22 @@
 import React, { FC } from 'react';
-import { HStack, Spacer, Button } from '@chakra-ui/react';
+import { HStack, Spacer, Button, useDisclosure } from '@chakra-ui/react';
 
 import { useFormikContext } from 'formik';
 
 import { IconButton } from '@/components/common';
 import { TrashIcon } from '@/components/icons';
 
+import { ConfirmDialog } from '@/components/ui';
+
 export const Footer: FC<any> = (props: any) => {
   //
-  const { type, onClose } = props;
+  const { type, onClose, onDelete } = props;
+
+  const {
+    isOpen: isOpenDialog,
+    onOpen: onOpenDialog,
+    onClose: onCloseDialog,
+  } = useDisclosure();
 
   const { submitForm, resetForm, isSubmitting } = useFormikContext();
 
@@ -25,7 +33,12 @@ export const Footer: FC<any> = (props: any) => {
 
   return (
     <>
-      {isUpdate && <IconButton icon={<TrashIcon boxSize="20px" />} />}
+      {isUpdate && (
+        <IconButton
+          icon={<TrashIcon boxSize="20px" />}
+          onClick={() => onOpenDialog()}
+        />
+      )}
 
       <Spacer />
 
@@ -41,6 +54,14 @@ export const Footer: FC<any> = (props: any) => {
           {isCreate ? 'Add wallet' : 'Save changes'}
         </Button>
       </HStack>
+
+      <ConfirmDialog
+        visible={isOpenDialog}
+        onCancel={onCloseDialog}
+        onConfirm={onDelete}
+        confirmText="Yes, confirm"
+        cancelText="Cancel"
+      />
     </>
   );
 };
