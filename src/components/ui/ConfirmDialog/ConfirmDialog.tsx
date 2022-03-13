@@ -11,7 +11,7 @@ import {
   //useDisclosure,
 } from '@chakra-ui/react';
 
-export const ConfirmDialog: FC = (props: any) => {
+export const ConfirmDialog: FC<any> = (props: any) => {
   //
   const {
     visible,
