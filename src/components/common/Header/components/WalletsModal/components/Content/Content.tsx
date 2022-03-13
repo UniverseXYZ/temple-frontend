@@ -15,7 +15,7 @@ export const Content: FC<any> = (props: any) => {
           name="name"
           label="Enter the wallet name"
           tooltip="Choosing a name for you wallet will help you to navigate easier while switching between wallets."
-          maxLeight={20}
+          maxLeight={30}
           required
         >
           <Input placeholder="e.g Portfolio 1" variant="outline" />

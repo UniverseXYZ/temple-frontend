@@ -43,7 +43,7 @@ export const Footer: FC<any> = (props: any) => {
       <Spacer />
 
       <HStack spacing={'10px'}>
-        <Button variant="outline" onClick={handleClose}>
+        <Button variant="ghost" onClick={handleClose}>
           Cancel
         </Button>
         <Button

@@ -1,9 +1,7 @@
 @import '@/sass/colors'
 
-
 .Item
   padding: 16px 20px
-  //background-color: #fff
   border-radius: 6px
   transition: background-color 150ms linear
   cursor: pointer
@@ -70,3 +68,17 @@
 
     path
       stroke: $black-100
+
+// ------------ DARK ------------ //
+
+.Dark
+  &.Item
+    &:hover
+      background-color: $white-transparent-5
+
+  .ActionIcon
+    &:hover
+      background-color: $white-transparent-5
+
+      path
+        stroke: $white-100

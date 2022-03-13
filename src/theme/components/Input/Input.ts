@@ -21,6 +21,7 @@ export const Input = {
         },
       },
       field: {
+        height: '48px',
         borderRadius: '12px',
       },
     },

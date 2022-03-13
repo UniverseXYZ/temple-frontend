@@ -57,8 +57,9 @@ export const ModalDialog = (props: any) => {
       onClose={onClose}
       blockScrollOnMount={false}
       autoFocus={false}
-      size="md"
+      size="sm"
       returnFocusOnClose={false}
+      isCentered
     >
       <ModalOverlay />
       <ModalContent>
@@ -74,7 +75,7 @@ export const ModalDialog = (props: any) => {
 
         <ModalFooter>
           <HStack spacing={'12px'}>
-            <Button variant="outline" onClick={onClose}>
+            <Button variant="ghost" onClick={onClose}>
               Cancel
             </Button>
             <Button onClick={() => handleSaveChanges()}>Save changes</Button>

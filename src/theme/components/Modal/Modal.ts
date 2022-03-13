@@ -5,6 +5,11 @@ export const Modal = {
   baseStyle: (props: any) => ({
     dialog: {
       background: mode('white', 'dark.60')(props),
+      borderRadius: '12px',
+    },
+
+    overlay: {
+      background: 'blackTransparent.80',
     },
 
     header: {
@@ -13,7 +18,7 @@ export const Modal = {
       fontSize: '20px',
       padding: '30px 0',
       margin: '0 30px',
-      borderBottom: '1px solid',
+      //borderBottom: '1px solid',
       borderColor: mode('black.10', 'whiteTransparent.10')(props),
     },
 
@@ -22,8 +27,7 @@ export const Modal = {
     },
 
     footer: {
-      padding: '20px 0',
-      margin: '0 30px',
+      padding: '30px 30px',
       borderTop: '1px solid',
       borderColor: mode('black.10', 'whiteTransparent.10')(props),
     },
@@ -52,9 +56,14 @@ export const Modal = {
   }),
   // styles for different sizes ("sm", "md", "lg")
   sizes: {
+    sm: {
+      dialog: {
+        maxWidth: '500px',
+      },
+    },
     md: {
       dialog: {
-        maxWidth: '550px',
+        maxWidth: '560px',
       },
     },
   },

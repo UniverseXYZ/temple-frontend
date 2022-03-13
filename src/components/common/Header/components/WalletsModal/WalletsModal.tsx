@@ -20,9 +20,10 @@ import { useWallets } from '@/hooks';
 import { Content, Footer } from './components';
 
 const validationSchema = yup.object({
-  name: yup.string().required().max(20),
+  name: yup.string().label('Name').required().max(30),
   address: yup
     .string()
+    .label('Address')
     .default('')
     .required()
     .test(
@@ -107,10 +108,14 @@ export const WalletsModal: FC = () => {
           autoFocus={false}
           size="md"
           returnFocusOnClose={false}
+          isCentered
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Add new wallet</ModalHeader>
+            <ModalHeader>
+              {isCreate ? 'Add new wallet' : 'Edit wallet'}
+            </ModalHeader>
+
             <ModalCloseButton />
 
             <ModalBody>

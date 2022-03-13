@@ -1,5 +1,12 @@
 import React, { FC, SyntheticEvent, useContext } from 'react';
-import { Box, Flex, HStack, Text, useClipboard } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  HStack,
+  Text,
+  useClipboard,
+  useColorMode,
+} from '@chakra-ui/react';
 import { Tooltip } from '@/components/ui';
 
 import { WalletsModalContext } from '../../../../context/WalletsModalContext';
@@ -9,6 +16,7 @@ import { WalletAvatar } from '../WalletAvatar';
 
 import { truncateEthAddress } from '@/utils';
 
+import cn from 'classnames';
 import styles from './DropdownItem.module.sass';
 
 interface IWallet {
@@ -30,6 +38,9 @@ export const DropdownItem: FC<Props> = (props) => {
   const { onEdit } = useContext(WalletsModalContext);
   const { hasCopied, onCopy } = useClipboard(wallet.address);
 
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
   const handleSelect = () => {
     onSelect(wallet);
   };
@@ -47,7 +58,10 @@ export const DropdownItem: FC<Props> = (props) => {
   const address = truncateEthAddress(wallet.address, 9);
 
   return (
-    <Box className={styles.Item} onClick={() => handleSelect()}>
+    <Box
+      className={cn(styles.Item, isDark && styles.Dark)}
+      onClick={() => handleSelect()}
+    >
       <Flex align="center">
         <Box className={styles.Avatar}>
           <WalletAvatar name={wallet.name} image={wallet.image} />
