@@ -11,10 +11,11 @@ import { Badge } from './components';
 interface Props extends AvatarProps {
   image: string;
   name: string;
+  badgeSize?: string | number;
 }
 
 const Avatar: FC<Props> = (props) => {
-  const { image, variant, name, ...restProps } = props;
+  const { image, variant, name, badgeSize = '19px', ...restProps } = props;
 
   const styles = useStyleConfig('Avatar', { variant });
 
@@ -28,8 +29,8 @@ const Avatar: FC<Props> = (props) => {
       sx={styles}
       {...restProps}
     >
-      <AvatarBadge border={0} bottom={'4px'} right={'4px'}>
-        <Badge boxSize="19px" />
+      <AvatarBadge border={0} bottom={0} right={0}>
+        <Badge boxSize={badgeSize} />
       </AvatarBadge>
     </ChakraAvatar>
   );

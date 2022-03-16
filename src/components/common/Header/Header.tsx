@@ -9,7 +9,12 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 
-import { ThemeSwitcher, SettingsModal, WalletsButton } from './components';
+import {
+  ThemeSwitcher,
+  SettingsModal,
+  WalletsButton,
+  SearchInput,
+} from './components';
 
 import cn from 'classnames';
 import styles from './Header.module.sass';
@@ -24,13 +29,15 @@ const Header: FC = () => {
   return (
     <WalletsModalProvider>
       <Box className={cn(styles.Header, isDark && styles.Dark)}>
-        <Flex>
+        <Flex justify="space-between">
           <Box>
             <Link to="/">
               <Image src="/assets/images/logo.svg" alt="Temple" />
             </Link>
           </Box>
-          <Spacer />
+
+          <SearchInput />
+
           <HStack spacing="10px">
             <ThemeSwitcher />
             <SettingsModal />
