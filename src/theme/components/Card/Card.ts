@@ -3,7 +3,7 @@ import { mode } from '@chakra-ui/theme-tools';
 export const Card = {
   // style object for base or default style
   baseStyle: (props: any) => ({
-    bg: mode('white', 'dark.80')(props),
+    bg: mode('white', 'whiteTransparent.10')(props),
     borderRadius: 12,
     transition: 'all 150ms linear',
   }),
@@ -14,7 +14,7 @@ export const Card = {
     whitebox: (props: any) => ({
       boxShadow: mode(
         '0px 10px 35px rgba(136 120 172 / 15%)',
-        '0 0 0 1px rgba(255 255 255 / 10%)'
+        '0 0 0 1px rgba(255 255 255 / 20%)'
       )(props),
     }),
     bordered: (props: any) => ({
