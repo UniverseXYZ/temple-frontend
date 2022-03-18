@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, useColorMode } from '@chakra-ui/react';
 
 import { Avatar } from '@/components/common';
 
@@ -10,8 +10,11 @@ export const ListItem: FC<any> = (props: any) => {
   //
   const { collection } = props;
 
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
   return (
-    <Box className={styles.Item}>
+    <Box className={cn(styles.Item, isDark && styles.Dark)}>
       <Flex>
         <Avatar
           className={styles.Avatar}

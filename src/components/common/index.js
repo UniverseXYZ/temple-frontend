@@ -7,6 +7,7 @@ export { Avatar } from './Avatar';
 export { IconButton } from './IconButton';
 export { CloseButton } from './CloseButton';
 export { InfoTooltip } from './InfoTooltip';
+export { Loading } from './Loading';
 
 // Components
 export { CollectionCard } from './CollectionCard';

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, useColorMode } from '@chakra-ui/react';
+import { Loading } from '@/components/common';
 
 import { ListItem } from '../ListItem';
 
@@ -8,9 +9,21 @@ import styles from './SearchList.module.sass';
 
 export const SearhList: FC<any> = (props: any) => {
   //
-  const { collections } = props;
+  const { collections, isOpen } = props;
+
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
   return (
-    <Box className={styles.DropdownWrapper}>
+    <Box
+      className={cn(
+        styles.DropdownWrapper,
+        isDark && styles.Dark,
+        isOpen && styles.isOpen
+      )}
+    >
+      {/* <Loading /> */}
+
       <Box className={styles.CollectionsListWrapper}>
         <Box className={styles.CollectionsList__Headline}>Collections</Box>
 

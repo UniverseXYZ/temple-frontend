@@ -1,5 +1,6 @@
 import React, { FC, useState, useRef } from 'react';
 import { Box, useColorMode } from '@chakra-ui/react';
+import { useClickAway } from 'react-use';
 
 import { SearchIcon, CrossIcon } from '@/components/icons';
 import { SearhList } from './components';
@@ -15,12 +16,18 @@ export const SearchInput: FC = (props) => {
 
   const [templeValue, setTempleValue] = useState('');
   const [googleValue, setGoogleValue] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
+  const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
   const templeRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const googleRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+  useClickAway(ref, () => {
+    setIsOpen(false);
+  });
 
   const handleClear = (input: string) => {
     //TODO: refactoring
@@ -36,10 +43,13 @@ export const SearchInput: FC = (props) => {
   };
 
   return (
-    <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
+    <Box ref={ref} className={cn(styles.Wrapper, isDark && styles.Dark)}>
       <SearchIcon className={styles.SearchIcon} />
       <Box className={styles.Inputs}>
-        <Box className={cn(styles.Field, styles.TempleField)}>
+        <Box
+          className={cn(styles.Field, styles.TempleField)}
+          onClick={() => setIsOpen(true)}
+        >
           <input
             ref={templeRef}
             name="temple"
@@ -80,7 +90,7 @@ export const SearchInput: FC = (props) => {
         </Box>
       </Box>
 
-      <SearhList collections={initialData.collections} />
+      <SearhList isOpen={isOpen} collections={initialData.collections} />
     </Box>
   );
 };
