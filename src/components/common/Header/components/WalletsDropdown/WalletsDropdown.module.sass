@@ -76,3 +76,14 @@
 
   .DropdownList
     background: $dark-60
+
+  .DropdownOverflow
+    &::-webkit-scrollbar-thumb
+      background-color: $dark-40
+
+      &:hover
+        background-color: lighten($dark-40, 5%)
+
+  .Arrow
+    path
+      fill: white
