@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Container, Heading } from '@chakra-ui/react';
+import { Card } from '@/components/common';
 
 import { InventoryValue } from './components';
 
@@ -10,9 +11,9 @@ const Statistics = () => (
         Statistics
       </Heading>
 
-      <Box>
+      <Card bordered>
         <InventoryValue />
-      </Box>
+      </Card>
     </Container>
   </>
 );

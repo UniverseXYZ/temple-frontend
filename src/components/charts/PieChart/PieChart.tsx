@@ -4,14 +4,19 @@ import {
   PieChart as PieRechart,
   Pie,
   Cell,
-  Tooltip,
+  Tooltip as TooltipRechart,
+  Legend,
+  Label,
+  Sector,
 } from 'recharts';
+
+import { Tooltip } from './components';
 
 export const PieChart: FC = (props) => {
   //
   const {} = props;
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | undefined>(1);
 
   console.log(activeIndex);
 
@@ -48,6 +53,42 @@ export const PieChart: FC = (props) => {
       name: 'Group G',
       value: 300,
     },
+    {
+      name: 'Group G',
+      value: 300,
+    },
+    {
+      name: 'Group G',
+      value: 300,
+    },
+    {
+      name: 'Group G',
+      value: 300,
+    },
+    {
+      name: 'Group G',
+      value: 300,
+    },
+    {
+      name: 'Group G',
+      value: 300,
+    },
+    {
+      name: 'Group G',
+      value: 300,
+    },
+    {
+      name: 'Group G',
+      value: 300,
+    },
+    {
+      name: 'Group G',
+      value: 300,
+    },
+    {
+      name: 'Group G',
+      value: 300,
+    },
   ];
 
   const COLORS = [
@@ -60,32 +101,108 @@ export const PieChart: FC = (props) => {
     '#725CFA',
   ];
 
+  const renderActiveShape = (props) => {
+    const {
+      cx,
+      cy,
+      innerRadius,
+      outerRadius,
+      startAngle,
+      endAngle,
+      fill,
+      payload,
+      percent,
+      value,
+    } = props;
+
+    return (
+      <g className="test">
+        <Sector
+          cx={cx}
+          cy={cy}
+          innerRadius={innerRadius - 10}
+          outerRadius={outerRadius + 10}
+          startAngle={startAngle}
+          endAngle={endAngle}
+          fill={fill}
+        />
+      </g>
+    );
+  };
+
+  const renderLegend = (props: any) => {
+    //
+    const { payload } = props;
+
+    //console.log('payload', payload);
+
+    return (
+      <ul>
+        {payload.map((entry: any, index: number) => (
+          <li key={`item-${index}`}>{entry.value}</li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <PieRechart width={300} height={300}>
-        <Pie
-          activeIndex={activeIndex}
-          data={data}
-          dataKey="value"
-          nameKey="name"
-          cx="50%"
-          cy="50%"
-          //innerRadius={80}
-          //outerRadius={60}
-          fill="#82ca9d"
-          paddingAngle={5}
-          onMouseEnter={onPieEnter}
-        >
-          {data.map((entry, index) => (
-            <Cell
-              key={`cell-${index}`}
-              fill={COLORS[index % COLORS.length]}
-              stroke="0"
+    <div style={{ width: 545 }}>
+      <ResponsiveContainer height={300} width="100%" minWidth="0">
+        <PieRechart>
+          <Pie
+            activeIndex={activeIndex}
+            activeShape={renderActiveShape}
+            data={data}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            innerRadius="70%"
+            outerRadius="95%"
+            fill="#82ca9d"
+            onMouseEnter={onPieEnter}
+            onMouseLeave={() => setActiveIndex(undefined)}
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+                stroke={COLORS[index % COLORS.length]}
+              />
+            ))}
+            <Label
+              value={data[0].value}
+              position="center"
+              fill="grey"
+              style={{
+                fontSize: '32px',
+                fontWeight: 'bold',
+                fontFamily: 'Roboto',
+              }}
             />
-          ))}
-        </Pie>
-        <Tooltip />
-      </PieRechart>
-    </ResponsiveContainer>
+          </Pie>
+          <TooltipRechart
+            content={<Tooltip />}
+            allowEscapeViewBox={{ x: true, y: true }}
+            //offset={50}
+            wrapperStyle={{ top: 0, left: 0 }}
+            active={true}
+          />
+          <Legend
+            content={renderLegend}
+            align="right"
+            layout="vertical"
+            width={200}
+            wrapperStyle={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              maxHeight: '100%',
+              overflowY: 'auto',
+            }}
+          />
+        </PieRechart>
+      </ResponsiveContainer>
+    </div>
   );
 };
