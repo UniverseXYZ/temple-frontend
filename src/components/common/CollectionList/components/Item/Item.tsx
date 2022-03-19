@@ -78,10 +78,9 @@ export const Item = React.memo(
           ref={ref}
         >
           <Card
-            variant="bordered"
+            bordered
+            hovered
             className={classNames(styles.Item, handle && styles.WithHandle)}
-            //style={style}
-            // {...props}
           >
             <HStack
               fontSize={14}

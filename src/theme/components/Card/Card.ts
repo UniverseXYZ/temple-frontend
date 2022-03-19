@@ -6,23 +6,20 @@ export const Card = {
     bg: mode('white', 'whiteTransparent.10')(props),
     borderRadius: 12,
     transition: 'all 150ms linear',
-  }),
-  // styles for different sizes ("sm", "md", "lg")
-  sizes: {},
-  // styles for different visual variants ("outline", "solid")
-  variants: {
-    whitebox: (props: any) => ({
-      boxShadow: mode(
-        '0px 10px 35px rgba(136 120 172 / 15%)',
-        '0 0 0 1px rgba(255 255 255 / 20%)'
-      )(props),
-    }),
-    bordered: (props: any) => ({
+
+    boxShadow: mode(
+      '0px 10px 35px rgba(136 120 172 / 15%)',
+      '0 0 0 1px rgba(255 255 255 / 20%)'
+    )(props),
+
+    '&.Card--isBordered': {
       boxShadow: mode(
         '0 0 0 1px rgba(0 0 0 / 10%)',
         '0 0 0 1px rgba(255 255 255 / 10%)'
       )(props),
+    },
 
+    '&.Card--isHovered': {
       _hover: {
         bg: mode('white', 'dark.60')(props),
         boxShadow: mode(
@@ -30,8 +27,27 @@ export const Card = {
           '0 0 0 1px rgba(255 255 255 / 20%)'
         )(props),
       },
-    }),
+    },
+  }),
+  // styles for different sizes ("sm", "md", "lg")
+  sizes: {},
+  // styles for different visual variants ("outline", "solid")
+  variants: {
+    // whitebox: (props: any) => ({
+    //   boxShadow: mode(
+    //     '0px 10px 35px rgba(136 120 172 / 15%)',
+    //     '0 0 0 1px rgba(255 255 255 / 20%)'
+    //   )(props),
+    // }),
+    // bordered: (props: any) => ({
+    //   boxShadow: mode(
+    //     '0 0 0 1px rgba(0 0 0 / 10%)',
+    //     '0 0 0 1px rgba(255 255 255 / 10%)'
+    //   )(props),
+    // }),
   },
   // default values for `size` and `variant`
-  defaultProps: {},
+  defaultProps: {
+    //variant: 'whitebox',
+  },
 };

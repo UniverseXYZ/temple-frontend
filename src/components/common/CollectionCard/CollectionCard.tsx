@@ -38,7 +38,8 @@ const CollectionCard: FC<Props> = (props) => {
             colorMode === 'dark' && styles.Dark,
             showAuthor && styles.WithAuthor
           )}
-          variant="bordered"
+          bordered
+          hovered
         >
           <div className={styles.Image}>
             <Image
