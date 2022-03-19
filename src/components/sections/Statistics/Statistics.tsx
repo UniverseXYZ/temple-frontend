@@ -1,4 +1,7 @@
-import { Container, Heading } from '@chakra-ui/react';
+import React from 'react';
+import { Box, Container, Heading } from '@chakra-ui/react';
+
+import { InventoryValue } from './components';
 
 const Statistics = () => (
   <>
@@ -6,6 +9,10 @@ const Statistics = () => (
       <Heading as="h2" size="lg">
         Statistics
       </Heading>
+
+      <Box>
+        <InventoryValue />
+      </Box>
     </Container>
   </>
 );
