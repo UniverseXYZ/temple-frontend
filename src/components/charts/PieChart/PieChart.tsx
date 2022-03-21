@@ -24,72 +24,79 @@ export const PieChart: FC = (props) => {
     setActiveIndex(index);
   };
 
-  const data = [
-    {
-      name: 'Group A',
-      value: 2400,
+  const data = {
+    total: {
+      valueETH: 2400,
+      valueUSD: 2400,
+      percent: 12.5,
     },
-    {
-      name: 'Group B',
-      value: 4567,
-    },
-    {
-      name: 'Group C',
-      value: 1398,
-    },
-    {
-      name: 'Group D',
-      value: 9800,
-    },
-    {
-      name: 'Group E',
-      value: 3908,
-    },
-    {
-      name: 'Group F',
-      value: 5800,
-    },
-    {
-      name: 'Group G',
-      value: 300,
-    },
-    {
-      name: 'Group G',
-      value: 300,
-    },
-    {
-      name: 'Group G',
-      value: 300,
-    },
-    {
-      name: 'Group G',
-      value: 300,
-    },
-    {
-      name: 'Group G',
-      value: 300,
-    },
-    {
-      name: 'Group G',
-      value: 300,
-    },
-    {
-      name: 'Group G',
-      value: 300,
-    },
-    {
-      name: 'Group G',
-      value: 300,
-    },
-    {
-      name: 'Group G',
-      value: 300,
-    },
-    {
-      name: 'Group G',
-      value: 300,
-    },
-  ];
+    values: [
+      {
+        name: 'Group A',
+        value: 2400,
+      },
+      {
+        name: 'Group B',
+        value: 4567,
+      },
+      {
+        name: 'Group C',
+        value: 1398,
+      },
+      {
+        name: 'Group D',
+        value: 9800,
+      },
+      {
+        name: 'Group E',
+        value: 3908,
+      },
+      {
+        name: 'Group F',
+        value: 5800,
+      },
+      {
+        name: 'Group G',
+        value: 300,
+      },
+      {
+        name: 'Group G',
+        value: 300,
+      },
+      {
+        name: 'Group G',
+        value: 300,
+      },
+      {
+        name: 'Group G',
+        value: 300,
+      },
+      {
+        name: 'Group G',
+        value: 300,
+      },
+      {
+        name: 'Group G',
+        value: 300,
+      },
+      {
+        name: 'Group G',
+        value: 300,
+      },
+      {
+        name: 'Group G',
+        value: 300,
+      },
+      {
+        name: 'Group G',
+        value: 300,
+      },
+      {
+        name: 'Group G',
+        value: 300,
+      },
+    ],
+  };
 
   const COLORS = [
     '#48F7D8',
@@ -101,7 +108,7 @@ export const PieChart: FC = (props) => {
     '#725CFA',
   ];
 
-  const renderActiveShape = (props) => {
+  const renderActiveShape = (props: any) => {
     const {
       cx,
       cy,
@@ -145,14 +152,23 @@ export const PieChart: FC = (props) => {
     );
   };
 
+  const renderLabel = (props: any) => {
+    //
+    const { payload } = props;
+
+    //console.log('payload', payload);
+
+    return <div>123</div>;
+  };
+
   return (
-    <div style={{ width: 545 }}>
+    <div>
       <ResponsiveContainer height={300} width="100%" minWidth="0">
         <PieRechart>
           <Pie
             activeIndex={activeIndex}
             activeShape={renderActiveShape}
-            data={data}
+            data={data.values}
             dataKey="value"
             nameKey="name"
             cx="50%"
@@ -163,7 +179,7 @@ export const PieChart: FC = (props) => {
             onMouseEnter={onPieEnter}
             onMouseLeave={() => setActiveIndex(undefined)}
           >
-            {data.map((entry, index) => (
+            {data.values.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
@@ -171,14 +187,16 @@ export const PieChart: FC = (props) => {
               />
             ))}
             <Label
-              value={data[0].value}
+              id="pie-label"
+              content={renderLabel}
+              value="any"
               position="center"
-              fill="grey"
-              style={{
-                fontSize: '32px',
-                fontWeight: 'bold',
-                fontFamily: 'Roboto',
-              }}
+              // fill="grey"
+              // style={{
+              //   fontSize: '32px',
+              //   fontWeight: 'bold',
+              //   fontFamily: 'Roboto',
+              // }}
             />
           </Pie>
           <TooltipRechart

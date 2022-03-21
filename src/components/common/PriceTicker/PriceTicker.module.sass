@@ -1,0 +1,30 @@
+.Wrapper
+  display: inline-block
+  padding: 4px 8px
+  border-radius: 6px
+  font-weight: 600
+  font-size: 10px
+  vertical-align: middle
+
+  &.isUp
+    color: #2CAA00
+    background: rgba(44, 170, 0, 0.1)
+
+    .Arrow
+      svg
+        transform: rotate(180deg)
+
+      path
+        fill: #2CAA00
+
+  &.isDown
+    color: #FF4949
+    background: rgba(255, 73, 73, 0.1)
+
+    .Arrow
+      path
+        fill: #FF4949
+
+.Arrow
+  width: 10px
+  margin-right: 3px

@@ -8,6 +8,7 @@ export { IconButton } from './IconButton';
 export { CloseButton } from './CloseButton';
 export { InfoTooltip } from './InfoTooltip';
 export { Loading } from './Loading';
+export { PriceTicker } from './PriceTicker';
 
 // Components
 export { CollectionCard } from './CollectionCard';
