@@ -13,8 +13,6 @@ export const PriceTicker: FC<Props> = (props) => {
   //
   const { value, vector, className, ...rest } = props;
 
-  console.log(props);
-
   const isUp = vector === 'up';
   const isDown = vector === 'down';
 

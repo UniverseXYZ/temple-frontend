@@ -12,7 +12,7 @@ export const Homepage: FC = () => {
 
   return (
     <div style={{ height: 10000 }}>
-      <Container maxW="1142px" mb="100px" mt="100px">
+      {/* <Container maxW="1142px" mb="100px" mt="100px">
         <Card variant="whitebox" p={50} mb={10}>
           <HStack spacing={10}>
             <Button
@@ -27,7 +27,7 @@ export const Homepage: FC = () => {
             </Button>
           </HStack>
         </Card>
-      </Container>
+      </Container> */}
 
       {sections.map((section: any, index: number) =>
         section.visible ? Section(section, index) : null
