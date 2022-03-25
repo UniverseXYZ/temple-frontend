@@ -11,14 +11,18 @@ const config = {
 export const theme = extendTheme({
   config,
   colors,
+
   fonts: {
     body: 'Space Grotesk, serif',
     heading: 'Sharp Grotesk, serif',
   },
-  // fontSizes: {
-  //   lg: 20,
-  //   xl: '26px',
-  // },
+
+  sizes: {
+    container: {
+      xl: '1140px',
+    },
+  },
+
   styles: {
     global: (props) => ({
       // styles for the `body`
@@ -37,6 +41,8 @@ export const theme = extendTheme({
       },
 
       '.Wrapper': {
+        paddingTop: '60px',
+
         _before: {
           content: '""',
           position: 'absolute',
