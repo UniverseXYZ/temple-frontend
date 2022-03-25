@@ -3,15 +3,26 @@ import { Box, BoxProps, useStyleConfig } from '@chakra-ui/react';
 
 import cn from 'classnames';
 
-interface Props extends BoxProps {
+type Omitted = 'border' | 'shadow';
+interface Props extends Omit<BoxProps, Omitted> {
   variant?: string;
-  bordered?: boolean;
-  hovered?: boolean;
+  border?: boolean;
+  hover?: boolean;
+  shadow?: boolean;
+  className?: string;
   children?: React.ReactNode;
 }
 
 export const Card: FC<Props> = (props) => {
-  const { variant, children, bordered, hovered, className, ...rest } = props;
+  const {
+    variant,
+    children,
+    border = true,
+    hover,
+    shadow,
+    className,
+    ...rest
+  } = props;
 
   const styles = useStyleConfig('Card', { variant });
 
@@ -19,8 +30,9 @@ export const Card: FC<Props> = (props) => {
     <Box
       className={cn(
         className,
-        bordered && 'Card--isBordered',
-        hovered && 'Card--isHovered'
+        border && 'Card--withBorder',
+        hover && 'Card--withHover',
+        shadow && 'Card--withShadow'
       )}
       sx={styles}
       {...rest}

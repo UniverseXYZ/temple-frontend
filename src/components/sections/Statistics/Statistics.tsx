@@ -16,7 +16,7 @@ const Statistics = () => (
       </Heading>
 
       <SimpleGrid columns={3} spacing="20px" mb="20px">
-        <Card className={styles.Block} bordered>
+        <Card className={styles.Block}>
           <Box className={styles.Headline}>
             <HStack spacing="8px">
               <Box>Revenue</Box>
@@ -33,7 +33,7 @@ const Statistics = () => (
           <Box className={styles.Block__Amount}>$100,242</Box>
         </Card>
 
-        <Card className={styles.Block} bordered>
+        <Card className={styles.Block}>
           <Box className={styles.Headline}>
             <HStack spacing="8px">
               <Box>Spending</Box>
@@ -50,7 +50,7 @@ const Statistics = () => (
           <Box className={styles.Block__Amount}>$100,242</Box>
         </Card>
 
-        <Card className={styles.Block} bordered>
+        <Card className={styles.Block}>
           <Box className={styles.Headline}>
             <HStack spacing="8px">
               <Box>ROI (realized)</Box>
@@ -68,7 +68,7 @@ const Statistics = () => (
       </SimpleGrid>
 
       <SimpleGrid columns={2} spacing="20px">
-        <Card bordered pt="30px" pb="30px">
+        <Card pt="30px" pb="30px">
           <Box className={styles.Headline} pl="30px">
             <HStack spacing="8px">
               <Box>Total inventory value</Box>
@@ -77,7 +77,7 @@ const Statistics = () => (
           </Box>
           <InventoryValue />
         </Card>
-        <Card bordered>Recent activity</Card>
+        <Card>Recent activity</Card>
       </SimpleGrid>
     </Container>
   </>

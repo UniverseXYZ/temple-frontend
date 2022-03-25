@@ -78,8 +78,7 @@ export const Item = React.memo(
           ref={ref}
         >
           <Card
-            bordered
-            hovered
+            hover
             className={classNames(styles.Item, handle && styles.WithHandle)}
           >
             <HStack
