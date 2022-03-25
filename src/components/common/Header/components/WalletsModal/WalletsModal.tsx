@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC, useContext } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -100,38 +100,40 @@ export const WalletsModal: FC = () => {
       validationSchema={validationSchema}
       onSubmit={onFormSubmit}
     >
-      <Form>
-        <Modal
-          isOpen={visible}
-          onClose={onClose}
-          blockScrollOnMount={false}
-          autoFocus={false}
-          size="md"
-          returnFocusOnClose={false}
-          isCentered
-        >
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>
-              {isCreate ? 'Add new wallet' : 'Edit wallet'}
-            </ModalHeader>
+      {() => (
+        <Form style={{ marginInlineStart: 0 }}>
+          <Modal
+            isOpen={visible}
+            onClose={onClose}
+            blockScrollOnMount={false}
+            autoFocus={false}
+            size="md"
+            returnFocusOnClose={false}
+            isCentered
+          >
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>
+                {isCreate ? 'Add new wallet' : 'Edit wallet'}
+              </ModalHeader>
 
-            <ModalCloseButton />
+              <ModalCloseButton />
 
-            <ModalBody>
-              <Content />
-            </ModalBody>
-            <ModalFooter>
-              <Footer
-                isOpen={visible}
-                onClose={onClose}
-                onDelete={handleDeleteWallet}
-                type={type}
-              />
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </Form>
+              <ModalBody>
+                <Content />
+              </ModalBody>
+              <ModalFooter>
+                <Footer
+                  isOpen={visible}
+                  onClose={onClose}
+                  onDelete={handleDeleteWallet}
+                  type={type}
+                />
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        </Form>
+      )}
     </Formik>
   );
 };
