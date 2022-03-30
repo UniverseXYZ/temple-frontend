@@ -9,6 +9,7 @@ export { CloseButton } from './CloseButton';
 export { InfoTooltip } from './InfoTooltip';
 export { Loading } from './Loading';
 export { PriceTicker } from './PriceTicker';
+export { TransactionBadge } from './TransactionBadge';
 
 // Components
 export { CollectionCard } from './CollectionCard';
