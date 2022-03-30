@@ -2,23 +2,26 @@ import React, { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { PriceTicker } from '@/components/common';
 import { Ethereum } from '@/components/icons';
+//import { } from 'recharts';
 
 import cn from 'classnames';
 import styles from './Legend.module.sass';
 
-export const Legend: FC = (props: any) => {
+export const Legend: FC<any> = (props: any) => {
   //
-  const { payload, onMouseEnter, onMouseLeave } = props;
+  const {
+    payload,
+    //onLegendEnter,
+    //onLegendLeave
+  } = props;
 
-  console.log('payload', payload);
+  // const handleMouseEnter = (key: number) => {
+  //   onLegendEnter && onLegendEnter(key);
+  // };
 
-  const handleMouseEnter = (key: number) => {
-    onMouseEnter(key);
-  };
-
-  const handleMouseLeave = () => {
-    onMouseLeave();
-  };
+  // const handleMouseLeave = () => {
+  //   onLegendLeave && onLegendLeave();
+  // };
 
   return (
     <Box className={styles.Wrapper}>
@@ -26,8 +29,8 @@ export const Legend: FC = (props: any) => {
         <Box
           key={`item-${index}`}
           className={styles.Item}
-          onMouseEnter={() => handleMouseEnter(item.payload.dataKey)}
-          onMouseLeave={handleMouseLeave}
+          // onMouseEnter={() => handleMouseEnter(item.payload.dataKey)}
+          // onMouseLeave={handleMouseLeave}
         >
           <Box className={styles.Border} bgColor={item.color} />
           <Box className={styles.Title}>{item.payload.name}</Box>

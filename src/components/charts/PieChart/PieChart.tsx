@@ -22,13 +22,13 @@ export const PieChart: FC = (props) => {
     setActiveIndex(index);
   };
 
-  const onLegendEnter = (index: number) => {
-    setActiveIndex(index);
-  };
+  // const onLegendEnter = (index: number) => {
+  //   setActiveIndex(index);
+  // };
 
-  const onLegendLeave = () => {
-    setActiveIndex(undefined);
-  };
+  // const onLegendLeave = () => {
+  //   setActiveIndex(undefined);
+  // };
 
   const data = {
     total: {
@@ -157,8 +157,8 @@ export const PieChart: FC = (props) => {
               marginRight: '10px',
               marginTop: '15px',
             }}
-            onMouseEnter={onLegendEnter}
-            onMouseLeave={onLegendLeave}
+            //onLegendEnter={onLegendEnter}
+            //onLegendLeave={onLegendLeave}
           />
         </PieRechart>
       </ResponsiveContainer>
