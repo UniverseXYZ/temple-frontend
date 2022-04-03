@@ -1,0 +1,71 @@
+@import '@/sass/colors'
+@import '@/sass/mixins'
+
+.List
+  overflow-x: hidden
+  overflow-y: auto
+  max-height: 315px
+  margin-right: 8px
+
+  @include styled-scroll
+
+.Item
+  margin-left: 30px
+  margin-right: 16px
+  padding-top: 14px
+  padding-bottom: 14px
+  border-bottom: 1px solid $black-transparent-5
+  
+  &:last-child
+    border-bottom: 0
+    
+
+.Image
+  margin-right: 14px
+
+.Details
+  flex-grow: 1
+  margin-right: 14px
+
+.Title
+  font-size: 14px
+  font-weight: 700
+  line-height: 23px
+  margin-bottom: 6px
+
+
+.ActionDetails
+  font-size: 12px
+  font-weight: 600
+  line-height: 16px
+  color: $black-transparent-40
+
+
+.ActitionAddress
+  font-weight: 700
+  color: $black-100
+
+.Price
+  font-size: 14px
+  font-weight: 700
+
+.Timestamp
+  font-size: 12px
+  font-weight: 600
+  color: $black-transparent-40
+  margin-top: 6px
+
+// ------------ DARK ------------ //
+
+.Dark
+  .Item
+    border-color: $white-transparent-5
+
+  .ActionDetails
+    color: $white-transparent-40
+
+  .ActitionAddress
+    color: $white-100
+
+  .Timestamp
+    color: $white-transparent-40

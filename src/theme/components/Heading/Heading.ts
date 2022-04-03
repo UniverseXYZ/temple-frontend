@@ -1,3 +1,5 @@
+import { mode } from '@chakra-ui/theme-tools';
+
 export const Heading = {
   // style object for base or default style
   baseStyle: {
@@ -11,6 +13,15 @@ export const Heading = {
   },
   // styles for different visual variants ("outline", "solid")
   variants: {
+    card: (props: any) => ({
+      fontFamily: 'Space Grotesk',
+      fontSize: '12px',
+      fontWeight: 600,
+      lineHeight: '16px',
+      color: mode('blackTransparent.60', 'whiteTransparent.60')(props),
+      textTransform: 'uppercase',
+    }),
+
     h1: {
       fontSize: 48,
     },

@@ -2,7 +2,7 @@
 
 .Wrapper
   position: relative
-  background: #fff
+  background-color: $white-100
   border-radius: 6px
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4), 0px 10px 20px rgba(136, 120, 172, 0.2)
   width: 180px
@@ -32,3 +32,13 @@
   line-height: 22px
   margin-right: 8px
   margin-left: 4px
+
+// ------------ DARK ------------ //  
+
+.Dark
+  &.Wrapper
+    background-color: $dark-60
+    box-shadow: 0px 6px 16px rgba(0 0 0 / 35%)
+
+  .Title
+    color: $white-transparent-60

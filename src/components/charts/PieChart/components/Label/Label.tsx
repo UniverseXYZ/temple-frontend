@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { Box, HStack, VStack, useColorMode } from '@chakra-ui/react';
 import { PriceTicker } from '@/components/common';
 import { Ethereum } from '@/components/icons';
 
@@ -10,6 +10,9 @@ export const Label: FC = (props: any) => {
   //
   const { value } = props;
 
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
   return (
     <g>
       <foreignObject
@@ -18,7 +21,7 @@ export const Label: FC = (props: any) => {
         width={100}
         height={100}
       >
-        <Box className={styles.Wrapper}>
+        <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
           <VStack spacing="10px">
             <PriceTicker value={10.23} vector="down" />
             <HStack spacing="6px">

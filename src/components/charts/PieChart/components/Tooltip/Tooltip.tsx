@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, useColorMode } from '@chakra-ui/react';
 import { Ethereum } from '@/components/icons';
 import { PriceTicker } from '@/components/common';
 
@@ -10,10 +10,13 @@ export const Tooltip: FC = (props: any) => {
   //
   const { payload } = props;
 
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
   const fill = payload[0]?.payload.fill;
 
   return (
-    <Box className={styles.Wrapper}>
+    <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
       <Box className={styles.Border} style={{ backgroundColor: fill }} />
       <Box className={styles.Content}>
         <Box className={styles.Title}>{payload[0]?.name}</Box>

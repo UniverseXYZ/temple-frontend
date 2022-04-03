@@ -1,4 +1,7 @@
 import React, { FC, useState } from 'react';
+
+import { useColorMode } from '@chakra-ui/react';
+
 import {
   ResponsiveContainer,
   PieChart as PieRechart,
@@ -12,9 +15,15 @@ import {
 
 import { Tooltip, Legend, Label } from './components';
 
+import cn from 'classnames';
+import styles from './PieChart.module.sass';
+
 export const PieChart: FC = (props) => {
   //
   const {} = props;
+
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
 
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
@@ -95,7 +104,7 @@ export const PieChart: FC = (props) => {
     } = props;
 
     return (
-      <g className="test">
+      <g className={styles.Cell}>
         <Sector
           cx={cx}
           cy={cy}
@@ -112,8 +121,9 @@ export const PieChart: FC = (props) => {
   return (
     <div>
       <ResponsiveContainer height={310} width="100%" minWidth="0">
-        <PieRechart>
+        <PieRechart className={cn(isDark && styles.Dark)}>
           <Pie
+            className={styles.Pie}
             activeIndex={activeIndex}
             activeShape={renderActiveShape}
             data={data.values}
@@ -129,6 +139,7 @@ export const PieChart: FC = (props) => {
           >
             {data.values.map((entry, index) => (
               <Cell
+                className={styles.Cell}
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
                 stroke={COLORS[index % COLORS.length]}

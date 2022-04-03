@@ -8,6 +8,7 @@ export const TransactionBadge = {
       display: 'inline-block',
       lineHeight: '1',
       fontWeight: 600,
+      color: 'black',
     },
     icon: {},
     text: {},
