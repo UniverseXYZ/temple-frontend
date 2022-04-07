@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import {
-  Link,
+  //Link,
   LinkBox,
   LinkOverlay,
   Box,
@@ -10,6 +10,8 @@ import {
   HStack,
   useColorMode,
 } from '@chakra-ui/react';
+
+import { Link } from 'react-router-dom';
 
 import { Card, Avatar, BundleTag } from '@/components/common';
 import { Ethereum } from '@/components/icons';
@@ -32,45 +34,45 @@ const CollectionCard: FC<Props> = (props) => {
   return (
     <>
       <LinkBox>
-        <Card
-          className={cn(
-            styles.Card,
-            colorMode === 'dark' && styles.Dark,
-            showAuthor && styles.WithAuthor
-          )}
-          hover
-        >
-          <div className={styles.Image}>
-            <Image
-              src="/mocks/collection-card-image.png"
-              alt="Collection Background"
-            />
-          </div>
-
-          <div className={styles.Avatar}>
-            <Avatar
-              image={collection.logo}
-              name={collection.name}
-              boxSize="68px"
-            />
-          </div>
-
-          <BundleTag className={styles.Bundle}>7</BundleTag>
-
-          <div className={styles.Content}>
-            <LinkOverlay href="#/collection">
-              <Title>{collection.name}</Title>
-            </LinkOverlay>
-            {showAuthor && <Author>Pavel</Author>}
-            {showText && (
-              <Text>
-                At eu lorem velit at urna lorem adipiscing. At eu lorem velit at
-                urna lorem adipiscing.
-              </Text>
+        <Link to="/collections/flud">
+          <Card
+            className={cn(
+              styles.Card,
+              colorMode === 'dark' && styles.Dark,
+              showAuthor && styles.WithAuthor
             )}
-            {showFooter && <Footer stats={collection.stats} />}
-          </div>
-        </Card>
+            hover
+          >
+            <div className={styles.Image}>
+              <Image
+                src="/mocks/collection-card-image.png"
+                alt="Collection Background"
+              />
+            </div>
+
+            <div className={styles.Avatar}>
+              <Avatar
+                image={collection.logo}
+                name={collection.name}
+                boxSize="68px"
+              />
+            </div>
+
+            <BundleTag className={styles.Bundle}>7</BundleTag>
+
+            <div className={styles.Content}>
+              <Title>{collection.name}</Title>
+              {showAuthor && <Author>Pavel</Author>}
+              {showText && (
+                <Text>
+                  At eu lorem velit at urna lorem adipiscing. At eu lorem velit
+                  at urna lorem adipiscing.
+                </Text>
+              )}
+              {showFooter && <Footer stats={collection.stats} />}
+            </div>
+          </Card>
+        </Link>
       </LinkBox>
     </>
   );

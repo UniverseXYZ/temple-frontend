@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { Container, Button, HStack } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
-import { Card } from '@/components/common';
 import { useSettings } from '@/hooks';
 
 import Section from './components/Sections/Sections';
@@ -11,27 +10,10 @@ export const Homepage: FC = () => {
   const { sections } = useSettings();
 
   return (
-    <div style={{ height: 10000 }}>
-      {/* <Container maxW="1142px" mb="100px" mt="100px">
-        <Card variant="whitebox" p={50} mb={10}>
-          <HStack spacing={10}>
-            <Button
-            //onClick={() => setSectionVisible('curated-collections', false)}
-            >
-              Test
-            </Button>
-            <Button variant="outline">Test</Button>
-            <Button disabled>Test</Button>
-            <Button variant="outline" disabled>
-              Test
-            </Button>
-          </HStack>
-        </Card>
-      </Container> */}
-
+    <Box style={{ height: 10000 }} pt="60px" className="Wrapper">
       {sections.map((section: any, index: number) =>
         section.visible ? Section(section, index) : null
       )}
-    </div>
+    </Box>
   );
 };

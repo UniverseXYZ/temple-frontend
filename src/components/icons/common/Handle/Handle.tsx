@@ -1,9 +1,13 @@
-import React from 'react';
-import { Box, Icon, useColorMode } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import { Box, BoxProps, Icon, useColorMode } from '@chakra-ui/react';
 
 import cn from 'classnames';
 
-export const Handle = (props: any) => {
+interface Props extends BoxProps {
+  isDragging: boolean;
+}
+
+export const Handle: FC<Props> = (props) => {
   const { isDragging, ...restProps } = props;
   const { colorMode } = useColorMode();
 

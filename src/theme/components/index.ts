@@ -11,3 +11,4 @@ export * from './FormError/FormError';
 export * from './FormLabel/FormLabel';
 export * from './Select/Select';
 export * from './TransactionBadge/TransactionBadge';
+export * from './Tabs/Tabs';

@@ -25,7 +25,7 @@ const CuratedCollections = () => {
 
   return (
     <>
-      <Container maxW="1142px">
+      <Container maxW="1142px" mt="100px">
         <Heading as="h2" size="lg" mb="40px">
           Curated collections
         </Heading>

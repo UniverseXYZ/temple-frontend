@@ -15,9 +15,16 @@ interface Props extends AvatarProps {
 }
 
 const Avatar: FC<Props> = (props) => {
-  const { image, variant, name, badgeSize = '19px', ...restProps } = props;
+  const {
+    variant,
+    size,
+    image,
+    name,
+    badgeSize = '19px',
+    ...restProps
+  } = props;
 
-  const styles = useStyleConfig('Avatar', { variant });
+  const styles = useStyleConfig('Avatar', { variant, size });
 
   return (
     <ChakraAvatar

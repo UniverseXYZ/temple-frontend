@@ -20,9 +20,8 @@ export default class Document extends NextDocument {
             //nonce={}
             initialColorMode={theme.config.initialColorMode}
           />
-          <div className="Wrapper">
-            <Main />
-          </div>
+
+          <Main />
 
           <NextScript />
         </body>

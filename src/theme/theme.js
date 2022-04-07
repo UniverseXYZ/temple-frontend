@@ -41,7 +41,7 @@ export const theme = extendTheme({
       },
 
       '.Wrapper': {
-        paddingTop: '60px',
+        //paddingTop: '60px',
 
         _before: {
           content: '""',

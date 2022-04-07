@@ -1,0 +1,98 @@
+@import '@/sass/colors'
+
+.Header
+  margin-top: 175px
+
+.TopContent
+  margin-bottom: 20px
+
+.Banner
+  position: absolute
+  top: 0
+  left: 0
+  z-index: -1
+  user-select: none
+
+  &:before
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    display: block
+    min-width: 100vw
+    height: 400px
+    background: linear-gradient(180deg, rgba(19, 19, 19, 0) 17.87%, #131313 100%)
+
+  img
+    min-width: 100vw
+    height: 400px
+    object-fit: cover
+
+.Avatar
+  width: 70px
+  height: 70px
+  border-radius: 50%
+  object-fit: cover
+  border: 2px solid $black-transparent-10
+  margin-right: 20px
+
+.Title
+  font-family: 'Sharp Grotesk'
+  font-weight: 600
+  font-size: 26px
+  color: $white-100
+
+.StatsWrapper
+  display: flex
+  background-color: $white-100
+  flex-wrap: nowrap
+  justify-content: space-between
+  border: 1px solid $black-transparent-10
+  border-radius: 12px
+  box-shadow: 0px 10px 36px rgba(136, 120, 172, 0.14)
+
+.StatsItem
+  padding: 30px
+  text-align: center
+  flex-basis: 100%
+  border-right: 1px solid $black-transparent-10
+
+  &:last-child
+    border-right: 0
+
+.StatsItem__Icon
+  width: 21px
+
+  path, circle
+    stroke: $black-transparent-60
+
+.StatsItem__Headline
+  color: $black-transparent-60
+  font-weight: 500
+  font-size: 14px
+
+.StatsItem__Value
+  font-weight: 700
+  font-size: 24px
+
+
+// ------------ DARK ------------ //
+
+.Dark
+  .Avatar
+    border-color: $white-transparent-10
+
+  .StatsWrapper
+    background-color: $dark-80
+    border-color: $white-transparent-10
+    box-shadow: 0px 10px 36px rgba(0, 0, 0, 0.14)
+
+  .StatsItem
+    border-color: $white-transparent-10
+
+  .StatsItem__Icon
+    path
+      stroke: $white-transparent-60
+
+  .StatsItem__Headline
+    color: $white-transparent-60

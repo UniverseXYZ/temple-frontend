@@ -1,17 +1,19 @@
 // Icons
-export { BundleIcon } from './BundleIcon/BundleIcon';
-export { TrashIcon } from './TrashIcon/TrashIcon';
-export { LightThemeIcon } from './LightThemeIcon/LightThemeIcon';
-export { DarkThemeIcon } from './DarkThemeIcon/DarkThemeIcon';
-export { SettingsIcon } from './SettingsIcon/SettingsIcon';
-export { EditIcon } from './EditIcon/EditIcon';
-export { LeftArrow } from './LeftArrow/LeftArrow';
-export { RightArrow } from './RightArrow/RightArrow';
-export { Handle } from './Handle/Handle';
-export { InfoIcon } from './InfoIcon/InfoIcon';
-export { SelectDownArrow } from './SelectDownArrow/SelectDownArrow';
-export { SearchIcon } from './SearchIcon/SearchIcon';
-export { CrossIcon } from './CrossIcon/CrossIcon';
+export { BundleIcon } from './common/BundleIcon/BundleIcon';
+export { TrashIcon } from './common/TrashIcon/TrashIcon';
+export { LightThemeIcon } from './common/LightThemeIcon/LightThemeIcon';
+export { DarkThemeIcon } from './common/DarkThemeIcon/DarkThemeIcon';
+export { SettingsIcon } from './common/SettingsIcon/SettingsIcon';
+export { EditIcon } from './common/EditIcon/EditIcon';
+export { LeftArrow } from './common/LeftArrow/LeftArrow';
+export { RightArrow } from './common/RightArrow/RightArrow';
+export { Handle } from './common/Handle/Handle';
+export { InfoIcon } from './common/InfoIcon/InfoIcon';
+export { SelectDownArrow } from './common/SelectDownArrow/SelectDownArrow';
+export { SearchIcon } from './common/SearchIcon/SearchIcon';
+export { CrossIcon } from './common/CrossIcon/CrossIcon';
 
 // Currencies
 export { Ethereum } from './currency/Ethereum/Ethereum';
+
+// Socials
