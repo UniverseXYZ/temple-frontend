@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import { HStack } from '@chakra-ui/react';
+import { Box, HStack } from '@chakra-ui/react';
 import { BundleIcon } from '@/components/icons';
 
 import styles from './BundleTag.module.sass';
@@ -12,14 +12,12 @@ type Props = {
 };
 
 const BundleTag = ({ className, children }: Props) => (
-  <>
-    <div className={cn(styles.bundle, className)}>
-      <HStack>
-        <BundleIcon boxSize={'20px'} />
-        <span>{children}</span>
-      </HStack>
-    </div>
-  </>
+  <Box className={cn(styles.Wrapper, className)}>
+    <HStack>
+      <BundleIcon className={styles.Icon} />
+      <span>{children}</span>
+    </HStack>
+  </Box>
 );
 
 export default BundleTag;
