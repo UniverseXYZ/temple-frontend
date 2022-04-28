@@ -21,13 +21,13 @@ export const items = [
     description: 'Top collections all over the time',
   },
   {
-    id: 'user-collections',
+    id: 'owned-collections',
     image: '/assets/images/icons/icon-settings-4.png',
-    title: 'User collections',
+    title: 'Owned collections',
     description: 'Collections user owns',
   },
   {
-    id: 'my-watchlist',
+    id: 'watchlist',
     image: '/assets/images/icons/icon-settings-5.png',
     title: 'My watchlist',
     description: 'Collections I follow',

@@ -16,12 +16,12 @@ export const settings = {
       order: 3,
     },
     {
-      id: 'user-collections',
+      id: 'owned-collections',
       visible: true,
       order: 4,
     },
     {
-      id: 'my-watchlist',
+      id: 'watchlist',
       visible: true,
       order: 5,
     },

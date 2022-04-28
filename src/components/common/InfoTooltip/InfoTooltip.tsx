@@ -6,9 +6,9 @@ import { InfoIcon } from '@/components/icons';
 import cn from 'classnames';
 import styles from './InfoTooltip.module.sass';
 
-type Props = Omit<TooltipProps, 'children'>;
+type InfoTooltipProps = Omit<TooltipProps, 'children'>;
 
-export const InfoTooltip = (props: Props) => {
+export const InfoTooltip = (props: InfoTooltipProps) => {
   //
   const { colorMode } = useColorMode();
 

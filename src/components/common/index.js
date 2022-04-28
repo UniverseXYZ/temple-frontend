@@ -10,6 +10,7 @@ export { InfoTooltip } from './InfoTooltip';
 export { Loading } from './Loading';
 export { PriceTicker } from './PriceTicker';
 export { TransactionBadge } from './TransactionBadge';
+export { ActivityList } from './ActivityList';
 
 // Components
 export { CollectionCard } from './CollectionCard';

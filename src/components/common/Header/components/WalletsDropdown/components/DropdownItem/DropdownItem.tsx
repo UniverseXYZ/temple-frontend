@@ -71,7 +71,11 @@ export const DropdownItem = (props: Props) => {
           <Text className={styles.Name} isTruncated maxWidth={'160px'}>
             {wallet.name}
           </Text>
-          <Tooltip label={hasCopied ? 'Copied!' : 'Copy'} placement="top">
+          <Tooltip
+            label={hasCopied ? 'Copied!' : 'Copy'}
+            placement="top"
+            openDelay={200}
+          >
             <Box className={styles.Address} onClick={(e) => handleCopy(e)}>
               {address}
             </Box>

@@ -149,7 +149,3 @@ export const Item = React.memo(
     }
   )
 );
-
-// const Content = ({ item }: any) => ;
-
-// const MemoizedContent = React.memo(Content);
