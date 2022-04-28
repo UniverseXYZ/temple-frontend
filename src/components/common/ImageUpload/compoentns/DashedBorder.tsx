@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, BoxProps, Icon } from '@chakra-ui/react';
 
 interface Props extends BoxProps {
@@ -10,7 +10,7 @@ interface Props extends BoxProps {
   className?: string;
 }
 
-export const DashedBorder: FC<Props> = (props) => {
+export const DashedBorder = (props: any) => {
   const {
     width = 100,
     height = 100,

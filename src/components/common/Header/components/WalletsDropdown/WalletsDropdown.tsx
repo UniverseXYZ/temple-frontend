@@ -1,4 +1,4 @@
-import React, { FC, useContext, useRef, useState, useEffect } from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 import { Box, Button, Text, HStack, useColorMode } from '@chakra-ui/react';
 
 import { useClickAway } from 'react-use';
@@ -18,10 +18,8 @@ const ALL_WALLETS_VALUE = {
   image: '',
 };
 
-export const WalletsDropdown: FC = (props) => {
+export const WalletsDropdown = () => {
   //
-  //const { } = props;
-
   const { wallets, activeWallet, setActiveWallet } = useWallets() as any;
   const { onOpen } = useContext(WalletsModalContext);
 

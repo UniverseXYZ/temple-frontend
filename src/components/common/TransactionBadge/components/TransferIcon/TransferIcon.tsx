@@ -1,9 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Icon } from '@chakra-ui/react';
 
-export const TransferIcon: FC = (props) => {
-  //
-  const {} = props;
+export const TransferIcon = () => {
   //
   return (
     <Icon

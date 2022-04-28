@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Button,
   AlertDialog,
@@ -11,7 +11,15 @@ import {
   //useDisclosure,
 } from '@chakra-ui/react';
 
-export const ConfirmDialog: FC<any> = (props: any) => {
+interface ConfirmDialogProps {
+  visible: boolean;
+  confirmText?: string;
+  cancelText?: string;
+  onCancel(): void;
+  onConfirm?(): void;
+}
+
+export const ConfirmDialog = (props: ConfirmDialogProps) => {
   //
   const {
     visible,

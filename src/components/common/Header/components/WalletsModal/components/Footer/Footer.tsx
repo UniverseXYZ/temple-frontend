@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { HStack, Spacer, Button, useDisclosure } from '@chakra-ui/react';
 
 import { useFormikContext } from 'formik';
@@ -8,7 +8,7 @@ import { TrashIcon } from '@/components/icons';
 
 import { ConfirmDialog } from '@/components/ui';
 
-export const Footer: FC<any> = (props: any) => {
+export const Footer = (props: any) => {
   //
   const { type, onClose, onDelete } = props;
 

@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent, useContext } from 'react';
+import React, { SyntheticEvent, useContext } from 'react';
 import {
   Box,
   Flex,
@@ -31,7 +31,7 @@ interface Props {
   onSelect(wallet: IWallet): void;
 }
 
-export const DropdownItem: FC<Props> = (props) => {
+export const DropdownItem = (props: Props) => {
   //
   const { wallet, onSelect } = props;
 

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, BoxProps, useStyleConfig } from '@chakra-ui/react';
 
 import cn from 'classnames';
@@ -13,7 +13,7 @@ interface Props extends Omit<BoxProps, Omitted> {
   children?: React.ReactNode;
 }
 
-export const Card: FC<Props> = (props) => {
+export const Card = (props: Props) => {
   const {
     variant,
     children,

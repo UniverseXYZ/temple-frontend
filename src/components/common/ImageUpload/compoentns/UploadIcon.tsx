@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, BoxProps, Icon } from '@chakra-ui/react';
 
-export const UploadIcon: FC<BoxProps> = (props) => {
+export const UploadIcon = (props: BoxProps) => {
   return (
     <Box {...props}>
       <Icon width="100%" height="100%" viewBox="0 0 35 28" fill="none">

@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React, { FC } from 'react';
+import React from 'react';
 import { Statistics } from '@/components/sections';
 import { CuratedCollections } from '@/components/sections';
 import { TopCollections } from '@/components/sections';

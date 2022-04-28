@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 //import { Box } from '@chakra-ui/react';
 
 import {
@@ -16,7 +16,7 @@ import { Tooltip, Dot } from './components';
 import cn from 'classnames';
 import styles from './.module.sass';
 
-export const LineChart: FC = (props) => {
+export const LineChart = (props: any) => {
   //
   const {} = props;
 

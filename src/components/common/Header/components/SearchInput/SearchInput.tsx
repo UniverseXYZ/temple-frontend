@@ -1,4 +1,4 @@
-import React, { FC, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Box, useColorMode } from '@chakra-ui/react';
 import { useClickAway } from 'react-use';
 
@@ -10,7 +10,7 @@ import styles from './SearchInput.module.sass';
 
 import initialData from '@/mocks/data';
 
-export const SearchInput: FC = (props) => {
+export const SearchInput = (props: any) => {
   //
   const {} = props;
 

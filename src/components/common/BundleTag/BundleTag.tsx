@@ -11,7 +11,7 @@ type Props = {
   className?: string;
 };
 
-const BundleTag: React.FC<Props> = ({ className, children }) => (
+const BundleTag = ({ className, children }: Props) => (
   <>
     <div className={cn(styles.bundle, className)}>
       <HStack>

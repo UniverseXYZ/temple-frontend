@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Image, useColorMode, useToast } from '@chakra-ui/react';
 import ImageUploading, { ImageType } from 'react-images-uploading';
 import { useField } from 'formik';
@@ -18,7 +18,7 @@ interface Props {
   name: string;
 }
 
-export const ImageUpload: FC<Props> = (props) => {
+export const ImageUpload = (props: Props) => {
   //
   const { name } = props;
 

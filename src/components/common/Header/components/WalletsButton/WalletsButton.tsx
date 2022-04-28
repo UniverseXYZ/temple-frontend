@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Button } from '@chakra-ui/react';
 import { useWallets } from '@/hooks';
 
@@ -7,7 +7,7 @@ import { WalletsModalContext } from '../../context/WalletsModalContext';
 import { WalletsModal } from '../WalletsModal';
 import { WalletsDropdown } from '../WalletsDropdown';
 
-export const WalletsButton: FC = (props) => {
+export const WalletsButton = () => {
   //
   const { onOpen } = useContext(WalletsModalContext);
 

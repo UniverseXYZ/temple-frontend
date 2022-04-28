@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, BoxProps, Icon, HStack } from '@chakra-ui/react';
 
 import cn from 'classnames';
@@ -9,7 +9,7 @@ interface Props extends BoxProps {
   vector: 'up' | 'down';
 }
 
-export const PriceTicker: FC<Props> = (props) => {
+export const PriceTicker = (props: Props) => {
   //
   const { value, vector, className, ...rest } = props;
 

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, Flex, useMultiStyleConfig } from '@chakra-ui/react';
 
 import {
@@ -84,7 +84,7 @@ interface TransactionBadgeProps {
   status: StatusList;
 }
 
-export const TransactionBadge: FC<TransactionBadgeProps> = React.forwardRef<
+export const TransactionBadge = React.forwardRef<
   HTMLDivElement,
   TransactionBadgeProps
 >((props, ref) => {

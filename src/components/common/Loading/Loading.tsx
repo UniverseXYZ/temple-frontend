@@ -1,11 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import styles from './Loading.module.scss';
 
-export const Loading: FC = (props) => {
+export const Loading = () => {
   //
-  const {} = props;
-
   return (
     <svg
       version="1.1"

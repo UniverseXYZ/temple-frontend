@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useColorMode } from '@chakra-ui/react';
 
 import { Tooltip } from '@/components/ui';
 import { IconButton } from '@/components/common';
 import { LightThemeIcon, DarkThemeIcon } from '@/components/icons';
 
-export const ThemeSwitcher: FC = () => {
+export const ThemeSwitcher = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const isDark = colorMode === 'dark';

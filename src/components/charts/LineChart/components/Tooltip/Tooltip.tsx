@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, HStack } from '@chakra-ui/react';
 
 import { Ethereum } from '@/components/icons';
@@ -6,7 +6,7 @@ import { Ethereum } from '@/components/icons';
 import cn from 'classnames';
 import styles from './Tooltip.module.sass';
 
-export const Tooltip: FC = (props: any) => {
+export const Tooltip = (props: any) => {
   //
   const { payload } = props;
 

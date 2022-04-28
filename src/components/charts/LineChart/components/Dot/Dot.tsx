@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, useColorMode } from '@chakra-ui/react';
 
 import cn from 'classnames';
 import styles from './Dot.module.sass';
 
-export const Dot: FC = (props: any) => {
+export const Dot = (props: any) => {
   //
   const {} = props;
 

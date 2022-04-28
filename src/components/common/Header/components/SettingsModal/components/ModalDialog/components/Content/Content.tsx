@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { Heading } from '@chakra-ui/react';
 
 import {
@@ -129,7 +129,7 @@ interface SortableItemProps {
   onChange(id: string, visible: boolean): void;
 }
 
-export const SortableItem: FC<SortableItemProps> = (props) => {
+export const SortableItem = (props: SortableItemProps) => {
   const { animateLayoutChanges, id, item, onChange } = props;
 
   const {

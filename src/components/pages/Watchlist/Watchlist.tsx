@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Container, Heading } from '@chakra-ui/react';
 import { CollectionList } from '@/components/common/';
 
-export const Watchlist: FC = () => {
+export const Watchlist = () => {
   return (
     <>
       <Container maxW="1142px">

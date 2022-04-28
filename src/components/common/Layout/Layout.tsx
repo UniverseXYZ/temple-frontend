@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Header } from '@/components/common';
 
-export const Layout: FC = () => (
+export const Layout = () => (
   <>
     <Header />
     <Outlet />

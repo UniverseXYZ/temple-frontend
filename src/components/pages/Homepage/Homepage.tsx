@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box } from '@chakra-ui/react';
 
 import { useSettings } from '@/hooks';
 
 import Section from './components/Sections/Sections';
 
-export const Homepage: FC = () => {
+export const Homepage = () => {
   //
   const { sections } = useSettings();
 

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   Container,
   Box,
@@ -29,10 +29,8 @@ import {
 import cn from 'classnames';
 import styles from './Collection.module.sass';
 
-export const Collection: FC = (props) => {
+export const Collection = () => {
   //
-  const {} = props;
-
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 

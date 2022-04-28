@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { useContext } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -35,7 +35,7 @@ const validationSchema = yup.object({
 
 const initialValues = { name: '', address: '', image: '' };
 
-export const WalletsModal: FC = () => {
+export const WalletsModal = () => {
   //
   const { wallet, type, visible, onClose } = useContext(WalletsModalContext);
 

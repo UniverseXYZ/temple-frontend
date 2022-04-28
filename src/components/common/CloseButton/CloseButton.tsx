@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, Icon, useColorMode } from '@chakra-ui/react';
 
 interface Props {

@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Icon, IconProps } from '@chakra-ui/react';
 
-export const LightThemeIcon: FC<IconProps> = (props) => (
+export const LightThemeIcon = (props: IconProps) => (
   <Icon fill="none" width="20px" height="20px" viewBox="0 0 20 20" {...props}>
     <circle cx="10" cy="10" r="5" stroke="#000" />
     <path

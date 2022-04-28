@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { TooltipProps, useColorMode } from '@chakra-ui/react';
 import { Tooltip } from '@/components/ui';
 import { InfoIcon } from '@/components/icons';
@@ -8,7 +8,7 @@ import styles from './InfoTooltip.module.sass';
 
 type Props = Omit<TooltipProps, 'children'>;
 
-export const InfoTooltip: FC<Props> = (props) => {
+export const InfoTooltip = (props: Props) => {
   //
   const { colorMode } = useColorMode();
 

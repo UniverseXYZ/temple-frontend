@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   //Link,
   LinkBox,
@@ -26,7 +26,7 @@ interface Props {
   collection: any;
 }
 
-const CollectionCard: FC<Props> = (props) => {
+const CollectionCard = (props: Props) => {
   const { showAuthor, showFooter, showText, collection } = props;
 
   const { colorMode } = useColorMode();
@@ -78,22 +78,22 @@ const CollectionCard: FC<Props> = (props) => {
   );
 };
 
-const Title: FC<any> = ({ children }) => (
+const Title = ({ children }: any) => (
   <div className={styles.Title}>{children}</div>
 );
 
-const Author: FC = ({ children }) => (
+const Author = ({ children }: any) => (
   <div className={styles.Author}>
     <span>by</span>
     <Link href="#/author">{children}</Link>
   </div>
 );
 
-const Text: FC = ({ children }) => (
+const Text = ({ children }: any) => (
   <div className={styles.Text}>{children}</div>
 );
 
-const Footer: React.FC<any> = ({ stats }) => (
+const Footer = ({ stats }: any) => (
   <>
     <div className={styles.Footer}>
       <Flex>

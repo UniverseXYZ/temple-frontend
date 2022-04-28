@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useColorMode } from '@chakra-ui/react';
 
@@ -18,7 +18,7 @@ import { Tooltip, Legend, Label } from './components';
 import cn from 'classnames';
 import styles from './PieChart.module.sass';
 
-export const PieChart: FC = (props) => {
+export const PieChart = (props) => {
   //
   const {} = props;
 

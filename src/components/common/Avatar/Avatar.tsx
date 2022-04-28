@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   Avatar as ChakraAvatar,
   AvatarBadge,
@@ -14,7 +14,7 @@ interface Props extends AvatarProps {
   badgeSize?: string | number;
 }
 
-const Avatar: FC<Props> = (props) => {
+const Avatar = (props: Props) => {
   const {
     variant,
     size,

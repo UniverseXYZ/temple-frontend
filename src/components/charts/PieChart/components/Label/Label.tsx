@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, HStack, VStack, useColorMode } from '@chakra-ui/react';
 import { PriceTicker } from '@/components/common';
 import { Ethereum } from '@/components/icons';
@@ -6,7 +6,7 @@ import { Ethereum } from '@/components/icons';
 import cn from 'classnames';
 import styles from './Label.module.sass';
 
-export const Label: FC = (props: any) => {
+export const Label = (props: any) => {
   //
   const { value } = props;
 

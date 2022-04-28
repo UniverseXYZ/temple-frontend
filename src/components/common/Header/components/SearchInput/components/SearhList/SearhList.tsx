@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, useColorMode } from '@chakra-ui/react';
 import { Loading } from '@/components/common';
 
@@ -7,7 +7,7 @@ import { ListItem } from '../ListItem';
 import cn from 'classnames';
 import styles from './SearchList.module.sass';
 
-export const SearhList: FC<any> = (props: any) => {
+export const SearhList = (props: any) => {
   //
   const { collections, isOpen } = props;
 

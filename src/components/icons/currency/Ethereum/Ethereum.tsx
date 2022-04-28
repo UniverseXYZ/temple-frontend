@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, BoxProps, Icon, useColorMode } from '@chakra-ui/react';
 import { LightPath } from './LightPath';
 import { DarkPath } from './DarkPath';
 
-export const Ethereum: FC<BoxProps> = (props) => {
+export const Ethereum = (props: BoxProps) => {
   const { colorMode } = useColorMode();
   return (
     <Box w="10px" {...props}>

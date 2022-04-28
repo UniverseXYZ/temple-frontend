@@ -1,9 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Icon } from '@chakra-ui/react';
 
-export const BidsIcon: FC = (props) => {
-  //
-  const {} = props;
+export const BidsIcon = () => {
   //
   return (
     <Icon

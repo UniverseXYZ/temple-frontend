@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 
 import {
   closestCenter,
@@ -52,13 +52,13 @@ export interface Props {
   useDragOverlay?: boolean;
 }
 
-export const CollectionList: FC<Props> = ({
+export const CollectionList = ({
   activationConstraint,
   coordinateGetter = sortableKeyboardCoordinates,
   handle = false,
   removable,
   useDragOverlay = false,
-}) => {
+}: Props) => {
   const [items, setItems] = useState(initialData.collections);
   const [activeId, setActiveId] = useState<string | null>(null);
 

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, Flex, HStack, Text, Icon } from '@chakra-ui/react';
 import { Ethereum } from '@/components/icons';
 

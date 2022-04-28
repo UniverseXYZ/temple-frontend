@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, BoxProps, Icon } from '@chakra-ui/react';
 
-export const BundleIcon: FC<BoxProps> = (props) => (
+export const BundleIcon = (props: BoxProps) => (
   <Box {...props}>
     <Icon fill="none" viewBox="0 0 20 20" boxSize={props.boxSize}>
       <path

@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, BoxProps, Icon } from '@chakra-ui/react';
 
-export const SearchIcon: FC<BoxProps> = (props) => {
+export const SearchIcon = (props: BoxProps) => {
   return (
     <Box boxSize="18px" {...props}>
       <Icon

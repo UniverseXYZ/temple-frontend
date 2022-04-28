@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Flex,
@@ -21,7 +21,7 @@ import styles from './Header.module.sass';
 
 import { WalletsModalProvider } from './context/WalletsModalContext';
 
-const Header: FC = () => {
+const Header = () => {
   const { colorMode } = useColorMode();
 
   const isDark = colorMode === 'dark';

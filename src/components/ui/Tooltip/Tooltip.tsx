@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   Tooltip as ChakraTooltip,
   TooltipProps,
@@ -9,7 +9,7 @@ interface Props extends TooltipProps {
   variant?: string;
 }
 
-export const Tooltip: FC<Props> = (props) => {
+export const Tooltip = (props: Props) => {
   const { variant, children, hasArrow = true, gutter = 10, ...rest } = props;
 
   const styles = useStyleConfig('Tooltip', { variant });

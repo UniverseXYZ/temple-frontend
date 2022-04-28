@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, Flex, useColorMode } from '@chakra-ui/react';
 
 import { Avatar } from '@/components/common';
@@ -6,7 +6,7 @@ import { Avatar } from '@/components/common';
 import cn from 'classnames';
 import styles from './ListItem.module.sass';
 
-export const ListItem: FC<any> = (props: any) => {
+export const ListItem = (props: any) => {
   //
   const { collection } = props;
 

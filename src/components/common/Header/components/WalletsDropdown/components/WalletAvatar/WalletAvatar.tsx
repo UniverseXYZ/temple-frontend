@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, Image, useColorMode } from '@chakra-ui/react';
 import Blockies from 'react-blockies';
 

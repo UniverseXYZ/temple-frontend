@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   Box,
   Flex,
@@ -20,9 +20,10 @@ interface Props {
   tooltip?: string;
   errorMessage?: string;
   maxLeight?: number;
+  children?: React.ReactNode;
 }
 
-export const FormItem: FC<Props> = (props) => {
+export const FormItem = (props: Props) => {
   //
   const {
     name,

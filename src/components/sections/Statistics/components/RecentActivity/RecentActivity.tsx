@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, Flex, HStack, Image, useColorMode } from '@chakra-ui/react';
 
 import { TransactionBadge } from '@/components/common';
@@ -11,7 +11,7 @@ import styles from './RecentActivity.module.sass';
 
 import { data } from './mock/data';
 
-export const RecentActivity: FC = () => {
+export const RecentActivity = () => {
   //
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';

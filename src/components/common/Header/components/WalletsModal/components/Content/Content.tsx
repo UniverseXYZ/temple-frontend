@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, HStack, VStack } from '@chakra-ui/react';
 
 import { ImageUpload } from '@/components/common';
 import { FormItem, Input } from '@/components/ui';
 
-export const Content: FC<any> = (props: any) => {
+export const Content = () => {
   //
   return (
     <VStack align="stretch" spacing={'30px'}>
