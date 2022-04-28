@@ -4,15 +4,15 @@ import React from 'react';
 import { Statistics } from '@/components/sections';
 import { CuratedCollections } from '@/components/sections';
 import { TopCollections } from '@/components/sections';
-import { UserCollections } from '@/components/sections';
-import { MyWatchlist } from '@/components/sections';
+import { OwnedCollections } from '@/components/sections';
+import { Watchlist } from '@/components/sections';
 
 const Components: any = {
   statistics: Statistics,
   'curated-collections': CuratedCollections,
   'top-collections': TopCollections,
-  'user-collections': UserCollections,
-  'my-watchlist': MyWatchlist,
+  'owned-collections': OwnedCollections,
+  watchlist: Watchlist,
 };
 
 export default (block: any, index: number) => {
