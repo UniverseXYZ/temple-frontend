@@ -4,3 +4,4 @@ export * from './Input';
 export * from './FormItem';
 export * from './Select';
 export * from './ConfirmDialog';
+export * from './EltasticSwitch';
