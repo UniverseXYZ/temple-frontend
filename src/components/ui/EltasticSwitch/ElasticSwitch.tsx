@@ -46,6 +46,7 @@ export const ElasticSwitch = (props: Props) => {
       <HStack className={styles.List} spacing="4px">
         {items.map((item: Item, index: number) => (
           <Box
+            //@ts-ignore // TODO: FIX ME
             ref={elementsRef.current[index]}
             key={index}
             className={cn(

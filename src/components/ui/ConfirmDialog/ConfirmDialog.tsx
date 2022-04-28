@@ -33,9 +33,9 @@ export const ConfirmDialog = (props: ConfirmDialogProps) => {
 
   const cancelRef = useRef(null);
 
-  // const handleConfirm = () => {
-  //   onConfirm
-  // }
+  const handleConfirm = () => {
+    onConfirm && onConfirm();
+  };
 
   return (
     <AlertDialog
@@ -56,7 +56,7 @@ export const ConfirmDialog = (props: ConfirmDialogProps) => {
           Are you sure you want to remove the wallet address?
         </AlertDialogBody>
         <AlertDialogFooter>
-          <Button colorScheme="red" mr={3} onClick={() => onConfirm()}>
+          <Button colorScheme="red" mr={3} onClick={() => handleConfirm()}>
             {confirmText}
           </Button>
           <Button variant="outline" ref={cancelRef} onClick={onCancel}>

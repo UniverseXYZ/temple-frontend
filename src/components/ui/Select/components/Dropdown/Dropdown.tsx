@@ -4,7 +4,7 @@ import { FocusScope } from '@react-aria/focus';
 
 import styles from '../../Select.module.sass';
 
-export function Dropdown(props) {
+export const Dropdown = (props: any) => {
   const ref = React.useRef();
   const { popoverRef = ref, isOpen, onClose, children } = props;
 
@@ -30,4 +30,4 @@ export function Dropdown(props) {
       </div>
     </FocusScope>
   );
-}
+};

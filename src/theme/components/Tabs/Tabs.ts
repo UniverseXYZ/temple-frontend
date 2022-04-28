@@ -2,7 +2,7 @@ import { mode } from '@chakra-ui/theme-tools';
 
 export const Tabs = {
   // style object for base or default style
-  baseStyle: (props) => ({
+  baseStyle: () => ({
     root: {},
     tab: {
       outline: 0,

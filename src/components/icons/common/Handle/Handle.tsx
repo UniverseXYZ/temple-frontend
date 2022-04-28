@@ -4,7 +4,7 @@ import { Box, BoxProps, Icon, useColorMode } from '@chakra-ui/react';
 import cn from 'classnames';
 
 interface Props extends BoxProps {
-  isDragging: boolean;
+  isDragging?: boolean;
 }
 
 export const Handle = (props: Props) => {

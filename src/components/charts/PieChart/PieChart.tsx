@@ -18,10 +18,8 @@ import { Tooltip, Legend, Label } from './components';
 import cn from 'classnames';
 import styles from './PieChart.module.sass';
 
-export const PieChart = (props) => {
+export const PieChart = () => {
   //
-  const {} = props;
-
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 

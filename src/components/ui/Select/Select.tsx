@@ -23,7 +23,7 @@ interface SelectProps {
   defaultSelectedKey?: string;
 }
 
-export const Select = (props: SelectProps) => {
+export const Select = (props: any) => {
   // Create state based on the incoming props
   const state = useSelectState(props);
 
@@ -39,7 +39,7 @@ export const Select = (props: SelectProps) => {
   } = props;
 
   // Get props for child elements from useSelect
-  const ref = React.useRef();
+  const ref = React.useRef(null);
 
   const css = useMultiStyleConfig('Select', { variant });
 
@@ -89,11 +89,11 @@ export const Select = (props: SelectProps) => {
           selectedItem && styles.isSelected
         )}
       >
-        <Box
+        <button
           ref={ref}
-          as="button"
+          //as="button"
           className={styles.Select}
-          __css={css.select}
+          //__css={css.select}
           {...buttonProps}
         >
           <span {...valueProps}>
@@ -103,7 +103,7 @@ export const Select = (props: SelectProps) => {
           <Box className={styles.Arrow} aria-hidden="true">
             <SelectDownArrow />
           </Box>
-        </Box>
+        </button>
       </Box>
 
       {state.isOpen && (

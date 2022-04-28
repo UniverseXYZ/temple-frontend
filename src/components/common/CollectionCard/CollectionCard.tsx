@@ -85,7 +85,7 @@ const Title = ({ children }: any) => (
 const Author = ({ children }: any) => (
   <div className={styles.Author}>
     <span>by</span>
-    <Link href="#/author">{children}</Link>
+    <a href="#/author">{children}</a>
   </div>
 );
 

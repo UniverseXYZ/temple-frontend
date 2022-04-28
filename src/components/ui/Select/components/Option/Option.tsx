@@ -5,8 +5,8 @@ import { useOption } from '@react-aria/listbox';
 import cn from 'classnames';
 import styles from '../../Select.module.sass';
 
-export function Option({ item, state }) {
-  const ref = React.useRef();
+export const Option = ({ item, state }: any) => {
+  const ref = React.useRef(null);
   const { optionProps, isSelected, isFocused, isDisabled } = useOption(
     { key: item.key },
     state,
@@ -26,7 +26,7 @@ export function Option({ item, state }) {
       {isSelected && <Icon />}
     </li>
   );
-}
+};
 
 const Icon = () => (
   <Box className={styles.Icon}>

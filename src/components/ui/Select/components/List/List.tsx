@@ -4,7 +4,8 @@ import { Option } from '../Option';
 
 import styles from '../../Select.module.sass';
 
-export function List(props) {
+export const List = (props: any) => {
+  //
   const ref = React.useRef();
   const { listBoxRef = ref, items, state } = props;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
@@ -20,4 +21,4 @@ export function List(props) {
       ))}
     </ul>
   );
-}
+};

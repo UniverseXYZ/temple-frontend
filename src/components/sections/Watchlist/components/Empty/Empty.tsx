@@ -5,9 +5,8 @@ import { Card } from '@/components/common';
 import cn from 'classnames';
 import styles from './.module.sass';
 
-export const Empty = (props) => {
+export const Empty = () => {
   //
-  const {} = props;
   return (
     <Card textAlign="center" p={'60px'}>
       <Box display="inline-block">

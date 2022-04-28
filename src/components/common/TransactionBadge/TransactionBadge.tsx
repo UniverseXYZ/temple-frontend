@@ -81,7 +81,7 @@ type SizeList = 'sm' | 'md' | 'lg' | 'xl';
 interface TransactionBadgeProps {
   variant?: string;
   size?: SizeList;
-  status: StatusList;
+  status: StatusList | string; // TODO: FIX type string
 }
 
 export const TransactionBadge = React.forwardRef<
