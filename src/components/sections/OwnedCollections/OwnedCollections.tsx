@@ -6,15 +6,15 @@ import { Slider, Activity } from './components';
 
 import initialData from '@/mocks/data';
 
-export const CuratedCollections = () => {
+export const OwnedCollections = () => {
   const collections = initialData.collections.slice(0, 6);
 
   return (
-    <Box className="CuratedCollections">
+    <Box className="OwnedCollections">
       <Container maxW="container.xl" mt="100px">
         <HStack mb="40px" spacing="12px">
           <Heading as="h2" size="lg">
-            Curated collections
+            Owned collections
           </Heading>
           <InfoTooltip label="These are the collections that received the highest upvotes in the previous week. To upvote a collection, please navigate to [link]" />
         </HStack>

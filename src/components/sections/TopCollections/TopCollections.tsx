@@ -1,16 +1,60 @@
-import { Container, Heading } from '@chakra-ui/react';
-import { CollectionList } from '@/components/common/';
+import React, { useState } from 'react';
+import { Box, Container, Heading, HStack, Spacer } from '@chakra-ui/react';
+import { ElasticSwitch, Select, Option } from '@/components/ui/';
 
-const TopCollections = () => (
-  <>
-    <Container maxW="container.xl" mb={100} mt={100}>
-      <Heading as="h2" size="lg" pb="40px">
-        Top Collections
-      </Heading>
+import { Collections } from './components';
 
-      <CollectionList handle removable />
-    </Container>
-  </>
-);
+const items = [
+  {
+    title: 'Collections',
+    value: 'collections',
+  },
+  {
+    title: 'Activity',
+    value: 'activity',
+    disabled: true,
+  },
+];
 
-export default TopCollections;
+const options = [
+  { name: 'Koala' },
+  { name: 'Kangaroo' },
+  { name: 'Platypus' },
+  { name: 'Bald Eagle' },
+  { name: 'Bison' },
+  { name: 'Skunk' },
+];
+
+export const TopCollections = () => {
+  const [active, setAcitve] = useState('collections');
+
+  const onSwitchChange = (value: any) => {
+    setAcitve(value);
+  };
+
+  return (
+    <Box className="TopCollections">
+      <Container maxW="container.xl" mt="100px">
+        <HStack mb="40px">
+          <Heading as="h2" size="lg">
+            Top collections
+          </Heading>
+          <Spacer />
+          <HStack spacing="15px">
+            <ElasticSwitch items={items} onChange={onSwitchChange} />
+            <Box width="200px">
+              <Select defaultSelectedKey="14">
+                <Option key="14">Last 14 days</Option>
+                <Option key="30">Last 30 days</Option>
+                <Option key="90">Last 90 days</Option>
+              </Select>
+            </Box>
+          </HStack>
+        </HStack>
+
+        {active === 'collections' && <Collections />}
+        {active === 'activity' && 'Activity'}
+      </Container>
+    </Box>
+  );
+};

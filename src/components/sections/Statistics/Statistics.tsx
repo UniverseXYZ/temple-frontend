@@ -15,7 +15,7 @@ import { InventoryValue, RecentActivity } from './components';
 import cn from 'classnames';
 import styles from './Statistics.module.sass';
 
-const Statistics = () => {
+export const Statistics = () => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   return (
@@ -94,5 +94,3 @@ const Statistics = () => {
     </>
   );
 };
-
-export default Statistics;
