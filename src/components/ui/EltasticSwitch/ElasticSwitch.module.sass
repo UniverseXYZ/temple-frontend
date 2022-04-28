@@ -1,0 +1,37 @@
+@import '@/sass/colors'
+
+.Wrapper
+  display: inline-block
+  border: 1px solid $black-transparent-10
+  border-radius: 12px
+  font-weight: 500
+  font-size: 16px
+  line-height: 24px
+
+.List
+  display: flex
+  padding: 4px
+  
+  &:last-child
+    .Item
+      margin-right: 0
+
+.Item
+  padding: 7px 16px
+  border-radius: 8px
+  margin-right: 6px
+  user-select: none
+  cursor: pointer
+  transition: 150ms linear
+
+  &:hover
+    background: $black-transparent-5
+
+  &.Item--Active
+    background: $gradient-green
+
+  &.Item--Disabled
+    pointer-events: none
+    background: none
+    color:  $black-transparent-20
+  
