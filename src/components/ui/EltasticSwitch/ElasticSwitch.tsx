@@ -1,5 +1,5 @@
 import React, { useState, useRef, createRef } from 'react';
-import { Box, HStack, Flex } from '@chakra-ui/react';
+import { Box, HStack, Flex, useColorMode } from '@chakra-ui/react';
 
 import cn from 'classnames';
 import styles from './ElasticSwitch.module.sass';
@@ -23,6 +23,10 @@ type Value = number | string;
 
 export const ElasticSwitch = (props: Props) => {
   //
+  const { colorMode } = useColorMode();
+
+  const isDark = colorMode === 'dark';
+
   const { items, defaultIndex = 0, onChange } = props;
 
   const [activeIndexState, setActiveIndexState] = useState(defaultIndex ?? 0);
@@ -34,7 +38,7 @@ export const ElasticSwitch = (props: Props) => {
   const elementsRef = useRef(items.map(() => createRef()));
 
   const handleItemSelect = (element: any, value: Value, index: number) => {
-    console.log(element);
+    //console.log(element);
 
     setActiveIndexState(index);
     //setActiveState(value);
@@ -42,7 +46,7 @@ export const ElasticSwitch = (props: Props) => {
   };
 
   return (
-    <Box className={styles.Wrapper}>
+    <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
       <HStack className={styles.List} spacing="4px">
         {items.map((item: Item, index: number) => (
           <Box

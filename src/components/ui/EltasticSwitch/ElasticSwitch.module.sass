@@ -2,6 +2,7 @@
 
 .Wrapper
   display: inline-block
+  background-color: $white-transparent-100
   border: 1px solid $black-transparent-10
   border-radius: 12px
   font-weight: 500
@@ -34,4 +35,25 @@
     pointer-events: none
     background: none
     color:  $black-transparent-20
-  
+    cursor: not-allowed
+
+// ------------ DARK ------------ //
+
+.Dark
+  background-color: transparent
+  border-color: $white-transparent-10
+
+  .Item
+    color: $white-100
+
+    &:hover
+      background: $white-transparent-5
+
+    &.Item--Active
+      color: $black-100
+
+      &:hover
+        background: $gradient-green
+
+    &.Item--Disabled
+      color:  $white-transparent-20
