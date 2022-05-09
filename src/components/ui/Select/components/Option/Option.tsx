@@ -13,8 +13,6 @@ export const Option = ({ item, state }: any) => {
     ref
   );
 
-  console.log('item', item);
-
   return (
     <li
       className={cn(styles.Option, isSelected && styles.isSelected)}

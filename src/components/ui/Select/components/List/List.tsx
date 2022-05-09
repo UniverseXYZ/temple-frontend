@@ -10,10 +10,6 @@ export const List = (props: any) => {
   const { listBoxRef = ref, items, state } = props;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
 
-  console.log('props', props);
-
-  //const options = items ? items : [...state.collection];
-
   return (
     <ul className={styles.List} {...listBoxProps} ref={listBoxRef}>
       {[...state.collection].map((item: any) => (

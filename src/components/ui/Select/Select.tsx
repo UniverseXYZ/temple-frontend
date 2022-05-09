@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, HStack, useMultiStyleConfig } from '@chakra-ui/react';
+import { Box, HStack, useColorMode } from '@chakra-ui/react';
 import { SelectDownArrow } from '@/components/icons';
 
 import { HiddenSelect, useSelect } from '@react-aria/select';
@@ -30,7 +30,6 @@ export const Select = (props: any) => {
   const { isOpen, selectedItem } = state;
 
   const {
-    variant,
     label,
     placeholder = 'Select an option',
     description,
@@ -38,10 +37,11 @@ export const Select = (props: any) => {
     items,
   } = props;
 
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
   // Get props for child elements from useSelect
   const ref = React.useRef(null);
-
-  const css = useMultiStyleConfig('Select', { variant });
 
   const { labelProps, triggerProps, valueProps, menuProps } = useSelect(
     props,
@@ -49,17 +49,11 @@ export const Select = (props: any) => {
     ref
   );
 
-  // console.log('labelProps', labelProps);
-  // console.log('triggerProps', triggerProps);
-  // console.log('valueProps', valueProps);
-  // console.log('menuProps', menuProps);
-  console.log('state', state);
-
   // Get props for the button based on the trigger props from useSelect
   const { buttonProps } = useButton(triggerProps, ref);
 
   return (
-    <Box className={styles.Wrapper}>
+    <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
       <HStack className={styles.LabelWrapper}>
         {label && (
           <Box className={styles.Label} __css={css.label} {...labelProps}>
