@@ -11,6 +11,7 @@ export { Loading } from './Loading';
 export { PriceTicker } from './PriceTicker';
 export { TransactionBadge } from './TransactionBadge';
 export { ActivityList } from './ActivityList';
+export { CopyableText } from './CopyableText';
 
 // Components
 export { CollectionCard } from './CollectionCard';
