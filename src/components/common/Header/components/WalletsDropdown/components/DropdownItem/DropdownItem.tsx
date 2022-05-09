@@ -1,12 +1,6 @@
 import React, { SyntheticEvent, useContext } from 'react';
-import {
-  Box,
-  Flex,
-  HStack,
-  Text,
-  useClipboard,
-  useColorMode,
-} from '@chakra-ui/react';
+import { Box, Flex, HStack, Text, useColorMode } from '@chakra-ui/react';
+import { CopyableText } from '@/components/common';
 import { Tooltip } from '@/components/ui';
 
 import { WalletsModalContext } from '../../../../context/WalletsModalContext';
@@ -36,7 +30,6 @@ export const DropdownItem = (props: Props) => {
   const { wallet, onSelect } = props;
 
   const { onEdit } = useContext(WalletsModalContext);
-  const { hasCopied, onCopy } = useClipboard(wallet.address);
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -45,17 +38,10 @@ export const DropdownItem = (props: Props) => {
     onSelect(wallet);
   };
 
-  const handleCopy = (e: SyntheticEvent) => {
-    e.stopPropagation();
-    onCopy();
-  };
-
   const handleEditWallet = (e: SyntheticEvent) => {
     e.stopPropagation();
     onEdit(wallet);
   };
-
-  const address = truncateEthAddress(wallet.address, 9);
 
   return (
     <Box
@@ -71,15 +57,11 @@ export const DropdownItem = (props: Props) => {
           <Text className={styles.Name} isTruncated maxWidth={'160px'}>
             {wallet.name}
           </Text>
-          <Tooltip
-            label={hasCopied ? 'Copied!' : 'Copy'}
-            placement="top"
-            openDelay={200}
-          >
-            <Box className={styles.Address} onClick={(e) => handleCopy(e)}>
-              {address}
-            </Box>
-          </Tooltip>
+          <Box className={styles.Address}>
+            <CopyableText value={wallet.address}>
+              {truncateEthAddress(wallet.address, 9)}
+            </CopyableText>
+          </Box>
         </Box>
 
         <Box className={styles.Balance}>
