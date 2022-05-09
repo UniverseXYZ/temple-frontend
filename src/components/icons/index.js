@@ -12,6 +12,7 @@ export { InfoIcon } from './common/InfoIcon/InfoIcon';
 export { SelectDownArrow } from './common/SelectDownArrow/SelectDownArrow';
 export { SearchIcon } from './common/SearchIcon/SearchIcon';
 export { CrossIcon } from './common/CrossIcon/CrossIcon';
+export { ExternalLink } from './common/ExternalLink/ExternalLink';
 
 // Currencies
 export { Ethereum } from './currency/Ethereum/Ethereum';
