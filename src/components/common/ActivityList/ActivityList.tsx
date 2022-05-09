@@ -1,20 +1,25 @@
 import React from 'react';
-import { Box, HStack, Image } from '@chakra-ui/react';
-import { TransactionBadge } from '@/components/common';
-import { Ethereum } from '@/components/icons';
+import { Box, HStack, Image, useColorMode } from '@chakra-ui/react';
+import { TransactionBadge, CopyableText } from '@/components/common';
+import { Ethereum, ExternalLink } from '@/components/icons';
 
 import { truncateEthAddress } from '@/utils/';
 
 import cn from 'classnames';
 import styles from './ActivityList.module.sass';
+import dayjs from 'dayjs';
 
 import { data } from './mock/data';
 
 export const ActivityList = (props: any) => {
   //
   const {} = props;
+
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
   return (
-    <Box className={styles.Table}>
+    <Box className={cn(styles.Table, isDark && styles.Dark)}>
       <Box></Box>
 
       <Box className={styles.Head}>
@@ -47,16 +52,27 @@ export const ActivityList = (props: any) => {
             </Box>
             <Box className={styles.Cell}>
               <Box className={styles.Address}>
-                {truncateEthAddress(item.from, 0)}
+                <CopyableText value={item.from}>
+                  {truncateEthAddress(item.from, 0)}
+                </CopyableText>
               </Box>
             </Box>
             <Box className={styles.Cell}>
               <Box className={styles.Address}>
-                {truncateEthAddress(item.to, 0)}
+                <CopyableText value={item.to}>
+                  {truncateEthAddress(item.to, 0)}
+                </CopyableText>
               </Box>
             </Box>
             <Box className={styles.Cell}>
-              <Box className={styles.Time}>{item.timestamp}</Box>
+              <Box className={styles.Time}>
+                <a href="#">
+                  <HStack>
+                    <Box>{dayjs('1999-01-01').fromNow()}</Box>
+                    <ExternalLink />
+                  </HStack>
+                </a>
+              </Box>
             </Box>
             <Box className={styles.Cell}>
               <HStack>
