@@ -5,7 +5,7 @@ export const Card = {
   baseStyle: (props: any) => ({
     background: mode('whiteTransparent.100', 'whiteTransparent.5')(props),
     borderRadius: 12,
-    transition: 'all 150ms linear',
+    transition: 'box-shadow 150ms linear',
     backdropFilter: mode('none', 'blur(40px)')(props),
 
     boxShadow: mode(
