@@ -13,8 +13,16 @@ export { SelectDownArrow } from './common/SelectDownArrow/SelectDownArrow';
 export { SearchIcon } from './common/SearchIcon/SearchIcon';
 export { CrossIcon } from './common/CrossIcon/CrossIcon';
 export { ExternalLink } from './common/ExternalLink/ExternalLink';
+export { StarIcon } from './common/StarIcon/StarIcon';
 
 // Currencies
 export { Ethereum } from './currency/Ethereum/Ethereum';
 
 // Socials
+
+export { DiscordIcon } from './social/DiscordIcon';
+export { InstagramIcon } from './social/InstagramIcon';
+export { MediumIcon } from './social/MediumIcon';
+export { TelegramIcon } from './social/TelegramIcon';
+export { TwitterIcon } from './social/TwitterIcon';
+export { WebsiteIcon } from './social/WebsiteIcon';
