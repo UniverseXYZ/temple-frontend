@@ -13,7 +13,7 @@ interface Props {
 }
 
 interface Item {
-  title: string;
+  title?: string;
   value: Value;
   disabled?: boolean;
   icon?: React.ReactNode;
@@ -47,11 +47,22 @@ export const ElasticSwitch = (props: Props) => {
 
   return (
     <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
-      <HStack className={styles.List} spacing="4px">
+      <HStack
+        className={styles.List}
+        spacing="4px"
+        role="radiogroup"
+        aria-orientation="horizontal"
+        aria-labelledby="Elastic Switch"
+      >
         {items.map((item: Item, index: number) => (
           <Box
             //@ts-ignore // TODO: FIX ME
             ref={elementsRef.current[index]}
+            role="radio"
+            aria-checked={index === activeIndexState}
+            aria-labelledby={item.title}
+            aria-disabled={item.disabled ?? null}
+            tabindex={index === activeIndexState ? 0 : -1}
             key={index}
             className={cn(
               styles.Item,
@@ -61,8 +72,21 @@ export const ElasticSwitch = (props: Props) => {
             onClick={(e) => handleItemSelect(e, item.value, index)}
           >
             <Flex>
-              {item.icon && <Box className={styles.Icon}>{item.icon}</Box>}
-              {item.title && <Box className={styles.Title}>{item.title}</Box>}
+              {item.icon && (
+                <Box
+                  className={cn(
+                    styles.Icon,
+                    !item.title && styles.WithoutTitle
+                  )}
+                >
+                  {item.icon}
+                </Box>
+              )}
+              {item.title && (
+                <Box className={styles.Title} id={item.title}>
+                  {item.title}
+                </Box>
+              )}
             </Flex>
           </Box>
         ))}

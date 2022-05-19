@@ -10,7 +10,14 @@ interface Props extends TooltipProps {
 }
 
 export const Tooltip = (props: Props) => {
-  const { variant, children, hasArrow = true, gutter = 10, ...rest } = props;
+  const {
+    variant,
+    children,
+    placement = 'top',
+    hasArrow = true,
+    gutter = 10,
+    ...rest
+  } = props;
 
   const styles = useStyleConfig('Tooltip', { variant });
 
@@ -20,6 +27,7 @@ export const Tooltip = (props: Props) => {
       hasArrow={hasArrow}
       gutter={gutter}
       closeOnClick={false}
+      placement={placement}
       {...rest}
     >
       {children}

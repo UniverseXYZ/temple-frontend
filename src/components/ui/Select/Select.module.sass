@@ -126,8 +126,17 @@
 
 .Dark
   .SelectWrapper
-    background-color: $dark-100
+    background-color: transparent
     border-color: $white-transparent-10
+
+    &::before
+      display: none
+
+    &:hover
+      border-color: #66ea5a
+
+    &:focus-within
+      border-color: #66ea5a
 
   .Select
     color: white
@@ -138,13 +147,16 @@
 
   .Dropdown
     background-color: $dark-60
-    box-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 10px 40px rgb(0 0 0 / 15%)
+    box-shadow: none
+    border: 1px solid $white-transparent-10
 
   .Option
     &:hover
-      background-color: $white-transparent-5
+      background-color: $white-transparent-10
 
   .isOpen
+    border-color: #66ea5a
+
     .Arrow
       path
         fill: $white-transparent-100
