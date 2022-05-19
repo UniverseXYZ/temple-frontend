@@ -21,7 +21,13 @@ export const Tooltip = {
   // styles for different sizes ('sm', 'md', 'lg')
   sizes: {},
   // styles for different visual variants ('outline', 'solid')
-  variants: {},
+  variants: {
+    white: (props: any) => ({
+      bg: mode('white', 'white')(props),
+      color: mode('black', 'black')(props),
+      '--popper-arrow-bg': mode('white', 'white')(props),
+    }),
+  },
   // default values for `size` and `variant`
   defaultProps: {},
 };
