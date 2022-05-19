@@ -60,9 +60,17 @@
 .Time
   color: $black-transparent-40
   font-weight: 600
+  transition: color 150ms linear
 
-  svg
-    opacity: .2
+  path
+    fill: $black-transparent-40
+    transition: fill 150ms linear
+
+  &:hover
+    color: $black-transparent-60
+
+    path
+      fill: $black-transparent-60
 
 .Price
   font-weight: 600
@@ -88,4 +96,10 @@
     color: $white-transparent-40
 
     path
-      fill: white
+      fill: $white-transparent-40
+
+    &:hover
+      color: $white-transparent-60
+
+      path
+        fill: $white-transparent-60

@@ -43,24 +43,24 @@ const CollectionCard = (props: Props) => {
             )}
             hover
           >
-            <div className={styles.Image}>
+            <Box className={styles.Image}>
               <Image
                 src="/mocks/collection-card-image.png"
                 alt="Collection Background"
               />
-            </div>
+            </Box>
 
-            <div className={styles.Avatar}>
+            <Box className={styles.Avatar}>
               <Avatar
                 image={collection.logo}
                 name={collection.name}
                 boxSize="68px"
               />
-            </div>
+            </Box>
 
             <BundleTag className={styles.Bundle}>7</BundleTag>
 
-            <div className={styles.Content}>
+            <Box className={styles.Content}>
               <Title>{collection.name}</Title>
               {showAuthor && <Author>Pavel</Author>}
               {showText && (
@@ -70,7 +70,7 @@ const CollectionCard = (props: Props) => {
                 </Text>
               )}
               {showFooter && <Footer stats={collection.stats} />}
-            </div>
+            </Box>
           </Card>
         </Link>
       </LinkBox>
@@ -79,23 +79,23 @@ const CollectionCard = (props: Props) => {
 };
 
 const Title = ({ children }: any) => (
-  <div className={styles.Title}>{children}</div>
+  <Box className={styles.Title}>{children}</Box>
 );
 
 const Author = ({ children }: any) => (
-  <div className={styles.Author}>
+  <Box className={styles.Author}>
     <span>by</span>
     <a href="#/author">{children}</a>
-  </div>
+  </Box>
 );
 
 const Text = ({ children }: any) => (
-  <div className={styles.Text}>{children}</div>
+  <Box className={styles.Text}>{children}</Box>
 );
 
 const Footer = ({ stats }: any) => (
   <>
-    <div className={styles.Footer}>
+    <Box className={styles.Footer}>
       <Flex>
         <Box textAlign="left">
           <Box fontSize={12} color="grey" mb={'8px'}>
@@ -121,7 +121,7 @@ const Footer = ({ stats }: any) => (
           </HStack>
         </Box>
       </Flex>
-    </div>
+    </Box>
   </>
 );
 

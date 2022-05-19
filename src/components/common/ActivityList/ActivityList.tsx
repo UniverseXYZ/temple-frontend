@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, HStack, Image, useColorMode } from '@chakra-ui/react';
 import { TransactionBadge, CopyableText } from '@/components/common';
+import { Tooltip } from '@/components/ui';
 import { Ethereum, ExternalLink } from '@/components/icons';
 
 import { truncateEthAddress } from '@/utils/';
@@ -66,16 +67,20 @@ export const ActivityList = (props: any) => {
             </Box>
             <Box className={styles.Cell}>
               <Box className={styles.Time}>
-                <a href="#">
-                  <HStack>
-                    <Box>{dayjs('1999-01-01').fromNow()}</Box>
-                    <ExternalLink />
-                  </HStack>
-                </a>
+                <Tooltip
+                  label={dayjs('1999-01-01').format('MMMM DD, YYYY at h')}
+                >
+                  <a href="#">
+                    <HStack display="inline-flex">
+                      <Box>{dayjs('1999-01-01').fromNow()}</Box>
+                      <ExternalLink />
+                    </HStack>
+                  </a>
+                </Tooltip>
               </Box>
             </Box>
             <Box className={styles.Cell}>
-              <HStack>
+              <HStack display="inline-flex">
                 <Ethereum />
                 <Box className={styles.Price}>{item.amount}</Box>
               </HStack>

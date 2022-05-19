@@ -75,7 +75,7 @@ export const DropdownItem = (props: Props) => {
         </Box>
 
         <Box className={styles.Action}>
-          <Tooltip label="Edit" placement="top">
+          <Tooltip label="Edit">
             <Box
               className={styles.ActionIcon}
               onClick={(e) => handleEditWallet(e)}

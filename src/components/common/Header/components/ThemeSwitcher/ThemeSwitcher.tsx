@@ -11,7 +11,10 @@ export const ThemeSwitcher = () => {
   const isDark = colorMode === 'dark';
 
   return (
-    <Tooltip label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}>
+    <Tooltip
+      label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      placement="bottom"
+    >
       <IconButton
         onClick={toggleColorMode}
         icon={isDark ? <LightThemeIcon /> : <DarkThemeIcon />}

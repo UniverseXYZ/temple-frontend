@@ -145,13 +145,13 @@ export const ImageUpload = (props: Props) => {
                     src={imageList[0].data_url}
                     alt="Image"
                   />
-                  <Tooltip label="Remove image" placement="top">
+                  <Tooltip label="Remove image">
                     <CloseButton
                       className={styles.Remove}
                       onClick={() => onImageRemove(0)}
                     />
                   </Tooltip>
-                  <Tooltip label="Replace image" placement="top">
+                  <Tooltip label="Replace image">
                     <Box
                       className={cn(styles.Overlay)}
                       onClick={() => onImageUpdate(0)}

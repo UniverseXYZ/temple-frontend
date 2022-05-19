@@ -16,4 +16,5 @@ export { CopyableText } from './CopyableText';
 // Components
 export { CollectionCard } from './CollectionCard';
 export { CollectionList } from './CollectionList';
+export { NftCard } from './NftCard';
 export { ImageUpload } from './ImageUpload';

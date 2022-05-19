@@ -10,12 +10,13 @@ type InfoTooltipProps = Omit<TooltipProps, 'children'>;
 
 export const InfoTooltip = (props: InfoTooltipProps) => {
   //
+  const { placement = 'top', ...rest } = props;
   const { colorMode } = useColorMode();
 
   const isDark = colorMode === 'dark';
 
   return (
-    <Tooltip openDelay={100} placement="top" {...props}>
+    <Tooltip openDelay={100} placement={placement} {...rest}>
       <InfoIcon
         className={cn(styles.InfoTooltip, isDark && styles.Dark)}
         cursor="pointer"
