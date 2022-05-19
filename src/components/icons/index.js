@@ -15,6 +15,15 @@ export { CrossIcon } from './common/CrossIcon/CrossIcon';
 export { ExternalLink } from './common/ExternalLink/ExternalLink';
 export { StarIcon } from './common/StarIcon/StarIcon';
 
+export { DollarIcon } from './common/DollarIcon/DollarIcon';
+export { DollarDownIcon } from './common/DollarDownIcon/DollarDownIcon';
+export { DollarUpIcon } from './common/DollarUpIcon/DollarUpIcon';
+export { TransferIcon } from './common/TransferIcon/TransferIcon';
+export { UserIcon } from './common/UserIcon/UserIcon';
+export { FolderIcon } from './common/FolderIcon/FolderIcon';
+export { GridIcon } from './common/GridIcon/GridIcon';
+export { ListIcon } from './common/ListIcon/ListIcon';
+
 // Currencies
 export { Ethereum } from './currency/Ethereum/Ethereum';
 
