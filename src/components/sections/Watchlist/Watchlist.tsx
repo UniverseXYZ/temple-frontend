@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Container, Heading, HStack, Spacer } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import { Container, Heading, HStack, Spacer, Button } from '@chakra-ui/react';
 import { ElasticSwitch } from '@/components/ui';
 
 import { Collections, Activity } from './components';
@@ -38,6 +39,12 @@ export const Watchlist = () => {
 
         {active === 'collections' && <Collections />}
         {active === 'activity' && <Activity />}
+
+        <Link to="/watchlist">
+          <Button variant="outline" width="100%" mt="30px">
+            Show all
+          </Button>
+        </Link>
       </Container>
     </>
   );

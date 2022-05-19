@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Box, Container, Heading, HStack, Button } from '@chakra-ui/react';
 import { InfoTooltip } from '@/components/common';
 
@@ -27,9 +28,11 @@ export const CuratedCollections = () => {
       <Container maxW="container.xl">
         <Activity />
 
-        <Button variant="outline" width="100%" mt="30px">
-          Show all
-        </Button>
+        <Link to="/curated-collections">
+          <Button variant="outline" width="100%" mt="30px">
+            Show all
+          </Button>
+        </Link>
       </Container>
     </Box>
   );

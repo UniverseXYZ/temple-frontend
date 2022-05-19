@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Box, Container, Heading, HStack, Spacer } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import {
+  Box,
+  Container,
+  Heading,
+  HStack,
+  Spacer,
+  Button,
+} from '@chakra-ui/react';
 import { ElasticSwitch, Select, Option } from '@/components/ui/';
 
 import { Collections } from './components';
@@ -13,6 +21,10 @@ const items = [
     title: 'Activity',
     value: 'activity',
     disabled: true,
+  },
+  {
+    title: 'Test',
+    value: 'test',
   },
 ];
 
@@ -54,6 +66,12 @@ export const TopCollections = () => {
 
         {active === 'collections' && <Collections />}
         {active === 'activity' && 'Activity'}
+
+        <Link to="/top-collections">
+          <Button variant="outline" mt="22px" w="100%">
+            Show all
+          </Button>
+        </Link>
       </Container>
     </Box>
   );
