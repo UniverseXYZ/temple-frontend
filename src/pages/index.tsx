@@ -1,22 +1,39 @@
 import React from 'react';
-import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter, Routes, Route } from 'react-router-dom';
+import { ScrollToTop } from '@/components/router';
+// BrowserRouter  for development
+// MemoryRouter for production
 
 import { Layout } from '@/components/common';
-import { Homepage, Watchlist, Collection } from '@/components/pages';
+import {
+  Homepage,
+  Watchlist,
+  Collection,
+  CuratedCollections,
+  OwnedCollections,
+  TopCollections,
+} from '@/components/pages';
 
 const Index = () => {
   return (
-    <MemoryRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Homepage />} />
-          <Route path="/watchlist" element={<Watchlist />} />
-          <Route path="/collections">
-            <Route path=":slug" element={<Collection />} />
+    <BrowserRouter>
+      <ScrollToTop>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Homepage />} />
+            <Route path="/collections">
+              <Route path=":slug" element={<Collection />} />
+            </Route>
+            <Route path="/owned-collections" element={<OwnedCollections />} />
+            <Route
+              path="/curated-collections"
+              element={<CuratedCollections />}
+            />
+            <Route path="/top-collections" element={<TopCollections />} />
           </Route>
-        </Route>
-      </Routes>
-    </MemoryRouter>
+        </Routes>
+      </ScrollToTop>
+    </BrowserRouter>
   );
 };
 
