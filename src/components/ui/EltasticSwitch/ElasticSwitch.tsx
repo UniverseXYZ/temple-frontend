@@ -1,5 +1,5 @@
 import React, { useState, useRef, createRef } from 'react';
-import { Box, HStack, Flex, useColorMode } from '@chakra-ui/react';
+import { Box, HStack, useColorMode } from '@chakra-ui/react';
 
 import cn from 'classnames';
 import styles from './ElasticSwitch.module.sass';
@@ -27,7 +27,7 @@ export const ElasticSwitch = (props: Props) => {
 
   const isDark = colorMode === 'dark';
 
-  const { items, defaultIndex = 0, onChange } = props;
+  const { size = 'md', items, defaultIndex = 0, onChange } = props;
 
   const [activeIndexState, setActiveIndexState] = useState(defaultIndex ?? 0);
 
@@ -46,7 +46,14 @@ export const ElasticSwitch = (props: Props) => {
   };
 
   return (
-    <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
+    <Box
+      className={cn(
+        styles.Wrapper,
+        isDark && styles.Dark,
+        size === 'md' && styles['Size--md'],
+        size === 'sm' && styles['Size--sm']
+      )}
+    >
       <HStack
         className={styles.List}
         spacing="4px"
@@ -71,23 +78,18 @@ export const ElasticSwitch = (props: Props) => {
             )}
             onClick={(e) => handleItemSelect(e, item.value, index)}
           >
-            <Flex>
-              {item.icon && (
-                <Box
-                  className={cn(
-                    styles.Icon,
-                    !item.title && styles.WithoutTitle
-                  )}
-                >
-                  {item.icon}
-                </Box>
-              )}
-              {item.title && (
-                <Box className={styles.Title} id={item.title}>
-                  {item.title}
-                </Box>
-              )}
-            </Flex>
+            {item.icon && (
+              <Box
+                className={cn(styles.Icon, !item.title && styles.WithoutTitle)}
+              >
+                {item.icon}
+              </Box>
+            )}
+            {item.title && (
+              <Box className={styles.Title} id={item.title}>
+                {item.title}
+              </Box>
+            )}
           </Box>
         ))}
       </HStack>
