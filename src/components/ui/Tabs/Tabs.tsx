@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, useColorMode } from '@chakra-ui/react';
 
 import { Tab } from '@headlessui/react';
 
@@ -22,9 +22,13 @@ export const Tabs = (props: TabsProps) => {
   //
   const { items = [] } = props;
 
+  const { colorMode } = useColorMode();
+
+  const isDark = colorMode === 'dark';
+
   return (
     <Tab.Group>
-      <Tab.List className={styles.Tablist}>
+      <Tab.List className={cn(styles.Tablist, isDark && styles.Dark)}>
         {items.map((tab, index) => (
           <Tab
             key={index}

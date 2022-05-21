@@ -8,6 +8,23 @@
   padding: 10px 0
   margin-right: 40px
 
+  // &:hover
+  //   &::before
+  //     opacity: .1
+
+  // &::before
+  //   content: ""
+  //   display: block
+  //   position: absolute
+  //   top: 50%
+  //   left: 0
+  //   width: 100%
+  //   height: 70%
+  //   background-color: black
+  //   border-radius: 8px
+  //   transform: translateY(-50%)
+  //   opacity: 0
+
 .Tablist
   border-bottom: 1px solid $black-transparent-10
 
@@ -44,3 +61,26 @@
   .Ticker
     color: $white-transparent-100
     background-color: $black-transparent-100
+
+
+// ------------ DARK ------------ //
+
+.Dark
+  border-color: $white-transparent-10
+
+  .Tab
+    color: $white-transparent-40
+
+  .Tab--Selected
+    color: $white-100
+
+    &::after
+      background-color: $white-100
+
+    .Ticker
+      color: $black-100
+      background-color: $white-100
+
+  .Ticker
+    color: $white-transparent-20
+    background-color: $white-transparent-10
