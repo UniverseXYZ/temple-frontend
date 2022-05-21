@@ -3,14 +3,15 @@ import { mode } from '@chakra-ui/theme-tools';
 export const outline = (props: any) => ({
   wrapper: {
     position: 'relative',
-    background: mode('white', 'dark.60')(props),
-    backgroundClip: 'padding-box',
+    background: mode('white', 'transparent')(props),
+    backgroundClip: mode('padding-box', 'none'),
     border: '1px solid',
     borderColor: mode('black.10', 'whiteTransparent.20')(props),
     transition: 'all 150ms linear',
 
     _before: {
       content: '""',
+      display: mode('block', 'none')(props),
       position: 'absolute',
       top: '-1px',
       bottom: '-1px',
@@ -23,7 +24,7 @@ export const outline = (props: any) => ({
     },
 
     _hover: {
-      borderColor: 'transparent',
+      borderColor: mode('transparent', 'green')(props),
 
       _before: {
         opacity: 1,
@@ -32,10 +33,10 @@ export const outline = (props: any) => ({
 
     _focusWithin: {
       boxShadow: '0px 0px 0px 5px rgba(102, 234, 90, 0.15)',
-      borderColor: 'transparent',
+      borderColor: mode('transparent', 'green')(props),
 
       _before: {
-        opacity: 1,
+        opacity: mode('1', '0')(props),
       },
     },
 
@@ -53,6 +54,15 @@ export const outline = (props: any) => ({
   },
 
   field: {
+    fontSize: '16px',
+
     border: 0,
+
+    _placeholder: {
+      fontSize: '16px',
+      fontWeight: '300',
+      color: mode('black.40', 'white.40'),
+      //fontFamily: '"Space Grotesk", serif',
+    },
   },
 });

@@ -46,6 +46,7 @@ const colors = {
     40: '#454545',
   },
 
+  green: '#66EA5A',
   blue: '#4D66EB',
   red: '#FF4949',
   orange: '#E4B613',

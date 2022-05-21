@@ -12,6 +12,12 @@ export const Input = {
   }),
   // styles for different sizes ('sm', 'md', 'lg')
   sizes: {
+    sm: {
+      field: {
+        height: '40px',
+        borderRadius: '12px',
+      },
+    },
     md: {
       wrapper: {
         borderRadius: '12px',
@@ -21,7 +27,7 @@ export const Input = {
         },
       },
       field: {
-        height: '48px',
+        height: '46px',
         borderRadius: '12px',
       },
     },
@@ -33,5 +39,6 @@ export const Input = {
   // default values for `size` and `variant`
   defaultProps: {
     variant: 'outline',
+    size: 'md',
   },
 };
