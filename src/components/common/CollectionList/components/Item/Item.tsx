@@ -1,15 +1,12 @@
 /* eslint-disable react/display-name */
 import React, { useEffect } from 'react';
-import { Box, HStack, Text, useColorMode } from '@chakra-ui/react';
-
-import { Card, Avatar } from '@/components/common';
-import { Handle, Ethereum, TrashIcon } from '@/components/icons';
-
+import { useColorMode } from '@chakra-ui/react';
 import { CSS } from '@dnd-kit/utilities';
 import type { DraggableSyntheticListeners } from '@dnd-kit/core';
 import type { Transform } from '@dnd-kit/utilities';
+import { CollectionItem } from '@/components/common';
 
-import classNames from 'classnames';
+import cn from 'classnames';
 import styles from './Item.module.scss';
 
 export interface Props {
@@ -67,9 +64,9 @@ export const Item = React.memo(
 
       return (
         <div
-          className={classNames(
+          className={cn(
             styles.Wrapper,
-            sorting && styles.sorting,
+            sorting && styles.Sorting,
             dragging && styles.Dragging,
             dragOverlay && styles.DragOverlay,
             colorMode === 'dark' && styles.Dark
@@ -77,73 +74,13 @@ export const Item = React.memo(
           style={style}
           ref={ref}
         >
-          <Card
-            hover
-            className={classNames(styles.Item, handle && styles.WithHandle)}
-          >
-            <HStack
-              fontSize={14}
-              fontWeight={600}
-              spacing={0}
-              justifyContent="space-between"
-            >
-              {handle && (
-                <Box className={styles.Handle}>
-                  <Handle {...listeners} isDragging={dragging} />
-                </Box>
-              )}
-              <HStack justifyContent="space-between">
-                <Box w={318}>
-                  <HStack className={styles.CollectionName}>
-                    <Avatar image={item.logo} name={item.name} boxSize="50px" />
-                    <Text fontSize={16} fontWeight={600}>
-                      {item.name}
-                    </Text>
-                  </HStack>
-                </Box>
-                <Box w={105}>
-                  <HStack align="center">
-                    <Ethereum />
-                    <Box>{item.stats.totalValue}</Box>
-                  </HStack>
-                </Box>
-                <Box w={105} color="#2caa00">
-                  <HStack>
-                    <Box>{item.stats.oneDayChange} %</Box>
-                  </HStack>
-                </Box>
-                <Box w={105} color="#ff4949">
-                  <HStack>
-                    <Box>{item.stats.sevenDayChange} %</Box>
-                  </HStack>
-                </Box>
-                <Box w={105}>
-                  <HStack>
-                    <Ethereum />
-                    <Box>{item.stats.floorPrice}</Box>
-                  </HStack>
-                </Box>
-                <Box w={105}>
-                  <HStack>
-                    <Box>{item.stats.owners}</Box>
-                  </HStack>
-                </Box>
-                <Box w={105}>
-                  <HStack>
-                    <Box>{item.stats.items}</Box>
-                  </HStack>
-                </Box>
-              </HStack>
-              {onRemove ? (
-                <Box
-                  className={styles.Remove}
-                  onClick={() => onRemove(item.id)}
-                >
-                  <TrashIcon boxSize="20px" />
-                </Box>
-              ) : null}
-            </HStack>
-          </Card>
+          <CollectionItem
+            item={item}
+            handle={handle}
+            handleListeners={listeners}
+            isDragging={dragging}
+            onRemove
+          />
         </div>
       );
     }
