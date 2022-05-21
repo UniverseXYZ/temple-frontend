@@ -30,6 +30,7 @@ export const Select = (props: any) => {
   const { isOpen, selectedItem } = state;
 
   const {
+    size = 'md',
     label,
     placeholder = 'Select an option',
     description,
@@ -39,7 +40,6 @@ export const Select = (props: any) => {
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-
   // Get props for child elements from useSelect
   const ref = React.useRef(null);
 
@@ -53,7 +53,14 @@ export const Select = (props: any) => {
   const { buttonProps } = useButton(triggerProps, ref);
 
   return (
-    <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
+    <Box
+      className={cn(
+        styles.Wrapper,
+        isDark && styles.Dark,
+        size === 'md' && styles['Size--md'],
+        size === 'sm' && styles['Size--sm']
+      )}
+    >
       <HStack className={styles.LabelWrapper}>
         {label && (
           <Box className={styles.Label} __css={css.label} {...labelProps}>

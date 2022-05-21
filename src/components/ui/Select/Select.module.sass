@@ -6,11 +6,10 @@
 .SelectWrapper
   position: relative
   min-width: 100%
+  height: 100%
   background: white
   background-clip: padding-box
   border: 1px solid $black-transparent-10
-  height: 48px
-  line-height: 48px
   border-radius: 12px
   transition: all 150ms linear
   cursor: pointer
@@ -43,10 +42,12 @@
 
 
 .Select
+  width: 100%
+  text-align: left
   padding-left: 15px
   padding-right: 50px
   color: $black-transparent-40
-  font-weight: 500
+  font-weight: 400
   outline: none
 
 
@@ -85,7 +86,7 @@
   border-radius: 6px
   cursor: pointer
   font-weight: 500
-  padding: 15px
+  padding: 11px 16px
   transition: all 150ms linear
 
   &:hover
@@ -120,6 +121,20 @@
 .isSelected
   .Select
     color: $black-transparent-100
+    font-weight: 500
+
+
+.Size--md
+  height: 48px
+
+  .Select
+    line-height: 48px
+
+.Size--sm
+  height: 42px
+
+  .Select
+    line-height: 42px
 
 
 // ------------ DARK ------------ //
@@ -139,7 +154,11 @@
       border-color: #66ea5a
 
   .Select
-    color: white
+    color: $white-transparent-40
+
+  .isSelected
+    .Select
+      color: $white-transparent-100
 
   .Arrow
     path
