@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, HStack, SimpleGrid } from '@chakra-ui/react';
-import { CollectionCard } from '@/components/common';
+import { CollectionCard, CollectionItem } from '@/components/common';
 import { Input, ElasticSwitch, Select, Option } from '@/components/ui';
 import { GridIcon, ListIcon } from '@/components/icons';
 
@@ -39,18 +39,42 @@ export const Collections = (props: Props) => {
   //
   const {} = props;
 
+  const [view, setView] = useState('card');
+  const [columns, setColumns] = useState(4);
+  const [spacing, setSpacing] = useState('30px');
+
+  const isViewCard = view === 'card';
+
   const { collections } = initialData;
+
+  const onViewChange = (value: any) => {
+    //
+    const isCard = value === 'card';
+    const isList = value === 'list';
+
+    if (isCard) {
+      setView('card');
+      setColumns(4);
+      setView('card');
+    }
+
+    if (isList) {
+      setView('list');
+      setColumns(1);
+      setSpacing('12px');
+    }
+  };
 
   return (
     <Box pt="30px">
       <Box mb="40px">
         <HStack spacing="15px">
           <Box w="100%">
-            <Input placeholder="Search" />
+            <Input placeholder="Search" size="sm" />
           </Box>
 
           <Box w="350px">
-            <Select placeholder="Sort by">
+            <Select placeholder="Sort by" size="sm">
               {options.map((option) => (
                 <Option key={option.value}>{option.title}</Option>
               ))}
@@ -58,14 +82,20 @@ export const Collections = (props: Props) => {
           </Box>
 
           <Box>
-            <ElasticSwitch items={grid} />
+            <ElasticSwitch items={grid} onChange={onViewChange} size="sm" />
           </Box>
         </HStack>
       </Box>
 
-      <SimpleGrid columns={4} spacing="30px">
+      <SimpleGrid columns={columns} spacing={spacing}>
         {collections.map((collection) => (
-          <CollectionCard key={collection.id} collection={collection} />
+          <>
+            {isViewCard ? (
+              <CollectionCard key={collection.id} collection={collection} />
+            ) : (
+              <CollectionItem key={collection.id} item={collection} />
+            )}
+          </>
         ))}
       </SimpleGrid>
     </Box>
