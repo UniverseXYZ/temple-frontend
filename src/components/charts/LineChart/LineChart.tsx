@@ -24,26 +24,38 @@ export const LineChart = (props: any) => {
     {
       date: '01.01.2022',
       month: 'Jan',
-      price: 41,
-      volume: 130494.39,
+      price: 10,
+      //volume: 130494.39,
     },
     {
       date: '02.01.2022',
       month: 'Jan',
-      price: 50,
-      volume: 5000,
+      price: 70,
+      //volume: 5000,
     },
     {
       date: '03.01.2022',
       month: 'Jan',
-      price: 60,
+      price: 50,
       volume: 2400,
     },
     {
       date: '04.01.2022',
       month: 'Jan',
-      price: 70,
-      volume: 5000,
+      price: 10,
+      //volume: 5000,
+    },
+    {
+      date: '05.01.2022',
+      month: 'Jan',
+      price: 30,
+      //volume: 5000,
+    },
+    {
+      date: '06.01.2022',
+      month: 'Jan',
+      price: 100,
+      //volume: 5000,
     },
   ];
 
@@ -95,7 +107,7 @@ export const LineChart = (props: any) => {
           activeDot={<Dot />}
           //legendType="square"
         />
-        <Line
+        {/* <Line
           type="monotone"
           dataKey="volume"
           stroke="#615FE3"
@@ -103,7 +115,7 @@ export const LineChart = (props: any) => {
           strokeWidth={2}
           activeDot={<Dot />}
           //legendType="square"
-        />
+        /> */}
       </RechartLineChart>
     </ResponsiveContainer>
   );

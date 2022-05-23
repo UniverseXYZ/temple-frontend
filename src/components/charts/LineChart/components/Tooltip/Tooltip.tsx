@@ -10,7 +10,7 @@ export const Tooltip = (props: any) => {
   //
   const { payload } = props;
 
-  console.log('props', props);
+  //console.log('props', props);
 
   return (
     <Box className={styles.Wrapper}>
