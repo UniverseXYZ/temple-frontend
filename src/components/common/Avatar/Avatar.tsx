@@ -36,7 +36,7 @@ const Avatar = (props: Props) => {
       sx={styles}
       {...restProps}
     >
-      <AvatarBadge border={0} bottom={0} right={0}>
+      <AvatarBadge border={0} bottom={'4px'} right={'4px'}>
         <Badge boxSize={badgeSize} />
       </AvatarBadge>
     </ChakraAvatar>

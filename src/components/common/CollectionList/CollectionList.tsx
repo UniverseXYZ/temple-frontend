@@ -56,7 +56,7 @@ export const CollectionList = ({
   activationConstraint,
   coordinateGetter = sortableKeyboardCoordinates,
   handle = false,
-  removable,
+  removable = false,
   useDragOverlay = false,
 }: Props) => {
   const [items, setItems] = useState(initialData.collections);

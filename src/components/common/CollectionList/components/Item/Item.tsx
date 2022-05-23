@@ -79,7 +79,7 @@ export const Item = React.memo(
             handle={handle}
             handleListeners={listeners}
             isDragging={dragging}
-            onRemove
+            onRemove={onRemove}
           />
         </div>
       );

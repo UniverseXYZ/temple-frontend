@@ -13,7 +13,7 @@ interface IconButtonProps extends BoxProps {
 export const IconButton = React.forwardRef<HTMLDivElement, IconButtonProps>(
   (props, ref) => {
     //
-    const { icon, onClick, ...rest } = props;
+    const { icon, onClick, className, ...rest } = props;
 
     const { colorMode } = useColorMode();
 
@@ -23,7 +23,7 @@ export const IconButton = React.forwardRef<HTMLDivElement, IconButtonProps>(
       <Box
         ref={ref}
         as="button"
-        className={cn(styles.Button, isDark && styles.Dark)}
+        className={cn(styles.Button, isDark && styles.Dark, className)}
         onClick={onClick}
         {...rest}
       >
