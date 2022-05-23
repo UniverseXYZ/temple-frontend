@@ -53,26 +53,30 @@ export const Chart = (props: Props) => {
   const {} = props;
   //
   return (
-    <Card p="30px">
-      <Flex mb="17px">
-        <ElasticSwitch items={items} />
-        <Spacer />
-        <Select>
-          {options.map((option) => (
-            <Option key={option.value}>{option.title}</Option>
-          ))}
-        </Select>
-      </Flex>
+    <>
+      <Card p="30px">
+        <Flex mb="60px">
+          <ElasticSwitch items={items} size="sm" />
+          <Spacer />
+          <Box width="220px">
+            <Select placeholder="Placeholder" size="sm">
+              {options.map((option) => (
+                <Option key={option.value}>{option.title}</Option>
+              ))}
+            </Select>
+          </Box>
+        </Flex>
 
-      <Flex>
-        <Box>90 day avg. price</Box>
-        <HStack>
-          <Ethereum />
-          <Box>4.23</Box>
-        </HStack>
-      </Flex>
+        {/* <Flex>
+          <Box>90 day avg. price</Box>
+          <HStack>
+            <Ethereum />
+            <Box>4.23</Box>
+          </HStack>
+        </Flex> */}
 
-      <LineChart />
-    </Card>
+        <LineChart />
+      </Card>
+    </>
   );
 };

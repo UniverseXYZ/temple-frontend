@@ -6,11 +6,12 @@ import {
   Box,
   Image,
   Flex,
+  Spacer,
   Button,
   useColorMode,
 } from '@chakra-ui/react';
 
-import { Card, Avatar } from '@/components/common';
+import { Avatar } from '@/components/common';
 import { Tabs } from '@/components/ui';
 
 import {
@@ -48,7 +49,7 @@ export const Collection = () => {
   }, []);
 
   return (
-    <Container maxWidth="container.xl" height="8000px">
+    <Container maxWidth="container.xl" pb="100px">
       <Box className={cn(styles.Header, isDark && styles.Dark)}>
         <Box className={styles.Banner}>
           <Image
@@ -60,22 +61,29 @@ export const Collection = () => {
         <Box className={styles.TopContent}>
           <Flex align="center" justifyContent="space-between">
             <Flex align="center" className={styles.Collection}>
-              <Avatar
-                image="/mocks/images/collection/avatar.png"
-                name="Collection Name"
-                className={styles.Avatar}
-              />
+              <Box className={styles.Avatar}>
+                <Avatar
+                  image="/mocks/images/collection/avatar.png"
+                  name="Collection Name"
+                  size="full"
+                  //borderColor="blackTransparent.10"
+                />
+              </Box>
+
               <Box className={styles.Title}>Fluf World</Box>
             </Flex>
-            <Box className={styles.SocialLinks}>
-              <SocialLinks />
-            </Box>
-            <Box>
-              <Button>Vote</Button>
-            </Box>
-            <Box>
-              <WatchlistButton />
-            </Box>
+            <Spacer />
+            <Flex align="center">
+              <Box className={styles.SocialLinks} mr="40px">
+                <SocialLinks />
+              </Box>
+              <Box mr="20px">
+                <Button>Vote</Button>
+              </Box>
+              <Box>
+                <WatchlistButton />
+              </Box>
+            </Flex>
           </Flex>
         </Box>
 
@@ -86,7 +94,9 @@ export const Collection = () => {
         <Chart />
       </Box>
 
-      <Tabs items={tabs} />
+      <Box mt="80px">
+        <Tabs items={tabs} />
+      </Box>
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import { OwnedNfts } from './components/tabs';
+import { OwnedNfts, Description, Activity } from './components/tabs';
 
 export const tabs = [
   {
@@ -10,11 +10,11 @@ export const tabs = [
   {
     id: 2,
     title: 'Description',
-    component: 'Test 2',
+    component: <Description />,
   },
   {
     id: 3,
     title: 'Collection activity',
-    component: 'Test 3',
+    component: <Activity />,
   },
 ];

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, HStack } from '@chakra-ui/react';
+import { Box, HStack, useColorMode } from '@chakra-ui/react';
 import { InfoTooltip } from '@/components/common';
 import { Ethereum } from '@/components/icons';
 
@@ -25,12 +25,15 @@ export const Stats = (props: Props) => {
   //
   const { isLoading } = props;
 
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
   return (
     <>
       {isLoading ? (
         <Skeleton />
       ) : (
-        <Box className={styles.Wrapper}>
+        <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
           <Box className={styles.Item}>
             <HStack spacing="6px" justifyContent="center" mb="10px">
               <FolderIcon className={styles.Icon} />
