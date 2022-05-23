@@ -21,7 +21,7 @@ export const Skeleton = () => {
   );
 };
 
-const ItemSkeleton = ({ isDark }) => (
+const ItemSkeleton = ({ isDark }: any) => (
   <ContentLoader
     speed={2}
     width={121}

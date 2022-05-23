@@ -44,11 +44,11 @@ const options = [
   },
 ];
 
-interface Props {
-  //
-}
+// interface Props {
+//   //
+// }
 
-export const Chart = (props: Props) => {
+export const Chart = (props: any) => {
   //
   const {} = props;
   //

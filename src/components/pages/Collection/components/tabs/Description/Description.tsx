@@ -3,11 +3,11 @@ import { Box, Text } from '@chakra-ui/react';
 
 import cn from 'classnames';
 import styles from './.module.sass';
-interface Props {
-  //
-}
+// interface Props {
+//   //
+// }
 
-export const Description = (props: Props) => {
+export const Description = (props: any) => {
   //
   const {} = props;
   return (

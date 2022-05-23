@@ -63,7 +63,7 @@ export const Select = (props: any) => {
     >
       {label && (
         <HStack className={styles.LabelWrapper}>
-          <Box className={styles.Label} __css={css.label} {...labelProps}>
+          <Box className={styles.Label} {...labelProps}>
             {label}
           </Box>
 
@@ -71,11 +71,7 @@ export const Select = (props: any) => {
         </HStack>
       )}
 
-      {description && (
-        <Box className={styles.Description} __css={css.description}>
-          {description}
-        </Box>
-      )}
+      {description && <Box className={styles.Description}>{description}</Box>}
 
       <HiddenSelect
         state={state}

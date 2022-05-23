@@ -5,11 +5,11 @@ import { ActivityList } from '@/components/common';
 import cn from 'classnames';
 import styles from './.module.sass';
 
-interface Props {
-  //
-}
+// interface Props {
+//   //
+// }
 
-export const Activity = (props: Props) => {
+export const Activity = (props: any) => {
   //
   const {} = props;
   return (

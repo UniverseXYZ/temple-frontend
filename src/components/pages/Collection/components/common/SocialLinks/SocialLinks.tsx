@@ -14,9 +14,9 @@ import {
   WebsiteIcon,
 } from '@/components/icons';
 
-interface Props {
-  //
-}
+// interface Props {
+//   //
+// }
 
 const links = [
   {
@@ -51,7 +51,7 @@ const links = [
   },
 ];
 
-export const SocialLinks = (props: Props) => {
+export const SocialLinks = (props: any) => {
   //
   const {} = props;
   //

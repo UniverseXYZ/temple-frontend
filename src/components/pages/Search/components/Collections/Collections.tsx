@@ -5,13 +5,13 @@ import { CollectionCard } from '@/components/common';
 // import cn from 'classnames';
 // import styles from './.module.sass';
 
-interface Props {
-  //
-}
+// interface Props {
+//   //
+// }
 
 import initialData from '@/mocks/data';
 
-export const Collections = (props: Props) => {
+export const Collections = (props: any) => {
   //
   const {} = props;
 
