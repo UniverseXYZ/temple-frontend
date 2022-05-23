@@ -10,6 +10,7 @@ interface Props {
   //selectedIndex?: number;
   //activeItem?: Value;
   onChange?: (value: Value) => void;
+  size?: 'sm' | 'md';
 }
 
 interface Item {
@@ -78,7 +79,7 @@ export const ElasticSwitch = (props: Props) => {
             )}
             onClick={(e) => handleItemSelect(e, item.value, index)}
           >
-            <HStack display="inline-flex" h="100%">
+            <HStack display="inline-flex" h="100%" spacing={0}>
               {item.icon && (
                 <Box
                   className={cn(
