@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery } from 'react-query';
+// import { useQuery } from 'react-query';
 
 import {
   Container,
@@ -21,7 +21,7 @@ import {
   Chart,
 } from './components/common';
 
-import { GetCollectionById } from '@/api';
+// import { GetCollectionById } from '@/api';
 
 import cn from 'classnames';
 import styles from './Collection.module.sass';
