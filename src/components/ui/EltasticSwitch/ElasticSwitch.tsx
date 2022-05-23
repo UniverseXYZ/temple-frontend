@@ -1,5 +1,5 @@
 import React, { useState, useRef, createRef } from 'react';
-import { Box, HStack, useColorMode } from '@chakra-ui/react';
+import { Box, HStack, Flex, useColorMode } from '@chakra-ui/react';
 
 import cn from 'classnames';
 import styles from './ElasticSwitch.module.sass';
@@ -78,18 +78,23 @@ export const ElasticSwitch = (props: Props) => {
             )}
             onClick={(e) => handleItemSelect(e, item.value, index)}
           >
-            {item.icon && (
-              <Box
-                className={cn(styles.Icon, !item.title && styles.WithoutTitle)}
-              >
-                {item.icon}
-              </Box>
-            )}
-            {item.title && (
-              <Box className={styles.Title} id={item.title}>
-                {item.title}
-              </Box>
-            )}
+            <HStack display="inline-flex" h="100%">
+              {item.icon && (
+                <Box
+                  className={cn(
+                    styles.Icon,
+                    !item.title && styles.WithoutTitle
+                  )}
+                >
+                  {item.icon}
+                </Box>
+              )}
+              {item.title && (
+                <Box className={styles.Title} id={item.title}>
+                  {item.title}
+                </Box>
+              )}
+            </HStack>
           </Box>
         ))}
       </HStack>
