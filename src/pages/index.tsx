@@ -12,6 +12,7 @@ import {
   CuratedCollections,
   OwnedCollections,
   TopCollections,
+  Search,
 } from '@/components/pages';
 
 const Index = () => {
@@ -30,6 +31,8 @@ const Index = () => {
               element={<CuratedCollections />}
             />
             <Route path="/top-collections" element={<TopCollections />} />
+            <Route path="/watchlist" element={<Watchlist />} />
+            <Route path="/search" element={<Search />} />
           </Route>
         </Routes>
       </ScrollToTop>
