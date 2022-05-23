@@ -7,8 +7,6 @@
   position: relative
   min-width: 100%
   height: 100%
-  background: white
-  background-clip: padding-box
   border: 1px solid $black-transparent-10
   border-radius: 12px
   transition: all 150ms linear
@@ -25,7 +23,7 @@
     transition: all 150ms linear
     border-radius: 12px
     opacity: 0
-    z-index: -1
+    z-index: 1
 
   &:hover
     border-color: transparent
@@ -42,20 +40,26 @@
 
 
 .Select
+  position: absolute
+  background: white
+  background-clip: padding-box
   width: 100%
+  height: 100%
   text-align: left
+  border-radius: 11px
   padding-left: 15px
   padding-right: 50px
   color: $black-transparent-40
   font-weight: 400
   outline: none
+  z-index: 2
 
 
 .Arrow
   position: absolute
-  top: 0
+  top: 50%
   right: 20px
-  transform: rotate(0)
+  transform: translateY(-50%) rotate(0)
   transition: all 150ms linear
 
   svg
@@ -112,7 +116,7 @@
     //color: $black-transparent-100
 
   .Arrow
-    transform: rotate(180deg)
+    transform: translateY(-50%) rotate(180deg)
 
     path
       fill: $black-transparent-100
@@ -127,15 +131,8 @@
 .Size--md
   height: 48px
 
-  .Select
-    line-height: 48px
-
 .Size--sm
   height: 42px
-
-  .Select
-    line-height: 42px
-
 
 // ------------ DARK ------------ //
 

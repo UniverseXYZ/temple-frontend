@@ -61,14 +61,15 @@ export const Select = (props: any) => {
         size === 'sm' && styles['Size--sm']
       )}
     >
-      <HStack className={styles.LabelWrapper}>
-        {label && (
+      {label && (
+        <HStack className={styles.LabelWrapper}>
           <Box className={styles.Label} __css={css.label} {...labelProps}>
             {label}
           </Box>
-        )}
-        {labelInfo && <Box>{labelInfo}</Box>}
-      </HStack>
+
+          {labelInfo && <Box>{labelInfo}</Box>}
+        </HStack>
+      )}
 
       {description && (
         <Box className={styles.Description} __css={css.description}>
@@ -90,13 +91,7 @@ export const Select = (props: any) => {
           selectedItem && styles.isSelected
         )}
       >
-        <button
-          ref={ref}
-          //as="button"
-          className={styles.Select}
-          //__css={css.select}
-          {...buttonProps}
-        >
+        <button ref={ref} className={styles.Select} {...buttonProps}>
           <span {...valueProps}>
             {selectedItem ? selectedItem.rendered : placeholder}
           </span>
