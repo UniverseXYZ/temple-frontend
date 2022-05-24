@@ -12,10 +12,11 @@ export { PriceTicker } from './PriceTicker';
 export { TransactionBadge } from './TransactionBadge';
 export { ActivityList } from './ActivityList';
 export { CopyableText } from './CopyableText';
+export { WalletAddress } from './WalletAddress';
 
 // Components
 export { CollectionCard } from './CollectionCard';
 export { CollectionItem } from './CollectionItem';
 export { CollectionList } from './CollectionList';
-export { NftCard } from './NftCard';
+export { NftCard, NftCardSkeleton } from './NftCard';
 export { ImageUpload } from './ImageUpload';
