@@ -1,0 +1,45 @@
+@import '@/sass/colors'
+
+.Wrapper
+  border-radius: 8px
+
+.Address
+  background: $blue-transparent-20
+  color: $blue-flat-500
+  padding: 6px 10px
+  font-weight: 600
+  font-size: 12px
+  line-height: 16px
+  border-top-left-radius: 8px
+  border-bottom-left-radius: 8px
+  transition: 150ms linear
+
+  &:hover
+    color: $blue-flat-300
+    background: $blue-transparent-40
+
+.Link
+  position: relative
+  width: 28px
+  height: 28px
+  background: $blue-transparent-20
+  border-top-right-radius: 8px
+  border-bottom-right-radius: 8px
+  transition: background 150ms linear
+
+  &:hover
+    background: $blue-transparent-40
+
+    path
+      fill: $blue-flat-300
+
+
+  path
+    fill: $blue-flat-500
+    transition: fill 150ms linear
+
+.Icon
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
