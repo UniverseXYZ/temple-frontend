@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { Card } from '@/components/common';
 import { Ethereum } from '@/components/icons';
+import { Skeleton } from './Skeleton';
 
 import cn from 'classnames';
 import styles from './NftCard.module.sass';
