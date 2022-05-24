@@ -7,11 +7,13 @@ import {
 } from '@chakra-ui/react';
 
 import { Badge } from './components';
+import { Skeleton } from './Skeleton';
 
 interface Props extends AvatarProps {
   image: string;
   name: string;
   badgeSize?: string | number;
+  isLoading?: boolean;
 }
 
 const Avatar = (props: Props) => {
@@ -20,6 +22,7 @@ const Avatar = (props: Props) => {
     size,
     image,
     name,
+    isLoading,
     badgeSize = '19px',
     ...restProps
   } = props;
@@ -27,19 +30,25 @@ const Avatar = (props: Props) => {
   const styles = useStyleConfig('Avatar', { variant, size });
 
   return (
-    <ChakraAvatar
-      src={image}
-      name={name}
-      showBorder
-      bg={'none'}
-      ignoreFallback={true}
-      sx={styles}
-      {...restProps}
-    >
-      <AvatarBadge border={0} bottom={'4px'} right={'4px'}>
-        <Badge boxSize={badgeSize} />
-      </AvatarBadge>
-    </ChakraAvatar>
+    <>
+      {isLoading ? (
+        <Skeleton />
+      ) : (
+        <ChakraAvatar
+          src={image}
+          name={name}
+          showBorder
+          bg={'none'}
+          ignoreFallback={true}
+          sx={styles}
+          {...restProps}
+        >
+          <AvatarBadge border={0} bottom={'4px'} right={'4px'}>
+            <Badge boxSize={badgeSize} />
+          </AvatarBadge>
+        </ChakraAvatar>
+      )}
+    </>
   );
 };
 
