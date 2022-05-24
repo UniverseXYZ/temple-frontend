@@ -15,8 +15,10 @@ import { Avatar } from '@/components/common';
 import { Tabs } from '@/components/ui';
 
 import {
+  Title,
+  Banner,
   SocialLinks,
-  WatchlistButton,
+  Buttons,
   Stats,
   Chart,
 } from './components/common';
@@ -51,12 +53,11 @@ export const Collection = () => {
   return (
     <Container maxWidth="container.xl" pb="100px">
       <Box className={cn(styles.Header, isDark && styles.Dark)}>
-        <Box className={styles.Banner}>
-          <Image
-            src="/mocks/images/collection/big_background.png"
-            alt="Collection Name"
-          />
-        </Box>
+        <Banner
+          title="Flow World"
+          image="https://lh3.googleusercontent.com/biQ5untjlSAOByE6kSQajzpnaQY7T2urPVtmI4Idd5QgymG86C8Kaobw3BnB5RIMMpjGJbpePiYU8_ugJGuMeopGbHdU42McT6Ev=h600"
+          isLoading={isLoading}
+        />
 
         <Box className={styles.TopContent}>
           <Flex align="center" justifyContent="space-between">
@@ -66,23 +67,21 @@ export const Collection = () => {
                   image="/mocks/images/collection/avatar.png"
                   name="Collection Name"
                   size="full"
-                  //borderColor="blackTransparent.10"
+                  isLoading={isLoading}
                 />
               </Box>
 
-              <Box className={styles.Title}>Fluf World</Box>
+              <Box>
+                <Title text="Fluf World" isLoading={isLoading} />
+              </Box>
             </Flex>
             <Spacer />
             <Flex align="center">
               <Box className={styles.SocialLinks} mr="40px">
-                <SocialLinks />
+                <SocialLinks isLoading={isLoading} />
               </Box>
-              <Box mr="20px">
-                <Button>Vote</Button>
-              </Box>
-              <Box>
-                <WatchlistButton />
-              </Box>
+
+              <Buttons isLoading={isLoading} />
             </Flex>
           </Flex>
         </Box>
@@ -91,7 +90,7 @@ export const Collection = () => {
       </Box>
 
       <Box mt="40px">
-        <Chart />
+        <Chart isLoading={isLoading} />
       </Box>
 
       <Box mt="80px">

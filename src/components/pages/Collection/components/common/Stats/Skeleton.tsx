@@ -25,13 +25,13 @@ const ItemSkeleton = ({ isDark }: any) => (
   <ContentLoader
     speed={2}
     width={121}
-    height={57}
-    viewBox="0 0 121 57"
+    height={68}
+    viewBox="0 0 121 68"
     backgroundColor={!isDark ? '#E6E6E6' : '#454545'}
     foregroundColor={!isDark ? '#f3f3f3' : '#525252'}
     //opacity={0.5}
   >
-    <rect x="0.5" y="0.5" width="120" height="20" rx="10" />
-    <rect x="14.5" y="28.5" width="92" height="28" rx="14" />
+    <rect x="0.5" y="0" width="120" height="28" rx="14" />
+    <rect x="14.5" y="40" width="92" height="28" rx="14" />
   </ContentLoader>
 );

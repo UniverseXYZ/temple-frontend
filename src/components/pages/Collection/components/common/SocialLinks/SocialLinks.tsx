@@ -14,6 +14,8 @@ import {
   WebsiteIcon,
 } from '@/components/icons';
 
+import { Skeleton } from './Skeleton';
+
 // interface Props {
 //   //
 // }
@@ -53,17 +55,23 @@ const links = [
 
 export const SocialLinks = (props: any) => {
   //
-  const {} = props;
+  const { isLoading } = props;
   //
   return (
-    <HStack spacing="12px">
-      {links.map((item, index) => (
-        <Box key={index} className={styles.Icon}>
-          <Tooltip label={item.title} placement="top" variant="white">
-            <Link>{item.component}</Link>
-          </Tooltip>
-        </Box>
-      ))}
-    </HStack>
+    <>
+      {isLoading ? (
+        <Skeleton />
+      ) : (
+        <HStack spacing="12px">
+          {links.map((item, index) => (
+            <Box key={index} className={styles.Icon}>
+              <Tooltip label={item.title} placement="top" variant="white">
+                <Link>{item.component}</Link>
+              </Tooltip>
+            </Box>
+          ))}
+        </HStack>
+      )}
+    </>
   );
 };

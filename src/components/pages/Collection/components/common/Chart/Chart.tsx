@@ -8,6 +8,8 @@ import { Ethereum, DollarIcon, TransferIcon } from '@/components/icons';
 import cn from 'classnames';
 import styles from './.module.sass';
 
+import { Skeleton } from './Skeleton';
+
 const items = [
   {
     title: 'Price',
@@ -50,32 +52,34 @@ const options = [
 
 export const Chart = (props: any) => {
   //
-  const {} = props;
+  const { isLoading } = props;
   //
   return (
     <>
       <Card p="30px">
-        <Flex mb="60px">
-          <ElasticSwitch items={items} size="sm" />
-          <Spacer />
-          <Box width="220px">
-            <Select placeholder="Placeholder" size="sm">
-              {options.map((option) => (
-                <Option key={option.value}>{option.title}</Option>
-              ))}
-            </Select>
-          </Box>
-        </Flex>
+        {isLoading ? (
+          <Skeleton />
+        ) : (
+          <>
+            <Flex mb="82px">
+              <ElasticSwitch items={items} size="sm" />
+              <Spacer />
+              <Box width="190px">
+                <Select
+                  placeholder="Placeholder"
+                  size="sm"
+                  defaultSelectedKey="last-90-days"
+                >
+                  {options.map((option) => (
+                    <Option key={option.value}>{option.title}</Option>
+                  ))}
+                </Select>
+              </Box>
+            </Flex>
 
-        {/* <Flex>
-          <Box>90 day avg. price</Box>
-          <HStack>
-            <Ethereum />
-            <Box>4.23</Box>
-          </HStack>
-        </Flex> */}
-
-        <LineChart />
+            <LineChart />
+          </>
+        )}
       </Card>
     </>
   );
