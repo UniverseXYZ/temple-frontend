@@ -39,8 +39,6 @@ export const ElasticSwitch = (props: Props) => {
   const elementsRef = useRef(items.map(() => createRef()));
 
   const handleItemSelect = (element: any, value: Value, index: number) => {
-    //console.log(element);
-
     setActiveIndexState(index);
     //setActiveState(value);
     onChange && onChange(value);
@@ -70,7 +68,7 @@ export const ElasticSwitch = (props: Props) => {
             aria-checked={index === activeIndexState}
             aria-labelledby={item.title}
             aria-disabled={item.disabled ?? null}
-            tabindex={index === activeIndexState ? 0 : -1}
+            tabIndex={index === activeIndexState ? 0 : -1}
             key={index}
             className={cn(
               styles.Item,

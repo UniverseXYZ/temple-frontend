@@ -8,8 +8,6 @@ export const Dot = (props: any) => {
   //
   const {} = props;
 
-  //console.log('test', props);
-
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 

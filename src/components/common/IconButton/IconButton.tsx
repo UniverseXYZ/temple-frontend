@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Box, BoxProps } from '@chakra-ui/react';
 import { useColorMode } from '@chakra-ui/color-mode';
 
