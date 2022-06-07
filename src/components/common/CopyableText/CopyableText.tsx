@@ -20,11 +20,7 @@ export const CopyableText = (props: Props) => {
   };
 
   return (
-    <Tooltip
-      label={hasCopied ? 'Copied!' : 'Copy'}
-      openDelay={200}
-      variant={tooltipVariant}
-    >
+    <Tooltip label={hasCopied ? 'Copied!' : 'Copy'} variant={tooltipVariant}>
       <Box as="span" cursor={'pointer'} onClick={(e) => handleCopy(e)}>
         {children}
       </Box>

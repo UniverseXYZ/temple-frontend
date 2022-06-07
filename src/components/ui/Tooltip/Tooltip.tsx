@@ -28,6 +28,7 @@ export const Tooltip = (props: Props) => {
       gutter={gutter}
       closeOnClick={false}
       placement={placement}
+      openDelay={200}
       {...rest}
     >
       {children}
