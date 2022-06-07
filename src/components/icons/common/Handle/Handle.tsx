@@ -8,7 +8,7 @@ interface Props extends BoxProps {
 }
 
 export const Handle = (props: Props) => {
-  const { isDragging, ...restProps } = props;
+  const { isDragging, className, ...restProps } = props;
   const { colorMode } = useColorMode();
 
   return (
@@ -16,7 +16,8 @@ export const Handle = (props: Props) => {
       className={cn(
         'Handle',
         colorMode === 'dark' && 'Handle--Dark',
-        isDragging && 'Handle--Dragging'
+        isDragging && 'Handle--Dragging',
+        className
       )}
       {...restProps}
     >
