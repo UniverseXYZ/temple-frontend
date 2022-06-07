@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { Empty } from '../Empty';
+import { Empty } from '@/components/common';
 
 import cn from 'classnames';
 import styles from './.module.sass';
