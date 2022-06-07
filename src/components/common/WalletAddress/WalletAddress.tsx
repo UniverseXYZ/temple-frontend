@@ -26,7 +26,7 @@ export const WalletAddress = (props: Props) => {
           <Box className={styles.Address}>{tuncAddress}</Box>
         </CopyableText>
 
-        <Tooltip label="Check on Etherscan">
+        <Tooltip label="View on Etherscan">
           <LinkBox className={styles.Link}>
             <LinkOverlay href={etherscanUrl} target="_blank">
               <ExternalLink className={styles.Icon} />
