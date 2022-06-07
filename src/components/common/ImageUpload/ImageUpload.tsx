@@ -100,9 +100,9 @@ export const ImageUpload = (props: Props) => {
         dataURLKey="data_url"
         acceptType={['jpg', 'jpeg', 'gif', 'png', 'webp']}
         maxFileSize={2097152}
-        resolutionType={'less'}
-        resolutionWidth={332}
-        resolutionHeight={332}
+        //resolutionType={'less'}
+        //resolutionWidth={332}
+        //resolutionHeight={332}
         onError={onError}
         inputProps={{ name: name }}
       >
