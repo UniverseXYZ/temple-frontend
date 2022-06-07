@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  Heading,
   Button,
   Modal,
   ModalOverlay,
@@ -11,11 +12,13 @@ import {
   HStack,
 } from '@chakra-ui/react';
 
+import { InfoTooltip } from '@/components/common';
+
 import { arrayMove as reorderItems } from '@dnd-kit/sortable';
 
-import { useSettings } from '@/hooks';
+import { useSettings, useCurrency } from '@/hooks';
 
-import { Content } from './components';
+import { Content, CurrencySwitcher } from './components';
 
 export const ModalDialog = (props: any) => {
   //
@@ -23,8 +26,10 @@ export const ModalDialog = (props: any) => {
 
   const { sections: defaultSectionsValue, setSections: setSettingSections } =
     useSettings();
+  const { setCurrency: setSettingsCurrency } = useCurrency();
 
   const [sections, setSections] = useState(defaultSectionsValue);
+  const [currency, setCurrency] = useState(defaultSectionsValue);
 
   const onSectionVisibleChange = (id: string, visible: boolean): void => {
     const sectionArray = [...sections];
@@ -46,9 +51,14 @@ export const ModalDialog = (props: any) => {
     }
   };
 
+  const onCurrencyChange = (value: any) => {
+    setCurrency(value);
+  };
+
   const handleSaveChanges = () => {
     onClose();
     setSettingSections(sections);
+    setSettingsCurrency(currency);
   };
 
   return (
@@ -67,10 +77,23 @@ export const ModalDialog = (props: any) => {
         <ModalCloseButton />
 
         <ModalBody>
+          <HStack>
+            <Heading
+              as="h2"
+              p="20px 0"
+              fontSize="16px"
+              fontFamily="Space Grotesk"
+            >
+              Customize widgets
+            </Heading>
+            <InfoTooltip label="You can pick-and-choose what interests you, hide content from your feed, and rearange the widget positions by dragging & dropping them." />
+          </HStack>
+
           <Content
             onSectionVisibleChange={onSectionVisibleChange}
             onSectionSortableChange={onSectionSortableChange}
           />
+          <CurrencySwitcher onChange={onCurrencyChange} />
         </ModalBody>
 
         <ModalFooter>

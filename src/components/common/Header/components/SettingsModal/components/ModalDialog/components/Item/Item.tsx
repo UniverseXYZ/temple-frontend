@@ -81,7 +81,11 @@ export const Item = React.memo(
         style={style}
       >
         <Flex align="center">
-          <Handle {...listeners} isDragging={dragging} />
+          <Handle
+            {...listeners}
+            isDragging={dragging}
+            className={styles.Handle}
+          />
           <Image className={styles.Image} src={image} alt={title} />
           <Box flex="1">
             <Text className={styles.Title}>{title}</Text>

@@ -13,6 +13,8 @@ export { TransactionBadge } from './TransactionBadge';
 export { ActivityList } from './ActivityList';
 export { CopyableText } from './CopyableText';
 export { WalletAddress } from './WalletAddress';
+export { CurrencyExchanger } from './CurrencyExchanger';
+export { CurrencyToggle } from './CurrencyToggle';
 
 // Components
 export { CollectionCard } from './CollectionCard';

@@ -91,10 +91,6 @@ export const Content = (props: any) => {
 
   return (
     <>
-      <Heading as="h6" variant="h6" mb="20px">
-        Custimize widgets
-      </Heading>
-
       <DndContext
         //sensors={sensors}
         collisionDetection={closestCenter}

@@ -28,5 +28,8 @@ export const settings = {
   ],
   wallets: [],
   activeWallet: null,
-  baseCurrency: 'USD',
+  baseCurrency: 'ETH',
+  rates: null,
+  privacyMode: false,
+  version: '1.0',
 };

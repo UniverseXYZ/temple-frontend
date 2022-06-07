@@ -15,19 +15,22 @@ export const Modal = {
     header: {
       fontFamily: 'Sharp Grotesk',
       fontWeight: 600,
-      fontSize: '20px',
-      padding: '30px 0',
-      margin: '0 30px',
-      //borderBottom: '1px solid',
+      fontSize: '21px',
+      lineHeight: '1',
+      paddingTop: '30px',
+      paddingLeft: '30px',
+      paddingRight: '30px',
+      paddingBottom: '20px',
+      borderBottom: '1px solid',
       borderColor: mode('black.10', 'whiteTransparent.10')(props),
     },
 
     body: {
-      padding: '30px',
+      padding: '0 30px',
     },
 
     footer: {
-      padding: '30px 30px',
+      padding: '20px 30px',
       borderTop: '1px solid',
       borderColor: mode('black.10', 'whiteTransparent.10')(props),
     },
