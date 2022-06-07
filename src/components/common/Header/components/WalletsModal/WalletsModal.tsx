@@ -119,7 +119,7 @@ export const WalletsModal = () => {
 
               <ModalCloseButton />
 
-              <ModalBody>
+              <ModalBody p="30px">
                 <Content />
               </ModalBody>
               <ModalFooter>

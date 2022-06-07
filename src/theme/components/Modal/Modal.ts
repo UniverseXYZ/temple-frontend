@@ -15,7 +15,7 @@ export const Modal = {
     header: {
       fontFamily: 'Sharp Grotesk',
       fontWeight: 600,
-      fontSize: '21px',
+      fontSize: '20px',
       lineHeight: '1',
       paddingTop: '30px',
       paddingLeft: '30px',

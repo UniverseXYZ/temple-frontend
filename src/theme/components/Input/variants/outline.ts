@@ -60,7 +60,7 @@ export const outline = (props: any) => ({
 
     _placeholder: {
       fontSize: '16px',
-      fontWeight: '300',
+      fontWeight: '400',
       color: mode('black.40', 'white.40'),
       //fontFamily: '"Space Grotesk", serif',
     },

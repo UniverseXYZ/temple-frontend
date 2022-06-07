@@ -82,7 +82,7 @@ const LabelTooltip = (props: any) => (
 
 const ValueLeightCouner = ({ value, maxLeight }: any) => {
   return (
-    <Box ml="auto" fontSize="10px" fontWeight="400">
+    <Box ml="auto" fontSize="10px" fontWeight="400" color="#999">
       {value?.length} / {maxLeight}
     </Box>
   );

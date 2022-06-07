@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { Box, HStack, VStack, Text } from '@chakra-ui/react';
 
 import { ImageUpload } from '@/components/common';
 import { FormItem, Input } from '@/components/ui';
@@ -8,6 +8,9 @@ export const Content = () => {
   //
   return (
     <VStack align="stretch" spacing={'30px'}>
+      <Text variant="gray.60">
+        You can add as much wallet addresses as you want.
+      </Text>
       <HStack spacing={'30px'}>
         <ImageUpload name="image" />
 
