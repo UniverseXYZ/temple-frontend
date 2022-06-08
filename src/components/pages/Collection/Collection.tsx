@@ -1,15 +1,8 @@
-import React from 'react';
-// import { useQuery } from 'react-query';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
 
-import {
-  Container,
-  Box,
-  Image,
-  Flex,
-  Spacer,
-  Button,
-  useColorMode,
-} from '@chakra-ui/react';
+import { Container, Box, Flex, Spacer, useColorMode } from '@chakra-ui/react';
 
 import { Avatar } from '@/components/common';
 import { Tabs } from '@/components/ui';
@@ -23,7 +16,7 @@ import {
   Chart,
 } from './components/common';
 
-// import { GetCollectionById } from '@/api';
+import { GetCollectionBySlug } from '@/api';
 
 import cn from 'classnames';
 import styles from './Collection.module.sass';
@@ -32,47 +25,71 @@ import { tabs } from './tabs';
 
 export const Collection = () => {
   //
+  const { slug } = useParams();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
-  // const { data, error, isError, isLoading } = useQuery(
-  //   'collection',
-  //   GetCollectionById
-  // );
+  //const [collection, setCollection] = useState<any>();
 
+  const {
+    data: { address, metadata } = {},
+    //data: collection = {},
+    error,
+    isError,
+    isLoading,
+    isRefetching,
+  } = useQuery(['collection', slug], () => GetCollectionBySlug(slug), {
+    onSuccess: (data) => {
+      //setCollection(data);
+    },
+    refetchOnMount: 'always',
+  });
+
+  //const { address, metadata } = collection;
+  //const { name, description, profileImage, bannerImage } = metadata;
+
+  //console.log('isRefetching', isRefetching);
+  //console.log('isLoading', isLoading);
   //const { metadata } = data;
 
-  const [isLoading, setIsLoading] = React.useState(true);
+  // const [isLoading, setIsLoading] = React.useState(true);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
+  // React.useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2000);
+  // }, []);
+
+  const loading = isLoading || isRefetching;
+
+  //TODO: add loading context
 
   return (
     <Container maxWidth="container.xl" pb="100px">
       <Box className={cn(styles.Header, isDark && styles.Dark)}>
         <Banner
-          title="Flow World"
-          image="https://lh3.googleusercontent.com/biQ5untjlSAOByE6kSQajzpnaQY7T2urPVtmI4Idd5QgymG86C8Kaobw3BnB5RIMMpjGJbpePiYU8_ugJGuMeopGbHdU42McT6Ev=h600"
-          isLoading={isLoading}
+          title={metadata?.name}
+          image={metadata?.bannerImage}
+          isLoading={loading}
         />
-
         <Box className={styles.TopContent}>
           <Flex align="center" justifyContent="space-between">
             <Flex align="center" className={styles.Collection}>
               <Box className={styles.Avatar}>
                 <Avatar
-                  image="/mocks/images/collection/avatar.png"
-                  name="Collection Name"
+                  image={metadata?.profileImage}
+                  name={metadata?.name}
                   size="full"
-                  isLoading={isLoading}
+                  isLoading={loading}
                 />
               </Box>
 
               <Box>
-                <Title text="Fluf World" isLoading={isLoading} />
+                <Title
+                  name={metadata?.name}
+                  address={address}
+                  isLoading={loading}
+                />
               </Box>
             </Flex>
             <Spacer />
@@ -81,16 +98,16 @@ export const Collection = () => {
                 <SocialLinks isLoading={isLoading} />
               </Box>
 
-              <Buttons isLoading={isLoading} />
+              <Buttons isLoading={loading} />
             </Flex>
           </Flex>
         </Box>
 
-        <Stats isLoading={isLoading} />
+        <Stats isLoading={loading} />
       </Box>
 
       <Box mt="40px">
-        <Chart isLoading={isLoading} />
+        <Chart isLoading={loading} />
       </Box>
 
       <Box mt="80px">

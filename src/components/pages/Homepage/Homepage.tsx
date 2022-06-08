@@ -16,6 +16,9 @@ export const Homepage = () => {
         <Box mb="60px">
           <OrderedList>
             <ListItem>
+              <Link to="/test">Test</Link>
+            </ListItem>
+            <ListItem>
               <Link to="/collections/flud">Colletion</Link>
             </ListItem>
             <ListItem>

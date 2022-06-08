@@ -18,7 +18,7 @@ export { CurrencyExchanger } from './CurrencyExchanger';
 export { CurrencyToggle } from './CurrencyToggle';
 
 // Components
-export { CollectionCard } from './CollectionCard';
+export { CollectionCard, CollectionCardSkeleton } from './CollectionCard';
 export { CollectionItem } from './CollectionItem';
 export { CollectionList } from './CollectionList';
 export { NftCard, NftCardSkeleton } from './NftCard';

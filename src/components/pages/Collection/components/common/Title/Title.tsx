@@ -8,13 +8,14 @@ import styles from './Title.module.sass';
 import { Skeleton } from './Skeleton';
 
 interface Props {
-  text?: string;
+  name: string;
+  address: string;
   isLoading?: boolean;
 }
 
 export const Title = (props: Props) => {
   //
-  const { text, isLoading } = props;
+  const { name, address, isLoading } = props;
   //
   return (
     <>
@@ -22,8 +23,8 @@ export const Title = (props: Props) => {
         <Skeleton />
       ) : (
         <>
-          <Box className={styles.Title}>{text}</Box>
-          <WalletAddress address="0x6AC7d52Ccd8fe0225dD52b30e5Cb55166c563601" />
+          <Box className={styles.Title}>{name}</Box>
+          <WalletAddress address={address} />
         </>
       )}
     </>
