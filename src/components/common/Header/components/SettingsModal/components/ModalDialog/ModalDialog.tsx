@@ -26,10 +26,14 @@ export const ModalDialog = (props: any) => {
 
   const { sections: defaultSectionsValue, setSections: setSettingSections } =
     useSettings();
-  const { setCurrency: setSettingsCurrency } = useCurrency();
+
+  const {
+    selectedCurrency: defaultSelectedCurrency,
+    setCurrency: setSettingsCurrency,
+  } = useCurrency();
 
   const [sections, setSections] = useState(defaultSectionsValue);
-  const [currency, setCurrency] = useState(defaultSectionsValue);
+  const [currency, setCurrency] = useState(defaultSelectedCurrency);
 
   const onSectionVisibleChange = (id: string, visible: boolean): void => {
     const sectionArray = [...sections];
