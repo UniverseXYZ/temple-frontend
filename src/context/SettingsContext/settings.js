@@ -1,3 +1,5 @@
+//! UPDATE VERSION IF MAKE ANY CHANGES
+
 export const settings = {
   sections: [
     {
@@ -31,5 +33,5 @@ export const settings = {
   baseCurrency: 'ETH',
   rates: null,
   privacyMode: false,
-  version: '1.0',
+  version: '1.0.0',
 };
