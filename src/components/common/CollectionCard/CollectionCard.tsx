@@ -13,8 +13,12 @@ import {
 
 import { Link } from 'react-router-dom';
 
-import { Card, Avatar, BundleTag } from '@/components/common';
-import { Ethereum } from '@/components/icons';
+import {
+  Card,
+  Avatar,
+  BundleTag,
+  CurrencyExchanger,
+} from '@/components/common';
 
 import cn from 'classnames';
 import styles from './CollectionCard.module.sass';
@@ -26,7 +30,7 @@ interface Props {
   collection: any;
 }
 
-const CollectionCard = (props: Props) => {
+export const CollectionCard = (props: Props) => {
   const { showAuthor, showFooter, showText, collection } = props;
 
   const { colorMode } = useColorMode();
@@ -101,24 +105,20 @@ const Footer = ({ stats }: any) => (
           <Box fontSize={12} color="grey" mb={'8px'}>
             Floor price
           </Box>
-          <HStack align="center">
-            <Ethereum />
-            <Box fontWeight={600} fontSize={14}>
-              {stats.floorPrice}
-            </Box>
-          </HStack>
+
+          <Box fontWeight={600} fontSize={14}>
+            <CurrencyExchanger value={stats.floorPrice} maxAbbreviate={1e3} />
+          </Box>
         </Box>
         <Spacer />
         <Box>
           <Box fontSize={12} color="grey" mb={'8px'} textAlign="right">
             Volume traded
           </Box>
-          <HStack align="center" justify="end">
-            <Ethereum />
-            <Box fontWeight={600} fontSize={14}>
-              {stats.totalValue}
-            </Box>
-          </HStack>
+
+          <Flex fontWeight={600} fontSize={14} justify="end">
+            <CurrencyExchanger value={stats.totalValue} maxAbbreviate={1e3} />
+          </Flex>
         </Box>
       </Flex>
     </Box>
@@ -130,5 +130,3 @@ CollectionCard.defaultProps = {
   showText: false,
   showFooter: true,
 };
-
-export default CollectionCard;

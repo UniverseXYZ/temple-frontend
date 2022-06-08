@@ -1,1 +1,2 @@
-export { default as CollectionCard } from './CollectionCard';
+export * from './CollectionCard';
+export * from './CollectionCardSkeleton';

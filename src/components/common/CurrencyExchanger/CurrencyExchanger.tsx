@@ -3,14 +3,12 @@ import { Box, HStack } from '@chakra-ui/react';
 import { Ethereum } from '@/components/icons';
 import { numberWithCommas, abbreviateNumber } from '@/utils';
 
-import cn from 'classnames';
-import styles from './.module.sass';
-
 import { useCurrency } from '@/hooks';
 
 interface Props {
   blockchain?: string;
   value: number;
+  maxAbbreviate?: number;
 }
 
 const CURRENCIES = {
@@ -31,7 +29,7 @@ const CURRENCIES_SYMBOLS = {
 
 export const CurrencyExchanger = (props: Props) => {
   //
-  const { blockchain = 'ethereum', value } = props;
+  const { blockchain = 'ethereum', value, maxAbbreviate = 1e6 } = props;
 
   const [val, setVal] = useState<number | string>(value);
 
@@ -53,7 +51,7 @@ export const CurrencyExchanger = (props: Props) => {
     const valueInCurrency = value * rates[blockchain][currency];
     const formatedValue = numberWithCommas(valueInCurrency);
 
-    if (valueInCurrency >= 1e6) {
+    if (valueInCurrency >= maxAbbreviate) {
       return abbreviateNumber(valueInCurrency);
     }
 
