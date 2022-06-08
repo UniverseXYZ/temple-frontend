@@ -13,25 +13,22 @@ export const SettingsProvider = ({ children }: any) => {
     defaultSettings
   );
 
-  console.log('value', localStorageSettings);
-
   useEffect(() => {
     //
     if (localStorageSettings) {
+      console.log('value', localStorageSettings);
       const isSameVersion =
         localStorageSettings.version === defaultSettings.version;
-      console.log('isSameVersion', isSameVersion);
 
       if (!isSameVersion) {
         //TODO: Save old user settings
-        console.log('Update localStorage settings');
         setLocalStorageSettings(defaultSettings);
       }
 
       return;
     }
     //
-  }, [localStorageSettings]);
+  }, []);
 
   const defaultContextValue = [localStorageSettings, setLocalStorageSettings];
 
