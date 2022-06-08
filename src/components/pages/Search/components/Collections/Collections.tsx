@@ -20,7 +20,7 @@ export const Collections = (props: any) => {
   return (
     <Box pt="30px">
       <SimpleGrid columns={4} spacing="30px">
-        {collections.map((collection) => (
+        {collections.map((collection: any) => (
           <CollectionCard key={collection.id} collection={collection} />
         ))}
       </SimpleGrid>

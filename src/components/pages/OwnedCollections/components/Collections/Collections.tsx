@@ -88,7 +88,7 @@ export const Collections = (props: any) => {
       </Box>
 
       <SimpleGrid columns={columns} spacing={spacing}>
-        {collections.map((collection) => (
+        {collections.map((collection: any) => (
           <>
             {isViewCard ? (
               <CollectionCard key={collection.id} collection={collection} />
