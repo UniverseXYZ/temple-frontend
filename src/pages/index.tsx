@@ -3,6 +3,7 @@ import { BrowserRouter, MemoryRouter, Routes, Route } from 'react-router-dom';
 import { ScrollToTop } from '@/components/router';
 // BrowserRouter  for development
 // MemoryRouter for production
+import { usePoolingRates } from '@/hooks';
 
 import { Layout } from '@/components/common';
 import {
@@ -16,6 +17,9 @@ import {
 } from '@/components/pages';
 
 const Index = () => {
+  // Fetch rates from Coingecko
+  usePoolingRates();
+
   return (
     <BrowserRouter>
       <ScrollToTop>
