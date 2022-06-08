@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Box, HStack, useColorMode } from '@chakra-ui/react';
 import { RadioGroup } from '@headlessui/react';
-import { Box, HStack } from '@chakra-ui/react';
-import { useCurrency } from '@/hooks';
 
 import cn from 'classnames';
 import styles from './CurrencyToggle.module.sass';
@@ -29,6 +28,9 @@ const options = [
 export const CurrencyToggle = (props: Props) => {
   //
   const { onChange, initialValue } = props;
+
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
 
   const [selected, setSelected] = useState(initialValue || options[0].value);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -83,7 +85,7 @@ export const CurrencyToggle = (props: Props) => {
 
   //
   return (
-    <Box className={styles.Wrapper}>
+    <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
       <RadioGroup value={selected} onChange={onValueChange}>
         <Box className={styles.Handle} style={style}></Box>
         <HStack spacing="6px">
