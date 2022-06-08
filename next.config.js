@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
 
   async rewrites() {
     return [
-      // Rewrite everything else to use `pages/index`
+      // Rewrite everything to `pages/index`
       {
-        source: '/:path*',
+        source: '/:any*',
         destination: '/',
       },
     ];

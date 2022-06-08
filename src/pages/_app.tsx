@@ -12,20 +12,26 @@ dayjs.extend(relativeTime);
 
 const queryClient = new QueryClient();
 
+function SafeHydrate({ children }: any) {
+  return (
+    <div suppressHydrationWarning>
+      {typeof window === 'undefined' ? null : children}
+    </div>
+  );
+}
+
 function App({ Component, pageProps }: AppProps) {
   //
   return (
-    <QueryClientProvider client={queryClient}>
-      <SettingsProvider>
-        <ChakraProvider theme={theme}>
-          <div suppressHydrationWarning>
-            {typeof window === 'undefined' ? null : (
-              <Component {...pageProps} />
-            )}
-          </div>
-        </ChakraProvider>
-      </SettingsProvider>
-    </QueryClientProvider>
+    <SafeHydrate>
+      <QueryClientProvider client={queryClient}>
+        <SettingsProvider>
+          <ChakraProvider theme={theme}>
+            <Component {...pageProps} />
+          </ChakraProvider>
+        </SettingsProvider>
+      </QueryClientProvider>
+    </SafeHydrate>
   );
 }
 
