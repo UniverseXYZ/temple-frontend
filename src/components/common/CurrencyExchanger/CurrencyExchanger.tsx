@@ -59,7 +59,10 @@ export const CurrencyExchanger = (props: Props) => {
   };
 
   return (
-    <HStack spacing={CURRENCIES_SYMBOLS[selectedCurrency].spacing}>
+    <HStack
+      display="inline-flex"
+      spacing={CURRENCIES_SYMBOLS[selectedCurrency].spacing}
+    >
       <Box>{CURRENCIES_SYMBOLS[selectedCurrency].symbol}</Box>
       <Box>{val}</Box>
     </HStack>
