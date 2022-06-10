@@ -1,13 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Flex,
-  Spacer,
-  Box,
-  Image,
-  HStack,
-  useColorMode,
-} from '@chakra-ui/react';
+import { Flex, Box, HStack, useColorMode, Button } from '@chakra-ui/react';
 
 import {
   Logo,
@@ -16,6 +9,8 @@ import {
   WalletsButton,
   SearchInput,
 } from './components';
+
+import { ArrowLeftIcon } from '@/components/icons';
 
 import cn from 'classnames';
 import styles from './Header.module.sass';
@@ -31,11 +26,14 @@ const Header = () => {
     <WalletsModalProvider>
       <Box className={cn(styles.Header, isDark && styles.Dark)}>
         <Flex justify="space-between">
-          <Box>
+          <HStack spacing="20px">
+            <Button variant="ghost" leftIcon={<ArrowLeftIcon />}>
+              Back
+            </Button>
             <Link to="/">
               <Logo />
             </Link>
-          </Box>
+          </HStack>
 
           <SearchInput />
 

@@ -32,6 +32,7 @@ export const theme = extendTheme({
         height: '100%',
         backgroundColor: mode('#fafbfc', '#131313')(props),
         transition: 'none',
+        fontFeatureSettings: '"ss04" on',
         // backgroundImage:
         //   colorMode === 'light'
         //     ? 'url("/assets/images/top-main-bg.png")'

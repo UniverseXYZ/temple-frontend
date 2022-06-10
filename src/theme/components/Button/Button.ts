@@ -1,19 +1,25 @@
+import { mode } from '@chakra-ui/theme-tools';
 import * as variants from './variants';
 
 export const Button = {
   // style object for base or default style
-  baseStyle: {
+  baseStyle: (props: any) => ({
+    fontFamily: 'Space Grotesk',
     fontSize: '16px',
     fontWeight: 600,
     borderRadius: '12px',
-    padding: '12px 26px !important',
+    padding: '11px 16px',
     color: '#000',
 
     _focus: {
-      outline: '0 !important',
-      boxShadow: '0 !important',
+      outline: '0',
+      boxShadow: '0',
     },
-  },
+
+    path: {
+      fill: mode('black', 'white')(props),
+    },
+  }),
   // styles for different sizes ("sm", "md", "lg")
   sizes: {
     md: {
