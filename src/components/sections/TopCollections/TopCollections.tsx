@@ -55,7 +55,7 @@ export const TopCollections = () => {
           <HStack spacing="15px">
             <ElasticSwitch items={items} onChange={onSwitchChange} />
             <Box width="200px">
-              <Select defaultSelectedKey="14">
+              <Select defaultSelectedKey="14" aria-labelledby="Sort by">
                 <Option key="14">Last 14 days</Option>
                 <Option key="30">Last 30 days</Option>
                 <Option key="90">Last 90 days</Option>

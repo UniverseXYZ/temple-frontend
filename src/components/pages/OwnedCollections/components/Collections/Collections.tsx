@@ -74,7 +74,7 @@ export const Collections = (props: any) => {
           </Box>
 
           <Box w="350px">
-            <Select placeholder="Sort by" size="sm">
+            <Select placeholder="Sort by" aria-labelledby="Sort by" size="sm">
               {options.map((option) => (
                 <Option key={option.value}>{option.title}</Option>
               ))}

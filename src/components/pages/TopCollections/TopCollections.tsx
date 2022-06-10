@@ -52,7 +52,8 @@ export const TopCollections = () => {
           <Spacer />
           <Box w="225px">
             <Select
-              placeholder="Placeholder"
+              placeholder="Sort by"
+              aria-labelledby="Sort by"
               size="sm"
               defaultSelectedKey="all-time"
             >
