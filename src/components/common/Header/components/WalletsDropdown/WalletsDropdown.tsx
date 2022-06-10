@@ -1,5 +1,12 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
-import { Box, Button, Text, HStack, useColorMode } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Text,
+  HStack,
+  Flex,
+  useColorMode,
+} from '@chakra-ui/react';
 
 import { useClickAway } from 'react-use';
 
@@ -7,6 +14,7 @@ import { WalletsModalContext } from '../../context/WalletsModalContext';
 
 import { useWallets } from '@/hooks';
 import { DropdownItem, WalletAvatar, AllWalletsItem } from './components';
+import { CurrencyExchanger } from '@/components/common';
 import { SelectDownArrow } from '@/components/icons';
 
 import cn from 'classnames';
@@ -20,11 +28,13 @@ const ALL_WALLETS_VALUE = {
 
 export const WalletsDropdown = () => {
   //
-  const { wallets, activeWallet, setActiveWallet } = useWallets() as any;
+  const { wallets, activeWallet, setActiveWallet } = useWallets();
   const { onOpen } = useContext(WalletsModalContext);
 
   const [value, setValue] = useState(activeWallet);
   const [visible, setVisible] = useState(false);
+
+  console.log(value);
 
   const refSelect = useRef(null);
 
@@ -64,16 +74,19 @@ export const WalletsDropdown = () => {
         isDark && styles.Dark
       )}
     >
-      <Box className={cn(styles.SelectedItem)} onClick={() => toggleVisible()}>
-        <HStack>
+      <Box className={styles.SelectedItem} onClick={() => toggleVisible()}>
+        <HStack spacing="8px">
           <WalletAvatar size={'28px'} name={value?.name} image={value?.image} />
-          <Text isTruncated maxWidth={'125px'}>
+          <Text as="div" className={styles.Text} isTruncated>
             {value?.name}
           </Text>
+          <Box className={styles.Balance}>
+            <CurrencyExchanger value={6.24} maxAbbreviate={1e3} />
+          </Box>
         </HStack>
       </Box>
 
-      <Box className={cn(styles.Dropdown)}>
+      <Box className={styles.Dropdown}>
         <Box className={styles.DropdownList}>
           <Box className={styles.DropdownOverflow}>
             {/* {wallets.length > 1 && <AllWalletsItem />} */}

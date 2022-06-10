@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useContext } from 'react';
 import { Box, Flex, HStack, Text, useColorMode } from '@chakra-ui/react';
-import { CopyableText } from '@/components/common';
+import { CopyableText, CurrencyExchanger } from '@/components/common';
 import { Tooltip } from '@/components/ui';
 
 import { WalletsModalContext } from '../../../../context/WalletsModalContext';
@@ -65,12 +65,10 @@ export const DropdownItem = (props: Props) => {
         </Box>
 
         <Box className={styles.Balance}>
-          <HStack justify="end">
-            <Box>
-              <Ethereum />
-            </Box>
-            <Box className={styles.BalanceAmount}>0,24</Box>
-          </HStack>
+          <Box className={styles.BalanceAmount}>
+            <CurrencyExchanger value={0.24} maxAbbreviate={1e3} />
+          </Box>
+
           <Box className={styles.BalanceText}>on balance</Box>
         </Box>
 

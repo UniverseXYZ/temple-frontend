@@ -7,8 +7,8 @@
   position: relative
   height: 42px
   user-select: none
-  min-width: 200px
-  max-width: 200px
+  //min-width: 250px
+  //width: 280px
   transition: all 150ms linear
 
   &:hover
@@ -18,19 +18,41 @@
   position: absolute
   right: 10px
   top: 50%
+  width: 12px
   transform: translateY(-50%)
   cursor: pointer
   pointer-events: none
   transition: transform 100ms linear
-
-  svg
-    width: 12px
-    height: 8px
+  opacity: 40%
 
 .SelectedItem
+  font-size: 14px
+  font-weight: 600
   line-height: 40px
   cursor: pointer
-  padding: 0 12px
+  padding-left: 12px
+  padding-right: 32px
+
+.Text
+  max-width: 70px
+  min-width: 70px
+
+.Balance
+  position: relative
+  padding-left: 8px
+  height: 40px
+
+  &::before
+    content: ''
+    display: block
+    width: 1px
+    height: 18px
+    position: absolute
+    top: 50%
+    left: 0
+    transform: translateY(-50%)
+    background-color: $black-transparent-10
+
 
 .Dropdown
   position: absolute
