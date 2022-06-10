@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box, HStack, Text } from '@chakra-ui/react';
-import { Card, Avatar } from '@/components/common';
-import { Handle, Ethereum, TrashIcon } from '@/components/icons';
+import { Box, HStack, Text, useColorMode } from '@chakra-ui/react';
+import { Card, Avatar, CurrencyExchanger } from '@/components/common';
+import { Handle, TrashIcon } from '@/components/icons';
 
 import cn from 'classnames';
-import styles from './CollectionItem.module.scss';
+import styles from './CollectionItem.module.sass';
 
 interface Props {
   children?: React.ReactNode;
@@ -13,9 +13,18 @@ interface Props {
 export const CollectionItem = (props: any) => {
   //
   const { item, handle, handleListeners, isDragging, onRemove } = props;
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
   //
   return (
-    <Card hover className={cn(styles.Item, handle && styles.WithHandle)}>
+    <Card
+      hover
+      className={cn(
+        styles.Item,
+        handle && styles.WithHandle,
+        isDark && styles.Dark
+      )}
+    >
       <HStack
         fontSize={14}
         fontWeight={600}
@@ -38,10 +47,7 @@ export const CollectionItem = (props: any) => {
             </HStack>
           </Box>
           <Box w={105}>
-            <HStack align="center">
-              <Ethereum />
-              <Box>{item.stats.totalValue}</Box>
-            </HStack>
+            <CurrencyExchanger value={item.stats.totalValue} />
           </Box>
           <Box w={105} color="#2caa00">
             <HStack>
@@ -54,10 +60,7 @@ export const CollectionItem = (props: any) => {
             </HStack>
           </Box>
           <Box w={105}>
-            <HStack>
-              <Ethereum />
-              <Box>{item.stats.floorPrice}</Box>
-            </HStack>
+            <CurrencyExchanger value={item.stats.floorPrice} />
           </Box>
           <Box w={105}>
             <HStack>
