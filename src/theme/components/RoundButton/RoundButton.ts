@@ -12,7 +12,7 @@ export const RoundButton = {
     transition: 'all 150ms linear',
 
     path: {
-      stroke: mode('black', 'white')(props),
+      fill: mode('black', 'white')(props),
     },
 
     _hover: {
