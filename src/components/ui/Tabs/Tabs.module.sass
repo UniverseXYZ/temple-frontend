@@ -8,9 +8,14 @@
   padding: 10px 0
   margin-right: 40px
 
-  // &:hover
-  //   &::before
-  //     opacity: .1
+  &:hover
+    color: $black-transparent-100
+    transition: color 150ms linear
+
+    .Ticker
+      color: $white-transparent-100
+      background-color: $black-transparent-100
+      transition: all 150ms linear
 
   // &::before
   //   content: ""
@@ -70,6 +75,14 @@
 
   .Tab
     color: $white-transparent-40
+
+    &:hover
+      color: $white-transparent-100
+
+      .Ticker
+        color: $black-100
+        background-color: $white-100
+
 
   .Tab--Selected
     color: $white-100
