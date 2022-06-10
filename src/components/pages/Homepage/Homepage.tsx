@@ -11,7 +11,7 @@ export const Homepage = () => {
   const { sections } = useSettings();
 
   return (
-    <Box style={{ height: 10000 }} pt="60px" className="Wrapper">
+    <>
       <Container maxW="container.xl">
         <Box mb="60px">
           <OrderedList>
@@ -39,6 +39,6 @@ export const Homepage = () => {
       {sections.map((section: any, index: number) =>
         section.visible ? Section(section, index) : null
       )}
-    </Box>
+    </>
   );
 };
