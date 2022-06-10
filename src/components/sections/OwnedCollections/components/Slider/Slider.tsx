@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react';
 
 import { RoundButton } from '@/components/ui';
 import { CollectionCard } from '@/components/common';
-import { LeftArrow, RightArrow } from '@/components/icons';
+import { AngleLeftIcon, AngleRightIcon } from '@/components/icons';
 
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -48,13 +48,13 @@ export const Slider = ({ collections }: any) => {
       <RoundButton
         className="swiper-button swiper-button-prev"
         ref={getPrevRef}
-        icon={<LeftArrow />}
+        icon={<AngleLeftIcon />}
       />
 
       <RoundButton
         className="swiper-button swiper-button-next"
         ref={getNextRef}
-        icon={<RightArrow />}
+        icon={<AngleRightIcon />}
       />
     </Box>
   );

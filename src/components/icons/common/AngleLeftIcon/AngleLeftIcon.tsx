@@ -1,10 +1,10 @@
 import React from 'react';
 import { Icon, IconProps } from '@chakra-ui/react';
 
-export const RightArrow = (props: IconProps) => (
+export const AngleLeftIcon = (props: IconProps) => (
   <Icon width="7px" height="10px" viewBox="0 0 7 10" fill="none" {...props}>
     <path
-      d="M1.00012 0.500487L5.49988 5.00024L0.999756 9.5"
+      d="M5.99988 9.49951L1.50012 4.99976L6.00024 0.5"
       stroke="black"
       strokeLinecap="round"
     />
