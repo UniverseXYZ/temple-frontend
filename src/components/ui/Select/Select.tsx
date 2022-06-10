@@ -92,7 +92,11 @@ export const Select = (props: any) => {
             {selectedItem ? selectedItem.rendered : placeholder}
           </span>
 
-          <Box className={styles.Arrow} aria-hidden="true">
+          <Box
+            className={styles.Arrow}
+            aria-hidden="true"
+            aria-label="Show more"
+          >
             <SelectDownArrow />
           </Box>
         </button>
