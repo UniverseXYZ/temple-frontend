@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 import {
+  Logo,
   ThemeSwitcher,
   SettingsModal,
   WalletsButton,
@@ -32,7 +33,7 @@ const Header = () => {
         <Flex justify="space-between">
           <Box>
             <Link to="/">
-              <Image src="/assets/images/logo.svg" alt="Temple" />
+              <Logo />
             </Link>
           </Box>
 
