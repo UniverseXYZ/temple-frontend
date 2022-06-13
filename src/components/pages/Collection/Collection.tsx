@@ -51,7 +51,7 @@ export const Collection = () => {
   }, []);
 
   return (
-    <Container maxWidth="container.xl" pb="100px">
+    <Container maxWidth="container.xl">
       <Box className={cn(styles.Header, isDark && styles.Dark)}>
         <Banner
           title="Flow World"

@@ -7,8 +7,6 @@ import { Header } from '@/components/common';
 export const Layout = () => (
   <>
     <Header />
-    <Box pt="60px" className="Wrapper">
-      <Outlet />
-    </Box>
+    <Outlet />
   </>
 );

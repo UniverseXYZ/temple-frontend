@@ -8,12 +8,13 @@ import { Slider, Activity } from './components';
 import initialData from '@/mocks/data';
 
 export const CuratedCollections = () => {
+  //
   const collections = initialData.collections.slice(0, 6);
 
   return (
-    <Box className="CuratedCollections">
-      <Container maxW="container.xl" mt="100px">
-        <HStack mb="40px" spacing="12px">
+    <Box as="section">
+      <Container maxW="container.xl">
+        <HStack mb="5px" spacing="12px">
           <Heading as="h2" size="lg">
             Curated collections
           </Heading>

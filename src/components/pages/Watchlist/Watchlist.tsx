@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Container, Heading } from '@chakra-ui/react';
+import { Container, Heading } from '@chakra-ui/react';
 import { Tabs } from '@/components/ui';
+import { PageWithGradient } from '@/components/layouts';
 
 import { Collections, Activity } from './components';
 
@@ -20,7 +21,7 @@ const tabs = [
 
 export const Watchlist = () => {
   return (
-    <Box mt="60px" mb="60px">
+    <PageWithGradient>
       <Container maxW="1142px">
         <Heading as="h2" variant="h4" mb="40px">
           Watchlist
@@ -28,6 +29,6 @@ export const Watchlist = () => {
 
         <Tabs items={tabs} />
       </Container>
-    </Box>
+    </PageWithGradient>
   );
 };

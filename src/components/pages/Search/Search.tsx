@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Container, Heading, Text, VStack } from '@chakra-ui/react';
+import { Container, Heading, Text, VStack } from '@chakra-ui/react';
 import { Tabs } from '@/components/ui';
+import { PageWithGradient } from '@/components/layouts';
 
 import { Collections } from './components';
 
@@ -15,7 +16,7 @@ const tabs = [
 
 export const Search = () => {
   return (
-    <Box mt="60px" mb="60px">
+    <PageWithGradient>
       <Container maxW="1142px">
         <VStack mb="40px" align="start">
           <Text color="black.40">Search results for</Text>
@@ -26,6 +27,6 @@ export const Search = () => {
 
         <Tabs items={tabs} />
       </Container>
-    </Box>
+    </PageWithGradient>
   );
 };

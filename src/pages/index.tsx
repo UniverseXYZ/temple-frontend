@@ -5,7 +5,7 @@ import { ScrollToTop } from '@/components/router';
 // MemoryRouter for production
 import { usePoolingRates } from '@/hooks';
 
-import { Layout } from '@/components/common';
+import { Layout } from '@/components/layouts';
 import {
   Homepage,
   Watchlist,

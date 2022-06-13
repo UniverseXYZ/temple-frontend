@@ -41,7 +41,7 @@
 
 .Select
   position: absolute
-  background: white
+  background: #fff
   background-clip: padding-box
   width: 100%
   height: 100%
@@ -49,24 +49,25 @@
   border-radius: 11px
   padding-left: 15px
   padding-right: 50px
-  color: $black-transparent-40
+  font-family: 'Space Grotesk'
+  font-style: normal
   font-weight: 400
+  font-zize: 16px
+  color: #999
   outline: none
   z-index: 2
 
 
 .Arrow
+  width: 12px
   position: absolute
   top: 50%
   right: 20px
   transform: translateY(-50%) rotate(0)
   transition: all 150ms linear
 
-  svg
-    width: 10px
-
-    path
-      fill: $black-transparent-40
+  path
+    fill: $black-transparent-40
 
 
 .Dropdown

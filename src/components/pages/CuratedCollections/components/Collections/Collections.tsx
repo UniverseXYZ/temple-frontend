@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
-import { Box, HStack, SimpleGrid } from '@chakra-ui/react';
 import { CollectionCard, CollectionItem } from '@/components/common';
-import { Input, ElasticSwitch, Select, Option } from '@/components/ui';
 import { GridIcon, ListIcon } from '@/components/icons';
-
-import cn from 'classnames';
-import styles from './.module.sass';
+import { ElasticSwitch, Input, Option, Select } from '@/components/ui';
+import { Box, HStack, SimpleGrid } from '@chakra-ui/react';
+import { useState } from 'react';
 
 // interface Props {
 //   //
@@ -70,11 +67,11 @@ export const Collections = (props: any) => {
       <Box mb="40px">
         <HStack spacing="15px">
           <Box w="100%">
-            <Input placeholder="Search" size="sm" />
+            <Input placeholder="Search" />
           </Box>
 
           <Box w="350px">
-            <Select placeholder="Sort by" aria-labelledby="Sort by" size="sm">
+            <Select placeholder="Sort by" aria-labelledby="Sort by">
               {options.map((option) => (
                 <Option key={option.value}>{option.title}</Option>
               ))}
@@ -82,7 +79,7 @@ export const Collections = (props: any) => {
           </Box>
 
           <Box>
-            <ElasticSwitch items={grid} onChange={onViewChange} size="sm" />
+            <ElasticSwitch items={grid} onChange={onViewChange} />
           </Box>
         </HStack>
       </Box>

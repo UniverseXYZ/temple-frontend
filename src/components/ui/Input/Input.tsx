@@ -3,8 +3,8 @@ import {
   Box,
   Input as ChakraInput,
   InputProps,
-  useMultiStyleConfig,
   useFormControl,
+  useMultiStyleConfig,
 } from '@chakra-ui/react';
 
 interface Props extends InputProps {

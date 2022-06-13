@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Heading, HStack, Spacer, Button } from '@chakra-ui/react';
+import {
+  Box,
+  Container,
+  Heading,
+  HStack,
+  Spacer,
+  Button,
+} from '@chakra-ui/react';
 import { ElasticSwitch } from '@/components/ui';
 
 import { Collections, Activity } from './components';
@@ -27,9 +34,9 @@ export const Watchlist = () => {
   };
 
   return (
-    <>
-      <Container maxW="1142px" pt={100} pb={40}>
-        <HStack mb="40px">
+    <Box as="section">
+      <Container maxW="container.xl">
+        <HStack mb="35px">
           <Heading as="h2" size="lg">
             My Watchlist
           </Heading>
@@ -46,6 +53,6 @@ export const Watchlist = () => {
           </Button>
         </Link>
       </Container>
-    </>
+    </Box>
   );
 };

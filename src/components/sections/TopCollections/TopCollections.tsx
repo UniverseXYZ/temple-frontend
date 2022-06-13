@@ -45,9 +45,9 @@ export const TopCollections = () => {
   };
 
   return (
-    <Box className="TopCollections">
-      <Container maxW="container.xl" mt="100px">
-        <HStack mb="40px">
+    <Box as="section">
+      <Container maxW="container.xl">
+        <HStack mb="35px">
           <Heading as="h2" size="lg">
             Top collections
           </Heading>

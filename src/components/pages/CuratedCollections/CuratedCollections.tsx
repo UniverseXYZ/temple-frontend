@@ -1,8 +1,8 @@
-import React from 'react';
-import { Box, Container, Heading } from '@chakra-ui/react';
+import { PageWithGradient } from '@/components/layouts';
 import { Tabs } from '@/components/ui';
+import { Container, Heading } from '@chakra-ui/react';
 
-import { Collections, Activity } from './components';
+import { Activity, Collections } from './components';
 
 const tabs = [
   {
@@ -19,8 +19,9 @@ const tabs = [
 ];
 
 export const CuratedCollections = () => {
+  //
   return (
-    <Box mt="60px" mb="60px">
+    <PageWithGradient>
       <Container maxW="1142px">
         <Heading as="h2" variant="h4" mb="40px">
           Curated Collections
@@ -28,6 +29,6 @@ export const CuratedCollections = () => {
 
         <Tabs items={tabs} />
       </Container>
-    </Box>
+    </PageWithGradient>
   );
 };

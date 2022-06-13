@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Container, Heading, Flex, Spacer } from '@chakra-ui/react';
 import { Tabs, Select, Option } from '@/components/ui';
+import { PageWithGradient } from '@/components/layouts';
 
 import { Collections, Activity } from './components';
 
@@ -43,7 +44,7 @@ const options = [
 
 export const TopCollections = () => {
   return (
-    <Box mt="60px" mb="60px">
+    <PageWithGradient>
       <Container maxW="1142px">
         <Flex mb="40px" align="center">
           <Heading as="h2" variant="h4">
@@ -54,7 +55,6 @@ export const TopCollections = () => {
             <Select
               placeholder="Sort by"
               aria-labelledby="Sort by"
-              size="sm"
               defaultSelectedKey="all-time"
             >
               {options.map((option) => (
@@ -66,6 +66,6 @@ export const TopCollections = () => {
 
         <Tabs items={tabs} />
       </Container>
-    </Box>
+    </PageWithGradient>
   );
 };

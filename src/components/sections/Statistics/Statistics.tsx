@@ -27,9 +27,9 @@ export const Statistics = () => {
   }, []);
 
   return (
-    <>
-      <Container maxW="1140px">
-        <Heading as="h2" size="lg" mb="20px">
+    <Box as="section">
+      <Container maxW="container.xl">
+        <Heading as="h2" size="lg" mb="35px">
           Statistics
         </Heading>
 
@@ -105,6 +105,6 @@ export const Statistics = () => {
           </Box>
         )}
       </Container>
-    </>
+    </Box>
   );
 };
