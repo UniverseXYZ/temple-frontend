@@ -3,13 +3,7 @@ import { useNavigate, useMatch } from 'react-router-dom';
 import { Button } from '@chakra-ui/react';
 import { ArrowLeftIcon } from '@/components/icons';
 
-import cn from 'classnames';
-import styles from './.module.sass';
-interface Props {
-  //
-}
-
-export const BackButton = (props: Props) => {
+export const BackButton = () => {
   //
   const navigate = useNavigate();
   const match = useMatch('/');
