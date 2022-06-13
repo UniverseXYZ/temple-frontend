@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Flex, Box, HStack, useColorMode, Button } from '@chakra-ui/react';
+import { Flex, Box, HStack, useColorMode } from '@chakra-ui/react';
 
 import {
   Logo,
+  BackButton,
   ThemeSwitcher,
   SettingsModal,
   WalletsButton,
   SearchInput,
 } from './components';
-
-import { ArrowLeftIcon } from '@/components/icons';
 
 import cn from 'classnames';
 import styles from './Header.module.sass';
@@ -27,9 +26,7 @@ const Header = () => {
       <Box className={cn(styles.Header, isDark && styles.Dark)}>
         <Flex justify="space-between">
           <HStack spacing="20px">
-            <Button variant="ghost" leftIcon={<ArrowLeftIcon />}>
-              Back
-            </Button>
+            <BackButton />
             <Link to="/">
               <Logo />
             </Link>
