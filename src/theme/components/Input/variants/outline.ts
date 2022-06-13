@@ -20,7 +20,7 @@ export const outline = (props: any) => ({
       background: 'linear-gradient(135deg, #bceb00 15%, #00eaea 85%)',
       transition: 'all 150ms linear',
       opacity: 0,
-      zIndex: '-1',
+      zIndex: 1,
     },
 
     _hover: {
@@ -55,14 +55,15 @@ export const outline = (props: any) => ({
 
   field: {
     fontSize: '16px',
-
     border: 0,
+    zIndex: 2,
 
     _placeholder: {
-      fontSize: '16px',
-      fontWeight: '400',
-      color: mode('black.40', 'white.40'),
-      //fontFamily: '"Space Grotesk", serif',
+      fontFamily: 'Space Grotesk',
+      fontStyle: 'normal',
+      fontWeight: 400,
+      fontZize: '16px',
+      color: '#999',
     },
   },
 });

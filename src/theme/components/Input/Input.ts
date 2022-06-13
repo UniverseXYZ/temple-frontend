@@ -15,7 +15,7 @@ export const Input = {
     sm: {
       field: {
         height: '40px',
-        borderRadius: '12px',
+        borderRadius: '11px',
       },
     },
     md: {
@@ -28,7 +28,7 @@ export const Input = {
       },
       field: {
         height: '46px',
-        borderRadius: '12px',
+        borderRadius: '11px',
       },
     },
   },
