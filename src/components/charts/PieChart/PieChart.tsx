@@ -45,34 +45,38 @@ export const PieChart = () => {
     },
     values: [
       {
-        name: 'Group A',
+        name: 'ASM Brains',
         value: 2400,
         dataKey: 0,
       },
       {
-        name: 'Group B',
+        name: 'FLUF World',
         value: 4567,
         dataKey: 1,
+        data: {
+          image_img: '',
+          banner_img: '',
+          nfts: 3,
+          items: 63000,
+          owners: 23400,
+          floor: 0.232,
+          volume: 243.2,
+        },
       },
       {
-        name: 'Group C',
+        name: 'PartyBear',
         value: 1398,
         dataKey: 2,
       },
       {
-        name: 'Group D',
+        name: 'Cryptovoxels (Parcels)',
         value: 9800,
         dataKey: 3,
       },
       {
-        name: 'Group E',
+        name: 'Other',
         value: 3908,
         dataKey: 4,
-      },
-      {
-        name: 'Group F',
-        value: 5800,
-        dataKey: 5,
       },
     ],
   };
@@ -149,7 +153,7 @@ export const PieChart = () => {
           <TooltipRechart
             content={<Tooltip />}
             allowEscapeViewBox={{ x: true, y: true }}
-            wrapperStyle={{ top: -100, left: -90 }}
+            wrapperStyle={{ top: -330, left: -160 }}
             active={true}
           />
 
