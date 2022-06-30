@@ -21,9 +21,7 @@ export const Tooltip = (props: any) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
-  const fill = payload[0]?.payload.fill;
-
-  //const { data } = payload[0]?.payload;
+  if (payload[0]?.name === 'Other') return null;
 
   return (
     <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
@@ -82,3 +80,16 @@ export const Tooltip = (props: any) => {
     </Box>
   );
 };
+
+const TooltipOther = ({ payload }: any) => (
+  <Box className={styles.OwnedValue__Wrapper}>
+    <Box className={styles.OwnedValue__Title}>Owned Value</Box>
+    <Center>
+      <Flex align="center">
+        <Ethereum />
+        <Box className={styles.OwnedValue__Value}>{payload[0]?.value}</Box>
+        <PriceTicker value={12.24} vector="up" />
+      </Flex>
+    </Center>
+  </Box>
+);

@@ -36,7 +36,6 @@ export const PieChart = () => {
   // const onLegendLeave = () => {
   //   setActiveIndex(undefined);
   // };
-
   const data = {
     total: {
       valueETH: 2400,
@@ -75,7 +74,7 @@ export const PieChart = () => {
       },
       {
         name: 'Other',
-        value: 3908,
+        value: 9800,
         dataKey: 4,
       },
     ],
@@ -122,7 +121,7 @@ export const PieChart = () => {
 
   return (
     <div>
-      <ResponsiveContainer height={310} width="100%" minWidth="0">
+      <ResponsiveContainer height={300} width="100%" minWidth="0">
         <PieRechart className={cn(isDark && styles.Dark)}>
           <Pie
             className={styles.Pie}
@@ -155,6 +154,7 @@ export const PieChart = () => {
             allowEscapeViewBox={{ x: true, y: true }}
             wrapperStyle={{ top: -330, left: -160 }}
             active={true}
+            //formatter={tooltipFormatter}
           />
 
           <LegendRechart
@@ -165,10 +165,10 @@ export const PieChart = () => {
               position: 'absolute',
               top: 0,
               right: 0,
-              width: '190px',
-              height: '292px',
-              marginRight: '10px',
-              marginTop: '15px',
+              width: '170px',
+              height: '300px',
+              marginRight: '28px',
+              //marginTop: '15px',
             }}
             //onLegendEnter={onLegendEnter}
             //onLegendLeave={onLegendLeave}

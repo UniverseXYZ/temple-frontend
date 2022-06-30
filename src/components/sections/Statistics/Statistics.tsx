@@ -10,7 +10,7 @@ import {
 import { Card, PriceTicker, InfoTooltip } from '@/components/common';
 import { Ethereum } from '@/components/icons';
 
-import { InventoryValue, RecentActivity, Skeleton } from './components';
+import { InventoryValue, InventoryValueHistory, Skeleton } from './components';
 
 import cn from 'classnames';
 import styles from './Statistics.module.sass';
@@ -85,22 +85,8 @@ export const Statistics = () => {
             </SimpleGrid>
 
             <SimpleGrid columns={2} spacing="20px">
-              <Card pt="30px" pb="30px">
-                <HStack spacing="8px" pl="30px" mb="20px">
-                  <Heading variant="card">Total inventory value</Heading>
-                  <InfoTooltip label="Calculated by the sum of the estimates. If Temple valuation estimates are available, we use them first. If not, we use the floor price, approximate flor price instead." />
-                </HStack>
-                <InventoryValue />
-              </Card>
-
-              <Card pt="30px" pb="30px">
-                <HStack spacing="8px" pl="30px" mb="20px">
-                  <Heading variant="card">Recent Activity</Heading>
-                  <InfoTooltip label="Sales, transfers and mints from the users NFT collection will be displayed here." />
-                </HStack>
-
-                <RecentActivity />
-              </Card>
+              <InventoryValue />
+              <InventoryValueHistory />
             </SimpleGrid>
           </Box>
         )}

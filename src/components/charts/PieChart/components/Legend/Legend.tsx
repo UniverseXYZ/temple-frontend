@@ -28,22 +28,27 @@ export const Legend = (props: any) => {
 
   return (
     <Box className={cn(styles.Wrapper, isDark && styles.Dark)}>
-      {payload.map((item: any, index: number) => (
-        <Box
-          key={`item-${index}`}
-          className={styles.Item}
-          // onMouseEnter={() => handleMouseEnter(item.payload.dataKey)}
-          // onMouseLeave={handleMouseLeave}
-        >
-          <Box className={styles.Border} bgColor={item.color} />
-          <Box className={styles.Title}>{item.payload.name}</Box>
-          <Flex align="center">
-            <Ethereum />
-            <Box className={styles.Value}>{item.payload.value}</Box>
-            <PriceTicker value={12.24} vector="up" />
-          </Flex>
-        </Box>
-      ))}
+      {payload.map((item: any, index: number) => {
+        const isOther = item.payload.name === 'Other';
+        return (
+          <Box
+            key={`item-${index}`}
+            className={styles.Item}
+            // onMouseEnter={() => handleMouseEnter(item.payload.dataKey)}
+            // onMouseLeave={handleMouseLeave}
+          >
+            <Box className={styles.Border} bgColor={item.color} />
+            <Box className={styles.Title}>{item.payload.name}</Box>
+            {!isOther && (
+              <Flex align="center">
+                <Ethereum />
+                <Box className={styles.Value}>{item.payload.value}</Box>
+                <PriceTicker value={12.24} vector="up" />
+              </Flex>
+            )}
+          </Box>
+        );
+      })}
     </Box>
   );
 };

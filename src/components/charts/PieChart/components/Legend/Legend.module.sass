@@ -4,37 +4,39 @@
 .Wrapper
   position: absolute
   max-height: 100%
-  overflow-y: auto
   right: 0
   top: 0
-
-  @include styled-scroll
+  background-color: $white-100
 
 .Item
+  width: 167px
   font-weight: 700
   position: relative
-  padding-left: 20px
-  margin-bottom: 15px
-  padding-bottom: 15px
-  border-bottom: 1px solid $black-transparent-5
-  margin-right: 16px
+  padding: 6px 20px
+  margin-bottom: 6px
+  border: 1px solid $black-transparent-5
+  border-radius: 8px
 
   &:last-child
-    border-bottom: 0
     margin-bottom: 0
 
 .Border
   position: absolute
   left: 0
   top: 0
-  width: 4px
-  height: calc(100% - 15px)
-  border-radius: 8px
+  width: 8px
+  height: 100%
+  border-radius: 8px 0px 0px 8px
 
 .Title
   font-size: 12px
   line-height: 22px
   color: $black-transparent-60
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+  @include truncate
 
 .Value
   font-size: 15px
