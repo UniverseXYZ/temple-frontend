@@ -69,7 +69,7 @@ export const Collection = () => {
       setCollection(res);
       GetDailyStats(res.collection.primaryContract).then(res1 => {
         setDailyStats(res1.collections);
-        if(activeWallet.address){
+        if(activeWallet && activeWallet.address){
           GetUserNFTsByCollection(activeWallet.address, res.collection.primaryContract).then(res2 => {
             setUserNFTs(res2.tokens);
             setIsLoading(false);
