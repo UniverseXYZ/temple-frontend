@@ -11,10 +11,10 @@ import styles from './.module.sass';
 
 export const Activity = (props: any) => {
   //
-  const {} = props;
+  const {collectionActivity} = props;
   return (
     <Box mt="30px">
-      <ActivityList />
+      <ActivityList collectionActivity={collectionActivity}/>
     </Box>
   );
 };

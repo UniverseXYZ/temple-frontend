@@ -13,7 +13,7 @@ import {
 } from './components';
 
 const STATUSES = {
-  LIST: 'list',
+  LIST: 'ask',
   MINT: 'mint',
   TRANSFER: 'transfer',
   SALE: 'sale',
@@ -25,7 +25,7 @@ const STATUSES = {
 
 const STATUS_MAP = {
   [STATUSES.LIST]: {
-    name: 'List',
+    name: 'Ask',
     color: '#a2f2b9',
     icon: <ListIcon />,
   },

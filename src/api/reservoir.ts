@@ -25,6 +25,31 @@ export const GetCollection = async (slug: string) => {
   return data;
 };
 
+export const GetCollectionActivity = async (address: string) => {
+  //
+  const url = process.env.RESERVOIR_API_URL + `collections/${address}/activity/v1`;
+
+  const params = {
+    limit: 20
+  };
+
+  const headers = {
+    "Content-Type": "application/json",
+    "x-api-key": process.env.RESERVOIR_API_KEY || ""
+  }
+
+  const { data } = await axios({
+    method: 'GET',
+    baseURL: '',
+    url: url,
+    params: params,
+    headers: headers
+  });
+
+  return data;
+};
+
+
 export const GetDailyStats = async (address: string) => {
   //
   const url = process.env.RESERVOIR_API_URL + "collections/daily-volumes/v1";

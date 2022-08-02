@@ -27,7 +27,7 @@ import cn from 'classnames';
 import styles from './Collection.module.sass';
 
 import { tabs } from './tabs';
-import { GetCollection, GetDailyStats, GetUserNFTsByCollection } from '@/api/reservoir';
+import { GetCollection, GetCollectionActivity, GetDailyStats, GetUserNFTsByCollection } from '@/api/reservoir';
 import { useParams } from 'react-router-dom';
 import { useWallets } from '@/hooks/useWallets';
 
@@ -59,8 +59,10 @@ export const Collection = () => {
       }});
   const [userNFTs, setUserNFTs] = useState([]);
   const [dailyStats, setDailyStats] = useState([]);
+  const [collectionActivity, setCollectionActivity] = useState([])
 
-  console.log(userNFTs);
+  console.log("========activity========")
+  console.log(collectionActivity);
 
   React.useEffect(() => {
     GetCollection(slug || "doodles-official").then(res => {
@@ -72,9 +74,11 @@ export const Collection = () => {
             setUserNFTs(res2.tokens);
             setIsLoading(false);
           })  
-        } else {
-          setIsLoading(false);
         }
+        GetCollectionActivity(res.collection.primaryContract).then(res2 => {
+          setCollectionActivity(res2.activities);
+          setIsLoading(false);
+        })
       })
     })
   
@@ -135,7 +139,9 @@ export const Collection = () => {
       <Box mt="80px" mb="20px">
         <Tabs items={tabs({
           description:collection.collection.metadata.description,
-          userNFTs: userNFTs})} />
+          userNFTs: userNFTs,
+          collectionActivity: collectionActivity
+          })} />
       </Box>
     </Container>
   );

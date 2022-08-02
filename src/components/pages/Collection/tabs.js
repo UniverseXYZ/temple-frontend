@@ -17,7 +17,7 @@ export const tabs = (props) => {
       {
         id: 3,
         title: 'Collection activity',
-        component: <Activity />,
+        component: <Activity collectionActivity={props.collectionActivity} />,
       },
     ]
   )

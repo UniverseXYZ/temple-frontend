@@ -14,7 +14,8 @@ import { data } from './mock/data';
 
 export const ActivityList = (props: any) => {
   //
-  const {} = props;
+  const {collectionActivity} = props;
+  console.log(collectionActivity)
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -35,33 +36,33 @@ export const ActivityList = (props: any) => {
       </Box>
 
       <Box className={styles.List}>
-        {data.map((item: any, index: number) => (
+        {collectionActivity && collectionActivity.map((item: any, index: number) => (
           <Box key={index} className={cn(styles.Row, styles.Item)}>
             <Box className={styles.Cell}>
               <HStack spacing="20px">
                 <Box className={styles.Image}>
-                  <Image src={item.image} alt={item.collection} />
+                  <Image maxHeight={"100px"} src={item.token.tokenImage} alt={item.token.tokenName} />
                 </Box>
                 <Box>
-                  <Box className={styles.Title}>{item.item}</Box>
-                  <Box className={styles.Description}>{item.collection}</Box>
+                  <Box className={styles.Title}>{item.token.tokenName}</Box>
+                  <Box className={styles.Description}>{item.collection.collectionName}</Box>
                 </Box>
               </HStack>
             </Box>
             <Box className={styles.Cell}>
-              <TransactionBadge size="md" status={item.activity_type} />
+              <TransactionBadge size="md" status={item.type} />
             </Box>
             <Box className={styles.Cell}>
               <Box className={styles.Address}>
-                <CopyableText value={item.from}>
-                  {truncateEthAddress(item.from, 0)}
+                <CopyableText value={item.fromAddress || ""}>
+                  {truncateEthAddress(item.fromAddress || "", 0)}
                 </CopyableText>
               </Box>
             </Box>
             <Box className={styles.Cell}>
               <Box className={styles.Address}>
-                <CopyableText value={item.to}>
-                  {truncateEthAddress(item.to, 0)}
+                <CopyableText value={item.toAddress || ""}>
+                  {truncateEthAddress(item.toAddress || "", 0)}
                 </CopyableText>
               </Box>
             </Box>
@@ -81,8 +82,8 @@ export const ActivityList = (props: any) => {
             </Box>
             <Box className={styles.Cell}>
               <HStack display="inline-flex">
-                <Ethereum />
-                <Box className={styles.Price}>{item.amount}</Box>
+                {item.price && <Ethereum />}
+                <Box className={styles.Price}>{item.price || ""}</Box>
               </HStack>
             </Box>
           </Box>
