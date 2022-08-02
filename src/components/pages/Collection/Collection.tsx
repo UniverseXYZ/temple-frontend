@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { useQuery } from 'react-query';
 
 import {
@@ -29,12 +29,14 @@ import cn from 'classnames';
 import styles from './Collection.module.sass';
 
 import { tabs } from './tabs';
+import { GetCollection } from '@/api/collections';
+import { useParams } from 'react-router-dom';
 
 export const Collection = () => {
   //
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-
+  const { slug } = useParams();
   // const { data, error, isError, isLoading } = useQuery(
   //   'collection',
   //   GetCollectionById
@@ -43,11 +45,14 @@ export const Collection = () => {
   //const { metadata } = data;
 
   const [isLoading, setIsLoading] = React.useState(true);
+  const [collection, setCollection] = useState({collection:{tokenCount:"", ownerCount: "", floorAsk:{price:""},volume:{allTime:""},topBid:{value:""}}});
 
   React.useEffect(() => {
-    setTimeout(() => {
+    GetCollection(slug || "doodles-official").then(res => {
+      setCollection(res);
       setIsLoading(false);
-    }, 2000);
+    })
+  
   }, []);
 
   return (
@@ -55,7 +60,7 @@ export const Collection = () => {
       <Box className={cn(styles.Header, isDark && styles.Dark)}>
         <Banner
           title="Flow World"
-          image="https://lh3.googleusercontent.com/biQ5untjlSAOByE6kSQajzpnaQY7T2urPVtmI4Idd5QgymG86C8Kaobw3BnB5RIMMpjGJbpePiYU8_ugJGuMeopGbHdU42McT6Ev=h600"
+          image={isLoading ? "" : collection.collection.metadata.bannerImageUrl}
           isLoading={isLoading}
         />
 
@@ -64,7 +69,7 @@ export const Collection = () => {
             <Flex align="center" className={styles.Collection}>
               <Box className={styles.Avatar}>
                 <Avatar
-                  image="/mocks/images/collection/avatar.png"
+                  image={isLoading ? "" : collection.collection.metadata.imageUrl}
                   name="Collection Name"
                   size="full"
                   isLoading={isLoading}
@@ -72,7 +77,10 @@ export const Collection = () => {
               </Box>
 
               <Box>
-                <Title text="Fluf World" isLoading={isLoading} />
+                <Title 
+                  text={collection.collection.name || ""} 
+                  isLoading={isLoading}
+                  address={collection.collection.primaryContract} />
               </Box>
             </Flex>
             <Spacer />
@@ -86,7 +94,13 @@ export const Collection = () => {
           </Flex>
         </Box>
 
-        <Stats isLoading={isLoading} />
+        <Stats isLoading={isLoading}
+               floorPrice={Number(collection.collection.floorAsk.price)}
+               volume={Number(collection.collection.volume.allTime)}
+               tokenCount={Number(collection.collection.tokenCount)}
+               ownerCount={Number(collection.collection.ownerCount)}
+               topBid={Number(collection.collection.topBid.value)}
+        />
       </Box>
 
       <Box mt="40px">

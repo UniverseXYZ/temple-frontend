@@ -2,7 +2,7 @@ const initialData = {
   collections: [
     {
       id: '1',
-      slug: 'doodlescollection',
+      slug: 'doodles-official',
       name: 'Doodles',
       logo: 'https://lh3.googleusercontent.com/7B0qai02OdHA8P_EOVK672qUliyjQdQDGNrACxs7WnTgZAkJa_wWURnIFKeOh5VTf8cfTqW3wQpozGedaC9mteKphEOtztls02RlWQ=s120',
       isVerified: true,
@@ -17,9 +17,9 @@ const initialData = {
     },
     {
       id: '2',
-      slug: 'cryptopunks',
-      name: 'Crypto Punks',
-      logo: 'https://lh3.googleusercontent.com/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE=s130',
+      slug: 'fluf',
+      name: 'Fluf World',
+      logo: 'https://openseauserdata.com/files/eae1fd3d26c6558ec5bba12c8aa29bd7.png',
       isVerified: true,
       stats: {
         totalValue: '118.83',
@@ -47,9 +47,9 @@ const initialData = {
     },
     {
       id: '4',
-      slug: 'doodlescollection',
-      name: 'Doodles 2',
-      logo: 'https://lh3.googleusercontent.com/7B0qai02OdHA8P_EOVK672qUliyjQdQDGNrACxs7WnTgZAkJa_wWURnIFKeOh5VTf8cfTqW3wQpozGedaC9mteKphEOtztls02RlWQ=s120',
+      slug: 'boredapeyachtclub',
+      name: 'Bored Ape Yacht Club',
+      logo: 'https://lh3.googleusercontent.com/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB=s168',
       isVerified: true,
       stats: {
         totalValue: '118.83',

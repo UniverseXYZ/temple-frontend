@@ -38,7 +38,7 @@ export const CollectionCard = (props: Props) => {
   return (
     <>
       <LinkBox>
-        <Link to="/collections/flud">
+        <Link to={`/collections/${collection.slug}`}>
           <Card
             className={cn(
               styles.Card,

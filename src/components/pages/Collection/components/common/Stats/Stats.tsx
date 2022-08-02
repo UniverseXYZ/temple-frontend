@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, HStack, useColorMode } from '@chakra-ui/react';
 import { InfoTooltip } from '@/components/common';
 import { Ethereum } from '@/components/icons';
+import { useState, } from 'react';
 
 import {
   FolderIcon,
@@ -19,11 +20,15 @@ import styles from './Stats.module.sass';
 
 interface Props {
   isLoading: boolean;
+  floorPrice: number;
+  volume: number;
+  tokenCount: number;
+  ownerCount: number;
+  topBid: number;
 }
 
 export const Stats = (props: Props) => {
-  //
-  const { isLoading } = props;
+  const { isLoading, floorPrice, volume , tokenCount, ownerCount, topBid} = props;
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -39,7 +44,7 @@ export const Stats = (props: Props) => {
               <FolderIcon className={styles.Icon} />
               <Box className={styles.Headline}>Items</Box>
             </HStack>
-            <Box className={styles.Value}>5242</Box>
+            <Box className={styles.Value}>{tokenCount}</Box>
           </Box>
 
           <Box className={styles.Item}>
@@ -47,7 +52,7 @@ export const Stats = (props: Props) => {
               <UserIcon className={styles.Icon} />
               <Box className={styles.Headline}>Owners</Box>
             </HStack>
-            <Box className={styles.Value}>354</Box>
+            <Box className={styles.Value}>{ownerCount}</Box>
           </Box>
 
           <Box className={styles.Item}>
@@ -57,18 +62,18 @@ export const Stats = (props: Props) => {
             </HStack>
             <HStack spacing="6px" justifyContent="center">
               <Ethereum w="16px" h="26px" />
-              <Box className={styles.Value}>10544</Box>
+              <Box className={styles.Value}>{(floorPrice * tokenCount).toFixed(0)}</Box>
             </HStack>
           </Box>
 
           <Box className={styles.Item}>
             <HStack spacing="6px" justifyContent="center" mb="10px">
               <DollarUpIcon className={styles.Icon} />
-              <Box className={styles.Headline}>Highest sale</Box>
+              <Box className={styles.Headline}>Highest bid</Box>
             </HStack>
             <HStack spacing="6px" justifyContent="center">
               <Ethereum w="16px" h="26px" />
-              <Box className={styles.Value}>24.55</Box>
+              <Box className={styles.Value}>{topBid.toFixed(0)}</Box>
             </HStack>
           </Box>
 
@@ -79,7 +84,7 @@ export const Stats = (props: Props) => {
             </HStack>
             <HStack spacing="6px" justifyContent="center">
               <Ethereum w="16px" h="26px" />
-              <Box className={styles.Value}>243.6</Box>
+              <Box className={styles.Value}>{volume.toFixed(0)}</Box>
             </HStack>
           </Box>
 
@@ -98,7 +103,7 @@ export const Stats = (props: Props) => {
             </HStack>
             <HStack spacing="6px" justifyContent="center">
               <Ethereum w="16px" h="26px" />
-              <Box className={styles.Value}>0.62</Box>
+              <Box className={styles.Value}>{floorPrice}</Box>
             </HStack>
           </Box>
         </Box>
