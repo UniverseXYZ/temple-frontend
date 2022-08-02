@@ -24,22 +24,22 @@ const items = [
 ];
 
 const options = [
-  {
-    title: 'Last 24 hours',
-    value: 'last-24-hours',
-  },
-  {
-    title: 'Last 7 days',
-    value: 'last-7-days',
-  },
-  {
-    title: 'Last 30 days',
-    value: 'last-30-days',
-  },
-  {
-    title: 'Last 90 days',
-    value: 'last-90-days',
-  },
+  // {
+  //   title: 'Last 24 hours',
+  //   value: 'last-24-hours',
+  // },
+  // {
+  //   title: 'Last 7 days',
+  //   value: 'last-7-days',
+  // },
+  // {
+  //   title: 'Last 30 days',
+  //   value: 'last-30-days',
+  // },
+  // {
+  //   title: 'Last 90 days',
+  //   value: 'last-90-days',
+  // },
   {
     title: 'All time',
     value: 'all-time',
