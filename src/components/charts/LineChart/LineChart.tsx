@@ -23,8 +23,8 @@ export const LineChart = (props: any) => {
   const { dailyStats } = props;
 
   let data = dailyStats
-    .map(({d}: any) => ({timestamp: new Date(d.timestamp*1000), price: d.floor_sell_value}))
-    .sort(({a, b}: any) => a.timestamp - b.timestamp);
+    .map((d: any) => ({timestamp: new Date(d.timestamp*1000), price: d.floor_sell_value}))
+    .sort((a: any, b: any) => a.timestamp - b.timestamp);
   
   data = tidy(
     data, 
@@ -33,7 +33,7 @@ export const LineChart = (props: any) => {
     })
   )
 
-  data = data.filter(({d}: any) => (d.movingAvg));
+  data = data.filter((d: any) => (d.movingAvg));
 
   const TickStyle = {
     fontFamily: 'Space Grotesk',

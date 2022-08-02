@@ -68,7 +68,7 @@ export const Chart = (props: any) => {
                 <Select
                   placeholder="Placeholder"
                   size="sm"
-                  defaultSelectedKey="last-90-days"
+                  defaultSelectedKey="all-time"
                 >
                   {options.map((option) => (
                     <Option key={option.value}>{option.title}</Option>
