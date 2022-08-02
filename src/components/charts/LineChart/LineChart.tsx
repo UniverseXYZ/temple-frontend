@@ -33,7 +33,7 @@ export const LineChart = (props: any) => {
     })
   )
 
-  data = data.filter((d: any) => (d.movingAvg));
+  data = data.filter((d: any) => (d.movingAvg))
 
   const TickStyle = {
     fontFamily: 'Space Grotesk',
@@ -62,6 +62,7 @@ export const LineChart = (props: any) => {
         <YAxis
           //dataKey="price"
           dx={-6}
+          allowDecimals={true}
           tick={TickStyle}
           axisLine={{ stroke: '#e6e6e6', strokeWidth: 0.5 }}
           tickLine={false}
