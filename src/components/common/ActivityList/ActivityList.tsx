@@ -69,11 +69,11 @@ export const ActivityList = (props: any) => {
             <Box className={styles.Cell}>
               <Box className={styles.Time}>
                 <Tooltip
-                  label={dayjs('1999-01-01').format('MMMM DD, YYYY at h')}
+                  label={dayjs(new Date(item.timestamp * 1000)).format('MMMM DD, YYYY h:m')}
                 >
                   <a href="#">
                     <HStack display="inline-flex">
-                      <Box>{dayjs('1999-01-01').fromNow()}</Box>
+                      <Box>{dayjs(new Date(item.timestamp * 1000)).fromNow()}</Box>
                       <ExternalLink />
                     </HStack>
                   </a>
