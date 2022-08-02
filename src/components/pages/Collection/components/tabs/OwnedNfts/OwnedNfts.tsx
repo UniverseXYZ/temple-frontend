@@ -7,9 +7,11 @@ import styles from './.module.sass';
 
 import { data } from './mock/data';
 
-export const OwnedNfts = () => {
+export const OwnedNfts = (props: any) => {
   //
   const [isLoading, setIsLoading] = React.useState(true);
+  
+  const {userNFTs} = props;
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -29,7 +31,7 @@ export const OwnedNfts = () => {
           </>
         ) : (
           <>
-            {data.map((item, index) => (
+            {userNFTs.map((item: any, index: any) => (
               <NftCard key={index} item={item} />
             ))}
           </>

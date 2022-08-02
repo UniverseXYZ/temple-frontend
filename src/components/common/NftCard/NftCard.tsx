@@ -28,9 +28,10 @@ type Image = {
   url: string;
 };
 
-export const NftCard = (props: Props) => {
+export const NftCard = (props: any) => {
   //
   const { item } = props;
+  console.log(item)
   const { isSound, isVideo } = props.item;
 
   const { colorMode } = useColorMode();
@@ -44,7 +45,7 @@ export const NftCard = (props: Props) => {
         hover
       >
         <Box className={styles.Image}>
-          <Image src={item.image.url} alt={item.name} />
+          <Image src={item.token.image} alt={item.token.name} />
 
           {isHaveTags && (
             <Box className={styles.Tags}>
@@ -55,7 +56,7 @@ export const NftCard = (props: Props) => {
         </Box>
 
         <Box className={styles.Info}>
-          <Box className={styles.Title}>{item.name}</Box>
+          <Box className={styles.Title}>{item.token.name}</Box>
           <Box className={styles.Footer}>
             <Flex>
               <Box textAlign="left">
@@ -65,7 +66,7 @@ export const NftCard = (props: Props) => {
                 <HStack align="center">
                   <Ethereum />
                   <Box fontWeight={600} fontSize={14}>
-                    6.58
+                    {item.token.collection.floorAskPrice}
                   </Box>
                 </HStack>
               </Box>

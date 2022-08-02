@@ -27,14 +27,17 @@ import cn from 'classnames';
 import styles from './Collection.module.sass';
 
 import { tabs } from './tabs';
-import { GetCollection, GetDailyStats } from '@/api/reservoir';
+import { GetCollection, GetDailyStats, GetUserNFTsByCollection } from '@/api/reservoir';
 import { useParams } from 'react-router-dom';
+import { useWallets } from '@/hooks/useWallets';
 
 export const Collection = () => {
   //
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   const { slug } = useParams();
+  const { wallets, activeWallet } = useWallets();
+  console.log(wallets, activeWallet)
   // const { data, error, isError, isLoading } = useQuery(
   //   'collection',
   //   GetCollectionById
@@ -54,14 +57,24 @@ export const Collection = () => {
        topBid:{value:""},
        metadata: {bannerImageUrl:"", imageUrl: "", description:""},
       }});
+  const [userNFTs, setUserNFTs] = useState([]);
   const [dailyStats, setDailyStats] = useState([]);
+
+  console.log(userNFTs);
 
   React.useEffect(() => {
     GetCollection(slug || "doodles-official").then(res => {
       setCollection(res);
-      GetDailyStats(res.collection.primaryContract).then(res => {
-        setDailyStats(res.collections);
-        setIsLoading(false);
+      GetDailyStats(res.collection.primaryContract).then(res1 => {
+        setDailyStats(res1.collections);
+        if(activeWallet.address){
+          GetUserNFTsByCollection(activeWallet.address, res.collection.primaryContract).then(res2 => {
+            setUserNFTs(res2.tokens);
+            setIsLoading(false);
+          })  
+        } else {
+          setIsLoading(false);
+        }
       })
     })
   
@@ -120,7 +133,9 @@ export const Collection = () => {
       </Box>
 
       <Box mt="80px" mb="20px">
-        <Tabs items={tabs({description:collection.collection.metadata.description})} />
+        <Tabs items={tabs({
+          description:collection.collection.metadata.description,
+          userNFTs: userNFTs})} />
       </Box>
     </Container>
   );

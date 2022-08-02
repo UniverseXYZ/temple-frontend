@@ -6,7 +6,7 @@ export const tabs = (props) => {
       {
         id: 1,
         title: 'Owned NFTs',
-        component: <OwnedNfts />,
+        component: <OwnedNfts userNFTs={props.userNFTs}/>,
         ticker: 10,
       },
       {
