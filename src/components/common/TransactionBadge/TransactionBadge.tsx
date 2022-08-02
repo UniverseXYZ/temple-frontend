@@ -20,7 +20,7 @@ const STATUSES = {
   OFFERS: 'offers',
   BIDS: 'bids',
   BURNS: 'burns',
-  CANCEL_LISTING: 'cancel_listing',
+  CANCEL_LISTING: 'ask_cancel',
 };
 
 const STATUS_MAP = {
