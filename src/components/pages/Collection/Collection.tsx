@@ -43,7 +43,17 @@ export const Collection = () => {
   //const { metadata } = data;
 
   const [isLoading, setIsLoading] = React.useState(true);
-  const [collection, setCollection] = useState({collection:{tokenCount:"", ownerCount: "", floorAsk:{price:""},volume:{allTime:""},topBid:{value:""}}});
+  const [collection, setCollection] = useState(
+    {collection:
+      {tokenCount:"",
+       ownerCount: "",
+       name: "",
+       primaryContract: "",
+       floorAsk:{price:""},
+       volume:{allTime:""},
+       topBid:{value:""},
+       metadata: {bannerImageUrl:"", imageUrl: ""},
+      }});
   const [dailyStats, setDailyStats] = useState([]);
 
   React.useEffect(() => {
