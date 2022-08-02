@@ -16,48 +16,24 @@ import { Tooltip, Dot } from './components';
 import cn from 'classnames';
 import styles from './.module.sass';
 
+import { tidy, mutateWithSummary, roll, mean } from '@tidyjs/tidy'
+
 export const LineChart = (props: any) => {
   //
-  const {} = props;
+  const { dailyStats } = props;
 
-  const data = [
-    {
-      date: '01.01.2022',
-      month: 'Jan',
-      price: 10,
-      //volume: 130494.39,
-    },
-    {
-      date: '02.01.2022',
-      month: 'Jan',
-      price: 70,
-      //volume: 5000,
-    },
-    {
-      date: '03.01.2022',
-      month: 'Jan',
-      price: 50,
-      volume: 2400,
-    },
-    {
-      date: '04.01.2022',
-      month: 'Jan',
-      price: 10,
-      //volume: 5000,
-    },
-    {
-      date: '05.01.2022',
-      month: 'Jan',
-      price: 30,
-      //volume: 5000,
-    },
-    {
-      date: '06.01.2022',
-      month: 'Jan',
-      price: 100,
-      //volume: 5000,
-    },
-  ];
+  let data = dailyStats
+    .map(d => ({timestamp: new Date(d.timestamp*1000), price: d.floor_sell_value}))
+    .sort((a, b) => a.timestamp - b.timestamp);
+  
+  data = tidy(
+    data, 
+    mutateWithSummary({
+      movingAvg: roll(30, mean('price')),
+    })
+  )
+
+  data = data.filter(d => (d.movingAvg));
 
   const TickStyle = {
     fontFamily: 'Space Grotesk',
@@ -78,7 +54,7 @@ export const LineChart = (props: any) => {
         <XAxis
           tick={TickStyle}
           axisLine={{ stroke: '#e6e6e6', strokeWidth: 0.5 }}
-          dataKey="month"
+          dataKey="timestamp"
           tickLine={false}
           dy={6}
           //padding={{ left: 10 }}
@@ -100,7 +76,7 @@ export const LineChart = (props: any) => {
 
         <Line
           type="monotone"
-          dataKey="price"
+          dataKey="movingAvg"
           stroke="#94EB33"
           dot={false}
           strokeWidth={2}

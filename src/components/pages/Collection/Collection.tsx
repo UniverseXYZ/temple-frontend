@@ -23,13 +23,11 @@ import {
   Chart,
 } from './components/common';
 
-// import { GetCollectionById } from '@/api';
-
 import cn from 'classnames';
 import styles from './Collection.module.sass';
 
 import { tabs } from './tabs';
-import { GetCollection } from '@/api/collections';
+import { GetCollection, GetDailyStats } from '@/api/reservoir';
 import { useParams } from 'react-router-dom';
 
 export const Collection = () => {
@@ -46,11 +44,15 @@ export const Collection = () => {
 
   const [isLoading, setIsLoading] = React.useState(true);
   const [collection, setCollection] = useState({collection:{tokenCount:"", ownerCount: "", floorAsk:{price:""},volume:{allTime:""},topBid:{value:""}}});
+  const [dailyStats, setDailyStats] = useState([]);
 
   React.useEffect(() => {
     GetCollection(slug || "doodles-official").then(res => {
       setCollection(res);
-      setIsLoading(false);
+      GetDailyStats(res.collection.primaryContract).then(res => {
+        setDailyStats(res.collections);
+        setIsLoading(false);
+      })
     })
   
   }, []);
@@ -104,7 +106,7 @@ export const Collection = () => {
       </Box>
 
       <Box mt="40px">
-        <Chart isLoading={isLoading} />
+        <Chart isLoading={isLoading} dailyStats={dailyStats} />
       </Box>
 
       <Box mt="80px">

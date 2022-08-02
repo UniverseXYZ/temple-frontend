@@ -16,11 +16,11 @@ const items = [
     value: 'price',
     icon: <DollarIcon />,
   },
-  {
-    title: 'Volume',
-    value: 'volume',
-    icon: <TransferIcon />,
-  },
+  // {
+  //   title: 'Volume',
+  //   value: 'volume',
+  //   icon: <TransferIcon />,
+  // },
 ];
 
 const options = [
@@ -52,7 +52,7 @@ const options = [
 
 export const Chart = (props: any) => {
   //
-  const { isLoading } = props;
+  const { isLoading, dailyStats } = props;
   //
   return (
     <>
@@ -77,7 +77,7 @@ export const Chart = (props: any) => {
               </Box>
             </Flex>
 
-            <LineChart />
+            <LineChart dailyStats={dailyStats}/>
           </>
         )}
       </Card>
