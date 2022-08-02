@@ -14,8 +14,6 @@ export const GetCollection = async (slug: string) => {
     "x-api-key": process.env.RESERVOIR_API_KEY || ""
   }
 
-  console.log(url, params, headers)
-
   const { data } = await axios({
     method: 'GET',
     baseURL: '',
@@ -23,8 +21,6 @@ export const GetCollection = async (slug: string) => {
     params: params,
     headers: headers
   });
-
-  console.log("data:", data)
 
   return data;
 };
@@ -43,8 +39,6 @@ export const GetDailyStats = async (address: string) => {
     "x-api-key": process.env.RESERVOIR_API_KEY || ""
   }
 
-  console.log(url, params, headers)
-
   const { data } = await axios({
     method: 'GET',
     baseURL: '',
@@ -52,8 +46,6 @@ export const GetDailyStats = async (address: string) => {
     params: params,
     headers: headers
   });
-
-  console.log("data:", data)
 
   return data;
 };

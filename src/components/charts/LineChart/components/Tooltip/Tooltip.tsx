@@ -10,7 +10,7 @@ import moment from 'moment';
 export const Tooltip = (props: any) => {
   //
   const { payload } = props;
-  console.log("payload: ", payload)
+
   return (
     <Box className={styles.Wrapper}>
       <HStack spacing="8px" mb="10px">
@@ -19,7 +19,6 @@ export const Tooltip = (props: any) => {
       </HStack>
       <HStack spacing="10px">
         <Box className={styles.Date}>{moment(payload[0]?.payload.timestamp).format("MM/DD/YYYY")}</Box>
-        {/* <Box className={styles.Time}>3:00:00 AM</Box> */}
       </HStack>
     </Box>
   );
