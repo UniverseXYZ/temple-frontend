@@ -52,7 +52,7 @@ export const Collection = () => {
        floorAsk:{price:""},
        volume:{allTime:""},
        topBid:{value:""},
-       metadata: {bannerImageUrl:"", imageUrl: ""},
+       metadata: {bannerImageUrl:"", imageUrl: "", description:""},
       }});
   const [dailyStats, setDailyStats] = useState([]);
 
@@ -119,8 +119,8 @@ export const Collection = () => {
         <Chart isLoading={isLoading} dailyStats={dailyStats} />
       </Box>
 
-      <Box mt="80px">
-        <Tabs items={tabs} />
+      <Box mt="80px" mb="20px">
+        <Tabs items={tabs({description:collection.collection.metadata.description})} />
       </Box>
     </Container>
   );
