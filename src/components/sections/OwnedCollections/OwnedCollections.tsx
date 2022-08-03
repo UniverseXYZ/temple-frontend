@@ -18,7 +18,7 @@ export const OwnedCollections = () => {
         setCollections(res.collections)
       })  
     }
-  }, [])
+  }, [activeWallet])
 
   return (
     <Box as="section">

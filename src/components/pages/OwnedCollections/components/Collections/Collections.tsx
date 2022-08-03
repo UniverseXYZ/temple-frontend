@@ -61,7 +61,7 @@ export const Collections = (props: any) => {
         setCollections(res.collections)
       })  
     }
-  }, [])
+  }, [activeWallet])
 
 
   const onViewChange = (value: any) => {
