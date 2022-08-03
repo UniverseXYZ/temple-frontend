@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Container, Heading, HStack, Button } from '@chakra-ui/react';
 import { InfoTooltip } from '@/components/common';
@@ -6,9 +6,19 @@ import { InfoTooltip } from '@/components/common';
 import { Slider, Activity } from './components';
 
 import initialData from '@/mocks/data';
+import { GetUserCollections } from '@/api/reservoir';
+import { useWallets } from '@/hooks';
 
 export const OwnedCollections = () => {
-  const collections = initialData.collections.slice(0, 6);
+  const [collections, setCollections] = useState([])
+  const {activeWallet} = useWallets();
+  useEffect(() => {
+    if(activeWallet && activeWallet.address){
+      GetUserCollections(activeWallet.address).then(res => {
+        setCollections(res.collections)
+      })  
+    }
+  }, [])
 
   return (
     <Box as="section">

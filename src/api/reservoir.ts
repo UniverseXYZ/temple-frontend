@@ -156,3 +156,28 @@ export const GetTopCollections = async (sortBy: string, limit: number) => {
 
   return data;
 };
+
+
+export const GetUserCollections = async (address: string) => {
+  const url = process.env.RESERVOIR_API_URL + `users/${address}/collections/v2`;
+
+  const params = {
+    limit: 20
+  };
+
+  const headers = {
+    "Content-Type": "application/json",
+    "x-api-key": process.env.RESERVOIR_API_KEY || ""
+  }
+
+  const { data } = await axios({
+    method: 'GET',
+    baseURL: '',
+    url: url,
+    params: params,
+    headers: headers
+  });
+
+  return data;
+};
+

@@ -34,11 +34,11 @@ export const CollectionCard = (props: Props) => {
   const { showAuthor, showFooter, showText, collection } = props;
 
   const { colorMode } = useColorMode();
-
+  console.log("collection", collection)
   return (
     <>
       <LinkBox>
-        <Link to={`/collections/${collection.slug}`}>
+        <Link to={`/collections/${collection.slug || collection.collection.slug}`}>
           <Card
             className={cn(
               styles.Card,
@@ -49,23 +49,24 @@ export const CollectionCard = (props: Props) => {
           >
             <Box className={styles.Image}>
               <Image
-                src="/mocks/collection-card-image.png"
+                src={collection.banner || collection.collection.banner || "/mocks/collection-card-image.png"}
                 alt="Collection Background"
               />
             </Box>
 
             <Box className={styles.Avatar}>
               <Avatar
-                image={collection.logo}
-                name={collection.name}
+                image={collection.image || collection.collection.image}
+                name={collection.name || collection.collection.name}
                 boxSize="68px"
               />
             </Box>
 
-            <BundleTag className={styles.Bundle}>7</BundleTag>
-
+            {collection.ownership && 
+              <BundleTag className={styles.Bundle}>{collection.ownership.tokenCount}</BundleTag>
+            }
             <Box className={styles.Content}>
-              <Title>{collection.name}</Title>
+              <Title>{collection.name || collection.collection.name}</Title>
               {showAuthor && <Author>Pavel</Author>}
               {showText && (
                 <Text>
@@ -73,7 +74,7 @@ export const CollectionCard = (props: Props) => {
                   at urna lorem adipiscing.
                 </Text>
               )}
-              {showFooter && <Footer stats={collection.stats} />}
+              {showFooter && <Footer stats={collection.collection || collection} />}
             </Box>
           </Card>
         </Link>
@@ -107,7 +108,7 @@ const Footer = ({ stats }: any) => (
           </Box>
 
           <Box fontWeight={600} fontSize={14}>
-            <CurrencyExchanger value={stats.floorPrice} maxAbbreviate={1e3} />
+            <CurrencyExchanger value={stats.floorAskPrice} maxAbbreviate={1e3} />
           </Box>
         </Box>
         <Spacer />
@@ -117,7 +118,7 @@ const Footer = ({ stats }: any) => (
           </Box>
 
           <Flex fontWeight={600} fontSize={14} justify="end">
-            <CurrencyExchanger value={stats.totalValue} maxAbbreviate={1e3} />
+            <CurrencyExchanger value={stats.volume.allTime} maxAbbreviate={1e3} />
           </Flex>
         </Box>
       </Flex>

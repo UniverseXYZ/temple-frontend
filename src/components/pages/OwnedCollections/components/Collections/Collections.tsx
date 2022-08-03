@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   HStack,
@@ -40,6 +40,8 @@ const options = [
 ];
 
 import initialData from '@/mocks/data';
+import { GetUserCollections } from '@/api/reservoir';
+import { useWallets } from '@/hooks/useWallets';
 
 export const Collections = (props: any) => {
   //
@@ -51,7 +53,16 @@ export const Collections = (props: any) => {
 
   const isViewCard = view === 'card';
 
-  const { collections } = initialData;
+  const { wallets, activeWallet } = useWallets();
+  const [collections, setCollections] = useState([])
+  useEffect(() => {
+    if(activeWallet && activeWallet.address){
+      GetUserCollections(activeWallet.address).then(res => {
+        setCollections(res.collections)
+      })  
+    }
+  }, [])
+
 
   const onViewChange = (value: any) => {
     //
