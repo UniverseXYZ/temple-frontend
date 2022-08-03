@@ -81,12 +81,12 @@ export const CollectionList = ({
     })
   );
 
-  const getIndex = (id: string) => items.findIndex((item) => item.id === id);
+  const getIndex = (id: string) => items.findIndex((item: any) => item.id === id);
   const activeIndex = activeId ? getIndex(activeId) : -1;
 
   const handleRemove = removable
     ? (id: string): void =>
-        setItems((items) => items.filter((item) => item.id !== id))
+        setItems((items) => items.filter((item: any) => item.id !== id))
     : undefined;
 
   const onDragStart = ({ active }: DragStartEvent) => {
@@ -125,7 +125,7 @@ export const CollectionList = ({
     >
       <SortableContext items={items} strategy={verticalListSortingStrategy}>
         <div>
-          {items.map((item) => (
+          {items.map((item: any) => (
             <SortableItem
               key={item.id}
               id={item.id}
@@ -146,8 +146,8 @@ export const CollectionList = ({
         >
           {activeId ? (
             <Item
-              key={items[activeIndex].id}
-              id={items[activeIndex].id}
+              key={items[activeIndex]['id']}
+              id={items[activeIndex]['id']}
               item={items[activeIndex]}
               handle={handle}
               onRemove={handleRemove}
