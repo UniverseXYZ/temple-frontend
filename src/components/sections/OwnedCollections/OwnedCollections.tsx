@@ -32,11 +32,15 @@ export const OwnedCollections = () => {
       </Container>
 
       <Container maxW="1200px">
-        <Slider collections={collections} />
+        {collections.length > 0 
+          ? <Slider collections={collections} />
+          : activeWallet !== null 
+          ? <h1>You do not own any NFTs</h1>
+          :<h1>No wallet connected</h1>
+        }
       </Container>
 
       <Container maxW="container.xl">
-        <Activity />
 
         <Link to="/owned-collections">
           <Button variant="outline" width="100%" mt="30px">
