@@ -26,10 +26,14 @@ export const LineChart = (props: any) => {
     .map((d: any) => ({timestamp: new Date(d.timestamp*1000), price: d.floor_sell_value}))
     .sort((a: any, b: any) => a.timestamp - b.timestamp);
   
+  let period = 30;
+  if(data.length < 30){
+    period = 3;
+  }
   data = tidy(
     data, 
     mutateWithSummary({
-      movingAvg: roll(30, mean('price')),
+      movingAvg: roll(period, mean('price')),
     })
   )
 

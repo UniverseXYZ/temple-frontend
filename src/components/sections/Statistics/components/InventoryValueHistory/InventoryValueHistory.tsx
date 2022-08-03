@@ -30,7 +30,7 @@ export const InventoryValueHistory = () => {
       </HStack>
 
       <Box>
-        <LineChart />
+        {/* <LineChart /> */}
       </Box>
     </Card>
   );

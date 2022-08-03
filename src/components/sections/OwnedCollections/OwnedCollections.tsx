@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Container, Heading, HStack, Button } from '@chakra-ui/react';
 import { InfoTooltip } from '@/components/common';
-
+import { Text } from '@chakra-ui/react'
 import { Slider, Activity } from './components';
 
 import initialData from '@/mocks/data';
@@ -35,19 +35,19 @@ export const OwnedCollections = () => {
         {collections.length > 0 
           ? <Slider collections={collections} />
           : activeWallet !== null 
-          ? <h1>You do not own any NFTs</h1>
-          :<h1>No wallet connected</h1>
+          ? <Text fontSize='lg' ml="50px" mt="25px">You do not own any NFTs</Text>
+          :<Text fontSize='lg' ml="50px" mt="25px">No wallet connected</Text>
         }
       </Container>
-
-      <Container maxW="container.xl">
-
-        <Link to="/owned-collections">
-          <Button variant="outline" width="100%" mt="30px">
-            Show all
-          </Button>
-        </Link>
-      </Container>
+      {collections.length > 0 && 
+        <Container maxW="container.xl">
+          <Link to="/owned-collections">
+            <Button variant="outline" width="100%" mt="30px">
+              Show all
+            </Button>
+          </Link>
+        </Container>
+      }
     </Box>
   );
 };
