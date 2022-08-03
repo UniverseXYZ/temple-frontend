@@ -15,7 +15,6 @@ import { data } from './mock/data';
 export const ActivityList = (props: any) => {
   //
   const {collectionActivity} = props;
-  console.log(collectionActivity)
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';

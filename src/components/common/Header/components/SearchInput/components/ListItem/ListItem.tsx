@@ -18,7 +18,7 @@ export const ListItem = (props: any) => {
       <Flex>
         <Avatar
           className={styles.Avatar}
-          image={collection.logo}
+          image={collection.image}
           name={collection.name}
           boxSize="40px"
           showBorder={false}

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, useColorMode } from '@chakra-ui/react';
+import { Box, LinkBox, useColorMode } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { Loading } from '@/components/common';
 
 import { ListItem } from '../ListItem';
@@ -29,7 +30,11 @@ export const SearhList = (props: any) => {
 
         <Box className={styles.CollectionsList}>
           {collections.map((collection: any, index: number) => (
-            <ListItem key={index} collection={collection} />
+            <LinkBox key={index}>
+              <Link key={index} to={`collections/${collection.collectionId}`}>          
+                <ListItem key={index} collection={collection} />
+              </Link>
+            </LinkBox>
           ))}
         </Box>
 

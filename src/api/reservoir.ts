@@ -1,13 +1,45 @@
 import axios from 'axios';
+import { ethers } from "ethers";
 
 export const GetCollection = async (slug: string) => {
   //
   const url = process.env.RESERVOIR_API_URL + "collection/v3";
 
-  const params = {
+  const isValidAddress = ethers.utils.isAddress(slug);
+
+  const params = isValidAddress ? 
+  {
+    id: slug,
+    includeTopBid: true,
+  } :
+  {
     slug: slug,
     includeTopBid: true,
   };
+
+  const headers = {
+    "Content-Type": "application/json",
+    "x-api-key": process.env.RESERVOIR_API_KEY || ""
+  }
+
+  const { data } = await axios({
+    method: 'GET',
+    baseURL: '',
+    url: url,
+    params: params,
+    headers: headers
+  });
+
+  return data;
+};
+
+export const SearchCollection = async (filter: string) => {
+  //
+  const url = process.env.RESERVOIR_API_URL + "search/collections/v1";
+
+  const params = filter ? {
+    name: filter,
+  } : {};
 
   const headers = {
     "Content-Type": "application/json",
@@ -77,7 +109,6 @@ export const GetDailyStats = async (address: string) => {
 
 export const GetUserNFTsByCollection = async (walletAddress: string, tokenAddress: string) => {
   //
-  console.log(walletAddress, tokenAddress)
   const url = process.env.RESERVOIR_API_URL + `users/${walletAddress}/tokens/v2`;
 
   const params = {

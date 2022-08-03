@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { useQuery } from 'react-query';
 
 import {
@@ -61,10 +61,8 @@ export const Collection = () => {
   const [dailyStats, setDailyStats] = useState([]);
   const [collectionActivity, setCollectionActivity] = useState([])
 
-  console.log("========activity========")
-  console.log(collectionActivity);
-
   React.useEffect(() => {
+    setIsLoading(true)
     GetCollection(slug || "doodles-official").then(res => {
       setCollection(res);
       GetDailyStats(res.collection.primaryContract).then(res1 => {
@@ -82,7 +80,7 @@ export const Collection = () => {
       })
     })
   
-  }, []);
+  }, [slug]);
 
   return (
     <Container maxWidth="container.xl">

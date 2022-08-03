@@ -31,7 +31,6 @@ type Image = {
 export const NftCard = (props: any) => {
   //
   const { item } = props;
-  console.log(item)
   const { isSound, isVideo } = props.item;
 
   const { colorMode } = useColorMode();

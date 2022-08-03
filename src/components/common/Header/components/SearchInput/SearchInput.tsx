@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Box, useColorMode } from '@chakra-ui/react';
 import { useClickAway } from 'react-use';
 
@@ -9,11 +9,13 @@ import cn from 'classnames';
 import styles from './SearchInput.module.sass';
 
 import initialData from '@/mocks/data';
+import { SearchCollection } from '@/api/reservoir';
 
 export const SearchInput = (props: any) => {
   //
   const {} = props;
 
+  const [suggestions, setSuggestions] = useState([]);
   const [templeValue, setTempleValue] = useState('');
   const [googleValue, setGoogleValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +30,12 @@ export const SearchInput = (props: any) => {
   useClickAway(ref, () => {
     setIsOpen(false);
   });
+
+  useEffect(() => {
+    SearchCollection(templeValue).then(res => {
+      setSuggestions(res.collections);
+    })
+  }, [templeValue])
 
   const handleClear = (input: string) => {
     //TODO: refactoring
@@ -90,7 +98,7 @@ export const SearchInput = (props: any) => {
         </Box>
       </Box>
 
-      <SearhList isOpen={isOpen} collections={initialData.collections} />
+      <SearhList isOpen={isOpen} collections={suggestions} />
     </Box>
   );
 };
