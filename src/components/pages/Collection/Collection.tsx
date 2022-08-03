@@ -29,6 +29,24 @@ import cn from 'classnames';
 import styles from './Collection.module.sass';
 
 import { tabs } from './tabs';
+import { useReservoir } from '@/hooks';
+import { useParams } from 'react-router-dom';
+
+interface IMetadata {
+  discordUrl: string
+  imageUrl: string
+  description: string
+  externalUrl: string
+  bannerImageUrl: string 
+  twitterUsername: string 
+}
+
+interface ICollection {
+  id: string
+  slug: string
+  name: string
+  metadata: IMetadata
+}
 
 export const Collection = () => {
   //
@@ -43,19 +61,29 @@ export const Collection = () => {
   //const { metadata } = data;
 
   const [isLoading, setIsLoading] = React.useState(true);
+  const [collection, setCollection] = React.useState<ICollection>({metadata: {}} as ICollection)
+
+  const {slug} = useParams();
+  const { getCollection } = useReservoir();
 
   React.useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
+    async function get(){
+      const data = await getCollection(slug || "")
+      if(data){
+        console.log(data)
+        setCollection(data.collection)
+        setIsLoading(false);
+      }
+    }
+    get()
+  }, [slug])
 
   return (
     <Container maxWidth="container.xl">
       <Box className={cn(styles.Header, isDark && styles.Dark)}>
         <Banner
-          title="Flow World"
-          image="https://lh3.googleusercontent.com/biQ5untjlSAOByE6kSQajzpnaQY7T2urPVtmI4Idd5QgymG86C8Kaobw3BnB5RIMMpjGJbpePiYU8_ugJGuMeopGbHdU42McT6Ev=h600"
+          title={collection.name} 
+          image={collection.metadata.bannerImageUrl}
           isLoading={isLoading}
         />
 
@@ -64,15 +92,15 @@ export const Collection = () => {
             <Flex align="center" className={styles.Collection}>
               <Box className={styles.Avatar}>
                 <Avatar
-                  image="/mocks/images/collection/avatar.png"
-                  name="Collection Name"
+                  image={collection.metadata.imageUrl}
+                  name={collection.name}
                   size="full"
                   isLoading={isLoading}
                 />
               </Box>
 
               <Box>
-                <Title text="Fluf World" isLoading={isLoading} />
+                <Title text={collection.name} isLoading={isLoading} />
               </Box>
             </Flex>
             <Spacer />
