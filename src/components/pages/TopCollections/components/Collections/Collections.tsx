@@ -12,6 +12,14 @@ import styles from './.module.sass';
 import initialData from '@/mocks/data';
 import { GetTopCollections } from '@/api/reservoir';
 
+import {
+  //Link,
+  LinkBox,
+} from '@chakra-ui/react';
+
+import { Link } from 'react-router-dom';
+
+
 export const Collections = (props: any) => {
   //
   const {} = props;
@@ -29,7 +37,11 @@ export const Collections = (props: any) => {
     <Box pt="30px">
       <SimpleGrid columns={1} spacing="12px">
         {items.map((collection, index) => (
-          <CollectionItem key={index} item={collection} />
+          <LinkBox key={collection.id}>
+            <Link key={collection.id} to={`/collections/${collection.slug || collection.collection.slug}`}>        
+              <CollectionItem key={index} item={collection} />
+            </Link>
+          </LinkBox>
         ))}
       </SimpleGrid>
     </Box>

@@ -44,7 +44,7 @@ export const NftCard = (props: any) => {
         hover
       >
         <Box className={styles.Image}>
-          <Image src={item.token.image} alt={item.token.name} />
+          <Image src={item.token.image || item.token.collection.imageUrl} alt={item.token.name} />
 
           {isHaveTags && (
             <Box className={styles.Tags}>

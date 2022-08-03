@@ -43,6 +43,14 @@ import styles from './components/Item/Item.module.scss';
 import initialData from '@/mocks/data';
 import { GetTopCollections } from '@/api/reservoir';
 
+import {
+  //Link,
+  LinkBox,
+} from '@chakra-ui/react';
+
+import { Link } from 'react-router-dom';
+
+
 export interface Props {
   activationConstraint?: PointerActivationConstraint;
   coordinateGetter?: KeyboardCoordinateGetter;
@@ -126,15 +134,19 @@ export const CollectionList = ({
       <SortableContext items={items} strategy={verticalListSortingStrategy}>
         <div>
           {items.map((item: any) => (
-            <SortableItem
-              key={item.id}
-              id={item.id}
-              item={item}
-              handle={handle}
-              onRemove={handleRemove}
-              animateLayoutChanges={animateLayoutChanges}
-              useDragOverlay={useDragOverlay}
-            />
+            <LinkBox key={item.id}>
+              <Link key={item.id} to={`/collections/${item.slug || item.collection.slug}`}>
+                <SortableItem
+                  key={item.id}
+                  id={item.id}
+                  item={item}
+                  handle={handle}
+                  onRemove={handleRemove}
+                  animateLayoutChanges={animateLayoutChanges}
+                  useDragOverlay={useDragOverlay}
+                />
+              </Link>
+          </LinkBox>
           ))}
         </div>
       </SortableContext>
