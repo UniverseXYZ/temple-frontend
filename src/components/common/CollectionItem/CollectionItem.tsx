@@ -40,36 +40,36 @@ export const CollectionItem = (props: any) => {
         <HStack justifyContent="space-between">
           <Box w={318}>
             <HStack className={styles.CollectionName}>
-              <Avatar image={item.logo} name={item.name} boxSize="50px" />
+              <Avatar image={item.image} name={item.name} boxSize="50px" />
               <Text fontSize={16} fontWeight={600}>
                 {item.name}
               </Text>
             </HStack>
           </Box>
           <Box w={105}>
-            <CurrencyExchanger value={item.stats.totalValue} />
+            <CurrencyExchanger value={item.floorAskPrice.toFixed(2)} />
           </Box>
           <Box w={105} color="#2caa00">
             <HStack>
-              <Box>{item.stats.oneDayChange} %</Box>
+              <Box>{item.floorSaleChange['1day'] && item.floorSaleChange['1day'].toFixed(2)} %</Box>
             </HStack>
           </Box>
           <Box w={105} color="#ff4949">
             <HStack>
-              <Box>{item.stats.sevenDayChange} %</Box>
+              <Box>{item.floorSaleChange['7day'] && item.floorSaleChange['7day'].toFixed(2)} %</Box>
             </HStack>
           </Box>
           <Box w={105}>
-            <CurrencyExchanger value={item.stats.floorPrice} />
+            <CurrencyExchanger value={item.volume.allTime.toFixed(2)} />
           </Box>
           <Box w={105}>
             <HStack>
-              <Box>{item.stats.owners}</Box>
+              <Box>{item.volumeChange['1day'] && item.volumeChange['1day'].toFixed(2)} %</Box>
             </HStack>
           </Box>
           <Box w={105}>
             <HStack>
-              <Box>{item.stats.items}</Box>
+              <Box>{item.tokenCount}</Box>
             </HStack>
           </Box>
         </HStack>

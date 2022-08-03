@@ -131,3 +131,28 @@ export const GetUserNFTsByCollection = async (walletAddress: string, tokenAddres
 
   return data;
 };
+
+
+export const GetTopCollections = async (sortBy: string, limit: number) => {
+  const url = process.env.RESERVOIR_API_URL + "collections/v4";
+
+  const params = {
+    sortBy,
+    limit
+  };
+
+  const headers = {
+    "Content-Type": "application/json",
+    "x-api-key": process.env.RESERVOIR_API_KEY || ""
+  }
+
+  const { data } = await axios({
+    method: 'GET',
+    baseURL: '',
+    url: url,
+    params: params,
+    headers: headers
+  });
+
+  return data;
+};

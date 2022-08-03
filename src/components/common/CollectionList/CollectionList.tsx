@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   closestCenter,
@@ -41,6 +41,7 @@ import { Item } from './components';
 import styles from './components/Item/Item.module.scss';
 
 import initialData from '@/mocks/data';
+import { GetTopCollections } from '@/api/reservoir';
 
 export interface Props {
   activationConstraint?: PointerActivationConstraint;
@@ -59,8 +60,14 @@ export const CollectionList = ({
   removable = false,
   useDragOverlay = false,
 }: Props) => {
-  const [items, setItems] = useState(initialData.collections);
+  const [items, setItems] = useState([]);
   const [activeId, setActiveId] = useState<string | null>(null);
+  console.log("items", items)
+  useEffect(() => {
+    GetTopCollections('7DayVolume', 5).then(res => {
+      setItems(res.collections)
+    })
+  }, [])
 
   const sensors = useSensors(
     useSensor(MouseSensor, {
