@@ -18,7 +18,7 @@ const STATUSES = {
   TRANSFER: 'transfer',
   SALE: 'sale',
   OFFERS: 'offers',
-  BIDS: 'bids',
+  BIDS: 'bid',
   BURNS: 'burns',
   CANCEL_LISTING: 'ask_cancel',
 };

@@ -18,6 +18,7 @@ export const ActivityList = (props: any) => {
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
+  console.log("data", collectionActivity)
 
   return (
     <Box className={cn(styles.Table, isDark && styles.Dark)}>
@@ -40,7 +41,7 @@ export const ActivityList = (props: any) => {
             <Box className={styles.Cell}>
               <HStack spacing="20px">
                 <Box className={styles.Image}>
-                  <Image maxHeight={"100px"} src={item.token.tokenImage} alt={item.token.tokenName} />
+                  <Image maxHeight={"100px"} src={item.token.tokenImage || item.collection.collectionImage} alt={item.token.tokenName} />
                 </Box>
                 <Box>
                   <Box className={styles.Title}>{item.token.tokenName}</Box>
