@@ -3,12 +3,11 @@ import { Box, useColorMode } from '@chakra-ui/react';
 import { useClickAway } from 'react-use';
 
 import { SearchIcon, CrossIcon } from '@/components/icons';
-import { SearhList } from './components';
+import { SearchList } from './components';
 
 import cn from 'classnames';
 import styles from './SearchInput.module.sass';
 
-import initialData from '@/mocks/data';
 import { useReservoir } from '@/hooks';
 
 export const SearchInput = (props: any) => {
@@ -58,6 +57,12 @@ export const SearchInput = (props: any) => {
     }
   };
 
+  const handleGoogleChange = (event: any) => {
+    if(event.key == 'Enter' && googleValue) {
+      window.open(`https://www.google.com/search?q=${googleValue}`,"_self")
+    }
+  }
+
   return (
     <Box ref={ref} className={cn(styles.Wrapper, isDark && styles.Dark)}>
       <SearchIcon className={styles.SearchIcon} />
@@ -92,6 +97,7 @@ export const SearchInput = (props: any) => {
             type="search"
             value={googleValue}
             onChange={(e) => setGoogleValue(e.target.value)}
+            onKeyPress={handleGoogleChange}
             placeholder="or Google"
             autoComplete="off"
           />
@@ -106,7 +112,7 @@ export const SearchInput = (props: any) => {
         </Box>
       </Box>
 
-      <SearhList isOpen={isOpen} collections={collections} />
+      <SearchList isOpen={isOpen} collections={collections} />
     </Box>
   );
 };
