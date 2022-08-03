@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Box, useColorMode } from '@chakra-ui/react';
 import { useClickAway } from 'react-use';
 
@@ -9,6 +9,7 @@ import cn from 'classnames';
 import styles from './SearchInput.module.sass';
 
 import initialData from '@/mocks/data';
+import { useReservoir } from '@/hooks';
 
 export const SearchInput = (props: any) => {
   //
@@ -16,6 +17,7 @@ export const SearchInput = (props: any) => {
 
   const [templeValue, setTempleValue] = useState('');
   const [googleValue, setGoogleValue] = useState('');
+  const [collections, setCollections] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const { colorMode } = useColorMode();
@@ -24,6 +26,20 @@ export const SearchInput = (props: any) => {
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
   const templeRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const googleRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+
+  const { makeSearchQuery } = useReservoir();
+
+  useEffect(() => {
+    async function search(){
+      const data = await makeSearchQuery(templeValue)
+      if(data){
+        console.log(data)
+        setCollections(data.collections)
+      }
+    }
+    search()
+  }, [templeValue])
 
   useClickAway(ref, () => {
     setIsOpen(false);
@@ -90,7 +106,7 @@ export const SearchInput = (props: any) => {
         </Box>
       </Box>
 
-      <SearhList isOpen={isOpen} collections={initialData.collections} />
+      <SearhList isOpen={isOpen} collections={collections} />
     </Box>
   );
 };
