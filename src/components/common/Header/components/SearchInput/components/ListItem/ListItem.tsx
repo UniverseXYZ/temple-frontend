@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, Flex, useColorMode } from '@chakra-ui/react';
+import { LinkBox, Box, Flex, useColorMode } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+
 
 import { Avatar } from '@/components/common';
 
@@ -14,20 +16,22 @@ export const ListItem = (props: any) => {
   const isDark = colorMode === 'dark';
 
   return (
-    <Box className={cn(styles.Item, isDark && styles.Dark)}>
-      <Flex>
-        <Avatar
-          className={styles.Avatar}
-          image={collection.logo}
-          name={collection.name}
-          boxSize="40px"
-          showBorder={false}
-        />
-        <Box flexGrow={1}>
-          <Box className={styles.Name}>{collection.name}</Box>
-          <Box className={styles.Desc}>4,242 items</Box>
-        </Box>
-      </Flex>
-    </Box>
+    <LinkBox className={cn(styles.Item, isDark && styles.Dark)}>
+      <Link to={`/collections/${collection.contract}`}>
+        <Flex>
+          <Avatar
+            className={styles.Avatar}
+            image={collection.image}
+            name={collection.name}
+            boxSize="40px"
+            showBorder={false}
+          />
+          <Box flexGrow={1}>
+            <Box className={styles.Name}>{collection.name}</Box>
+            <Box className={styles.Desc}>{collection.contract}</Box>
+          </Box>
+        </Flex>
+      </Link>
+    </LinkBox>
   );
 };
