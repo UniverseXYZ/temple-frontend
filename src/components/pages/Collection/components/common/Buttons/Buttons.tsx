@@ -8,14 +8,21 @@ import { Skeleton } from './Skeleton';
 
 import cn from 'classnames';
 import styles from './Buttons.module.sass';
+import { useSettings } from '@/hooks';
 
 interface Props {
   isLoading?: boolean;
+  tokenAddress: string;
 }
 
 export const Buttons = (props: Props) => {
   //
-  const { isLoading } = props;
+  const { isLoading, tokenAddress } = props;
+  const { isInWatchlist, toggleAddressinWatchlist } =
+  useSettings();
+
+  const active = isInWatchlist(tokenAddress);
+  console.log(active)
   return (
     <>
       {isLoading ? (
@@ -29,9 +36,10 @@ export const Buttons = (props: Props) => {
             <Box>
               <Tooltip label="Add to Watchlist" variant="white">
                 <IconButton
-                  className={styles.Watchlist}
+                  className={active ? styles.WatchlistActive : styles.Watchlist}
                   aria-label="Add to Watchlist"
                   icon={<StarIcon />}
+                  onClick={() => toggleAddressinWatchlist(tokenAddress)}
                 />
               </Tooltip>
             </Box>

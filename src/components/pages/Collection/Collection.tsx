@@ -41,6 +41,7 @@ export const Collection = () => {
   // );
 
   //const { metadata } = data;
+  const address ="0x123456789"
 
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -81,7 +82,7 @@ export const Collection = () => {
                 <SocialLinks isLoading={isLoading} />
               </Box>
 
-              <Buttons isLoading={isLoading} />
+              <Buttons isLoading={isLoading} tokenAddress={address} />
             </Flex>
           </Flex>
         </Box>
