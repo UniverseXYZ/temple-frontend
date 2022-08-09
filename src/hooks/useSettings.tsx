@@ -1,14 +1,12 @@
 import { useContext } from 'react';
 import { SettingsContext } from '@/context';
+import { Watchlist } from '@/components/sections';
+import { watch } from 'fs';
 
 interface ISection {
   id: number;
   visible: boolean;
 }
-
-// interface IContext {
-//   sections: ISection[]
-// }
 
 function useSettings() {
   const settingsContext: any = useContext(SettingsContext);
@@ -21,6 +19,22 @@ function useSettings() {
     setSettings(newSettingsArray);
   };
 
+  const toggleAddressinWatchlist = (address: string): void => {
+    const newSettingsArray = settings;
+    if(isInWatchlist(address)){
+      newSettingsArray.watchlist = newSettingsArray.watchlist.filter(
+        (a: string) => a !== address
+      );
+    } else {
+      newSettingsArray.watchlist.push(address)
+    }
+    setSettings(newSettingsArray);
+  };
+
+  const isInWatchlist = (address: string): boolean => {
+    return (settings.watchlist.find((a: string) => a == address) !== undefined)
+  }
+
   const getSectionVisible = (id: string) => {
     const section = settings.sections.find((section: any) => section.id === id);
     return section?.visible;
@@ -28,6 +42,9 @@ function useSettings() {
 
   return {
     settings: settings,
+    watchlist: settings.watchlist,
+    toggleAddressinWatchlist,
+    isInWatchlist,
     sections: settings.sections,
     setSections,
     getSectionVisible,
