@@ -1,14 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Box, useColorMode } from '@chakra-ui/react';
 import { useClickAway } from 'react-use';
 
 import { SearchIcon, CrossIcon } from '@/components/icons';
-import { SearhList } from './components';
+import { SearchList } from './components';
 
 import cn from 'classnames';
 import styles from './SearchInput.module.sass';
 
-import initialData from '@/mocks/data';
+import { useReservoir } from '@/hooks';
 
 export const SearchInput = (props: any) => {
   //
@@ -16,6 +16,7 @@ export const SearchInput = (props: any) => {
 
   const [templeValue, setTempleValue] = useState('');
   const [googleValue, setGoogleValue] = useState('');
+  const [collections, setCollections] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const { colorMode } = useColorMode();
@@ -24,6 +25,20 @@ export const SearchInput = (props: any) => {
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
   const templeRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const googleRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+
+  const { makeSearchQuery } = useReservoir();
+
+  useEffect(() => {
+    async function search(){
+      const data = await makeSearchQuery(templeValue)
+      if(data){
+        console.log(data)
+        setCollections(data.collections)
+      }
+    }
+    search()
+  }, [templeValue])
 
   useClickAway(ref, () => {
     setIsOpen(false);
@@ -41,6 +56,12 @@ export const SearchInput = (props: any) => {
       googleRef.current.focus();
     }
   };
+
+  const handleGoogleChange = (event: any) => {
+    if(event.key == 'Enter' && googleValue) {
+      window.open(`https://www.google.com/search?q=${googleValue}`,"_self")
+    }
+  }
 
   return (
     <Box ref={ref} className={cn(styles.Wrapper, isDark && styles.Dark)}>
@@ -76,6 +97,7 @@ export const SearchInput = (props: any) => {
             type="search"
             value={googleValue}
             onChange={(e) => setGoogleValue(e.target.value)}
+            onKeyPress={handleGoogleChange}
             placeholder="or Google"
             autoComplete="off"
           />
@@ -90,7 +112,7 @@ export const SearchInput = (props: any) => {
         </Box>
       </Box>
 
-      <SearhList isOpen={isOpen} collections={initialData.collections} />
+      <SearchList isOpen={isOpen} collections={collections} />
     </Box>
   );
 };

@@ -1,2 +1,2 @@
-export * from './SearhList';
+export * from './SearchList';
 export * from './ListItem';
