@@ -56,7 +56,7 @@ interface IVolume {
   allTime: number
 }
 
-interface ICollection {
+export interface ICollection {
   id: string
   slug: string
   name: string
@@ -120,7 +120,7 @@ export const Collection = () => {
               </Box>
 
               <Box>
-                <Title text={collection.name} isLoading={isLoading} />
+                <Title text={collection.name} address={collection.primaryContract} isLoading={isLoading} />
               </Box>
             </Flex>
             <Spacer />
