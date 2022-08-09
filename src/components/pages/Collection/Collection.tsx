@@ -126,7 +126,7 @@ export const Collection = () => {
             <Spacer />
             <Flex align="center">
               <Box className={styles.SocialLinks} mr="40px">
-                <SocialLinks isLoading={isLoading} />
+                <SocialLinks metadata={collection.metadata} isLoading={isLoading} />
               </Box>
 
               <Buttons isLoading={isLoading} tokenAddress={collection.primaryContract} />
