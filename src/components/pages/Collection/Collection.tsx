@@ -41,12 +41,32 @@ interface IMetadata {
   twitterUsername: string 
 }
 
+interface IFloorAsk {
+  price: string
+}
+
+interface ITopBid {
+  value: string
+}
+
+interface IVolume {
+  "1day": number
+  "7day": number
+  "30day": number
+  allTime: number
+}
+
 interface ICollection {
   id: string
   slug: string
   name: string
   metadata: IMetadata
   primaryContract: string
+  tokenCount: string
+  ownerCount: string
+  floorAsk: IFloorAsk
+  topBid: ITopBid
+  volume: IVolume
 }
 
 export const Collection = () => {
@@ -114,7 +134,7 @@ export const Collection = () => {
           </Flex>
         </Box>
 
-        <Stats isLoading={isLoading} />
+        <Stats isLoading={isLoading} collection={collection} />
       </Box>
 
       <Box mt="40px">
