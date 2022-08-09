@@ -46,6 +46,7 @@ interface ICollection {
   slug: string
   name: string
   metadata: IMetadata
+  primaryContract: string
 }
 
 export const Collection = () => {
@@ -59,8 +60,6 @@ export const Collection = () => {
   // );
 
   //const { metadata } = data;
-  const address ="0x123456789"
-
   const [isLoading, setIsLoading] = React.useState(true);
   const [collection, setCollection] = React.useState<ICollection>({metadata: {}} as ICollection)
 
@@ -71,7 +70,7 @@ export const Collection = () => {
     async function get(){
       const data = await getCollection(slug || "")
       if(data){
-        console.log(data)
+        console.log("data: ", data)
         setCollection(data.collection)
         setIsLoading(false);
       }
@@ -110,7 +109,7 @@ export const Collection = () => {
                 <SocialLinks isLoading={isLoading} />
               </Box>
 
-              <Buttons isLoading={isLoading} tokenAddress={address} />
+              <Buttons isLoading={isLoading} tokenAddress={collection.primaryContract} />
             </Flex>
           </Flex>
         </Box>
