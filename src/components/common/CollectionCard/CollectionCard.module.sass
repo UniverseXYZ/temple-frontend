@@ -1,0 +1,83 @@
+@import '@/sass/colors'
+  
+.Card
+  position: relative
+  width: 255px
+  min-height: 195px
+  text-align: center
+
+.Image
+  border-top-left-radius: 12px
+  border-top-right-radius: 12px
+
+  img
+    height: 90px
+    width: 100%
+    object-fit: cover
+    border-top-left-radius: 12px
+    border-top-right-radius: 12px
+    user-select: none
+
+.Avatar
+  position: absolute
+  top: 56px
+  left: 50%
+  transform: translateX(-50%)
+  user-select: none
+
+.Content
+  margin-top: 34px
+  padding: 15px
+  padding-top: 20px
+
+.Footer
+  border-top: 0.5px solid $black-transparent-10
+  padding-top: 10px
+
+.Title
+  font-size: 16px
+  font-weight: 600
+  line-height: 22px
+  margin-bottom: 20px
+
+.Author
+  font-size: 12px
+  font-weight: 600
+  margin-bottom: 20px
+
+  span
+    color: #ccc
+    margin-right: 5px
+
+  a
+    outline: 0
+    text-decoration: underline
+
+    &:hover
+      text-decoration: none
+
+    &:focus
+      box-shadow: none
+
+.Text
+  font-size: 12px
+  line-height: 18px
+  color: #666
+  margin-bottom: 15px
+
+.Bundle
+  position: absolute
+  left: 6px
+  top: 6px
+  user-select: none
+
+
+
+.WithAuthor
+  .Title
+    margin-bottom: 0
+
+
+.Dark
+  .Footer
+    border-color: $white-transparent-10

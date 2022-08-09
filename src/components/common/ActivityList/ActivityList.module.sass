@@ -1,0 +1,105 @@
+@import '@/sass/colors'
+
+.Head
+  display: table-header-group
+  font-size: 14px
+  color: $black-transparent-40
+  font-weight: 600
+  line-height: 22px
+
+  .Cell
+    padding-bottom: 8px
+    border-bottom: 1px solid $black-transparent-10
+
+.Item
+  .Cell
+    font-size: 14px
+    vertical-align: middle
+    padding: 16px 0
+    border-bottom: 1px solid $black-transparent-10
+
+  &:last-child
+    .Cell
+      border-bottom: 0
+
+
+.Table
+  display: table
+  table-layout: auto
+  width: 100%
+
+.List
+  display: table-row-group
+
+
+.Row
+  display: table-row
+
+
+.Cell
+  display: table-cell
+
+
+.Image
+  border-radius: 4px
+
+.Title
+  font-weight: 600
+  font-size: 16px
+  line-height: 26px
+
+.Description
+  color: $black-transparent-40
+  font-weight: 500
+  line-height: 22px
+
+.Address
+  cursor: pointer
+  font-weight: 600
+
+.Time
+  color: $black-transparent-40
+  font-weight: 600
+  transition: color 150ms linear
+
+  path
+    fill: $black-transparent-40
+    transition: fill 150ms linear
+
+  &:hover
+    color: $black-transparent-60
+
+    path
+      fill: $black-transparent-60
+
+.Price
+  font-weight: 600
+
+
+// ------------ DARK ------------ //
+
+.Dark
+  .Head
+    color: $white-transparent-40
+
+    .Cell
+      border-bottom-color: $white-transparent-10
+
+  .Item
+    .Cell
+      border-bottom-color: $white-transparent-10
+
+  .Description
+    color: $white-transparent-40
+
+  .Time
+    color: $white-transparent-40
+
+    path
+      fill: $white-transparent-40
+
+    &:hover
+      color: $white-transparent-60
+
+      path
+        fill: $white-transparent-60

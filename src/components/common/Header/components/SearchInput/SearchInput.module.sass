@@ -1,0 +1,177 @@
+@import '@/sass/colors'
+  
+.Wrapper
+  position: relative
+  min-width: 610px
+  border: 1px solid transparent
+  transition: box-shadow 150ms linear
+  border-radius: 12px
+  height: 42px
+  background: rgba(0 0 0 / 3%)
+  box-shadow: 0px 0px 0px 1px rgba(0 0 0 / 3%)
+
+  &::before
+    content: ''
+    position: absolute
+    border-radius: 12px
+    top: -1px
+    bottom: -1px
+    left: -1px
+    right: -1px
+    background: linear-gradient(135deg, #bceb00 15%, #00eaea 85%)
+    transition: background 150ms linear
+    opacity: 0
+    z-index: -1
+
+
+  &:hover
+    box-shadow: 0px 0px 0px 1px $black-10
+
+  &:focus-within
+    background-clip: padding-box !important
+    box-shadow: 0px 0px 0px 5px rgba(102, 234, 90, 0.15)
+    border-color: transparent
+    background: white
+
+    &::before
+      opacity: 1
+
+    .SearchIcon
+      path
+        transition: all 150ms linear
+        fill: $black-100
+
+    .Field
+      background: white
+
+.Inputs
+  overflow: hidden
+  position: relative
+
+.SearchIcon
+  position: absolute
+  left: 18px
+  top: 50%
+  transform: translateY(-50%)
+  z-index: 1
+  pointer-events: none
+
+  path
+    fill: #949494
+
+.CrossIcon
+  position: absolute
+  right: 18px
+  top: 50%
+  transform: translateY(-50%)
+  cursor: pointer
+
+  svg
+    opacity: 0.4
+    transition: all 150ms linear
+
+  &:hover
+    svg
+      opacity: 1
+
+.Field
+  position: relative
+  display: inline-block
+  background: transparent
+  transition: left 150ms linear, width 150ms linear
+
+  input
+    width: 100%
+    line-height: 40px
+    background: none
+
+    &:focus
+      outline: 0
+
+    &::placeholder
+      color: #949494
+      font-size: 14px
+
+    &::-webkit-search-cancel-button
+      -webkit-appearance: none
+      -moz-appearance: none
+
+.TempleField
+  width: 75%
+  border-top-left-radius: 12px
+  border-bottom-left-radius: 12px
+
+  input
+    padding-left: 58px
+    padding-right: 48px
+
+.GoogleField
+  position: absolute
+  width: 25%
+  top: 0
+  left: 75%
+  border-radius: 12px
+
+  input
+    padding-left: 20px
+    padding-right: 48px
+
+  &::before
+    content: ""
+    position: absolute
+    left: 0
+    top: 50%
+    display: block
+    height: 26px
+    width: 1px
+    background-color: rgba(0 0 0 / 10%)
+    transform: translateY(-50%)
+    transition: all 150ms linear
+
+  &:focus-within
+    left: 0
+    width: 100%
+
+    input
+      padding-left: 58px
+
+    &::before
+      background-color: rgba(0 0 0 / 0%)
+
+
+// ------------ DARK ------------ //
+
+.Wrapper
+  &.Dark
+    background: rgba(0 0 0 / 0%)
+    box-shadow: 0px 0px 0px 1px $white-transparent-10
+
+    &:hover
+      box-shadow: 0px 0px 0px 1px $white-transparent-20
+
+    &:focus-within
+      background: $dark-60
+      box-shadow: 0px 0px 0px 5px rgba(102, 234, 90, 0.15)
+
+      .SearchIcon
+        path
+          fill: $white-100
+
+      .Field
+        background: $dark-60
+
+.Dark
+  .Field
+    background: transparent
+
+  .CrossIcon
+    path
+      stroke: white
+
+  .GoogleField
+    &::before
+      background-color: $white-transparent-10
+
+    &:focus-within
+      &::before
+        background-color: rgba(0 0 0 / 0%)

@@ -1,0 +1,10 @@
+{
+  "name": "Temple | Universe",
+  "description": "Test extension for Temple project!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {},
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}

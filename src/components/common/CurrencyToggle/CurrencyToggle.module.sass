@@ -1,0 +1,69 @@
+@import '@/sass/colors'
+
+.Wrapper
+  position: relative
+  height: 40px
+  display: inline-block
+  background-color: $black-transparent-5
+  color: $black-100
+  border-radius: 50px
+  padding: 4px
+  user-select: none
+
+.Option
+  z-index: 2
+
+.Item
+  padding: 4px
+  width: 75px
+  height: 32px
+  opacity: 0.2
+  transition: opacity 150ms linear
+  cursor: pointer
+
+  &:hover
+    opacity: 1
+
+    .Icon
+      transform: scale(1)
+
+  &.Checked
+    opacity: 1
+
+    .Icon
+      transform: scale(1)
+
+.Icon
+  transform: scale(0.75)
+  transition: transform 150ms linear
+
+.Label
+  font-family: 'Space Grotesk'
+  font-weight: 700
+  font-size: 14px
+
+
+.Handle
+  position: absolute
+  left: 4px
+  top: 4px
+  width: 75px
+  height: 32px
+  background-color: $white-100
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1)
+  border-radius: 50px
+  z-index: 1
+
+
+.Dark
+  background-color: $white-transparent-5
+  color: $white-100
+
+  // .Handle
+  //   background-color: $white-100
+
+  .Item
+    &.Checked
+      color: $black-100
+      transition-delay: 100ms
+      transition-property: color

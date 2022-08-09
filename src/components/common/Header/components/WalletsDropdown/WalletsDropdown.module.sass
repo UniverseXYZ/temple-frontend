@@ -1,0 +1,116 @@
+@import '@/sass/colors'
+@import '@/sass/mixins'
+
+.Wrapper
+  border: 1px solid $black-transparent-10
+  border-radius: 12px
+  position: relative
+  height: 42px
+  user-select: none
+  //min-width: 250px
+  //width: 280px
+  transition: all 150ms linear
+
+  &:hover
+    border-color: $black-transparent-20
+
+.Arrow
+  position: absolute
+  right: 10px
+  top: 50%
+  width: 12px
+  transform: translateY(-50%)
+  cursor: pointer
+  pointer-events: none
+  transition: transform 100ms linear
+  opacity: 40%
+
+.SelectedItem
+  font-size: 14px
+  font-weight: 600
+  line-height: 40px
+  cursor: pointer
+  padding-left: 12px
+  padding-right: 32px
+
+.Text
+  max-width: 70px
+  min-width: 70px
+
+.Balance
+  position: relative
+  padding-left: 8px
+  height: 40px
+
+  &::before
+    content: ''
+    display: block
+    width: 1px
+    height: 18px
+    position: absolute
+    top: 50%
+    left: 0
+    transform: translateY(-50%)
+    background-color: $black-transparent-10
+
+
+.Dropdown
+  position: absolute
+  right: 0
+  top: 40px
+  width: 340px
+  padding-top: 7px
+  visibility: hidden
+  opacity: 0
+  transform: scale(0.97)
+  transition: all 100ms linear
+
+
+.DropdownList
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 10px 40px rgba(0, 0, 0, 0.15)
+  border-radius: 10px
+  background: white
+  padding: 8px
+
+.DropdownOverflow
+  max-height: 432px
+  overflow-y: auto
+
+  @include styled-scroll
+
+.isOpen
+  border-color: $black-20
+
+  .Dropdown
+    visibility: visible
+    opacity: 1
+    transform: scale(1)
+
+  .Arrow
+    transform: translateY(-50%) rotate(180deg)
+
+
+// ------------ DARK ------------ //
+
+.Dark
+  border-color: $white-transparent-10
+
+  &.isOpen
+    border-color: $white-transparent-20
+
+  &:hover
+    border-color: $white-transparent-20
+
+  .DropdownList
+    background: $dark-60
+
+  .DropdownOverflow
+    &::-webkit-scrollbar-thumb
+      background-color: $dark-40
+
+      &:hover
+        background-color: lighten($dark-40, 5%)
+
+  .Arrow
+    path
+      fill: white

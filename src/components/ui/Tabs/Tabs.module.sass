@@ -1,0 +1,100 @@
+@import '@/sass/colors'
+
+.Tab
+  position: relative
+  color: $black-transparent-40
+  font-size: 16px
+  font-weight: 600
+  padding: 10px 0
+  margin-right: 40px
+
+  &:hover
+    color: $black-transparent-100
+    transition: color 150ms linear
+
+    .Ticker
+      color: $white-transparent-100
+      background-color: $black-transparent-100
+      transition: all 150ms linear
+
+  // &::before
+  //   content: ""
+  //   display: block
+  //   position: absolute
+  //   top: 50%
+  //   left: 0
+  //   width: 100%
+  //   height: 70%
+  //   background-color: black
+  //   border-radius: 8px
+  //   transform: translateY(-50%)
+  //   opacity: 0
+
+.Tablist
+  border-bottom: 1px solid $black-transparent-10
+
+.Title
+  display: inline-block
+  vertical-align: middle
+
+.Ticker
+  display: inline-block
+  padding: 2px 4px
+  border-radius: 4px
+  font-size: 10px
+  font-weight: 700
+  line-height: 13px
+  color: $black-transparent-20
+  background-color: $black-transparent-10
+  margin-left: 8px
+
+
+.Tab--Selected
+  color: $black-100
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    bottom: -1px
+    left: 0
+    width: 100%
+    height: 2px
+    background-color: black
+    //border-top-right-radius: 1px
+    //border-top-left-radius: 1px
+
+  .Ticker
+    color: $white-transparent-100
+    background-color: $black-transparent-100
+
+
+// ------------ DARK ------------ //
+
+.Dark
+  border-color: $white-transparent-10
+
+  .Tab
+    color: $white-transparent-40
+
+    &:hover
+      color: $white-transparent-100
+
+      .Ticker
+        color: $black-100
+        background-color: $white-100
+
+
+  .Tab--Selected
+    color: $white-100
+
+    &::after
+      background-color: $white-100
+
+    .Ticker
+      color: $black-100
+      background-color: $white-100
+
+  .Ticker
+    color: $white-transparent-20
+    background-color: $white-transparent-10

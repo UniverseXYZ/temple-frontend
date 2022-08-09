@@ -1,0 +1,180 @@
+@import '@/sass/colors'
+.Wrapper
+  position: relative
+
+
+.SelectWrapper
+  position: relative
+  min-width: 100%
+  height: 100%
+  border: 1px solid $black-transparent-10
+  border-radius: 12px
+  transition: all 150ms linear
+  cursor: pointer
+
+  &::before
+    content: ""
+    position: absolute
+    top: -1px
+    bottom: -1px
+    left: -1px
+    right: -1px
+    background: linear-gradient(135deg, #bceb00 15%, #00eaea 85%)
+    transition: all 150ms linear
+    border-radius: 12px
+    opacity: 0
+    z-index: 1
+
+  &:hover
+    border-color: transparent
+
+    &::before
+      opacity: 1
+
+  &:focus-within
+    box-shadow: 0px 0px 0px 5px rgba(102, 234, 90, 0.15)
+    border-color: transparent
+
+    &::before
+      opacity: 1
+
+
+.Select
+  position: absolute
+  background: #fff
+  background-clip: padding-box
+  width: 100%
+  height: 100%
+  text-align: left
+  border-radius: 11px
+  padding-left: 15px
+  padding-right: 50px
+  font-family: 'Space Grotesk'
+  font-style: normal
+  font-weight: 400
+  font-zize: 16px
+  color: #999
+  outline: none
+  z-index: 2
+
+
+.Arrow
+  width: 12px
+  position: absolute
+  top: 50%
+  right: 20px
+  transform: translateY(-50%) rotate(0)
+  transition: all 150ms linear
+
+  path
+    fill: $black-transparent-40
+
+
+.Dropdown
+  position: absolute
+  width: 100%
+  background-color: $white-100
+  padding: 8px
+  box-shadow: rgb(136 120 172 / 14%) 0px 10px 36px
+  border-radius: 12px
+  margin-top: 8px
+  z-index: 1000
+
+.List
+  list-style: none
+  //max-height: 150px
+  overflow: auto
+  outline: 0
+
+.Option
+  position: relative
+  border-radius: 6px
+  cursor: pointer
+  font-weight: 500
+  padding: 11px 16px
+  transition: all 150ms linear
+
+  &:hover
+    background-color: $black-transparent-5
+
+  &:focus
+    outline: 0
+
+.Icon
+  position: absolute
+  right: 10px
+  top: 50%
+  transform: translateY(-50%)
+
+.isOpen
+  box-shadow: 0px 0px 0px 5px rgba(102, 234, 90, 0.15)
+  border-color: transparent
+
+  &::before
+    opacity: 1
+
+  .Select
+    //color: $black-transparent-100
+
+  .Arrow
+    transform: translateY(-50%) rotate(180deg)
+
+    path
+      fill: $black-transparent-100
+
+
+.isSelected
+  .Select
+    color: $black-transparent-100
+    font-weight: 500
+
+
+.Size--md
+  height: 48px
+
+.Size--sm
+  height: 42px
+
+// ------------ DARK ------------ //
+
+.Dark
+  .SelectWrapper
+    background-color: transparent
+    border-color: $white-transparent-10
+
+    &::before
+      display: none
+
+    &:hover
+      border-color: #66ea5a
+
+    &:focus-within
+      border-color: #66ea5a
+
+  .Select
+    background: transparent
+    color: $white-transparent-40
+
+  .isSelected
+    .Select
+      color: $white-transparent-100
+
+  .Arrow
+    path
+      fill: $white-transparent-40
+
+  .Dropdown
+    background-color: $dark-60
+    box-shadow: none
+    border: 1px solid $white-transparent-10
+
+  .Option
+    &:hover
+      background-color: $white-transparent-10
+
+  .isOpen
+    border-color: #66ea5a
+
+    .Arrow
+      path
+        fill: $white-transparent-100

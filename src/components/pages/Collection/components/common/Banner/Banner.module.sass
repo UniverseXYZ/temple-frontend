@@ -1,0 +1,30 @@
+.Banner
+  position: absolute
+  top: 0
+  left: 0
+  z-index: -1
+  user-select: none
+
+  &:before
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    display: block
+    width: 100%
+    height: 400px
+    background: linear-gradient(180deg, rgba(19, 19, 19, 0) 17.87%, #131313 100%)
+
+  img
+    width: 100vw
+    height: 400px
+    object-fit: cover
+
+
+.isLoading
+  &:before
+    background: #d0d0d0
+
+  &.Dark
+    &:before
+      background: #2F2F2F

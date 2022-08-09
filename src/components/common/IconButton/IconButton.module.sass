@@ -1,0 +1,32 @@
+@import '@/sass/colors'
+
+.Button
+  position: relative
+  border: 1px solid $black-transparent-10
+  border-radius: 12px
+  width: 42px
+  height: 42px
+  transition: border-color 150ms linear
+
+  &:hover
+    border-color: $black-transparent-20
+    transition: border-color 150ms linear
+
+  svg
+    display: block
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+    path
+      transition: all 150ms linear
+
+.Dark
+  border-color: $white-transparent-10
+
+  path
+    fill: #fff
+
+  &:hover
+    border-color: $white-transparent-20
