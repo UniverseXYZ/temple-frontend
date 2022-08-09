@@ -20,42 +20,49 @@ import { Skeleton } from './Skeleton';
 //   //
 // }
 
-const links: any = [];
+let links: any = [];
+
+function updateLinks(metadata: any) {
+  links = [];
+    
+  if(metadata.discordUrl) {
+    links.push(
+      {
+        title: 'Discord',
+        url: metadata.discordUrl,
+        component: <DiscordIcon />,
+      }
+    )
+  } 
+
+  if(metadata.externalUrl) {
+    links.push(
+      {
+        title: 'Website',
+        url: metadata.externalUrl,
+        component: <WebsiteIcon />,
+      }
+    )
+  }
+
+  if(metadata.twitterUsername) {
+    links.push(
+      {
+        title: 'Twitter',
+        url: 'https://www.twitter.com/' + metadata.twitterUsername,
+        component: <TwitterIcon />,
+      }
+    )
+  }
+}
 
 export const SocialLinks = (props: any) => {
   //
   const { metadata, isLoading } = props;
   
+  updateLinks(metadata)
   React.useEffect(() => {
-    if(metadata.discordUrl) {
-      links.push(
-        {
-          title: 'Discord',
-          url: metadata.discordUrl,
-          component: <DiscordIcon />,
-        }
-      )
-    } 
-
-    if(metadata.externalUrl) {
-      links.push(
-        {
-          title: 'Website',
-          url: metadata.externalUrl,
-          component: <WebsiteIcon />,
-        }
-      )
-    }
-
-    if(metadata.twitterUsername) {
-      links.push(
-        {
-          title: 'Twitter',
-          url: 'https://www.twitter.com/' + metadata.twitterUsername,
-          component: <TwitterIcon />,
-        }
-      )
-    }
+    updateLinks(metadata)
   }, [metadata])
 
   //
