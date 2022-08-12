@@ -19,14 +19,10 @@ interface Props {
 
 interface NftItem {
   name: string;
-  image: Image;
+  image: string;
   isSound?: boolean;
   isVideo?: boolean;
 }
-
-type Image = {
-  url: string;
-};
 
 export const NftCard = (props: Props) => {
   //
@@ -44,7 +40,7 @@ export const NftCard = (props: Props) => {
         hover
       >
         <Box className={styles.Image}>
-          <Image src={item.image.url} alt={item.name} />
+          <Image src={item.image} alt={item.name} />
 
           {isHaveTags && (
             <Box className={styles.Tags}>

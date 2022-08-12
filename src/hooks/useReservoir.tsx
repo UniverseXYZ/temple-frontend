@@ -13,6 +13,30 @@ function useReservoir() {
         return data 
     };
 
+    const getUserNFTs = async (wallet: string, token: string) => {
+      const url = reservoir.baseUrl + `users/${ethers.utils.getAddress(wallet)}/tokens/v2`;
+      const params = {
+        collection: token,
+        limit: 20,
+      };
+
+      const data = await reservoir.get(url, params)
+      return data
+    }
+
+    const getUserCollections = async (wallet: string, token: string) => {
+      const url = reservoir.baseUrl + `users/${ethers.utils.getAddress(wallet)}/collections/v2`;
+      const params = {
+        collection: token,
+        limit: 20,
+      };
+
+      const data = await reservoir.get(url, params)
+      return data
+    }
+
+
+
     const getCollection = async (addressOrSlug: string) => {
         const url = reservoir.baseUrl + "collection/v3";
         const isValidAddress = ethers.utils.isAddress(addressOrSlug);      
@@ -32,7 +56,9 @@ function useReservoir() {
     
     return {
         makeSearchQuery,
-        getCollection
+        getCollection,
+        getUserNFTs,
+        getUserCollections
     }
 }
 

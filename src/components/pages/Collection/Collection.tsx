@@ -29,7 +29,7 @@ import cn from 'classnames';
 import styles from './Collection.module.sass';
 
 import { tabs } from './tabs';
-import { useReservoir } from '@/hooks';
+import { useReservoir, useWallets } from '@/hooks';
 import { useParams } from 'react-router-dom';
 
 interface IMetadata {
@@ -67,6 +67,7 @@ export interface ICollection {
   floorAsk: IFloorAsk
   topBid: ITopBid
   volume: IVolume
+  ownership: any
 }
 
 export const Collection = () => {
@@ -82,9 +83,13 @@ export const Collection = () => {
   //const { metadata } = data;
   const [isLoading, setIsLoading] = React.useState(true);
   const [collection, setCollection] = React.useState<ICollection>({metadata: {}} as ICollection)
+  const [userCollection, setUserCollections] = React.useState<ICollection>({metadata: {}} as ICollection)
+  const [userNFTs, setUserNFTs] = React.useState<ICollection>({metadata: {}} as ICollection)
+
 
   const {slug} = useParams();
-  const { getCollection } = useReservoir();
+  const { activeWallet } = useWallets();
+  const { getCollection, getUserCollections, getUserNFTs } = useReservoir();
 
   React.useEffect(() => {
     async function get(){
@@ -92,11 +97,37 @@ export const Collection = () => {
       if(data){
         console.log("data: ", data)
         setCollection(data.collection)
-        setIsLoading(false);
       }
     }
     get()
   }, [slug])
+
+  React.useEffect(() => {
+    async function get(){
+      if(!(collection && activeWallet && collection.primaryContract && activeWallet.address)) return;
+      const data = await getUserCollections(activeWallet.address, collection.primaryContract)
+      if(data){
+        setUserCollections(data.collections[0])
+        console.log("user: ", data.collections[0])
+      }
+    }
+    get()
+  }, [collection, activeWallet])
+
+  React.useEffect(() => {
+    async function get(){
+      if(!(userCollection && userCollection.ownership && userCollection.ownership.tokenCount > 0)) return
+      const data = await getUserNFTs(activeWallet.address, collection.primaryContract)
+      if(data){
+        console.log("user nfts: ", data.tokens)
+        setUserNFTs(data.tokens)
+        setIsLoading(false);
+      }
+    }
+    get()
+  }, [collection, activeWallet, userCollection])
+
+
 
   return (
     <Container maxWidth="container.xl">
@@ -142,7 +173,10 @@ export const Collection = () => {
       </Box>
 
       <Box mt="80px">
-        <Tabs items={tabs} />
+        <Tabs items={tabs(
+          userCollection && userCollection.ownership && userCollection.ownership.tokenCount || 0,
+          userNFTs,
+          collection && collection.metadata.description)} />
       </Box>
     </Container>
   );
