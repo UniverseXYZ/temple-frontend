@@ -32,8 +32,9 @@ export const SearchInput = (props: any) => {
   useEffect(() => {
     async function search(){
       const data = await makeSearchQuery(templeValue)
-      if(data){
-        setCollections(data.collections)
+      const collections = data.collections.filter((c:any) => !(c.name === "OS Shared Storefront Collection"))
+      if(collections){
+        setCollections(collections)
       }
     }
     search()
