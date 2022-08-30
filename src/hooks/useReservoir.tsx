@@ -35,7 +35,18 @@ function useReservoir() {
       return data
     }
 
+    const getDailyStats = async (address: string) => {
+      const url = reservoir.baseUrl + "collections/daily-volumes/v1";
+      const params = 
+      {
+        id: address,
+        limit: 1000,
+      }
 
+      const data = await reservoir.get(url, params)
+      return data
+
+    }
 
     const getCollection = async (addressOrSlug: string) => {
         const url = reservoir.baseUrl + "collection/v3";
@@ -58,7 +69,8 @@ function useReservoir() {
         makeSearchQuery,
         getCollection,
         getUserNFTs,
-        getUserCollections
+        getUserCollections,
+        getDailyStats
     }
 }
 

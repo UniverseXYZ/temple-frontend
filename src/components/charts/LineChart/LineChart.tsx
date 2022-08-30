@@ -12,53 +12,46 @@ import {
 } from 'recharts';
 
 import { Tooltip, Dot } from './components';
+import { tidy, mutateWithSummary, roll, mean } from '@tidyjs/tidy'
 
 import cn from 'classnames';
 import styles from './.module.sass';
 
 export const LineChart = (props: any) => {
   //
-  const {} = props;
+  const {period, colHistory} = props;
+  console.log("line chart:", period, colHistory)
 
-  const data = [
-    {
-      date: '01.01.2022',
-      month: 'Jan',
-      price: 10,
-      //volume: 130494.39,
-    },
-    {
-      date: '02.01.2022',
-      month: 'Jan',
-      price: 70,
-      //volume: 5000,
-    },
-    {
-      date: '03.01.2022',
-      month: 'Jan',
-      price: 50,
-      volume: 2400,
-    },
-    {
-      date: '04.01.2022',
-      month: 'Jan',
-      price: 10,
-      //volume: 5000,
-    },
-    {
-      date: '05.01.2022',
-      month: 'Jan',
-      price: 30,
-      //volume: 5000,
-    },
-    {
-      date: '06.01.2022',
-      month: 'Jan',
-      price: 100,
-      //volume: 5000,
-    },
-  ];
 
+  let data = colHistory
+    .map((d: any) => ({timestamp: new Date(d.timestamp*1000), price: d.floor_sell_value}))
+    .sort((a: any, b: any) => a.timestamp - b.timestamp);
+
+   let ma = 30;
+   if(period == 'last-30-days'){
+      ma = 1;
+   } else if (period == 'last-90-days'){
+      ma = 5;
+   }
+   
+   if(data.length < 60) {
+      ma = 3;
+    }
+
+    data = tidy(
+    data, 
+    mutateWithSummary({
+      movingAvg: roll(ma, mean('price')),
+    })
+  )
+  data = data.filter((d: any) => (d.movingAvg));
+  if(period == 'last-30-days'){
+    data = data.slice(-30)
+  } else if (period == 'last-90-days'){
+    data = data.slice(-90)
+  }
+  
+  console.log(data, "data")
   const TickStyle = {
     fontFamily: 'Space Grotesk',
     fontWeight: 600,
@@ -78,7 +71,7 @@ export const LineChart = (props: any) => {
         <XAxis
           tick={TickStyle}
           axisLine={{ stroke: '#e6e6e6', strokeWidth: 0.5 }}
-          dataKey="month"
+          dataKey="timestamp"
           tickLine={false}
           dy={6}
           //padding={{ left: 10 }}
@@ -100,7 +93,7 @@ export const LineChart = (props: any) => {
 
         <Line
           type="monotone"
-          dataKey="price"
+          dataKey="movingAvg"
           stroke="#94EB33"
           dot={false}
           strokeWidth={2}

@@ -85,17 +85,22 @@ export const Collection = () => {
   const [collection, setCollection] = React.useState<ICollection>({metadata: {}} as ICollection)
   const [userCollection, setUserCollections] = React.useState<ICollection>({metadata: {}} as ICollection)
   const [userNFTs, setUserNFTs] = React.useState<ICollection>({metadata: {}} as ICollection)
-
+  const [colHistory, setColHistroy] = React.useState(null);
 
   const {slug} = useParams();
   const { activeWallet } = useWallets();
-  const { getCollection, getUserCollections, getUserNFTs } = useReservoir();
+  const { getCollection, getUserCollections, getUserNFTs, getDailyStats } = useReservoir();
 
   React.useEffect(() => {
     async function get(){
       const data = await getCollection(slug || "")
       if(data){
         console.log("data: ", data)
+        const hist = await getDailyStats(data.collection.primaryContract);
+        if(hist){
+          setColHistroy(hist.collections);
+          console.log("hist: ", colHistory)  
+        }
         setCollection(data.collection)
       }
     }
@@ -172,7 +177,7 @@ export const Collection = () => {
       </Box>
 
       <Box mt="40px">
-        <Chart isLoading={isLoading} />
+        <Chart isLoading={isLoading} colHistory={colHistory} />
       </Box>
 
       <Box mt="80px">

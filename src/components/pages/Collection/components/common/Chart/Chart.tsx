@@ -16,22 +16,14 @@ const items = [
     value: 'price',
     icon: <DollarIcon />,
   },
-  {
-    title: 'Volume',
-    value: 'volume',
-    icon: <TransferIcon />,
-  },
+  // {
+  //   title: 'Volume',
+  //   value: 'volume',
+  //   icon: <TransferIcon />,
+  // },
 ];
 
 const options = [
-  {
-    title: 'Last 24 hours',
-    value: 'last-24-hours',
-  },
-  {
-    title: 'Last 7 days',
-    value: 'last-7-days',
-  },
   {
     title: 'Last 30 days',
     value: 'last-30-days',
@@ -52,8 +44,10 @@ const options = [
 
 export const Chart = (props: any) => {
   //
-  const { isLoading } = props;
+  const { isLoading, colHistory } = props;
+  const [selectedPeriod, setSelectedPeriod] = React.useState('all-time');
   //
+ 
   return (
     <>
       <Card p="30px">
@@ -68,7 +62,8 @@ export const Chart = (props: any) => {
                 <Select
                   placeholder="Placeholder"
                   size="sm"
-                  defaultSelectedKey="last-90-days"
+                  selectedKey={selectedPeriod}
+                  onSelectionChange={(selected: string) => setSelectedPeriod(selected)}
                 >
                   {options.map((option) => (
                     <Option key={option.value}>{option.title}</Option>
@@ -77,7 +72,7 @@ export const Chart = (props: any) => {
               </Box>
             </Flex>
 
-            <LineChart />
+            <LineChart period={selectedPeriod} colHistory={colHistory}/>
           </>
         )}
       </Card>
