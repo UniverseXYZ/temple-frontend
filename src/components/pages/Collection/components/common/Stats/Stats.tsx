@@ -70,7 +70,7 @@ export const Stats = (props: Props) => {
             </HStack>
             <HStack spacing="6px" justifyContent="center">
               <Ethereum w="16px" h="26px" />
-              <Box className={styles.Value}>{Number(collection.topBid.value).toFixed(2)}</Box>
+              <Box className={styles.Value}>{Number(collection.topBid.value).toFixed(3)}</Box>
             </HStack>
           </Box>
 
@@ -100,7 +100,7 @@ export const Stats = (props: Props) => {
             </HStack>
             <HStack spacing="6px" justifyContent="center">
               <Ethereum w="16px" h="26px" />
-              <Box className={styles.Value}>{Number(collection.floorAsk.price).toFixed(2)}</Box>
+              <Box className={styles.Value}>{Number(collection.floorAsk.price).toFixed(3)}</Box>
             </HStack>
           </Box>
         </Box>

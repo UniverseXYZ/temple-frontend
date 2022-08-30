@@ -36,7 +36,6 @@ export const Label = (props: any) => {
 
   useEffect(() => {
     if(networth && rates){
-      console.log(networth, rates)
       setNetworthETH((Number(networth) / Number(rates.ethereum.usd)).toFixed(2));
     }
   }, [networth, rates])

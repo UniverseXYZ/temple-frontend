@@ -34,8 +34,6 @@ export const WalletsDropdown = () => {
   const [value, setValue] = useState(activeWallet);
   const [visible, setVisible] = useState(false);
 
-  console.log(value);
-
   const refSelect = useRef(null);
 
   useClickAway(refSelect, () => {

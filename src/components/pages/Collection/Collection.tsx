@@ -104,11 +104,15 @@ export const Collection = () => {
 
   React.useEffect(() => {
     async function get(){
+      if(!activeWallet && collection.floorAsk !== undefined){
+        setIsLoading(false);
+      }
       if(!(collection && activeWallet && collection.primaryContract && activeWallet.address)) return;
       const data = await getUserCollections(activeWallet.address, collection.primaryContract)
       if(data){
         setUserCollections(data.collections[0])
         console.log("user: ", data.collections[0])
+        setIsLoading(false);
       }
     }
     get()
@@ -121,7 +125,6 @@ export const Collection = () => {
       if(data){
         console.log("user nfts: ", data.tokens)
         setUserNFTs(data.tokens)
-        setIsLoading(false);
       }
     }
     get()

@@ -15,7 +15,7 @@ export const OwnedNfts = (props: any) => {
       <SimpleGrid columns={4} spacing="30px">
         {(
           <>
-            {userNFTs.length > 0 && userNFTs.map((item, index) => (
+            {userNFTs.length > 0 && userNFTs.map((item: any, index: any) => (
               <NftCard key={index} item={item.token} />
             ))}
           </>
