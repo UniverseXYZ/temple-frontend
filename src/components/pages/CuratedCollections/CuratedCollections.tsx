@@ -11,11 +11,11 @@ const tabs = [
     ticker: '30',
     component: <Collections />,
   },
-  {
-    id: 'activity',
-    title: 'Activity',
-    component: <Activity />,
-  },
+  // {
+  //   id: 'activity',
+  //   title: 'Activity',
+  //   component: <Activity />,
+  // },
 ];
 
 export const CuratedCollections = () => {

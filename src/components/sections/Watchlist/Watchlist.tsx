@@ -45,7 +45,7 @@ export const Watchlist = () => {
         </HStack>
 
         {active === 'collections' && <Collections />}
-        {active === 'activity' && <Activity />}
+        {/* {active === 'activity' && <Activity />} */}
 
         <Link to="/watchlist">
           <Button variant="outline" width="100%" mt="30px">
