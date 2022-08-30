@@ -20,42 +20,51 @@ import { Skeleton } from './Skeleton';
 //   //
 // }
 
-const links = [
-  {
-    title: 'Twitter',
-    url: 'https://twitter.com/',
-    component: <TwitterIcon />,
-  },
-  {
-    title: 'Discord',
-    url: 'https://discord.com/',
-    component: <DiscordIcon />,
-  },
-  {
-    title: 'Website',
-    url: 'https://google.com/',
-    component: <WebsiteIcon />,
-  },
-  {
-    title: 'Instagram',
-    url: 'https://instagram.com/',
-    component: <InstagramIcon />,
-  },
-  {
-    title: 'Medium',
-    url: 'https://medium.com/',
-    component: <MediumIcon />,
-  },
-  {
-    title: 'Telegram',
-    url: 'https://telegram.com/',
-    component: <TelegramIcon />,
-  },
-];
+let links: any = [];
+
+function updateLinks(metadata: any) {
+  links = [];
+    
+  if(metadata.discordUrl) {
+    links.push(
+      {
+        title: 'Discord',
+        url: metadata.discordUrl,
+        component: <DiscordIcon />,
+      }
+    )
+  } 
+
+  if(metadata.externalUrl) {
+    links.push(
+      {
+        title: 'Website',
+        url: metadata.externalUrl,
+        component: <WebsiteIcon />,
+      }
+    )
+  }
+
+  if(metadata.twitterUsername) {
+    links.push(
+      {
+        title: 'Twitter',
+        url: 'https://www.twitter.com/' + metadata.twitterUsername,
+        component: <TwitterIcon />,
+      }
+    )
+  }
+}
 
 export const SocialLinks = (props: any) => {
   //
-  const { isLoading } = props;
+  const { metadata, isLoading } = props;
+  
+  updateLinks(metadata)
+  React.useEffect(() => {
+    updateLinks(metadata)
+  }, [metadata])
+
   //
   return (
     <>
@@ -63,10 +72,10 @@ export const SocialLinks = (props: any) => {
         <Skeleton />
       ) : (
         <HStack spacing="12px">
-          {links.map((item, index) => (
+          {links.map((item: any, index: any) => (
             <Box key={index} className={styles.Icon}>
               <Tooltip label={item.title} placement="top" variant="white">
-                <Link>{item.component}</Link>
+                <Link href={item.url}>{item.component}</Link>
               </Tooltip>
             </Box>
           ))}

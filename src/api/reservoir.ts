@@ -14,11 +14,7 @@ export default class Reservoir {
     this.baseUrl = process.env.RESERVOIR_API_URL || "";
   }
 
-  async searchCollections(query: string) {
-    const url = this.baseUrl + "search/collections/v1";
-
-    const params = query ? { name: query } : {};
-    
+  async get(url: string, params: any) {    
     const { data } = await this.axios({
       method: 'GET',
       url: url,
@@ -26,5 +22,5 @@ export default class Reservoir {
     });
   
     return data;
-  }
+  }  
 }

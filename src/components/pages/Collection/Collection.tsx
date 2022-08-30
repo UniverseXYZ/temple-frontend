@@ -29,6 +29,46 @@ import cn from 'classnames';
 import styles from './Collection.module.sass';
 
 import { tabs } from './tabs';
+import { useReservoir, useWallets } from '@/hooks';
+import { useParams } from 'react-router-dom';
+
+interface IMetadata {
+  discordUrl: string
+  imageUrl: string
+  description: string
+  externalUrl: string
+  bannerImageUrl: string 
+  twitterUsername: string 
+}
+
+interface IFloorAsk {
+  price: string
+}
+
+interface ITopBid {
+  value: string
+}
+
+interface IVolume {
+  "1day": number
+  "7day": number
+  "30day": number
+  allTime: number
+}
+
+export interface ICollection {
+  id: string
+  slug: string
+  name: string
+  metadata: IMetadata
+  primaryContract: string
+  tokenCount: string
+  ownerCount: string
+  floorAsk: IFloorAsk
+  topBid: ITopBid
+  volume: IVolume
+  ownership: any
+}
 
 export const Collection = () => {
   //
@@ -41,22 +81,74 @@ export const Collection = () => {
   // );
 
   //const { metadata } = data;
-  const address ="0x123456789"
-
   const [isLoading, setIsLoading] = React.useState(true);
+  const [collection, setCollection] = React.useState<ICollection>({metadata: {}} as ICollection)
+  const [userCollection, setUserCollections] = React.useState<ICollection>({metadata: {}} as ICollection)
+  const [userNFTs, setUserNFTs] = React.useState<ICollection>({metadata: {}} as ICollection)
+  const [colHistory, setColHistroy] = React.useState(null);
+  const [colActivity, setColActivity] = React.useState(null);
+
+  const {slug} = useParams();
+  const { activeWallet } = useWallets();
+  const { getCollection, getUserCollections, getUserNFTs, getDailyStats, getCollectionActivity } = useReservoir();
 
   React.useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
+    async function get(){
+      const data = await getCollection(slug || "")
+      if(data){
+        console.log("data: ", data)
+        const hist = await getDailyStats(data.collection.primaryContract);
+        const act = await getCollectionActivity(data.collection.primaryContract)
+        if(hist){
+          setColHistroy(hist.collections);
+          console.log("hist: ", colHistory)  
+        }
+        if(act){
+          console.log("act: ", act.activities);
+          setColActivity(act.activities)
+        }
+        setCollection(data.collection)
+      }
+    }
+    get()
+  }, [slug])
+
+  React.useEffect(() => {
+    async function get(){
+      if(!activeWallet && collection.floorAsk !== undefined){
+        setIsLoading(false);
+      }
+      if(!(collection && activeWallet && collection.primaryContract && activeWallet.address)) return;
+      const data = await getUserCollections(activeWallet.address, collection.primaryContract)
+      if(data){
+        setUserCollections(data.collections[0])
+        console.log("user: ", data.collections[0])
+        setIsLoading(false);
+      }
+    }
+    get()
+  }, [collection, activeWallet])
+
+  React.useEffect(() => {
+    async function get(){
+      if(!(userCollection && userCollection.ownership && userCollection.ownership.tokenCount > 0)) return
+      const data = await getUserNFTs(activeWallet.address, collection.primaryContract)
+      if(data){
+        console.log("user nfts: ", data.tokens)
+        setUserNFTs(data.tokens)
+      }
+    }
+    get()
+  }, [collection, activeWallet, userCollection])
+
+
 
   return (
     <Container maxWidth="container.xl">
       <Box className={cn(styles.Header, isDark && styles.Dark)}>
         <Banner
-          title="Flow World"
-          image="https://lh3.googleusercontent.com/biQ5untjlSAOByE6kSQajzpnaQY7T2urPVtmI4Idd5QgymG86C8Kaobw3BnB5RIMMpjGJbpePiYU8_ugJGuMeopGbHdU42McT6Ev=h600"
+          title={collection.name} 
+          image={collection.metadata.bannerImageUrl}
           isLoading={isLoading}
         />
 
@@ -65,37 +157,41 @@ export const Collection = () => {
             <Flex align="center" className={styles.Collection}>
               <Box className={styles.Avatar}>
                 <Avatar
-                  image="/mocks/images/collection/avatar.png"
-                  name="Collection Name"
+                  image={collection.metadata.imageUrl}
+                  name={collection.name}
                   size="full"
                   isLoading={isLoading}
                 />
               </Box>
 
               <Box>
-                <Title text="Fluf World" isLoading={isLoading} />
+                <Title text={collection.name} address={collection.primaryContract} isLoading={isLoading} />
               </Box>
             </Flex>
             <Spacer />
             <Flex align="center">
               <Box className={styles.SocialLinks} mr="40px">
-                <SocialLinks isLoading={isLoading} />
+                <SocialLinks metadata={collection.metadata} isLoading={isLoading} />
               </Box>
 
-              <Buttons isLoading={isLoading} tokenAddress={address} />
+              <Buttons isLoading={isLoading} tokenAddress={collection.primaryContract} />
             </Flex>
           </Flex>
         </Box>
 
-        <Stats isLoading={isLoading} />
+        <Stats isLoading={isLoading} collection={collection} />
       </Box>
 
       <Box mt="40px">
-        <Chart isLoading={isLoading} />
+        <Chart isLoading={isLoading} colHistory={colHistory} />
       </Box>
 
       <Box mt="80px">
-        <Tabs items={tabs} />
+        <Tabs items={tabs(
+          userCollection && userCollection.ownership && userCollection.ownership.tokenCount || 0,
+          userNFTs,
+          collection && collection.metadata.description,
+          colActivity)} />
       </Box>
     </Container>
   );

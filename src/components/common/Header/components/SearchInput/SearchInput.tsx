@@ -33,7 +33,6 @@ export const SearchInput = (props: any) => {
     async function search(){
       const data = await makeSearchQuery(templeValue)
       if(data){
-        console.log(data)
         setCollections(data.collections)
       }
     }

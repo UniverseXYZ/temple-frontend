@@ -27,7 +27,7 @@ export const CuratedCollections = () => {
       </Container>
 
       <Container maxW="container.xl">
-        <Activity />
+        {/* <Activity /> */}
 
         <Link to="/curated-collections">
           <Button variant="outline" width="100%" mt="30px">

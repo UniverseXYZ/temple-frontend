@@ -2,12 +2,12 @@ import React from 'react';
 import { useSettings } from '@/hooks';
 
 export const items = [
-  {
-    id: 'statistics',
-    image: '/assets/images/icons/icon-settings-1.png',
-    title: 'Statistics',
-    description: 'General stats of your NFT collection',
-  },
+  // {
+  //   id: 'statistics',
+  //   image: '/assets/images/icons/icon-settings-1.png',
+  //   title: 'Statistics',
+  //   description: 'General stats of your NFT collection',
+  // },
   {
     id: 'curated-collections',
     image: '/assets/images/icons/icon-settings-2.png',

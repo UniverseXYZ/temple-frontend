@@ -32,6 +32,7 @@ function useSettings() {
   };
 
   const isInWatchlist = (address: string): boolean => {
+    if (!settings.watchlist) return false;
     return (settings.watchlist.find((a: string) => a == address) !== undefined)
   }
 
