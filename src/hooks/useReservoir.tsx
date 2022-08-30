@@ -65,12 +65,23 @@ function useReservoir() {
         return data 
     }
     
+    const getCollectionActivity = async (address: string) => {
+      const url = reservoir.baseUrl + `collections/${address}/activity/v1`;
+      const params = {
+        limit: 20
+      }
+
+      const data = await reservoir.get(url, params)
+      return data 
+    }
+    
     return {
         makeSearchQuery,
         getCollection,
         getUserNFTs,
         getUserCollections,
-        getDailyStats
+        getDailyStats,
+        getCollectionActivity
     }
 }
 

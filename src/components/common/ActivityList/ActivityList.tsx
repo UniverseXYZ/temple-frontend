@@ -14,8 +14,9 @@ import { data } from './mock/data';
 
 export const ActivityList = (props: any) => {
   //
-  const {} = props;
+  const {activity} = props;
 
+  console.log("ACTIVITY", activity)
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
@@ -35,54 +36,52 @@ export const ActivityList = (props: any) => {
       </Box>
 
       <Box className={styles.List}>
-        {data.map((item: any, index: number) => (
+        {activity.map((item: any, index: number) => (
           <Box key={index} className={cn(styles.Row, styles.Item)}>
             <Box className={styles.Cell}>
               <HStack spacing="20px">
                 <Box className={styles.Image}>
-                  <Image src={item.image} alt={item.collection} />
+                  <Image width="100px" src={item.token.tokenImage || item.collection.collectionImage} alt={item.collection.collectionName} />
                 </Box>
                 <Box>
-                  <Box className={styles.Title}>{item.item}</Box>
-                  <Box className={styles.Description}>{item.collection}</Box>
+                  <Box className={styles.Title}>{item.token.tokenName || item.collection.collectionName}</Box>
+                  {/* <Box className={styles.Description}>{item.collection}</Box> */}
                 </Box>
               </HStack>
             </Box>
             <Box className={styles.Cell}>
-              <TransactionBadge size="md" status={item.activity_type} />
+              <TransactionBadge size="md" status={item.type} />
             </Box>
             <Box className={styles.Cell}>
               <Box className={styles.Address}>
-                <CopyableText value={item.from}>
-                  {truncateEthAddress(item.from, 0)}
+                <CopyableText value={item.fromAddress}>
+                  {truncateEthAddress(item.fromAddress, 0)}
                 </CopyableText>
               </Box>
             </Box>
             <Box className={styles.Cell}>
               <Box className={styles.Address}>
-                <CopyableText value={item.to}>
-                  {truncateEthAddress(item.to, 0)}
+                <CopyableText value={item.toAddress}>
+                  {truncateEthAddress(item.toAddress, 0)}
                 </CopyableText>
               </Box>
             </Box>
             <Box className={styles.Cell}>
               <Box className={styles.Time}>
                 <Tooltip
-                  label={dayjs('1999-01-01').format('MMMM DD, YYYY at h')}
+                  label={dayjs(new Date(item.timestamp * 1000)).format('MMMM DD, YYYY at h')}
                 >
-                  <a href="#">
                     <HStack display="inline-flex">
-                      <Box>{dayjs('1999-01-01').fromNow()}</Box>
-                      <ExternalLink />
+                      <Box>{dayjs(new Date(item.timestamp * 1000)).fromNow()}</Box>
+                      {/* <ExternalLink /> */}
                     </HStack>
-                  </a>
                 </Tooltip>
               </Box>
             </Box>
             <Box className={styles.Cell}>
               <HStack display="inline-flex">
                 <Ethereum />
-                <Box className={styles.Price}>{item.amount}</Box>
+                <Box className={styles.Price}>{item.price}</Box>
               </HStack>
             </Box>
           </Box>

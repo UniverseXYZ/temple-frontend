@@ -13,14 +13,14 @@ import {
 } from './components';
 
 const STATUSES = {
-  LIST: 'list',
+  LIST: 'ask',
   MINT: 'mint',
   TRANSFER: 'transfer',
   SALE: 'sale',
   OFFERS: 'offers',
-  BIDS: 'bids',
+  BIDS: 'bid',
   BURNS: 'burns',
-  CANCEL_LISTING: 'cancel_listing',
+  CANCEL_LISTING: 'ask_cancel',
 };
 
 const STATUS_MAP = {

@@ -86,10 +86,11 @@ export const Collection = () => {
   const [userCollection, setUserCollections] = React.useState<ICollection>({metadata: {}} as ICollection)
   const [userNFTs, setUserNFTs] = React.useState<ICollection>({metadata: {}} as ICollection)
   const [colHistory, setColHistroy] = React.useState(null);
+  const [colActivity, setColActivity] = React.useState(null);
 
   const {slug} = useParams();
   const { activeWallet } = useWallets();
-  const { getCollection, getUserCollections, getUserNFTs, getDailyStats } = useReservoir();
+  const { getCollection, getUserCollections, getUserNFTs, getDailyStats, getCollectionActivity } = useReservoir();
 
   React.useEffect(() => {
     async function get(){
@@ -97,9 +98,14 @@ export const Collection = () => {
       if(data){
         console.log("data: ", data)
         const hist = await getDailyStats(data.collection.primaryContract);
+        const act = await getCollectionActivity(data.collection.primaryContract)
         if(hist){
           setColHistroy(hist.collections);
           console.log("hist: ", colHistory)  
+        }
+        if(act){
+          console.log("act: ", act.activities);
+          setColActivity(act.activities)
         }
         setCollection(data.collection)
       }
@@ -184,7 +190,8 @@ export const Collection = () => {
         <Tabs items={tabs(
           userCollection && userCollection.ownership && userCollection.ownership.tokenCount || 0,
           userNFTs,
-          collection && collection.metadata.description)} />
+          collection && collection.metadata.description,
+          colActivity)} />
       </Box>
     </Container>
   );

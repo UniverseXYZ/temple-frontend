@@ -1,6 +1,6 @@
 import { OwnedNfts, Description, Activity } from './components/tabs';
 
-export const tabs = (tokenCount, userNFTs, description) => {
+export const tabs = (tokenCount, userNFTs, description, colActivity) => {
   const tabsToReturn = [];
   if(tokenCount > 0){
     tabsToReturn.push(
@@ -21,12 +21,14 @@ export const tabs = (tokenCount, userNFTs, description) => {
       }
     )
   }
-  tabsToReturn.push(
-    {
-      id: 3,
-      title: 'Collection activity',
-      component: <Activity />,
-    }  
-  )
+  if(colActivity){
+    tabsToReturn.push(
+      {
+        id: 3,
+        title: 'Collection activity',
+        component: <Activity activity={colActivity}/>,
+      }  
+    )
+  }
   return tabsToReturn;
 };
