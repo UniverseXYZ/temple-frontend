@@ -17,9 +17,14 @@ interface Props {
   item: NftItem;
 }
 
+interface Collection {
+  floorAskPrice: string;
+}
+
 interface NftItem {
   name: string;
   image: string;
+  collection: Collection;
   isSound?: boolean;
   isVideo?: boolean;
 }
@@ -61,22 +66,11 @@ export const NftCard = (props: Props) => {
                 <HStack align="center">
                   <Ethereum />
                   <Box fontWeight={600} fontSize={14}>
-                    6.58
+                    {item.collection.floorAskPrice}
                   </Box>
                 </HStack>
               </Box>
               <Spacer />
-              <Box>
-                <Box fontSize={12} color="grey" mb={'8px'} textAlign="right">
-                  Floor % Diff.
-                </Box>
-                <HStack align="center" justify="end">
-                  <Ethereum />
-                  <Box fontWeight={600} fontSize={14}>
-                    0%
-                  </Box>
-                </HStack>
-              </Box>
             </Flex>
           </Box>
         </Box>
