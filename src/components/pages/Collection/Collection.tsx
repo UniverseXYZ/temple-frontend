@@ -93,6 +93,12 @@ export const Collection = () => {
   const { getCollection, getUserCollections, getUserNFTs, getDailyStats, getCollectionActivity } = useReservoir();
 
   React.useEffect(() => {
+    if(slug){
+      setIsLoading(true);
+    }
+  }, [slug])
+
+  React.useEffect(() => {
     async function get(){
       const data = await getCollection(slug || "")
       if(data){
