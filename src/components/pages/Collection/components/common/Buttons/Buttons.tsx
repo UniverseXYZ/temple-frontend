@@ -30,7 +30,11 @@ export const Buttons = (props: Props) => {
       ) : (
         <>
           <Box mr="20px">
-            <Button>Vote</Button>
+            <a href="https://snapshot.org/#/universexyz.eth" target={"_"}>
+              <Button>
+                Vote
+              </Button>
+            </a>
           </Box>
           <Box>
             <Box>
