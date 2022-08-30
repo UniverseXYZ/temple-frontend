@@ -17,11 +17,11 @@ const items = [
     title: 'Collections',
     value: 'collections',
   },
-  {
-    title: 'Activity',
-    value: 'activity',
-    disabled: true,
-  },
+  // {
+  //   title: 'Activity',
+  //   value: 'activity',
+  //   disabled: true,
+  // },
 ];
 
 export const Watchlist = () => {
