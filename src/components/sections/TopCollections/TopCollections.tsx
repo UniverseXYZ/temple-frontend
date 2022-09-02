@@ -17,15 +17,15 @@ const items = [
     title: 'Collections',
     value: 'collections',
   },
-  {
-    title: 'Activity',
-    value: 'activity',
-    disabled: true,
-  },
-  {
-    title: 'Test',
-    value: 'test',
-  },
+  // {
+  //   title: 'Activity',
+  //   value: 'activity',
+  //   disabled: true,
+  // },
+  // {
+  //   title: 'Test',
+  //   value: 'test',
+  // },
 ];
 
 const options = [

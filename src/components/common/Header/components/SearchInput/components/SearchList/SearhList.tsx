@@ -7,7 +7,7 @@ import { ListItem } from '../ListItem';
 import cn from 'classnames';
 import styles from './SearchList.module.sass';
 
-export const SearhList = (props: any) => {
+export const SearchList = (props: any) => {
   //
   const { collections, isOpen } = props;
 

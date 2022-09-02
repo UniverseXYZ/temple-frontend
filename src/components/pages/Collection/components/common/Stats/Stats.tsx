@@ -16,14 +16,16 @@ import { Skeleton } from './Skeleton';
 
 import cn from 'classnames';
 import styles from './Stats.module.sass';
+import { ICollection } from '../../../Collection'
 
 interface Props {
   isLoading: boolean;
+  collection: ICollection;
 }
 
 export const Stats = (props: Props) => {
   //
-  const { isLoading } = props;
+  const { isLoading, collection } = props;
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -39,7 +41,7 @@ export const Stats = (props: Props) => {
               <FolderIcon className={styles.Icon} />
               <Box className={styles.Headline}>Items</Box>
             </HStack>
-            <Box className={styles.Value}>5242</Box>
+            <Box className={styles.Value}>{collection.tokenCount}</Box>
           </Box>
 
           <Box className={styles.Item}>
@@ -47,7 +49,7 @@ export const Stats = (props: Props) => {
               <UserIcon className={styles.Icon} />
               <Box className={styles.Headline}>Owners</Box>
             </HStack>
-            <Box className={styles.Value}>354</Box>
+            <Box className={styles.Value}>{collection.ownerCount}</Box>
           </Box>
 
           <Box className={styles.Item}>
@@ -57,18 +59,18 @@ export const Stats = (props: Props) => {
             </HStack>
             <HStack spacing="6px" justifyContent="center">
               <Ethereum w="16px" h="26px" />
-              <Box className={styles.Value}>10544</Box>
+              <Box className={styles.Value}>{(Number(collection.tokenCount) * Number(collection.floorAsk.price)).toFixed(0)}</Box>
             </HStack>
           </Box>
 
           <Box className={styles.Item}>
             <HStack spacing="6px" justifyContent="center" mb="10px">
               <DollarUpIcon className={styles.Icon} />
-              <Box className={styles.Headline}>Highest sale</Box>
+              <Box className={styles.Headline}>Highest Bid</Box>
             </HStack>
             <HStack spacing="6px" justifyContent="center">
               <Ethereum w="16px" h="26px" />
-              <Box className={styles.Value}>24.55</Box>
+              <Box className={styles.Value}>{Number(collection.topBid.value).toFixed(3)}</Box>
             </HStack>
           </Box>
 
@@ -79,7 +81,7 @@ export const Stats = (props: Props) => {
             </HStack>
             <HStack spacing="6px" justifyContent="center">
               <Ethereum w="16px" h="26px" />
-              <Box className={styles.Value}>243.6</Box>
+              <Box className={styles.Value}>{collection.volume.allTime.toFixed(0)}</Box>
             </HStack>
           </Box>
 
@@ -98,7 +100,7 @@ export const Stats = (props: Props) => {
             </HStack>
             <HStack spacing="6px" justifyContent="center">
               <Ethereum w="16px" h="26px" />
-              <Box className={styles.Value}>0.62</Box>
+              <Box className={styles.Value}>{Number(collection.floorAsk.price).toFixed(3)}</Box>
             </HStack>
           </Box>
         </Box>

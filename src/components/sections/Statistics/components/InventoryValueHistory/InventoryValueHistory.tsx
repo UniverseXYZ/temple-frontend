@@ -29,9 +29,9 @@ export const InventoryValueHistory = () => {
         <InfoTooltip label="Sales, transfers and mints from the users NFT collection will be displayed here." />
       </HStack>
 
-      <Box>
+      {/* <Box>
         <LineChart />
-      </Box>
+      </Box> */}
     </Card>
   );
 };

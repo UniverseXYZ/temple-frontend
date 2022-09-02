@@ -28,6 +28,7 @@ export const settings = {
       order: 5,
     },
   ],
+  watchlist: [],
   wallets: [],
   activeWallet: null,
   baseCurrency: 'ETH',

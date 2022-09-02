@@ -9,16 +9,14 @@ import styles from './Tooltip.module.sass';
 export const Tooltip = (props: any) => {
   //
   const { payload } = props;
-
   return (
     <Box className={styles.Wrapper}>
       <HStack spacing="8px" mb="10px">
         <Ethereum w="15px" h="24px" />
-        <Box className={styles.Price}>{payload[0]?.value}</Box>
+        <Box className={styles.Price}>{payload[0]?.value.toFixed(3)}</Box>
       </HStack>
       <HStack spacing="10px">
-        <Box className={styles.Date}>{payload[0]?.date}</Box>
-        <Box className={styles.Time}>3:00:00 AM</Box>
+        <Box className={styles.Time}>{payload[0]?.payload.timestamp.toLocaleDateString('en-US')}</Box>
       </HStack>
     </Box>
   );
