@@ -9,13 +9,49 @@ import {
 import { CollectionCard, CollectionItem } from '@/components/common';
 import { Input, ElasticSwitch, Select, Option } from '@/components/ui';
 import { GridIcon, ListIcon } from '@/components/icons';
+import { useReservoir, useWallets } from '@/hooks';
 
 import cn from 'classnames';
 import styles from './.module.sass';
 
-// interface Props {
-//   //
-// }
+interface IVolume {
+  "1day": number;
+  "7day": number;
+  "30day": number;
+  allTime: number;
+}
+
+export interface IOwnership {
+  tokenCount: number;
+  onSaleCount: number;
+}
+
+export interface  IOwnedCollection {
+  id: string;
+  slug: string;
+  name: string;
+  image: string;
+  banner: string;
+  discordUrl: string;
+  externalUrl: string;
+  twitterUsername: string;
+  description: string;
+  sampleImages: string[];
+  tokenCount: number;
+  primaryContract: string;
+  tokenSetId: string;
+  floorAskPrice: number;
+  rank: any;
+  volume: IVolume;
+  volumeChange: number;
+  floorSale: number;
+}
+
+export interface IOwnedCollections {
+  [x: string]: any;
+  collection: IOwnedCollection;
+  ownership: IOwnership;
+}
 
 const grid = [
   {
@@ -44,15 +80,18 @@ import initialData from '@/mocks/data';
 export const Collections = (props: any) => {
   //
   const {} = props;
+  const { collections } = initialData;
 
   const [view, setView] = useState('card');
   const [columns, setColumns] = useState(4);
   const [spacing, setSpacing] = useState('30px');
+  const [isLoading, setIsLoading] = useState(true);
+  const [ownedCollections, setOwnedCollections] = useState<IOwnedCollections>({collection: {} as IOwnedCollection, ownership: {} as IOwnership});
 
   const isViewCard = view === 'card';
-
-  const { collections } = initialData;
-
+  const { getUserCollections } = useReservoir();
+  const { activeWallet } = useWallets();
+  
   const onViewChange = (value: any) => {
     //
     const isCard = value === 'card';
@@ -70,6 +109,21 @@ export const Collections = (props: any) => {
       setSpacing('12px');
     }
   };
+
+  React.useEffect(() => {
+    const fetchOwnedCollections = async () => {
+      const data = await getUserCollections(activeWallet.address, ownedCollections.collection.id);
+      if(data) {
+        setOwnedCollections(data.collections);
+        setIsLoading(false);
+      }
+    }
+
+    if(activeWallet && isLoading) {
+      fetchOwnedCollections();
+    }
+  }, [activeWallet, isLoading, getUserCollections]);
+
 
   return (
     <Box pt="30px">
@@ -93,17 +147,24 @@ export const Collections = (props: any) => {
         </HStack>
       </Box>
 
-      <SimpleGrid columns={columns} spacing={spacing}>
-        {collections.map((collection: any) => (
+     {!isLoading && <SimpleGrid columns={columns} spacing={spacing}>
+        {ownedCollections.map((collection: any) => (
           <>
             {isViewCard ? (
-              <CollectionCard key={collection.id} collection={collection} />
+              <CollectionCard
+                key={collection.id}
+                showAuthor={false}
+                showText={false}
+                showFooter={true}
+                collection={collection.collection}
+                ownership={collection.ownership.tokenCount}
+              />
             ) : (
               <CollectionItem key={collection.id} item={collection} />
             )}
           </>
         ))}
-      </SimpleGrid>
+      </SimpleGrid>}
     </Box>
   );
 };

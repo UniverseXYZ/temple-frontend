@@ -28,7 +28,7 @@ function useReservoir() {
       const url = reservoir.baseUrl + `users/${ethers.utils.getAddress(wallet)}/collections/v2`;
       const params = {
         collection: token,
-        limit: 20,
+        limit: 60,
       };
 
       const data = await reservoir.get(url, params)
@@ -75,13 +75,40 @@ function useReservoir() {
       return data 
     }
     
+    const getCuratedCollections = async () => {
+      const url = reservoir.baseUrl + "collections/v5";
+      const params = {
+        collectionsSetId: '28ff914060f603f8ae6729def1e0c2422cde911e5f791b908707031be771dec7',
+        includeTopBid: 'true',
+        sortBy: 'allTimeVolume',
+        limit: '5'
+      }
+
+      const data = await reservoir.get(url, params)
+      return data 
+    }
+
+    const getTopCollection = async () => {
+      const url = reservoir.baseUrl + "collections/v5";
+;      
+      const params = {
+        includeTopBid: false,
+        limit: 20
+      } 
+
+      const data = await reservoir.get(url, params)
+      return data 
+  }  
+ 
     return {
         makeSearchQuery,
         getCollection,
         getUserNFTs,
         getUserCollections,
         getDailyStats,
-        getCollectionActivity
+        getCollectionActivity,
+        getCuratedCollections,
+        getTopCollection
     }
 }
 

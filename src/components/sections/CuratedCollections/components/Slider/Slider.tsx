@@ -8,6 +8,9 @@ import { AngleLeftIcon, AngleRightIcon } from '@/components/icons';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { useReservoir, useWallets } from '@/hooks';
+
+
 export const Slider = ({ collections }: any) => {
   //
   const [prevRef, setPrevRef] = useState<HTMLDivElement | null>(null);
@@ -20,6 +23,10 @@ export const Slider = ({ collections }: any) => {
   function getNextRef(node: HTMLDivElement): void {
     setNextRef(node);
   }
+
+  const { getCollection } = useReservoir();
+  const { activeWallet } = useWallets();
+
 
   return (
     <Box position="relative">
@@ -40,7 +47,13 @@ export const Slider = ({ collections }: any) => {
       >
         {collections.map((item: any, index: number) => (
           <SwiperSlide key={index}>
-            <CollectionCard collection={item} />
+            <CollectionCard 
+              showAuthor={false}
+              showText={false}
+              showFooter={true}
+              collection={item}
+              ownership={0}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

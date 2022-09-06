@@ -22,23 +22,25 @@ import {
 
 import cn from 'classnames';
 import styles from './CollectionCard.module.sass';
+import { ICollection } from '@/components/pages/Collection';
 
 interface Props {
   showAuthor?: boolean;
   showText?: boolean;
   showFooter?: boolean;
   collection: any;
+  ownership: any;
 }
 
+
 export const CollectionCard = (props: Props) => {
-  const { showAuthor, showFooter, showText, collection } = props;
-
+  const { showAuthor, showFooter, showText, collection, ownership } = props;
+  
   const { colorMode } = useColorMode();
-
   return (
     <>
       <LinkBox>
-        <Link to="/collections/flud">
+        <Link to={`/collections/${collection.slug}`}>
           <Card
             className={cn(
               styles.Card,
@@ -49,20 +51,20 @@ export const CollectionCard = (props: Props) => {
           >
             <Box className={styles.Image}>
               <Image
-                src="/mocks/collection-card-image.png"
+                src={collection.banner || "/mocks/collection-card-image.png"}
                 alt="Collection Background"
               />
             </Box>
 
             <Box className={styles.Avatar}>
               <Avatar
-                image={collection.logo}
+                image={collection.image}
                 name={collection.name}
                 boxSize="68px"
               />
             </Box>
 
-            <BundleTag className={styles.Bundle}>7</BundleTag>
+            {ownership > 0 && <BundleTag className={styles.Bundle}>{ownership}</BundleTag>}
 
             <Box className={styles.Content}>
               <Title>{collection.name}</Title>
@@ -73,7 +75,7 @@ export const CollectionCard = (props: Props) => {
                   at urna lorem adipiscing.
                 </Text>
               )}
-              {showFooter && <Footer stats={collection.stats} />}
+              {showFooter && <Footer stats={collection} />}
             </Box>
           </Card>
         </Link>
@@ -107,7 +109,16 @@ const Footer = ({ stats }: any) => (
           </Box>
 
           <Box fontWeight={600} fontSize={14}>
-            <CurrencyExchanger value={stats.floorPrice} maxAbbreviate={1e3} />
+            {stats.floorAsk !== undefined ? 
+              <CurrencyExchanger
+                value={stats.floorAsk.price.amount.native}
+                maxAbbreviate={1e3}
+              /> :
+              <CurrencyExchanger
+                value={stats.floorAskPrice}
+                maxAbbreviate={1e3}
+              />
+            }
           </Box>
         </Box>
         <Spacer />
@@ -117,7 +128,7 @@ const Footer = ({ stats }: any) => (
           </Box>
 
           <Flex fontWeight={600} fontSize={14} justify="end">
-            <CurrencyExchanger value={stats.totalValue} maxAbbreviate={1e3} />
+            <CurrencyExchanger value={stats.volume.allTime} maxAbbreviate={1e3} />
           </Flex>
         </Box>
       </Flex>
