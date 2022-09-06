@@ -20,6 +20,7 @@ interface IFloorAsk {
 }
 
 export interface ICuratedCollection {
+  [x: string]: any;
   id: string;
   slug: string;
   name: string;
@@ -143,11 +144,11 @@ export const Collections = (props: any) => {
       </Box>
 
      {!isLoading && <SimpleGrid columns={columns} spacing={spacing}>
-        {curatedCollections.map((collection: any) => (
+        {curatedCollections.map((collection: any, index: number) => (
           <>
             {isViewCard ? (
               <CollectionCard 
-                key={collection.id} 
+                key={index} 
                 showAuthor={false}
                 showText={false}
                 showFooter={true}
@@ -155,7 +156,7 @@ export const Collections = (props: any) => {
                 ownership={0} 
               />
             ) : (
-              <CollectionItem key={collection.id} item={collection} />
+              <CollectionItem key={index} item={collection} />
             )}
           </>
         ))}

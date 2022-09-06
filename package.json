@@ -2,7 +2,7 @@
   "name": "temple-frontend",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 1001",
+    "dev": "next dev",
     "build": "next build",
     "ext:build": "next build && next export && yarn ext:prepare",
     "ext:prepare": "mv out/_next out/assets && sed -i 's/\\/_next/\\/assets/g' out/**.html",
