@@ -11,6 +11,7 @@ interface ISection {
 function useSettings() {
   const settingsContext: any = useContext(SettingsContext);
 
+  
   const [settings, setSettings] = settingsContext;
 
   const setSections = (sections: ISection[]): void => {

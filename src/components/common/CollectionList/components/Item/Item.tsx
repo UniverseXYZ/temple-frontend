@@ -8,6 +8,7 @@ import { CollectionItem } from '@/components/common';
 
 import cn from 'classnames';
 import styles from './Item.module.scss';
+import { ITopCollection } from '@/components/sections';
 
 export interface Props {
   dragOverlay?: boolean;

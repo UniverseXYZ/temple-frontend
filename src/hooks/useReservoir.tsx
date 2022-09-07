@@ -88,12 +88,13 @@ function useReservoir() {
       return data 
     }
 
-    const getTopCollection = async () => {
+    const getTopCollection = async (period: string) => {
       const url = reservoir.baseUrl + "collections/v5";
 ;      
       const params = {
-        includeTopBid: false,
-        limit: 20
+        includeTopBid: true,
+        sortBy: period,
+        limit: 10
       } 
 
       const data = await reservoir.get(url, params)

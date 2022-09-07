@@ -6,6 +6,7 @@ import { Listbox } from '@headlessui/react';
 
 import cn from 'classnames';
 import styles from './.module.sass';
+import { ITopCollection } from '../../TopCollections';
 
 const people = [
   { id: 1, name: 'Durward Reynolds', unavailable: false },
@@ -15,13 +16,13 @@ const people = [
   { id: 5, name: 'Katelyn Rohan', unavailable: false },
 ];
 
-export const Collections = () => {
+export const Collections = (collections: any) => {
   //
   const [selectedPerson, setSelectedPerson] = useState(people[0]);
 
   return (
     <>
-      <CollectionList />
+      <CollectionList collections={collections} />
     </>
   );
 };

@@ -50,6 +50,7 @@ export interface Props {
   removable?: boolean;
   style?: React.CSSProperties;
   useDragOverlay?: boolean;
+  collections: any;
 }
 
 export const CollectionList = ({
@@ -58,10 +59,12 @@ export const CollectionList = ({
   handle = false,
   removable = false,
   useDragOverlay = false,
+  collections
 }: Props) => {
-  const [items, setItems] = useState(initialData.collections);
+  const [items, setItems] = useState(collections.collections);
   const [activeId, setActiveId] = useState<string | null>(null);
 
+  console.log('items', items);
   const sensors = useSensors(
     useSensor(MouseSensor, {
       activationConstraint,
@@ -74,12 +77,12 @@ export const CollectionList = ({
     })
   );
 
-  const getIndex = (id: string) => items.findIndex((item) => item.id === id);
+  const getIndex = (id: string) => items.findIndex((item: any) => item.id === id);
   const activeIndex = activeId ? getIndex(activeId) : -1;
 
   const handleRemove = removable
     ? (id: string): void =>
-        setItems((items) => items.filter((item) => item.id !== id))
+        setItems((items: any) => items.filter((item: any) => item.id !== id))
     : undefined;
 
   const onDragStart = ({ active }: DragStartEvent) => {
@@ -96,7 +99,7 @@ export const CollectionList = ({
     if (over) {
       const overIndex = getIndex(over.id);
       if (activeIndex !== overIndex) {
-        setItems((items) => reorderItems(items, activeIndex, overIndex));
+        setItems((items: any) => reorderItems(items, activeIndex, overIndex));
       }
     }
   };
@@ -118,7 +121,7 @@ export const CollectionList = ({
     >
       <SortableContext items={items} strategy={verticalListSortingStrategy}>
         <div>
-          {items.map((item) => (
+          {items.map((item: any) => (
             <SortableItem
               key={item.id}
               id={item.id}

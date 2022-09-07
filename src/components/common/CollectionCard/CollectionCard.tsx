@@ -111,11 +111,11 @@ const Footer = ({ stats }: any) => (
           <Box fontWeight={600} fontSize={14}>
             {stats.floorAsk !== undefined ? 
               <CurrencyExchanger
-                value={stats.floorAsk.price.amount.native}
+                value={stats.floorAsk.price.amount.native.toFixed(3)}
                 maxAbbreviate={1e3}
               /> :
               <CurrencyExchanger
-                value={stats.floorAskPrice}
+                value={stats.floorAskPrice.toFixed(3)}
                 maxAbbreviate={1e3}
               />
             }
@@ -128,7 +128,7 @@ const Footer = ({ stats }: any) => (
           </Box>
 
           <Flex fontWeight={600} fontSize={14} justify="end">
-            <CurrencyExchanger value={stats.volume.allTime} maxAbbreviate={1e3} />
+            <CurrencyExchanger value={stats.volume.allTime.toFixed(2)}   maxAbbreviate={1e3} />
           </Flex>
         </Box>
       </Flex>

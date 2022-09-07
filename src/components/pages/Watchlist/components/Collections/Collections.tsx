@@ -47,7 +47,7 @@ export const Collections = (props: any) => {
         </HStack>
       </Box>
 
-      <CollectionList handle removable />
+      <CollectionList collections={collections} handle removable />
     </Box>
   );
 };
