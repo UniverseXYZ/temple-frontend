@@ -57,7 +57,7 @@ export const CollectionList = ({
   activationConstraint,
   coordinateGetter = sortableKeyboardCoordinates,
   handle = false,
-  removable = false,
+  removable = true,
   useDragOverlay = false,
   collections
 }: Props) => {

@@ -11,6 +11,9 @@ import {
 import { ElasticSwitch } from '@/components/ui';
 
 import { Collections, Activity } from './components';
+import { useReservoir, useWallets, useSettings } from '@/hooks';
+import { CollectionList, Empty } from '@/components/common';
+
 
 const items = [
   {
@@ -26,12 +29,33 @@ const items = [
 
 export const Watchlist = () => {
   //
-
+  const [isLoading, setIsLoading] = useState(true);
   const [active, setAcitve] = useState('collections');
+  const [collections, setCollections] = useState([]);
+
+  const { getWatchlistCollections } = useReservoir();
+  const { activeWallet } = useWallets();
+  const { watchlist } = useSettings();
 
   const onSwitchChange = (value: any) => {
     setAcitve(value);
   };
+
+  const isEmpty = collections.length === 0;
+
+  React.useEffect(() => {
+    const fetchWatchlistCollections = async () => {
+      const data = await getWatchlistCollections(watchlist);
+      if(data) {
+        setCollections(data);
+        setIsLoading(false);
+      }
+    }
+
+    if(watchlist.length > 0 && isLoading) {
+      fetchWatchlistCollections()
+    }
+  }, [watchlist, getWatchlistCollections, isLoading, isEmpty]);
 
   return (
     <Box as="section">
@@ -44,7 +68,23 @@ export const Watchlist = () => {
           <ElasticSwitch items={items} onChange={onSwitchChange} />
         </HStack>
 
-        {active === 'collections' && <Collections />}
+        {isLoading && isEmpty ? (
+          <Empty />
+        ) : (
+          <CollectionList
+            collections={collections}
+            handle
+            removable={true}
+          />
+        )}
+
+        {/* {!isLoading && active === 'collections' && 
+          <CollectionList
+            collections={collections}
+            handle
+            removable
+          />
+        }  */}
         {/* {active === 'activity' && <Activity />} */}
 
         <Link to="/watchlist">

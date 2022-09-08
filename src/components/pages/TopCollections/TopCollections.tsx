@@ -2,22 +2,11 @@ import React from 'react';
 import { Box, Container, Heading, Flex, Spacer } from '@chakra-ui/react';
 import { Tabs, Select, Option } from '@/components/ui';
 import { PageWithGradient } from '@/components/layouts';
+import { useReservoir } from '@/hooks';
 
 import { Collections, Activity } from './components';
 
-const tabs = [
-  {
-    id: 'collections',
-    title: 'Collections',
-    ticker: '30',
-    component: <Collections />,
-  },
-  // {
-  //   id: 'activity',
-  //   title: 'Activity',
-  //   component: <Activity />,
-  // },
-];
+
 
 const options = [
   {
@@ -43,6 +32,56 @@ const options = [
 ];
 
 export const TopCollections = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [topCollections, setTopCollections] = React.useState([]);
+  const [selectedPeriod, setSelectedPeriod] = React.useState('allTimeVolume');
+  
+  const { getTopCollection } = useReservoir();
+
+  const tabs = [
+    {
+      id: 'collections',
+      title: 'Collections',
+      ticker: '30',
+      component: <Collections collections={topCollections} />,
+    },
+    // {
+    //   id: 'activity',
+    //   title: 'Activity',
+    //   component: <Activity />,
+    // },
+  ];
+  
+  const handlePeriodChange = (value: any) => {
+    setIsLoading(true);
+    if(value != selectedPeriod) {
+      setSelectedPeriod(value);
+      getTopCollection(value).then((res: any) => {
+        setTopCollections(res.collections);
+        setIsLoading(false);
+      });
+    }
+  };
+
+
+  React.useEffect(() => {
+    const fetchTopCollection = async () => {
+      const data = await getTopCollection(selectedPeriod);
+      if(data) {
+        setTopCollections(data.collections);
+        setIsLoading(false)
+      }
+    }
+
+    if(isLoading) {
+      fetchTopCollection()
+    }
+
+    
+  }, [isLoading, getTopCollection, selectedPeriod])
+
+
+  console.log(selectedPeriod, topCollections)
   return (
     <PageWithGradient>
       <Container maxW="1142px">
@@ -55,16 +94,19 @@ export const TopCollections = () => {
             <Select
               placeholder="Sort by"
               aria-labelledby="Sort by"
-              defaultSelectedKey="all-time"
+              defaultSelectedKey="allTimeVolume"
+              selectedKey={selectedPeriod}
+              onSelectionChange={(selected: string) => handlePeriodChange(selected)}
             >
-              {options.map((option) => (
-                <Option key={option.value}>{option.title}</Option>
-              ))}
+              <Option key="1DayVolume">Last 24 hours</Option>
+              <Option key="7DayVolume">Last 7 days</Option>
+              <Option key="30DayVolume">Last 30 days</Option>
+              <Option key="allTimeVolume">All Time</Option>
             </Select>
           </Box>
         </Flex>
 
-        <Tabs items={tabs} />
+        {!isLoading && <Tabs items={tabs} />}
       </Container>
     </PageWithGradient>
   );

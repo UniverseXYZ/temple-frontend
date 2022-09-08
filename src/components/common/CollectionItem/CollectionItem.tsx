@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Box, HStack, Text, useColorMode } from '@chakra-ui/react';
 import { Card, Avatar, CurrencyExchanger } from '@/components/common';
 import { Handle, TrashIcon } from '@/components/icons';
@@ -42,9 +43,11 @@ export const CollectionItem = (props: any) => {
           <Box w={318}>
             <HStack className={styles.CollectionName}>
               <Avatar image={item.image} name={item.name} boxSize="50px" />
-              <Text fontSize={16} fontWeight={600}>
-                {item.name}
-              </Text>
+              <Link to={`/collections/${item.slug}`}>
+                <Text fontSize={16} fontWeight={600}>
+                  {item.name}
+                </Text>
+              </Link>
             </HStack>
           </Box>
           <Box w={105}>

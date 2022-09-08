@@ -117,7 +117,7 @@ export const Collections = (props: any) => {
     if(isLoading) { 
       fetchCuratedCollections();
     }
-  }, [isLoading, getCuratedCollections, getCollection, getUserCollections, activeWallet.address]);
+  }, [isLoading, getCuratedCollections, getCollection, getUserCollections]);
 
   console.log(curatedCollections);
 

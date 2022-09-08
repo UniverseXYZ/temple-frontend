@@ -99,7 +99,20 @@ function useReservoir() {
 
       const data = await reservoir.get(url, params)
       return data 
-  }  
+  }
+
+    const getWatchlistCollections = async (collections: string[]) => {
+      const url = reservoir.baseUrl + "collections/v5";
+      const params = {
+        contract: collections,
+        includeTopBid: true,
+        limit: 10,
+      }
+
+      const data = await reservoir.get(url, params)
+      return data
+    }
+
  
     return {
         makeSearchQuery,
@@ -109,7 +122,8 @@ function useReservoir() {
         getDailyStats,
         getCollectionActivity,
         getCuratedCollections,
-        getTopCollection
+        getTopCollection,
+        getWatchlistCollections
     }
 }
 

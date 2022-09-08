@@ -13,14 +13,14 @@ import initialData from '@/mocks/data';
 
 export const Collections = (props: any) => {
   //
-  const {} = props;
+  const { collections } = props;
 
-  const { collections } = initialData;
+  // const { collections } = initialData;
 
   return (
     <Box pt="30px">
       <SimpleGrid columns={1} spacing="12px">
-        {collections.map((collection) => (
+        {collections.map((collection: any) => (
           <CollectionItem key={collection.id} item={collection} />
         ))}
       </SimpleGrid>
