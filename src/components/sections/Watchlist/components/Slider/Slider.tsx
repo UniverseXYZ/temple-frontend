@@ -7,7 +7,6 @@ import { AngleLeftIcon, AngleRightIcon } from '@/components/icons';
 
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { IOwnedCollections } from '../../OwnedCollections';
 
 export const Slider = ({ collections }: any) => {
   //
@@ -21,6 +20,8 @@ export const Slider = ({ collections }: any) => {
   function getNextRef(node: HTMLDivElement): void {
     setNextRef(node);
   }
+
+  console.log('collections', collections);
 
   return (
     <Box position="relative">
@@ -39,14 +40,14 @@ export const Slider = ({ collections }: any) => {
         loop={true}
         allowTouchMove={false}
       >
-        {collections.map((item: IOwnedCollections, index: number) => (
-          <SwiperSlide key={index}>
+        {collections.map((item: any, index: number) => (
+          <SwiperSlide  key={index}>
             <CollectionCard 
               showAuthor={false}
               showText={false}
               showFooter={true}
-              collection={item.collection}
-              ownership={item.ownership.tokenCount}
+              collection={item}
+              ownership={0}
             />
           </SwiperSlide>
         ))}

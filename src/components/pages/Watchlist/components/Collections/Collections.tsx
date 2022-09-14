@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect}from 'react';
 import { Box, HStack } from '@chakra-ui/react';
-import { CollectionList } from '@/components/common';
+import { CollectionList, Loading } from '@/components/common';
 import { Input, Select, Option } from '@/components/ui';
+import { useReservoir, useWallets, useSettings } from '@/hooks';
+
 
 import cn from 'classnames';
 import styles from './.module.sass';
@@ -26,9 +28,30 @@ import initialData from '@/mocks/data';
 export const Collections = (props: any) => {
   //
   const {} = props;
+  const [isLoading, setIsLoading] = useState(true);
+  const [active, setAcitve] = useState('collections');
+  const [collections, setCollections] = useState();
 
-  const { collections } = initialData;
+  const { getWatchlistCollections } = useReservoir();
+  const { activeWallet } = useWallets();
+  const { watchlist } = useSettings();
 
+  React.useEffect(() => {
+    const fetchWatchlistCollections = async () => {
+      const data = await getWatchlistCollections(watchlist);
+      if(data) {
+        setCollections(data);
+        setIsLoading(false);
+      }
+    }
+
+    if(watchlist.length > 0 && isLoading) {
+      fetchWatchlistCollections()
+    }
+  }, [watchlist, getWatchlistCollections, isLoading])
+
+  console.log('collections', collections)
+  console.log(isLoading)
   return (
     <Box pt="30px">
       <Box mb="40px">
@@ -46,8 +69,8 @@ export const Collections = (props: any) => {
           </Box>
         </HStack>
       </Box>
-
-      <CollectionList handle removable />
+  
+      {!isLoading && <CollectionList collections={collections} handle removable />}
     </Box>
   );
 };

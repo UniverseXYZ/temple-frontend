@@ -1,12 +1,51 @@
+import React, {useState} from 'react';
 import { CollectionCard, CollectionItem } from '@/components/common';
 import { GridIcon, ListIcon } from '@/components/icons';
 import { ElasticSwitch, Input, Option, Select } from '@/components/ui';
 import { Box, HStack, SimpleGrid } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useReservoir, useWallets} from '@/hooks';
+interface IVolume {
+  "1day": number;
+  "7day": number;
+  "30day": number;
+  allTime: number;
+}
 
-// interface Props {
-//   //
-// }
+interface IFloorAsk {
+  price: {
+    amount: {
+      native: number;
+    }
+  }
+}
+
+export interface ICuratedCollection {
+  [x: string]: any;
+  id: string;
+  slug: string;
+  name: string;
+  logo: string;
+  bannerUrlImage: string;
+  discordUrl: string;
+  externalUrl: string;
+  twitterUsername: string;
+  description: string;
+  sampleImages: string[];
+  tokenCount: number;
+  onSaleCount: number;
+  primaryContract: string;
+  tokenSetId: string;
+  floorAskPrice: number;
+  royalties: any;
+  lastBuy: any;
+  floorAsk: IFloorAsk;
+  topBid: any;
+  rank: any;
+  volume: IVolume;
+  volumeChange: any;
+  floorSale: any;
+  floorSaleChange: any;
+}
 
 const grid = [
   {
@@ -39,10 +78,15 @@ export const Collections = (props: any) => {
   const [view, setView] = useState('card');
   const [columns, setColumns] = useState(4);
   const [spacing, setSpacing] = useState('30px');
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [curatedCollections, setCuratedCollections] = React.useState<ICuratedCollection>({} as ICuratedCollection);
+
+  const { getCuratedCollections, getCollection, getUserCollections } = useReservoir();
+  const { activeWallet } = useWallets();
 
   const isViewCard = view === 'card';
 
-  const { collections } = initialData;
+
 
   const onViewChange = (value: any) => {
     //
@@ -61,6 +105,21 @@ export const Collections = (props: any) => {
       setSpacing('12px');
     }
   };
+  React.useEffect(() => {
+    const fetchCuratedCollections = async () => {
+      const data = await getCuratedCollections();
+      if(data) {
+        setCuratedCollections(data.collections);
+        setIsLoading(false);
+      }
+    };
+
+    if(isLoading) { 
+      fetchCuratedCollections();
+    }
+  }, [isLoading, getCuratedCollections, getCollection, getUserCollections]);
+
+  console.log(curatedCollections);
 
   return (
     <Box pt="30px">
@@ -84,17 +143,24 @@ export const Collections = (props: any) => {
         </HStack>
       </Box>
 
-      <SimpleGrid columns={columns} spacing={spacing}>
-        {collections.map((collection: any) => (
+     {!isLoading && <SimpleGrid columns={columns} spacing={spacing}>
+        {curatedCollections.map((collection: any, index: number) => (
           <>
             {isViewCard ? (
-              <CollectionCard key={collection.id} collection={collection} />
+              <CollectionCard 
+                key={index} 
+                showAuthor={false}
+                showText={false}
+                showFooter={true}
+                collection={collection} 
+                ownership={0} 
+              />
             ) : (
-              <CollectionItem key={collection.id} item={collection} />
+              <CollectionItem key={index} item={collection} />
             )}
           </>
         ))}
-      </SimpleGrid>
+      </SimpleGrid>}
     </Box>
   );
 };
