@@ -59,7 +59,7 @@ export const SearchInput = (props: any) => {
 
   const handleGoogleChange = (event: any) => {
     if(event.key == 'Enter' && googleValue) {
-      window.open(`https://www.google.com/search?q=${googleValue}`,"_self")
+      window.open(`https://www.google.com/search?q=${googleValue}`,"_parent")
     }
   }
 
