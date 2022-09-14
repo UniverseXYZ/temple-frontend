@@ -15,6 +15,7 @@ interface Props {
 export const CollectionItem = (props: any) => {
   //
   const { item, handle, handleListeners, isDragging, onRemove } = props;
+  console.log("item ", item)
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
    //
@@ -65,7 +66,7 @@ export const CollectionItem = (props: any) => {
             </HStack>
           </Box>
           <Box w={105}>
-            <CurrencyExchanger value={item.floorAsk.price.amount.native} />
+            <CurrencyExchanger value={item.floorAsk.price && item.floorAsk.price.amount ? item.floorAsk.price.amount.native : "N/A"} />
           </Box>
           <Box w={105}>
             <HStack>
