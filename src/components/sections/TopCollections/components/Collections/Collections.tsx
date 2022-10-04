@@ -22,7 +22,7 @@ export const Collections = (collections: any) => {
 
   return (
     <>
-      <CollectionList collections={collections} />
+      <CollectionList collections={collections} removable={false} />
     </>
   );
 };

@@ -42,7 +42,7 @@ export const TopCollections = () => {
     {
       id: 'collections',
       title: 'Collections',
-      ticker: '30',
+      ticker: `${topCollections.length}`,
       component: <Collections collections={topCollections} />,
     },
     // {
@@ -81,7 +81,6 @@ export const TopCollections = () => {
   }, [isLoading, getTopCollection, selectedPeriod])
 
 
-  console.log(selectedPeriod, topCollections)
   return (
     <PageWithGradient>
       <Container maxW="1142px">

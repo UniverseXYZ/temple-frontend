@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Container, Heading } from '@chakra-ui/react';
 import { Tabs } from '@/components/ui';
-import { PageWithGradient } from '@/components/layouts';
+import { PageWithGradient } from '@/components/layouts'
 
 import { Collections, Activity } from './components';
 
@@ -9,7 +9,7 @@ const tabs = [
   {
     id: 'collections',
     title: 'Collections',
-    ticker: '30',
+    ticker: `${Collections.length}`,
     component: <Collections />,
   },
   // {
@@ -19,7 +19,9 @@ const tabs = [
   // },
 ];
 
+
 export const OwnedCollections = () => {
+  
   return (
     <PageWithGradient>
       <Container maxW="1142px">

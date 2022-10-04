@@ -40,6 +40,7 @@ export const Slider = ({ collections }: any) => {
         allowTouchMove={false}
       >
         {collections.map((item: IOwnedCollections, index: number) => (
+          item.collection.name != "OS Shared Storefront Collection" && 
           <SwiperSlide key={index}>
             <CollectionCard 
               showAuthor={false}

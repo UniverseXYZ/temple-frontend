@@ -17,19 +17,21 @@ interface IWallet {
   id: string;
   name: string;
   address: string;
+  balance: number;
   image: string;
 }
 
 interface Props {
   wallet: IWallet;
   onSelect(wallet: IWallet): void;
+  value: string;
 }
 
 export const DropdownItem = (props: Props) => {
   //
-  const { wallet, onSelect } = props;
+  const { wallet, value, onSelect } = props;
 
-  const { onEdit } = useContext(WalletsModalContext);
+  const { onEdit }: any = useContext(WalletsModalContext);
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -66,7 +68,9 @@ export const DropdownItem = (props: Props) => {
 
         <Box className={styles.Balance}>
           <Box className={styles.BalanceAmount}>
-            <CurrencyExchanger value={0.24} maxAbbreviate={1e3} />
+            {value &&
+              <CurrencyExchanger value={Number(value)} maxAbbreviate={1e3} />
+            }
           </Box>
 
           <Box className={styles.BalanceText}>on balance</Box>

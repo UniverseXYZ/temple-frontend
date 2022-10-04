@@ -56,6 +56,7 @@ export const Watchlist = () => {
       fetchWatchlistCollections()
     }
   }, [watchlist, getWatchlistCollections, isLoading, isEmpty]);
+  
 
   return (
     <Box as="section">
@@ -77,15 +78,6 @@ export const Watchlist = () => {
             removable={true}
           />
         )}
-
-        {/* {!isLoading && active === 'collections' && 
-          <CollectionList
-            collections={collections}
-            handle
-            removable
-          />
-        }  */}
-        {/* {active === 'activity' && <Activity />} */}
 
         <Link to="/watchlist">
           <Button variant="outline" width="100%" mt="30px">

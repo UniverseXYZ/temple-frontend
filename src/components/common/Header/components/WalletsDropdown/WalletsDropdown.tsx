@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, useEffect } from 'react';
+import React, { useContext, useRef, useState, useEffect, useCallback } from 'react';
 import {
   Box,
   Button,
@@ -12,13 +12,14 @@ import { useClickAway } from 'react-use';
 
 import { WalletsModalContext } from '../../context/WalletsModalContext';
 
-import { useWallets } from '@/hooks';
+import { IWallet, useWallets } from '@/hooks';
 import { DropdownItem, WalletAvatar, AllWalletsItem } from './components';
 import { CurrencyExchanger } from '@/components/common';
 import { SelectDownArrow } from '@/components/icons';
 
 import cn from 'classnames';
 import styles from './WalletsDropdown.module.sass';
+import { useEtherscan } from '@/hooks/useEtherscan';
 
 const ALL_WALLETS_VALUE = {
   id: 'all',
@@ -29,7 +30,8 @@ const ALL_WALLETS_VALUE = {
 export const WalletsDropdown = () => {
   //
   const { wallets, activeWallet, setActiveWallet } = useWallets();
-  const { onOpen } = useContext(WalletsModalContext);
+  const { onOpen }: any = useContext(WalletsModalContext);
+  const { getAddressBalance } = useEtherscan();
 
   const [value, setValue] = useState(activeWallet);
   const [visible, setVisible] = useState(false);
@@ -42,7 +44,17 @@ export const WalletsDropdown = () => {
 
   useEffect(() => {
     setValue(activeWallet);
-  }, [activeWallet]);
+    const fetchBalances = async () => {
+      const newWallets = wallets;
+      newWallets.forEach(async (wallet: IWallet) => {
+        wallet.balance = await getAddressBalance(wallet.address);
+      });
+    };
+    
+    if (activeWallet.balance === undefined) {
+      fetchBalances();
+    }
+  }, [activeWallet, wallets, value, getAddressBalance]);
 
   const toggleVisible = () => {
     setVisible((visible) => !visible);
@@ -79,7 +91,16 @@ export const WalletsDropdown = () => {
             {value?.name}
           </Text>
           <Box className={styles.Balance}>
-            <CurrencyExchanger value={6.24} maxAbbreviate={1e3} />
+            {wallets.map((wallet: IWallet) => {
+              if (wallet.isActive) {
+                return (<>
+                  {wallet.balance ? <CurrencyExchanger value={wallet.balance} key={wallet.address} maxAbbreviate={1e3} />
+                    :
+                    <CurrencyExchanger value={0} key={wallet.address} maxAbbreviate={1e3} />
+                  }
+                </>
+                )}
+            })}
           </Box>
         </HStack>
       </Box>
@@ -92,6 +113,7 @@ export const WalletsDropdown = () => {
             {wallets.map((wallet: any, index: number) => (
               <DropdownItem
                 wallet={wallet}
+                value={wallet.balance}
                 key={index}
                 onSelect={handleSelectWallet}
               />

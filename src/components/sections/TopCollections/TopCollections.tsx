@@ -125,6 +125,11 @@ export const TopCollections = () => {
     const fetchTopCollection = async () => {
       const data = await getTopCollection(selectedPeriod);
       if(data) {
+        data.collections.map((collection: any) => {
+          if(collection.name == "OS Shared Storefront Collection") {
+            data.collections.splice(data.collections.indexOf(collection), 1);
+          }
+        });
         setCollection(data.collections);
         setIsLoading(false)
       }
@@ -137,7 +142,6 @@ export const TopCollections = () => {
     
   }, [isLoading, getTopCollection, selectedPeriod])
   
-  console.log(selectedPeriod)
   return (
     <Box as="section">
       <Container maxW="container.xl">

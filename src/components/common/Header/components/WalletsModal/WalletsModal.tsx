@@ -18,6 +18,7 @@ import { ethers } from 'ethers';
 import { useWallets } from '@/hooks';
 
 import { Content, Footer } from './components';
+import { error } from 'console';
 
 const validationSchema = yup.object({
   name: yup.string().label('Name').required().max(30),
@@ -37,9 +38,9 @@ const initialValues = { name: '', address: '', image: '' };
 
 export const WalletsModal = () => {
   //
-  const { wallet, type, visible, onClose } = useContext(WalletsModalContext);
+  const { wallet, type, visible, onClose }: any = useContext(WalletsModalContext);
 
-  const { addWallet, updateWallet } = useWallets();
+  const { addWallet, updateWallet, removeWallet } = useWallets();
 
   const isCreate = type === 'create';
   const isUpdate = type === 'update';
@@ -87,9 +88,11 @@ export const WalletsModal = () => {
     );
   };
 
-  const handleDeleteWallet = () => {
-    //
-    console.log('delete');
+
+  const handleDeleteWallet = async () => {
+    
+    removeWallet(wallet.address);
+    onClose();
   };
 
   //

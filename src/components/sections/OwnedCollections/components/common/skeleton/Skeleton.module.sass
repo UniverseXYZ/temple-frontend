@@ -1,0 +1,136 @@
+@import '@/sass/colors'
+
+.Wrapper
+  display: flex
+  background-color: $white-100
+  flex-wrap: nowrap
+  justify-content: space-between
+  border: 1px solid $black-transparent-10
+  border-radius: 12px
+  box-shadow: 0px 10px 36px rgba(136, 120, 172, 0.14)
+
+.Item
+  padding: 30px 29px
+  text-align: center
+  flex-basis: 100%
+  border-right: 1px solid $black-transparent-10
+
+  &:last-child
+    border-right: 0
+
+.Icon
+  width: 21px
+
+  path
+    fill: $black-transparent-60
+
+.Headline
+  color: $black-transparent-60
+  font-weight: 500
+  font-size: 14px
+
+.Value
+  font-weight: 700
+  font-size: 24px
+
+
+// ------------ DARK ------------ //
+
+.Dark
+  &.Wrapper
+    background-color: $dark-80
+    border-color: $white-transparent-10
+    box-shadow: 0px 10px 36px rgba(0, 0, 0, 0.14)
+
+  .Item
+    border-color: $white-transparent-10
+
+  .Icon
+    path
+      fill: $white-transparent-60
+
+  .Headline
+    color: $white-transparent-60
+@import '@/sass/colors'
+  
+.Card
+  position: relative
+  width: 255px
+  min-height: 195px
+  text-align: center
+
+.Image
+  border-top-left-radius: 12px
+  border-top-right-radius: 12px
+
+  img
+    height: 90px
+    width: 100%
+    object-fit: cover
+    border-top-left-radius: 12px
+    border-top-right-radius: 12px
+    user-select: none
+
+.Avatar
+  position: absolute
+  top: 56px
+  left: 50%
+  transform: translateX(-50%)
+  user-select: none
+
+.Content
+  margin-top: 34px
+  padding: 15px
+  padding-top: 20px
+
+.Footer
+  border-top: 0.5px solid $black-transparent-10
+  padding-top: 10px
+
+.Title
+  font-size: 16px
+  font-weight: 600
+  line-height: 22px
+  margin-bottom: 20px
+
+.Author
+  font-size: 12px
+  font-weight: 600
+  margin-bottom: 20px
+
+  span
+    color: #ccc
+    margin-right: 5px
+
+  a
+    outline: 0
+    text-decoration: underline
+
+    &:hover
+      text-decoration: none
+
+    &:focus
+      box-shadow: none
+
+.Text
+  font-size: 12px
+  line-height: 18px
+  color: #666
+  margin-bottom: 15px
+
+.Bundle
+  position: absolute
+  left: 6px
+  top: 6px
+  user-select: none
+
+
+
+.WithAuthor
+  .Title
+    margin-bottom: 0
+
+
+.Dark
+  .Footer
+    border-color: $white-transparent-10

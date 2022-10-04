@@ -74,6 +74,18 @@ function useReservoir() {
       const data = await reservoir.get(url, params)
       return data 
     }
+
+    const getOwnedCollections = async (address: string) => {
+      const url = reservoir.baseUrl + `users/${address}/collections/v2`;
+      const params = {
+        includeTopBid: true,
+        limit: 100,
+      }
+
+      const data = await reservoir.get(url, params)
+      return data
+    }
+
     
     const getCuratedCollections = async () => {
       const url = reservoir.baseUrl + "collections/v5";
@@ -119,6 +131,7 @@ function useReservoir() {
         getCollection,
         getUserNFTs,
         getUserCollections,
+        getOwnedCollections,
         getDailyStats,
         getCollectionActivity,
         getCuratedCollections,

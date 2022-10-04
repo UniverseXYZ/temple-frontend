@@ -23,8 +23,6 @@ const options = [
   },
 ];
 
-import initialData from '@/mocks/data';
-
 export const Collections = (props: any) => {
   //
   const {} = props;
@@ -50,8 +48,6 @@ export const Collections = (props: any) => {
     }
   }, [watchlist, getWatchlistCollections, isLoading])
 
-  console.log('collections', collections)
-  console.log(isLoading)
   return (
     <Box pt="30px">
       <Box mb="40px">

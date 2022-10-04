@@ -21,6 +21,7 @@ export const Collections = (props: any) => {
     <Box pt="30px">
       <SimpleGrid columns={1} spacing="12px">
         {collections.map((collection: any) => (
+          collection.name != "OS Shared Storefront Collection" &&
           <CollectionItem key={collection.id} item={collection} />
         ))}
       </SimpleGrid>

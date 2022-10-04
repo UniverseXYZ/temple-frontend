@@ -71,7 +71,7 @@ const options = [
 
 import initialData from '@/mocks/data';
 
-export const Collections = (props: any) => {
+export const  Collections = (props: any) => {
   //
   const {} = props;
 

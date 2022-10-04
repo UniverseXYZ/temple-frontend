@@ -114,6 +114,7 @@ const Footer = ({ stats }: any) => (
                 value={stats.floorAsk.price.amount.native.toFixed(3)}
                 maxAbbreviate={1e3}
               /> :
+              stats.floorAskPrice && 
               <CurrencyExchanger
                 value={stats.floorAskPrice.toFixed(3)}
                 maxAbbreviate={1e3}

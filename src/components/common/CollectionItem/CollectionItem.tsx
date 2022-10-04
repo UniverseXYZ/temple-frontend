@@ -15,7 +15,6 @@ interface Props {
 export const CollectionItem = (props: any) => {
   //
   const { item, handle, handleListeners, isDragging, onRemove } = props;
-  console.log("item ", item)
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
    //

@@ -9,7 +9,7 @@ const tabs = [
   {
     id: 'collections',
     title: 'Collections',
-    ticker: '30',
+    ticker: `${Collections.length}`,
     component: <Collections />,
   },
   // {

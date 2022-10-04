@@ -40,7 +40,7 @@ import { Item } from './components';
 
 import styles from './components/Item/Item.module.scss';
 
-import initialData from '@/mocks/data';
+import { useSettings } from '@/hooks';
 
 export interface Props {
   activationConstraint?: PointerActivationConstraint;
@@ -63,8 +63,8 @@ export const CollectionList = ({
 }: Props) => {
   const [items, setItems] = useState(collections.collections);
   const [activeId, setActiveId] = useState<string | null>(null);
+  const { watchlist } = useSettings();
 
-  console.log('items', items);
   const sensors = useSensors(
     useSensor(MouseSensor, {
       activationConstraint,
@@ -82,7 +82,8 @@ export const CollectionList = ({
 
   const handleRemove = removable
     ? (id: string): void =>
-        setItems((items: any) => items.filter((item: any) => item.id !== id))
+        watchlist.splice(watchlist.indexOf(id), 1) &&
+        setItems((items) => items.filter((item: any) => item.id !== id))
     : undefined;
 
   const onDragStart = ({ active }: DragStartEvent) => {

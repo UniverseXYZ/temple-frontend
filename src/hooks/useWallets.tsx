@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 import { SettingsContext } from '@/context';
 
-interface IWallet {
+export interface IWallet {
   name: string;
   address: string;
+  balance: string;
   image: string;
   isActive: boolean;
 }
@@ -71,7 +72,10 @@ function useWallets() {
 
   const removeWallet = (address: string): void => {
     const newSettingsArray = settings;
-    //newSettingsArray.wallets.push(wallet);
+    newSettingsArray.wallets = newSettingsArray.wallets.filter(
+      (wallet: IWallet) => wallet.address !== address
+    );
+    
     setSettings(newSettingsArray);
   };
 

@@ -4,8 +4,8 @@ import { Box, Container, Heading, HStack, Button, Text } from '@chakra-ui/react'
 import { InfoTooltip } from '@/components/common';
 import { useReservoir, useWallets } from '@/hooks';
 import { Slider, Activity } from './components';
+import { Skeleton } from './components/common/skeleton/skeleton';
 
-import initialData from '@/mocks/data';
 
 interface IVolume {
   "1day": number;
@@ -49,22 +49,30 @@ export const OwnedCollections = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const [ownedCollections, setOwnedCollections] = React.useState<IOwnedCollections>({collection: {} as IOwnedCollection, ownership: {} as IOwnership});
 
-  const { getUserCollections } = useReservoir();
-  const { activeWallet } = useWallets();
+  const { getOwnedCollections } = useReservoir();
+  const { activeWallet, setActiveWallet } = useWallets();
+  const [activeAddress, setActiveAddress] = React.useState();
   
-  React.useEffect(() => {
-    const fetchOwnedCollections = async () => {
-      const data = await getUserCollections(activeWallet.address, ownedCollections.collection.id);
-      if(data) {
-        setOwnedCollections(data.collections);
-        setIsLoading(false);
-      }
+  const fetchOwnedCollections = async () => {
+    const data = await getOwnedCollections(activeWallet.address);
+    if(data) {
+      setOwnedCollections(data.collections);
+      setActiveAddress(activeWallet.address);
+      setIsLoading(false);
     }
+  }
 
-    if(activeWallet && isLoading) {
+  React.useEffect(() => {
+    if(isLoading && ownedCollections.collection !== undefined) {
       fetchOwnedCollections();
     }
-  }, [activeWallet, isLoading, getUserCollections]);
+
+    if(activeWallet && activeAddress !== activeWallet.address) {
+      setIsLoading(true);
+      fetchOwnedCollections();
+    }
+  }, [activeAddress, activeWallet, isLoading, getOwnedCollections, fetchOwnedCollections]);
+
 
   return (
     <Box as="section">
@@ -77,28 +85,39 @@ export const OwnedCollections = () => {
         </HStack>
       </Container>
 
-      {activeWallet ? (
+      {activeWallet && !isLoading ? (
       <>
         <Container maxW="1200px">
-          {!isLoading && <Slider collections={ownedCollections} />}
+
+          {ownedCollections.length > 0 ?
+            <Slider collections={ownedCollections} /> 
+            :
+            <Container maxW="container.xl">
+              <Text as="h3" size="md" mt="30px">
+                No collections found
+              </Text>
+            </Container>
+          }
         </Container>
         
 
         <Container maxW="container.xl">
           {/* <Activity /> */}
 
-          <Link to="/owned-collections">
-            <Button variant="outline" width="100%" mt="30px">
-              Show all
-            </Button>
-          </Link>
+          {ownedCollections.length > 0 ?
+            <Link to="/owned-collections">
+              <Button variant="outline" width="100%" mt="30px">
+                Show all
+              </Button>
+            </Link>
+            :
+            null
+          }
         </Container>
       </>
       ) : (
         <Container maxW="container.xl">
-          <Text as="h3" size="md" mt="30px">
-            Please connect a wallet to see your owned collections
-          </Text>
+          <Skeleton />
         </Container>
       )}
     </Box>

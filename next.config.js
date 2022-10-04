@@ -4,7 +4,9 @@ const nextConfig = {
   env: {
     RESERVOIR_API_KEY: "b37f428c-629c-42e8-9bbb-8e349539e263",
     RESERVOIR_API_URL: "https://api.reservoir.tools/",
-    ZAPPER_KEY: "33d6fd40-c040-423f-ab0c-fe6d8e5fb877"
+    ZAPPER_KEY: "33d6fd40-c040-423f-ab0c-fe6d8e5fb877",
+    ETHERSCAN_API_KEY: "VB5B7SKTH2HIKJFBDU7RSJ47S9G39HBSUD",
+    ETHERSCAN_API_URL: "https://api.etherscan.io/api",
   },
   
   async rewrites() {

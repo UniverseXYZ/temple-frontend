@@ -79,8 +79,7 @@ import initialData from '@/mocks/data';
 
 export const Collections = (props: any) => {
   //
-  const {} = props;
-  const { collections } = initialData;
+  const { } = props;
 
   const [view, setView] = useState('card');
   const [columns, setColumns] = useState(4);
@@ -149,6 +148,7 @@ export const Collections = (props: any) => {
 
      {!isLoading && <SimpleGrid columns={columns} spacing={spacing}>
         {ownedCollections.map((collection: any) => (
+          collection.name != "OS Shared Storefront Collection" &&
           <>
             {isViewCard ? (
               <CollectionCard
