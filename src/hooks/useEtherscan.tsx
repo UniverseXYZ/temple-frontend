@@ -15,10 +15,10 @@ function useEtherscan() {
             apikey: process.env.ETHERSCAN_API_KEY || ""
         };
         const data = await etherscan.get(url, params);
-
-        const formattedBalance = ethers.utils.formatEther(data.result);
-
-        return Number(formattedBalance).toFixed(3);
+        if(data) {
+            const formattedBalance = ethers.utils.formatEther(data.result);
+            return Number(formattedBalance).toFixed(3);
+        }
     }
 
     return {

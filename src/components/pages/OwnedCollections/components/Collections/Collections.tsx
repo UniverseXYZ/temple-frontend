@@ -4,54 +4,14 @@ import {
   HStack,
   InputGroup,
   InputLeftElement,
+  Container,
   SimpleGrid,
 } from '@chakra-ui/react';
 import { CollectionCard, CollectionItem } from '@/components/common';
 import { Input, ElasticSwitch, Select, Option } from '@/components/ui';
 import { GridIcon, ListIcon } from '@/components/icons';
-import { useReservoir, useWallets } from '@/hooks';
+import { Skeleton } from '../common/skeleton/skeleton';
 
-import cn from 'classnames';
-import styles from './.module.sass';
-
-interface IVolume {
-  "1day": number;
-  "7day": number;
-  "30day": number;
-  allTime: number;
-}
-
-export interface IOwnership {
-  tokenCount: number;
-  onSaleCount: number;
-}
-
-export interface  IOwnedCollection {
-  id: string;
-  slug: string;
-  name: string;
-  image: string;
-  banner: string;
-  discordUrl: string;
-  externalUrl: string;
-  twitterUsername: string;
-  description: string;
-  sampleImages: string[];
-  tokenCount: number;
-  primaryContract: string;
-  tokenSetId: string;
-  floorAskPrice: number;
-  rank: any;
-  volume: IVolume;
-  volumeChange: number;
-  floorSale: number;
-}
-
-export interface IOwnedCollections {
-  [x: string]: any;
-  collection: IOwnedCollection;
-  ownership: IOwnership;
-}
 
 const grid = [
   {
@@ -75,21 +35,14 @@ const options = [
   },
 ];
 
-import initialData from '@/mocks/data';
-
 export const Collections = (props: any) => {
   //
-  const { } = props;
+  const { ownedCollections, isLoading } = props;
 
   const [view, setView] = useState('card');
   const [columns, setColumns] = useState(4);
   const [spacing, setSpacing] = useState('30px');
-  const [isLoading, setIsLoading] = useState(true);
-  const [ownedCollections, setOwnedCollections] = useState<IOwnedCollections>({collection: {} as IOwnedCollection, ownership: {} as IOwnership});
-
   const isViewCard = view === 'card';
-  const { getUserCollections } = useReservoir();
-  const { activeWallet } = useWallets();
   
   const onViewChange = (value: any) => {
     //
@@ -108,21 +61,6 @@ export const Collections = (props: any) => {
       setSpacing('12px');
     }
   };
-
-  React.useEffect(() => {
-    const fetchOwnedCollections = async () => {
-      const data = await getUserCollections(activeWallet.address, ownedCollections.collection.id);
-      if(data) {
-        setOwnedCollections(data.collections);
-        setIsLoading(false);
-      }
-    }
-
-    if(activeWallet && isLoading) {
-      fetchOwnedCollections();
-    }
-  }, [activeWallet, isLoading, getUserCollections]);
-
 
   return (
     <Box pt="30px">
@@ -146,9 +84,10 @@ export const Collections = (props: any) => {
         </HStack>
       </Box>
 
-     {!isLoading && <SimpleGrid columns={columns} spacing={spacing}>
+     {!isLoading ?
+      <SimpleGrid columns={columns} spacing={spacing}>
         {ownedCollections.map((collection: any) => (
-          collection.name != "OS Shared Storefront Collection" &&
+          collection.collection.name != "OS Shared Storefront Collection" &&
           <>
             {isViewCard ? (
               <CollectionCard
@@ -164,7 +103,12 @@ export const Collections = (props: any) => {
             )}
           </>
         ))}
-      </SimpleGrid>}
+      </SimpleGrid>
+      :
+      <Container maxW="container.xl">
+        <Skeleton />        
+      </Container>
+      }
     </Box>
   );
 };

@@ -50,9 +50,10 @@ export const OwnedCollections = () => {
   const [ownedCollections, setOwnedCollections] = React.useState<IOwnedCollections>({collection: {} as IOwnedCollection, ownership: {} as IOwnership});
 
   const { getOwnedCollections } = useReservoir();
-  const { activeWallet, setActiveWallet } = useWallets();
+  const { activeWallet } = useWallets();
   const [activeAddress, setActiveAddress] = React.useState();
   
+
   const fetchOwnedCollections = async () => {
     const data = await getOwnedCollections(activeWallet.address);
     if(data) {
